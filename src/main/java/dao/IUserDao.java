@@ -11,6 +11,7 @@ public interface IUserDao {
 	UserModel findByID(int id);
 	UserModel findByEmail(String email);
 	UserModel findByPhone(String phone);
+	UserModel login(String emailOrPhone, String password);
 	
 	void insert(UserModel user);
 	void update(UserModel user);

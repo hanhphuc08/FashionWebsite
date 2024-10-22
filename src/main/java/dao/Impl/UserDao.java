@@ -188,6 +188,48 @@ public class UserDao implements IUserDao {
 		
 	}
 	@Override
+	public UserModel login(String emailOrPhone, String password) {
+	    String query = "SELECT * FROM Users WHERE (email = ? OR phone = ?) AND password = ?";
+	    try {
+	        conn = new DBConnectSQL().getConnection();
+	        ps = conn.prepareStatement(query);
+	        
+	       
+	        ps.setString(1, emailOrPhone);
+	        ps.setString(2, emailOrPhone);
+	        ps.setString(3, password);
+	        
+	        rs = ps.executeQuery();
+	        
+	        if (rs.next()) {
+	            UserModel user = new UserModel();
+	            user.setUserID(rs.getInt("userID"));
+	            user.setFullname(rs.getString("fullname"));
+	            user.setEmail(rs.getString("email"));
+	            user.setPhone(rs.getString("phone"));
+	            user.setAddress(rs.getString("address"));
+	            user.setPassword(rs.getString("password"));
+	            user.setRoleID(rs.getString("roleID"));
+	            user.setCreateDate(rs.getDate("createDate"));
+	            user.setUpdateDate(rs.getDate("updateDate"));
+	            return user;
+	        }
+	        
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (rs != null) rs.close();
+	            if (ps != null) ps.close();
+	            if (conn != null) conn.close();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
+	    
+	    return null; 
+	}
+	@Override
 	public boolean checkExistEmail(String email) {
 		 boolean duplicate = false;
 		    String query = "SELECT COUNT(*) FROM Users WHERE email = ?";
@@ -271,13 +313,16 @@ public class UserDao implements IUserDao {
 		            System.out.println("Không tìm thấy người dùng.");
 		        }
 
-		        if (user != null) {
-		            user.setFullname("Nguyen Van C");
-		            userDao.update(user);
-		            System.out.println("Thông tin người dùng đã được cập nhật.");
-		        }
+				/*
+				 * if (user != null) { user.setFullname("Nguyen Van C"); userDao.update(user);
+				 * System.out.println("Thông tin người dùng đã được cập nhật."); }
+				 */
 			
-			 
+			 UserModel user1 = userDao.login("nguyenvana@example.com", "password123");
+			 if(user1 != null)
+			 {
+				 System.out.println("Login thanh cong");
+			 }
 	    }
 	
 

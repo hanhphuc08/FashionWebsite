@@ -21,18 +21,18 @@ public class LoginController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
 		/*
-		 * HttpSession session = req.getSession(false); if (session != null &&
-		 * session.getAttribute("account") != null) {
-		 * resp.sendRedirect(req.getContextPath() + "/waiting"); return; } // Check
-		 * cookie Cookie[] cookies = req.getCookies(); if (cookies != null) { for
-		 * (Cookie cookie : cookies) { if (cookie.getName().equals("username")) {
-		 * session = req.getSession(true); session.setAttribute("username",
-		 * cookie.getValue()); resp.sendRedirect(req.getContextPath() + "/waiting");
-		 * return; } } }
+		 * HttpSession session = req.getSession(false); if(session != null &&
+		 * session.getAttribute("account") != null) { UserModel user = (UserModel)
+		 * session.getAttribute("account");
+		 * 
+		 * if (user.getRoleID().equals("Admin")) {
+		 * resp.sendRedirect(req.getContextPath() + "/admin/home"); } else {
+		 * resp.sendRedirect(req.getContextPath() + "/waiting"); } return; }
 		 */
-		req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
+		 req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
+		
+		
 	}
 
 	@Override
@@ -46,14 +46,9 @@ public class LoginController extends HttpServlet {
 		// lấy tham số từ view
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
-		String remember = req.getParameter("rememberme");
 
 		// Xử lý bài toán
 		String alertMsg = "";
-		boolean isRememberMe = false;
-		if ("on".equals(remember)) {
-			isRememberMe = true;
-		}
 		if (username.isEmpty() || password.isEmpty()) {
 			alertMsg = "Tài khoản hoặc mật khẩu không được rỗng";
 			req.setAttribute("alert", alertMsg);
@@ -64,10 +59,18 @@ public class LoginController extends HttpServlet {
 		if (user != null) {
 			HttpSession session = req.getSession(true);
 			session.setAttribute("account", user);
-			if (isRememberMe) {
-				saveRemeberMe(resp, username);
+			
+			Cookie cookie = new Cookie("username", user.getEmail() != null ? user.getEmail() : user.getPhone());
+			cookie.setMaxAge(3600);
+			resp.addCookie(cookie);
+			
+			if("Admin".equals(user.getRoleID()))
+			{
+				resp.sendRedirect(req.getContextPath() + "/admin/home");
 			}
-			resp.sendRedirect(req.getContextPath() + "/waiting");
+			else {
+				resp.sendRedirect(req.getContextPath() + "/waiting");
+			}
 		} else {
 			alertMsg = "Tài khoản hoặc mật khẩu không đúng";
 			req.setAttribute("alert", alertMsg);
@@ -76,9 +79,9 @@ public class LoginController extends HttpServlet {
 		}
 	}
 
-	private void saveRemeberMe(HttpServletResponse response, String username) {
-		Cookie cookie = new Cookie(Constants.COOKIE_REMEMBER, username);
-		cookie.setMaxAge(30 * 60);
-		response.addCookie(cookie);
-	}
+	/*
+	 * private void saveRemeberMe(HttpServletResponse response, String username) {
+	 * Cookie cookie = new Cookie(Constants.COOKIE_REMEMBER, username);
+	 * cookie.setMaxAge(30 * 60); response.addCookie(cookie); }
+	 */
 }
