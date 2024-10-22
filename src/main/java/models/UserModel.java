@@ -7,116 +7,99 @@ public class UserModel implements Serializable {
 	
 
  static final long serialVersionUID = 1L;
-	private int id;
-	private String username;
-	private String password;
-	private String images;
+ 	private int userID;
 	private String fullname;
 	private String email;
 	private String phone;
-	private int roleid;
-	private Date createDate;
-	
+	private String address;
+	private String password;
+	private String emailCode;
+	private String roleID;
+    private Date createDate;
+    private Date updateDate;
 	public UserModel() {
 		super();
 	}
-
-	public UserModel(int id, String username, String password, String images, String fullname, String email,
-			String phone, int roleid, Date createDate) {
+	public UserModel(int userID, String fullname, String email, String phone, String address, String password,
+			String emailCode, String roleID, Date createDate, Date updateDate) {
 		super();
-		this.id = id;
-		this.username = username;
-		this.password = password;
-		this.images = images;
+		this.userID = userID;
 		this.fullname = fullname;
 		this.email = email;
 		this.phone = phone;
-		this.roleid = roleid;
-		this.createDate = createDate;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
+		this.address = address;
 		this.password = password;
+		this.emailCode = emailCode;
+		this.roleID = roleID;
+		this.createDate = createDate;
+		this.updateDate = updateDate;
 	}
-
-	public String getImages() {
-		return images;
+	public int getUserID() {
+		return userID;
 	}
-
-	public void setImages(String images) {
-		this.images = images;
+	public void setUserID(int userID) {
+		this.userID = userID;
 	}
-
 	public String getFullname() {
 		return fullname;
 	}
-
 	public void setFullname(String fullname) {
 		this.fullname = fullname;
 	}
-
 	public String getEmail() {
 		return email;
 	}
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 	public String getPhone() {
 		return phone;
 	}
-
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
-	public int getRoleid() {
-		return roleid;
+	public String getAddress() {
+		return address;
 	}
-
-	public void setRoleid(int roleid) {
-		this.roleid = roleid;
+	public void setAddress(String address) {
+		this.address = address;
 	}
-
-	public Date getCreatedate() {
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getEmailCode() {
+		return emailCode;
+	}
+	public void setEmailCode(String emailCode) {
+		this.emailCode = emailCode;
+	}
+	public String getRoleID() {
+		return roleID;
+	}
+	public void setRoleID(String roleID) {
+		this.roleID = roleID;
+	}
+	public Date getCreateDate() {
 		return createDate;
 	}
-
-	public void setCreatedate(Date createDate) {
+	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
+	}
 	@Override
 	public String toString() {
-		return "UserModel [id=" + id + ", username=" + username + ", password=" + password + ", images=" + images
-				+ ", fullname=" + fullname + ", email=" + email + ", phone=" + phone + ", roleid=" + roleid
-				+ ", createDate=" + createDate + "]";
+		return "UserModel [userID=" + userID + ", fullname=" + fullname + ", email=" + email + ", phone=" + phone
+				+ ", address=" + address + ", password=" + password + ", emailCode=" + emailCode + ", roleID=" + roleID
+				+ ", createDate=" + createDate + ", updateDate=" + updateDate + "]";
 	}
-	
-	
-	
-	
-	
-
+    
+    
 }
