@@ -22,8 +22,22 @@ public class UserService implements IUserService {
 
 	@Override
 	public boolean register(String fullname, String email, String phone, String address, String password) {
-		// TODO Auto-generated method stub
-		return false;
+		if(userDao.checkExistEmail(email))
+		{
+			return false;
+		}
+		if(userDao.checkExistPhone(phone))
+		{
+			return false;
+		}
+		UserModel newUser = new UserModel();
+		newUser.setFullname(fullname);
+		newUser.setEmail(email);
+		newUser.setPhone(phone);
+		newUser.setAddress(address);
+		newUser.setPassword(password);
+		userDao.insert(newUser);
+		return true;
 	}
 
 	@Override

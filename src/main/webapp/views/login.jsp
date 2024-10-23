@@ -59,7 +59,10 @@
                   <c:if test = "${not empty alert}">
                   		<div class="alert alert-danger">${alert}</div>
                   </c:if>
-
+					
+				   <c:if test="${not empty successMessage}">
+    					<div class="alert alert-success">${successMessage}</div>
+  				   </c:if>
                   <div data-mdb-input-init class="form-outline mb-4">
                     <input type="username" id="form2Example17" name = "username" class="form-control form-control-lg" />
                     <label class="form-label" for="form2Example17">Email or Phone Number</label>
