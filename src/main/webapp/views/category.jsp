@@ -14,7 +14,7 @@
 <!-- Google fonts - Playfair Display-->
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700">
-<link rel="stylesheet" href="fonts/hkgrotesk/stylesheet.2e9c9834.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/fonts/hkgrotesk/stylesheet.2e9c9834.css">
 <!-- owl carousel-->
 <link rel="stylesheet"
 	href="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/owl.carousel/assets/owl.carousel.css">
@@ -587,7 +587,7 @@
 		// while using file:// protocol
 		// pls don't forget to change to your domain :)
 
-		injectSvgSprite('Template/demo.bootstrapious.com/sell/1-2-0/icons/orion-svg-sprite.svg');
+		injectSvgSprite('${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/1-2-0/icons/orion-svg-sprite.svg');
 	</script>
 	<!-- jQuery-->
 	<script
@@ -615,16 +615,16 @@
 	<script
 		src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/object-fit-images/ofi.min.js"></script>
 	<script>
-		var basePath = 'Template/demo.bootstrapious.com/sell/2-0-1/'
+		var basePath = '${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/'
 	</script>
 	<script
-		src="Template/demo.bootstrapious.com/sell/2-0-1/js/theme.30e7c8f9.js"></script>
+		src="${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/js/theme.30e7c8f9.js"></script>
 	<script
 		src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/jquery.cookie/jquery.cookie.js">
 		
 	</script>
 	<script
-		src="Template/demo.bootstrapious.com/sell/2-0-1/js/demo.9833433a.js"></script>
+		src="${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/js/demo.9833433a.js"></script>
 	<script>
 		var snapSlider = document.getElementById('slider-snap');
 
