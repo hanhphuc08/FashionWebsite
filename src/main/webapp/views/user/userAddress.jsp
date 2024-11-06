@@ -204,30 +204,53 @@
                 </div>
                 <div class="block-body">
                   <div class="row">
+                  
                     <div class="form-group col-md-6">
                       <label class="form-label" for="fullname_invoice">Tên</label>
                       <input class="form-control" type="text" name="fullname_invoice" placeholder="AnhThu" id="fullname_invoice">
-                    </div>
+                    </div>    
+                    
                     <div class="form-group col-md-6">
+                		<label class="form-label" for="Username2">Tỉnh / Thành phố </label>
+               			 <select class="form-control" id="City" name="city" required>
+                 		 <option value=""></option>
+                  		 <option value="Hanoi">Hà Nội</option>
+                 		 <option value="HCM">Thành phố Hồ Chí Minh</option>
+                  		 <option value="DaNang">Đà Nẵng</option>
+                  		 <option value="HaiPhong">Hải Phòng</option>
+                  		 <option value="CanTho">Cần Thơ</option>
+                 		 <option value="NhaTrang">Nha Trang</option>
+                		 </select>
+             		</div>
+             		
+             		<div class="form-group col-md-6">
                       <label class="form-label" for="emailaddress_invoice">Email</label>
                       <input class="form-control" type="text" name="emailaddress_invoice" placeholder="meowmeow@gmail.com" id="emailaddress_invoice">
                     </div>
-                     
+                    
                     <div class="form-group col-md-6">
+                		<label class="form-label" for="Username2">Quận / Huyện </label>
+               			 <select class="form-control custom-select" id="District" name="district" required>
+                 		 <option value=""></option>
+                 		 <option value="HoanKiem">Hoàn Kiếm</option>
+                 		 <option value="DongDa">Đống Đa</option>
+                  		 <option value="HaiBaTrung">Hai Bà Trưng</option>
+                 		 <option value="NamTuLiem">Nam Từ Liêm</option>
+                		 <option value="BinhThanh">Bình Thạnh</option>
+                 		 <option value="GoVap">Gò Vấp</option>
+               			 </select>
+              		</div>
+              		
+               		<div class="form-group col-md-6">
                       <label class="form-label" for="phonenumber_invoice">Số điện thoại</label>
                       <input class="form-control" type="text" name="phonenumber_invoice" placeholder="Số điện thoại" id="phonenumber_invoice">
                     </div>
-                    <div class="form-group col-md-6">
-                      <label class="form-label" for="street_invoice">Địa chỉ cụ thể</label>
-                      <input class="form-control" type="text" name="street_invoice" placeholder="So 1 VVN" id="street_invoice">
-                    </div>
-                    <div class="mb-4 col-12 mt-3">
-                      <div class="form-check">
-                        <input class="form-check-input" id="show-shipping-address" type="checkbox" name="clothes-brand">
-                        <label class="form-check-label align-middle" for="show-shipping-address" data-bs-toggle="collapse" data-bs-target="#shippingAddress">Đặt làm mặc định</label>
-                      </div>
-                    </div>
-                  </div>
+                  
+                  <div class="form-group col-md-6">
+                		<label class="form-label" for="Address">Địa chỉ nhà, Đường cụ thể</label>
+               			<input class="form-control" id="Address" type="text" name="address" placeholder="" required>
+              	 </div>
+              </div>
                   <!-- /Invoice Address-->
                 </div>
               </div>
