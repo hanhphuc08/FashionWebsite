@@ -14,17 +14,16 @@ import jakarta.servlet.http.HttpServletResponse;
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, 
 			maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5 )
 
-@WebServlet(urlPatterns = {"/cart"})
-public class CartController extends HttpServlet{
+
+@WebServlet(urlPatterns = {"/categories/detail", "/user/categories/detail"})
+public class CategoryDetailController extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
-//	public ICategoryService cateService = new CategoryServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 
-		req.getRequestDispatcher("/views/cart.jsp").forward(req,  resp);
+		req.getRequestDispatcher("/views/user/categoryDetail.jsp").forward(req,  resp);
 
 	}
 }
-

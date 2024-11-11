@@ -9,5 +9,4 @@
 		<mapping path="/login" exclude="true" />
 		<mapping path="/register" exclude="true" />
 		<mapping path="/categories" exclude="true" />
-		<mapping path="/cart" exclude="true" />
 	</sitemesh>

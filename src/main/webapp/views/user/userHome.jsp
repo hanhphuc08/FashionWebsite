@@ -138,7 +138,7 @@
                     <!-- total price-->
                     <div class="navbar-cart-total"><span class="text-uppercase text-muted">Tổng tiển</span><strong class="text-uppercase">$75.00</strong></div>
                     <!-- buttons-->
-                    <div class="d-flex justify-content-between"><a class="btn btn-link text-dark me-3" href="cart">giỏ hàng<i class="fa-arrow-right fa"></i></a><a class="btn btn-outline-dark" href="checkout1.html">Thanh toán</a></div>
+                    <div class="d-flex justify-content-between"><a class="btn btn-link text-dark me-3" href="${pageContext.request.contextPath}/user/cart">giỏ hàng<i class="fa-arrow-right fa"></i></a><a class="btn btn-outline-dark" href="checkout1.html">Thanh toán</a></div>
                   </div>
                 </div>
               </div>

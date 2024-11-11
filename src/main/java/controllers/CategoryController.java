@@ -18,7 +18,7 @@ import jakarta.servlet.http.HttpServletResponse;
 //@WebServlet(urlPatterns = {"/admin/categories", "/admin/category/add",
 //		 "/admin/category/insert", "/admin/category/edit", "/admin/category/update",
 //		 "/admin/category/delete", "/admin/category/search"})
-
+//
 @WebServlet(urlPatterns = {"/categories"})
 public class CategoryController extends HttpServlet{
 
