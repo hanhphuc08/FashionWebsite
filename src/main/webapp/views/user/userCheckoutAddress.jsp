@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/nouislider/nouislider.css">
     <!-- Google fonts - Playfair Display-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/fonts/hkgrotesk/stylesheet.2e9c9834.css">
+    <link rel="stylesheet" href="fonts/hkgrotesk/stylesheet.2e9c9834.css">
     <!-- owl carousel-->
     <link rel="stylesheet" href="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/owl.carousel/assets/owl.carousel.css">
     <!-- Lightbox -->
@@ -34,8 +34,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/fontawesome.css" integrity="sha384-ozJwkrqb90Oa3ZNb+yKFW2lToAWYdTiF1vt8JiH5ptTGHTGcN7qdoR1F95e0kYyG" crossorigin="anonymous">
   </head>
   <body>
- 
- 	<!--  Begin Header -->
+  	<!--  Begin Header -->
 	<%@ include file="/commons/web/headerUser.jsp" %>;
 	<!-- End Header -->
 
@@ -44,23 +43,33 @@
       <div class="container">
         <!-- Breadcrumbs -->
         <ol class="breadcrumb justify-content-center">
-          <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
-          <li class="breadcrumb-item active">Địa chỉ giao hàng</li>
+          <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/user/home">Trang chủ</a></li>
+          <li class="breadcrumb-item active">Thanh toán</li>
         </ol>
         <!-- Hero Content-->
         <div class="hero-content pb-5 text-center">
-          <h1 class="hero-heading">Địa chỉ giao hàng</h1>
+          <h1 class="hero-heading">Thanh toán</h1>
+          <div class="row">   
+            <div class="col-xl-8 offset-xl-2"><p class="lead text-muted">Vui lòng điền thông tin địa chỉ giao hàng của bạn</p></div>
+          </div>
         </div>
       </div>
     </section>
+    <!-- Checkout-->
     <section>
       <div class="container">
-        <div class="row mb-5">
-          <div class="col-lg-8 col-xl-9">
+        <div class="row">
+          <div class="col-lg-8">
+            <ul class="custom-nav nav nav-pills mb-5">
+              <li class="nav-item w-25"><a class="nav-link text-sm active" href="${pageContext.request.contextPath}/user/checkoutAddress">Địa chỉ</a></li>
+              <li class="nav-item w-25"><a class="nav-link text-sm disabled" href="${pageContext.request.contextPath}/user/checkoutDelivery">Phương thức vận chuyển</a></li>
+              <li class="nav-item w-25"><a class="nav-link text-sm disabled" href="${pageContext.request.contextPath}/user/checkoutPayment">Phương thức thanh toán</a></li>
+              <li class="nav-item w-25"><a class="nav-link text-sm disabled" href="${pageContext.request.contextPath}/user/checkoutReview">Đơn hàng</a></li>
+            </ul>
             <form action="#">
               <div class="block">
-                <!-- Invoice Address-->
-                <div class="block-header">
+                 <!-- Invoice Address-->
+                 <div class="block-header">
                   <h6 class="text-uppercase mb-0">Địa chỉ giao hàng</h6>
                 </div>
                 <div class="block-body">
@@ -111,46 +120,56 @@
                 		<label class="form-label" for="Address">Địa chỉ nhà, Đường cụ thể</label>
                			<input class="form-control" id="Address" type="text" name="address" placeholder="" required>
               	 </div>
-              </div>
                   <!-- /Invoice Address-->
                 </div>
+                </div>
               </div>
-              <div class="mb-4 mt-3 text-center">
-                <button class="btn btn-outline-dark" type="submit"><i class="far fa-save me-2"></i>Lưu thay đổi</button>
-              </div>
+              <div class="mb-5 d-flex justify-content-between flex-column flex-lg-row"><a class="btn btn-link text-muted" href="${pageContext.request.contextPath}/user/cart"> <i class="fa fa-angle-left me-2"></i>Quay lại</a><a class="btn btn-dark" href="${pageContext.request.contextPath}/user/checkoutDelivery">Chọn phương thức vận chuyển<i class="fa fa-angle-right ms-2"></i></a></div>
             </form>
           </div>
-          <!-- Customer Sidebar-->
-          <div class="col-xl-3 col-lg-4 mb-5">
-            <div class="customer-sidebar card border-0"> 
-              <div class="customer-profile"><a class="d-inline-block" href="#"><img class="img-fluid rounded-circle customer-image shadow" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-589739-unsplash-avatar.jpg" alt=""></a>
-                <h5>Anhthu</h5>
-                <p class="text-muted text-sm mb-0">ở nhà</p>
+          <div class="col-lg-4">
+            <div class="block mb-5">
+              <div class="block-header">
+                <h6 class="text-uppercase mb-0">Tổng tiền đơn hàng dự kiến</h6>
               </div>
-              <nav class="list-group customer-nav"><a class="list-group-item d-flex justify-content-between align-items-center text-decoration-none" href="${pageContext.request.contextPath}/user/orders"><span>
-                    <svg class="svg-icon svg-icon-heavy me-2">
-                      <use xlink:href="#paper-bag-1"> </use>
-                    </svg>Đơn hàng của tôi</span>
-                  <div class="badge rounded-pill bg-dark fw-normal px-3">5</div></a><a class="active list-group-item d-flex justify-content-between align-items-center text-decoration-none" href="${pageContext.request.contextPath}/user/UserAccount"><span>
-                    <svg class="svg-icon svg-icon-heavy me-2">
-                      <use xlink:href="#male-user-1"> </use>
-                    </svg>Hồ sơ của tôi</span></a><a class="list-group-item d-flex justify-content-between align-items-center text-decoration-none" href="${pageContext.request.contextPath}/user/UserAccount"><span>
-                    <svg class="svg-icon svg-icon-heavy me-2">
-                      <use xlink:href="#navigation-map-1"> </use>
-                    </svg>Địa chỉ</span></a><a class="list-group-item d-flex justify-content-between align-items-center text-decoration-none" href="${pageContext.request.contextPath}/user/UserAddress"><span>
-                    <svg class="svg-icon svg-icon-heavy me-2">
-                      <use xlink:href="#exit-1"> </use>
-                    </svg>Đăng xuẩt</span></a>
-              </nav>
+              <div class="block-body bg-light pt-1">
+                <p class="text-sm">Chi phí vận chuyển và chi phí bổ sung sẽ được tính dựa trên các sản phẩm bạn đã chọn.</p>
+                <ul class="order-summary mb-0 list-unstyled">
+                  <li class="order-summary-item"><span>Tổng tiền ước tính</span><span>$390.00</span></li>
+                  <li class="order-summary-item"><span>Phí vận chuyện</span><span>$10.00</span></li>
+                  <li class="order-summary-item"><span>Thuế dịch vụ</span><span>$0.00</span></li>
+                  <li class="order-summary-item border-0"><span>Tổng tiền</span><strong class="order-summary-total">$400.00</strong></li>
+                </ul>
+              </div>
             </div>
           </div>
-          <!-- /Customer Sidebar-->
         </div>
       </div>
     </section>
-    <!--  Begin Footer -->
+
+	<!--  Begin Footer -->
 	<%@ include file="/commons/web/footer.jsp" %>
 	<!-- End Footer -->
+
+    <div id="scrollTop"><i class="fa fa-long-arrow-alt-up"></i></div>
+    <button class="btn btn-primary btn-sm d-none d-lg-block" type="button" data-bs-toggle="collapse" data-bs-target="#style-switch" id="style-switch-button"><i class="fa fa-cog fa-2x"></i></button>
+    <div class="collapse" id="style-switch">
+      <div class="p-3">
+        <h6 class="text-uppercase mb-4">Select theme colour</h6>
+        <form class="mb-3">
+          <select class="form-select style-switch-select" name="colour" id="colour">
+            <option value="">select colour variant</option>
+            <option value="css/style.default.7acfaf01.css">blue</option>
+            <option value="css/style.pink.bcb9f645.css">pink</option>
+            <option value="css/style.green.eba38840.css">green</option>
+            <option value="css/style.red.e64fe507.css">red</option>
+            <option value="css/style.violet.00703a6d.css">violet</option>
+          </select>
+        </form>
+        <p class="text-muted text-sm">Stylesheet switching is done with JavaScript and can cause a blink while page loads. This will not happen in your production code.</p>
+      </div>
+    </div>
+    <!-- JavaScript files-->
     <script>
       // ------------------------------------------------------- //
       //   Inject SVG Sprite - 
@@ -173,7 +192,7 @@
       // inject local SVG sprite (using only 'icons/orion-svg-sprite.a4dea202.svg' path)
       // while using file:// protocol
       // pls don't forget to change to your domain :)
-      injectSvgSprite('${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/1-2-0/icons/orion-svg-sprite.svg'); 
+      injectSvgSprite('https://demo.bootstrapious.com/sell/1-2-0/icons/orion-svg-sprite.svg'); 
       
     </script>
     <!-- jQuery-->
@@ -192,8 +211,8 @@
     <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
     <script src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/object-fit-images/ofi.min.js"></script>
     <script>var basePath = ''</script>
-    <script src="${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/js/theme.30e7c8f9.js"></script>
+    <script src="js/theme.30e7c8f9.js"></script>
     <script src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/jquery.cookie/jquery.cookie.js"> </script>
-    <script src="${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/js/demo.9833433a.js"></script>
+    <script src="js/demo.9833433a.js"></script>
   </body>
 </html>
