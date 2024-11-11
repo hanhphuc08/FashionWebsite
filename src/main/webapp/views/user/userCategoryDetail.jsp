@@ -35,9 +35,11 @@
   </head>
 
   <body>
-      <!--  Begin Header -->
-	<%@ include file="/commons/web/header.jsp" %>;
+      
+	<!--  Begin Header -->
+	<%@ include file="/commons/web/headerUser.jsp" %>;
 	<!-- End Header -->
+
     <section class="product-details">
       <div class="container-fluid">
         <div class="row">

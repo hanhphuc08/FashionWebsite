@@ -104,14 +104,14 @@
                 <div class="product">
                   <div class="product-image">
                     <div class="ribbon ribbon-info">Hàng mới</div><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/serrah-galos-494312-unsplash.jpg" alt="product"/>
-                    <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="detail.html"></a>
-                      <div class="product-hover-overlay-buttons"><a class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block" href="#"><i class="fa fa-shopping-cart"></i></a><a class="btn btn-dark btn-buy" href="detail.html"><i class="fa-search fa"></i></a><a class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-expand-arrows-alt"></i></a>
+                    <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/categoryDetail"></a>
+                      <div class="product-hover-overlay-buttons"><a class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block" href="#"><i class="fa fa-shopping-cart"></i></a><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/categoryDetail"><i class="fa-search fa"></i></a><a class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-expand-arrows-alt"></i></a>
                       </div>
                     </div>
                   </div>
                   <div class="py-2">
                     <p class="text-muted text-sm mb-1">Áo thun</p>
-                    <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="detail.html">Áo thun trắng</a></h3><span class="text-muted">$40.00</span>
+                    <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/categoryDetail">Áo thun trắng</a></h3><span class="text-muted">$40.00</span>
                   </div>
                 </div>
               </div>
@@ -120,14 +120,14 @@
               <div class="col-xl-3 col-lg-4 col-sm-6">
                 <div class="product">
                   <div class="product-image"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/kyle-loftus-590881-unsplash.jpg" alt="product"/>
-                    <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="detail.html"></a>
-                      <div class="product-hover-overlay-buttons"><a class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block" href="#"><i class="fa fa-shopping-cart"></i></a><a class="btn btn-dark btn-buy" href="detail.html"><i class="fa-search fa"></i></a><a class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-expand-arrows-alt"></i></a>
+                    <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/categoryDetail"></a>
+                      <div class="product-hover-overlay-buttons"><a class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block" href="#"><i class="fa fa-shopping-cart"></i></a><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/categoryDetail"><i class="fa-search fa"></i></a><a class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-expand-arrows-alt"></i></a>
                       </div>
                     </div>
                   </div>
                   <div class="py-2">
                     <p class="text-muted text-sm mb-1">Demin</p>
-                    <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="detail.html">Black blouse</a></h3><span class="text-muted">$40.00</span>
+                    <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/categoryDetail">Black blouse</a></h3><span class="text-muted">$40.00</span>
                   </div>
                 </div>
               </div>
@@ -137,14 +137,14 @@
                 <div class="product">
                   <div class="product-image">
                     <div class="ribbon ribbon-primary">Giảm Giá</div><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/kyle-loftus-596319-unsplash.jpg" alt="product"/>
-                    <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="detail.html"></a>
-                      <div class="product-hover-overlay-buttons"><a class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block" href="#"><i class="fa fa-shopping-cart"></i></a><a class="btn btn-dark btn-buy" href="detail.html"><i class="fa-search fa"></i></a><a class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-expand-arrows-alt"></i></a>
+                    <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/categoryDetail"></a>
+                      <div class="product-hover-overlay-buttons"><a class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block" href="#"><i class="fa fa-shopping-cart"></i></a><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/categoryDetail"><i class="fa-search fa"></i></a><a class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-expand-arrows-alt"></i></a>
                       </div>
                     </div>
                   </div>
                   <div class="py-2">
                     <p class="text-muted text-sm mb-1">Accessories</p>
-                    <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="detail.html">College jacket</a></h3><span class="text-muted">$40.00</span>
+                    <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/categoryDetail">College jacket</a></h3><span class="text-muted">$40.00</span>
                   </div>
                 </div>
               </div>
@@ -153,14 +153,14 @@
               <div class="col-xl-3 col-lg-4 col-sm-6">
                 <div class="product">
                   <div class="product-image"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/ethan-haddox-484912-unsplash.jpg" alt="product"/>
-                    <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="detail.html"></a>
-                      <div class="product-hover-overlay-buttons"><a class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block" href="#"><i class="fa fa-shopping-cart"></i></a><a class="btn btn-dark btn-buy" href="detail.html"><i class="fa-search fa"></i></a><a class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-expand-arrows-alt"></i></a>
+                    <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/categoryDetail"></a>
+                      <div class="product-hover-overlay-buttons"><a class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block" href="#"><i class="fa fa-shopping-cart"></i></a><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/categoryDetail"><i class="fa-search fa"></i></a><a class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-expand-arrows-alt"></i></a>
                       </div>
                     </div>
                   </div>
                   <div class="py-2">
                     <p class="text-muted text-sm mb-1">Denim</p>
-                    <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="detail.html">Carrot-fit jeans</a></h3><span class="text-muted">$40.00</span>
+                    <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/categoryDetail">Carrot-fit jeans</a></h3><span class="text-muted">$40.00</span>
                   </div>
                 </div>
               </div>
@@ -169,14 +169,14 @@
               <div class="col-xl-3 col-lg-4 col-sm-6">
                 <div class="product">
                   <div class="product-image"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/serrah-galos-494231-unsplash.jpg" alt="product"/>
-                    <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="detail.html"></a>
-                      <div class="product-hover-overlay-buttons"><a class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block" href="#"><i class="fa fa-shopping-cart"></i></a><a class="btn btn-dark btn-buy" href="detail.html"><i class="fa-search fa"></i></a><a class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-expand-arrows-alt"></i></a>
+                    <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/categoryDetail"></a>
+                      <div class="product-hover-overlay-buttons"><a class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block" href="#"><i class="fa fa-shopping-cart"></i></a><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/categoryDetail"><i class="fa-search fa"></i></a><a class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-expand-arrows-alt"></i></a>
                       </div>
                     </div>
                   </div>
                   <div class="py-2">
                     <p class="text-muted text-sm mb-1">Jackets</p>
-                    <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="detail.html">Striped T-Shirt</a></h3><span class="text-muted">$40.00</span>
+                    <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/categoryDetail">Striped T-Shirt</a></h3><span class="text-muted">$40.00</span>
                   </div>
                 </div>
               </div>
@@ -185,14 +185,14 @@
               <div class="col-xl-3 col-lg-4 col-sm-6">
                 <div class="product">
                   <div class="product-image"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/averie-woodard-319832-unsplash.jpg" alt="product"/>
-                    <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="detail.html"></a>
-                      <div class="product-hover-overlay-buttons"><a class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block" href="#"><i class="fa fa-shopping-cart"></i></a><a class="btn btn-dark btn-buy" href="detail.html"><i class="fa-search fa"></i></a><a class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-expand-arrows-alt"></i></a>
+                    <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/categoryDetail"></a>
+                      <div class="product-hover-overlay-buttons"><a class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block" href="#"><i class="fa fa-shopping-cart"></i></a><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/categoryDetail"><i class="fa-search fa"></i></a><a class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-expand-arrows-alt"></i></a>
                       </div>
                     </div>
                   </div>
                   <div class="py-2">
                     <p class="text-muted text-sm mb-1">Shirts</p>
-                    <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="detail.html">Short top</a></h3><span class="text-muted">$40.00</span>
+                    <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/categoryDetail">Short top</a></h3><span class="text-muted">$40.00</span>
                   </div>
                 </div>
               </div>
@@ -202,14 +202,14 @@
                 <div class="product">
                   <div class="product-image">
                     <div class="ribbon ribbon-danger">hết hàng</div><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/serrah-galos-494279-unsplash.jpg" alt="product"/>
-                    <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="detail.html"></a>
-                      <div class="product-hover-overlay-buttons"><a class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block" href="#"><i class="fa fa-shopping-cart"></i></a><a class="btn btn-dark btn-buy" href="detail.html"><i class="fa-search fa"></i></a><a class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-expand-arrows-alt"></i></a>
+                    <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/categoryDetail"></a>
+                      <div class="product-hover-overlay-buttons"><a class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block" href="#"><i class="fa fa-shopping-cart"></i></a><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/categoryDetail"><i class="fa-search fa"></i></a><a class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-expand-arrows-alt"></i></a>
                       </div>
                     </div>
                   </div>
                   <div class="py-2">
                     <p class="text-muted text-sm mb-1">Sweaters</p>
-                    <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="detail.html">Ethnic Sweater</a></h3><span class="text-muted">$40.00</span>
+                    <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/categoryDetail">Ethnic Sweater</a></h3><span class="text-muted">$40.00</span>
                   </div>
                 </div>
               </div>
@@ -218,14 +218,14 @@
               <div class="col-xl-3 col-lg-4 col-sm-6">
                 <div class="product">
                   <div class="product-image"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/dmitriy-ilkevich-437760-unsplash.jpg" alt="product"/>
-                    <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="detail.html"></a>
-                      <div class="product-hover-overlay-buttons"><a class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block" href="#"><i class="fa fa-shopping-cart"></i></a><a class="btn btn-dark btn-buy" href="detail.html"><i class="fa-search fa"></i></a><a class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-expand-arrows-alt"></i></a>
+                    <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/categoryDetail"></a>
+                      <div class="product-hover-overlay-buttons"><a class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block" href="#"><i class="fa fa-shopping-cart"></i></a><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/categoryDetail"><i class="fa-search fa"></i></a><a class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-expand-arrows-alt"></i></a>
                       </div>
                     </div>
                   </div>
                   <div class="py-2">
                     <p class="text-muted text-sm mb-1">Coats</p>
-                    <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="detail.html">Beige</a></h3><span class="text-muted">$40.00</span>
+                    <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/categoryDetail">Beige</a></h3><span class="text-muted">$40.00</span>
                   </div>
                 </div>
               </div>
@@ -234,14 +234,14 @@
               <div class="col-xl-3 col-lg-4 col-sm-6">
                 <div class="product">
                   <div class="product-image"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/ian-dooley-347968-unsplash.jpg" alt="product"/>
-                    <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="detail.html"></a>
-                      <div class="product-hover-overlay-buttons"><a class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block" href="#"><i class="fa fa-shopping-cart"></i></a><a class="btn btn-dark btn-buy" href="detail.html"><i class="fa-search fa"></i></a><a class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-expand-arrows-alt"></i></a>
+                    <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/categoryDetail"></a>
+                      <div class="product-hover-overlay-buttons"><a class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block" href="#"><i class="fa fa-shopping-cart"></i></a><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/categoryDetail"><i class="fa-search fa"></i></a><a class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-expand-arrows-alt"></i></a>
                       </div>
                     </div>
                   </div>
                   <div class="py-2">
                     <p class="text-muted text-sm mb-1">T-Shirts</p>
-                    <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="detail.html">Skull Tee</a></h3><span class="text-muted">$40.00</span>
+                    <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/categoryDetail">Skull Tee</a></h3><span class="text-muted">$40.00</span>
                   </div>
                 </div>
               </div>
@@ -250,14 +250,14 @@
               <div class="col-xl-3 col-lg-4 col-sm-6">
                 <div class="product">
                   <div class="product-image"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/alex-holyoake-571682-unsplash.jpg" alt="product"/>
-                    <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="detail.html"></a>
-                      <div class="product-hover-overlay-buttons"><a class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block" href="#"><i class="fa fa-shopping-cart"></i></a><a class="btn btn-dark btn-buy" href="detail.html"><i class="fa-search fa"></i></a><a class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-expand-arrows-alt"></i></a>
+                    <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/categoryDetail"></a>
+                      <div class="product-hover-overlay-buttons"><a class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block" href="#"><i class="fa fa-shopping-cart"></i></a><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/categoryDetail"><i class="fa-search fa"></i></a><a class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-expand-arrows-alt"></i></a>
                       </div>
                     </div>
                   </div>
                   <div class="py-2">
                     <p class="text-muted text-sm mb-1">Denim</p>
-                    <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="detail.html">Trucker jacket</a></h3><span class="text-muted">$40.00</span>
+                    <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/categoryDetail">Trucker jacket</a></h3><span class="text-muted">$40.00</span>
                   </div>
                 </div>
               </div>
@@ -266,14 +266,14 @@
               <div class="col-xl-3 col-lg-4 col-sm-6">
                 <div class="product">
                   <div class="product-image"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/ao-456813-unsplash.jpg" alt="product"/>
-                    <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="detail.html"></a>
-                      <div class="product-hover-overlay-buttons"><a class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block" href="#"><i class="fa fa-shopping-cart"></i></a><a class="btn btn-dark btn-buy" href="detail.html"><i class="fa-search fa"></i></a><a class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-expand-arrows-alt"></i></a>
+                    <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/categoryDetail"></a>
+                      <div class="product-hover-overlay-buttons"><a class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block" href="#"><i class="fa fa-shopping-cart"></i></a><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/categoryDetail"><i class="fa-search fa"></i></a><a class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-expand-arrows-alt"></i></a>
                       </div>
                     </div>
                   </div>
                   <div class="py-2">
                     <p class="text-muted text-sm mb-1">Denim</p>
-                    <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="detail.html">Blouse</a></h3><span class="text-muted">$40.00</span>
+                    <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/categoryDetail">Blouse</a></h3><span class="text-muted">$40.00</span>
                   </div>
                 </div>
               </div>
@@ -282,14 +282,14 @@
               <div class="col-xl-3 col-lg-4 col-sm-6">
                 <div class="product">
                   <div class="product-image"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/kyle-loftus-592041-unsplash.jpg" alt="product"/>
-                    <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="detail.html"></a>
-                      <div class="product-hover-overlay-buttons"><a class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block" href="#"><i class="fa fa-shopping-cart"></i></a><a class="btn btn-dark btn-buy" href="detail.html"><i class="fa-search fa"></i></a><a class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-expand-arrows-alt"></i></a>
+                    <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/categoryDetail"></a>
+                      <div class="product-hover-overlay-buttons"><a class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block" href="#"><i class="fa fa-shopping-cart"></i></a><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/categoryDetail"><i class="fa-search fa"></i></a><a class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-expand-arrows-alt"></i></a>
                       </div>
                     </div>
                   </div>
                   <div class="py-2">
                     <p class="text-muted text-sm mb-1">Denim</p>
-                    <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="detail.html">Shirt</a></h3><span class="text-muted">$40.00</span>
+                    <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/categoryDetail">Shirt</a></h3><span class="text-muted">$40.00</span>
                   </div>
                 </div>
               </div>

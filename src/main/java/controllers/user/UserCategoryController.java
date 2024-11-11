@@ -1,4 +1,4 @@
-package controllers;
+package controllers.user;
 
 import java.io.IOException;
 import java.util.List;
@@ -18,9 +18,9 @@ import jakarta.servlet.http.HttpServletResponse;
 //@WebServlet(urlPatterns = {"/admin/categories", "/admin/category/add",
 //		 "/admin/category/insert", "/admin/category/edit", "/admin/category/update",
 //		 "/admin/category/delete", "/admin/category/search"})
-//
-@WebServlet(urlPatterns = {"/categories"})
-public class CategoryController extends HttpServlet{
+
+@WebServlet(urlPatterns = {"/user/categories"})
+public class UserCategoryController extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 //	public ICategoryService cateService = new CategoryServiceImpl();
@@ -50,7 +50,7 @@ public class CategoryController extends HttpServlet{
 //			resp.sendRedirect(req.getContextPath() + "/admin/categories");
 //		}
 
-		req.getRequestDispatcher("/views/category.jsp").forward(req,  resp);
+		req.getRequestDispatcher("/views/user/userCategory.jsp").forward(req,  resp);
 
 	}
 }

@@ -4,7 +4,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DBConnectSQL {
+<<<<<<< HEAD
 	private final String serverName = "LAPTOP-3N644IDG";
+=======
+	private final String serverName = "MSI";
+>>>>>>> 35e293755eb35f7af53e6edfecba9893dc9c6cbb
 	private final String dbName = "DoAnCNTT";
 	private final String portNumber = "1433";
 	private final String instance = "";

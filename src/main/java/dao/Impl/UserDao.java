@@ -286,6 +286,7 @@ public class UserDao implements IUserDao {
 	    public static void main(String[] args) {
 	        UserDao userDao = new UserDao();
 
+			
 			/*
 			 * UserModel newUser = new UserModel(); newUser.setFullname("Nguyen Van A");
 			 * newUser.setEmail("nguyenvana@example.com"); newUser.setPhone("0123456789");
@@ -295,6 +296,7 @@ public class UserDao implements IUserDao {
 			 * userDao.insert(newUser);
 			 * System.out.println("Người dùng đã được thêm thành công.");
 			 */
+			 
 
 			
 			 boolean emailExists = userDao.checkExistEmail("nguyenvana@example.com");
@@ -303,7 +305,7 @@ public class UserDao implements IUserDao {
 			 boolean phoneExists = userDao.checkExistPhone("0123456789");
 		        System.out.println("Điện thoại tồn tại: " + phoneExists);
 
-		        UserModel user = userDao.findByID(9); 
+		        UserModel user = userDao.findByID(1); 
 		        if (user != null) {
 		            System.out.println("Thông tin người dùng:");
 		            System.out.println("Họ tên: " + user.getFullname());

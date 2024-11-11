@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,7 +13,7 @@
     <link rel="stylesheet" href="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/nouislider/nouislider.css">
     <!-- Google fonts - Playfair Display-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/fonts/hkgrotesk/stylesheet.2e9c9834.css">
+    <link rel="stylesheet" href="fonts/hkgrotesk/stylesheet.2e9c9834.css">
     <!-- owl carousel-->
     <link rel="stylesheet" href="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/owl.carousel/assets/owl.carousel.css">
     <!-- Lightbox -->
@@ -35,146 +34,125 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/fontawesome.css" integrity="sha384-ozJwkrqb90Oa3ZNb+yKFW2lToAWYdTiF1vt8JiH5ptTGHTGcN7qdoR1F95e0kYyG" crossorigin="anonymous">
   </head>
   <body>
-    
     <!--  Begin Header -->
 	<%@ include file="/commons/web/headerUser.jsp" %>;
 	<!-- End Header -->
-    
+
     <!-- Hero Section-->
     <section class="hero">
       <div class="container">
         <!-- Breadcrumbs -->
         <ol class="breadcrumb justify-content-center">
-          <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
-          <li class="breadcrumb-item active">Hồ sơ của tôi</li>
+          <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/user/home">Trang chủ</a></li>
+          <li class="breadcrumb-item active">Thanh toán</li>
         </ol>
         <!-- Hero Content-->
         <div class="hero-content pb-5 text-center">
-          <h1 class="hero-heading">Hồ Sơ của tôi</h1>
+          <h1 class="hero-heading">Thanh toán</h1>
           <div class="row">   
-            <div class="col-xl-8 offset-xl-2"><p class="lead text-muted">Quản lý thông tin hồ sơ để bảo mật tài khoản</p></div>
+            <div class="col-xl-8 offset-xl-2"><p class="lead text-muted">Vui lòng hãy kiểm tra lại đơn hàng của bạn</p></div>
           </div>
         </div>
       </div>
     </section>
+    <!-- Checkout-->
     <section>
       <div class="container">
         <div class="row">
-          <div class="col-lg-8 col-xl-9">
-            <div class="block mb-5">
-              <div class="block-header"><strong class="text-uppercase">Thay đổi mật khẩu</strong></div>
-              <div class="block-body">
-                <form>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <div class="mb-4">
-                        <label class="form-label" for="password_old">Mật khẩu cũ</label>
-                        <input class="form-control" id="password_old" type="password">
+          <div class="col-lg-8">
+            <ul class="custom-nav nav nav-pills mb-5">
+              <li class="nav-item w-25"><a class="nav-link text-sm disabled" href="${pageContext.request.contextPath}/user/checkoutAddress">Địa chỉ</a></li>
+              <li class="nav-item w-25"><a class="nav-link text-sm disabled" href="${pageContext.request.contextPath}/user/checkoutDelivery">Phương thức vận chuyển</a></li>
+              <li class="nav-item w-25"><a class="nav-link text-sm disabled" href="${pageContext.request.contextPath}/user/checkoutPayment">Phương thức thanh toán</a></li>
+              <li class="nav-item w-25"><a class="nav-link text-sm active" href="${pageContext.request.contextPath}/user/checkoutReview">Đơn hàng</a></li>
+            </ul>
+            <div class="mb-5">
+              <div class="cart">
+                <div class="cart-wrapper">
+                  <div class="cart-header text-center">
+                    <div class="row">
+                      <div class="col-6">sản phẩm</div>
+                      <div class="col-2">giá</div>
+                      <div class="col-2">số lượng</div>
+                      <div class="col-2">tổng</div>
+                    </div>
+                  </div>
+                  <div class="cart-body">
+                    <!-- Product-->
+                    <div class="cart-item">
+                      <div class="row d-flex align-items-center text-center">
+                        <div class="col-6">
+                          <div class="d-flex align-items-center"><a href="${pageContext.request.contextPath}/user/categoryDetail"><img class="cart-item-img" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/product-square-ian-dooley-347968-unsplash.jpg" alt="..."></a>
+                            <div class="cart-title text-start"><a class="text-uppercase text-dark" href="${pageContext.request.contextPath}/user/categoryDetail"><strong>Skull Tee</strong></a><br><span class="text-muted text-sm">Size: Large</span><br><span class="text-muted text-sm">Colour: Green</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-2">$65.00</div>
+                        <div class="col-2">4
+                        </div>
+                        <div class="col-2 text-center">$260.00</div>
                       </div>
                     </div>
-                    <div class="col-sm-6">
-                      <div class="text-center mt-4">
-                        <button class="btn btn-outline-dark" type="submit" href="forgotPassword">không được quên mật khẩu</button>
+                    <!-- Product-->
+                    <div class="cart-item">
+                      <div class="row d-flex align-items-center text-center">
+                        <div class="col-6">
+                          <div class="d-flex align-items-center"><a href="${pageContext.request.contextPath}/user/categoryDetail"><img class="cart-item-img" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/product-square-kyle-loftus-596319-unsplash.jpg" alt="..."></a>
+                            <div class="cart-title text-start"><a class="text-uppercase text-dark" href="${pageContext.request.contextPath}/user/categoryDetail"><strong>Transparent Blouse</strong></a><br><span class="text-muted text-sm">Size: Medium</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-2">$55.00</div>
+                        <div class="col-2">3
+                        </div>
+                        <div class="col-2 text-center">$165.00</div>
+                      </div>
+                    </div>
+                    <!-- Product-->
+                    <div class="cart-item">
+                      <div class="row d-flex align-items-center text-center">
+                        <div class="col-6">
+                          <div class="d-flex align-items-center"><a href="${pageContext.request.contextPath}/user/categoryDetail"><img class="cart-item-img" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/product-square-serrah-galos-494312-unsplash.jpg" alt="..."></a>
+                            <div class="cart-title text-start"><a class="text-uppercase text-dark" href="${pageContext.request.contextPath}/user/categoryDetail"><strong>White Tee</strong></a><br><span class="text-muted text-sm">Size: Medium</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-2">$55.00</div>
+                        <div class="col-2">3
+                        </div>
+                        <div class="col-2 text-center">$165.00</div>
                       </div>
                     </div>
                   </div>
-                  <!-- /.row-->
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <div class="mb-4">
-                        <label class="form-label" for="password_1">Mật khẩu mới</label>
-                        <input class="form-control" id="password_1" type="password">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="mb-4">
-                        <label class="form-label" for="password_2">Nhập lại mật khẩu mới</label>
-                        <input class="form-control" id="password_2" type="password">
-                      </div>
-                    </div>
-                    <div class="text-center mt-4">
-                      <button class="btn btn-outline-dark" type="submit"><i class="far fa-save me-2"></i>Thay đổi mật khẩu</button>
-                    </div>
-                  </div>
-                <form>
-                  
-                 
-                      
+                </div>
               </div>
             </div>
+            <div class="mb-5 d-flex justify-content-between flex-column flex-lg-row"><a class="btn btn-link text-muted" href="${pageContext.request.contextPath}/user/checkoutPayment"> <i class="fa fa-angle-left me-2"></i>Quay lại phương thức thanh toán</a><a class="btn btn-dark" href="${pageContext.request.contextPath}/user/checkoutConfirm">Đặt hàng<i class="fa fa-angle-right ms-2"></i></a></div>
+          </div>
+          <div class="col-lg-4">
             <div class="block mb-5">
-              <div class="block-header"><strong class="text-uppercase">Thông tin tài khoản</strong></div>
-              <div class="block-body">
-                <form>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <div class="mb-4">
-                        <label class="form-label" for="Fullname">Tên</label>
-                        <input class="form-control" id="Fullname" type="text">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="mb-4">
-                        <label class="form-label" for="email">Email</label>
-                        <input class="form-control" id="email" type="text">
-                      </div>
-                    </div>
-                  </div>
-                  <!-- /.row-->
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <div class="mb-4">
-                        <label class="form-label" for="phone">Số điện thoại</label>
-                        <input class="form-control" id="phone" type="text">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="mb-4">
-                        <label class="form-label" for="DateOfBirth">Ngày sinh</label>
-                        <input class="form-control" id="DateOfBirth" type="date">
-                      </div>
-                    </div>
-                  </div>
-                  <!-- /.row-->
-                  <div class="text-center mt-4">
-                    <button class="btn btn-outline-dark" type="submit"><i class="far fa-save me-2"></i>Lưu thay đổi</button>
-                  </div>
-                </form>
+              <div class="block-header">
+                <h6 class="text-uppercase mb-0">Tổng tiền đơn hàng dự kiến</h6>
+              </div>
+              <div class="block-body bg-light pt-1">
+                <p class="text-sm">Chi phí vận chuyển và chi phí bổ sung sẽ được tính dựa trên các sản phẩm bạn đã chọn.</p>
+                <ul class="order-summary mb-0 list-unstyled">
+                  <li class="order-summary-item"><span>Tổng tiền ước tính</span><span>$390.00</span></li>
+                  <li class="order-summary-item"><span>Phí vận chuyện</span><span>$10.00</span></li>
+                  <li class="order-summary-item"><span>Thuế dịch vụ</span><span>$0.00</span></li>
+                  <li class="order-summary-item border-0"><span>Tổng tiền</span><strong class="order-summary-total">$400.00</strong></li>
+                </ul>
               </div>
             </div>
           </div>
-          <!-- Customer Sidebar-->
-          <div class="col-xl-3 col-lg-4 mb-5">
-            <div class="customer-sidebar card border-0"> 
-              <div class="customer-profile"><a class="d-inline-block" href="#"><img class="img-fluid rounded-circle customer-image shadow" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-589739-unsplash-avatar.jpg" alt=""></a>
-                <h5>Anhthu</h5>
-                <p class="text-muted text-sm mb-0">ở nhà</p>
-              </div>
-              <nav class="list-group customer-nav"><a class="list-group-item d-flex justify-content-between align-items-center text-decoration-none" href="${pageContext.request.contextPath}/user/orders"><span>
-                    <svg class="svg-icon svg-icon-heavy me-2">
-                      <use xlink:href="#paper-bag-1"> </use>
-                    </svg>Đơn hàng</span>
-                  <div class="badge rounded-pill bg-dark fw-normal px-3">5</div></a><a class="active list-group-item d-flex justify-content-between align-items-center text-decoration-none" href="${pageContext.request.contextPath}/user/UserAccount"><span>
-                    <svg class="svg-icon svg-icon-heavy me-2">
-                      <use xlink:href="#male-user-1"> </use>
-                    </svg>Hồ sơ của tôi</span></a><a class="list-group-item d-flex justify-content-between align-items-center text-decoration-none" href="${pageContext.request.contextPath}/user/UserAccount"><span>
-                    <svg class="svg-icon svg-icon-heavy me-2">
-                      <use xlink:href="#navigation-map-1"> </use>
-                    </svg>Địa chỉ</span></a><a class="list-group-item d-flex justify-content-between align-items-center text-decoration-none" href="${pageContext.request.contextPath}/user/UserAddress"><span>
-                    <svg class="svg-icon svg-icon-heavy me-2">
-                      <use xlink:href="#exit-1"> </use>
-                    </svg>Đăng xuẩt</span></a>
-              </nav>
-            </div>
-          </div>
-          <!-- /Customer Sidebar-->
         </div>
       </div>
     </section>
- <!--  Begin Footer -->
-	<%@ include file="/commons/web/footer.jsp" %>;
+
+	<!--  Begin Footer -->
+	<%@ include file="/commons/web/footer.jsp" %>
 	<!-- End Footer -->
-    
+
     <div id="scrollTop"><i class="fa fa-long-arrow-alt-up"></i></div>
     <button class="btn btn-primary btn-sm d-none d-lg-block" type="button" data-bs-toggle="collapse" data-bs-target="#style-switch" id="style-switch-button"><i class="fa fa-cog fa-2x"></i></button>
     <div class="collapse" id="style-switch">
@@ -216,7 +194,7 @@
       // inject local SVG sprite (using only 'icons/orion-svg-sprite.a4dea202.svg' path)
       // while using file:// protocol
       // pls don't forget to change to your domain :)
-      injectSvgSprite('${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/1-2-0/icons/orion-svg-sprite.svg'); 
+      injectSvgSprite('https://demo.bootstrapious.com/sell/1-2-0/icons/orion-svg-sprite.svg'); 
       
     </script>
     <!-- jQuery-->
@@ -235,8 +213,8 @@
     <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
     <script src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/object-fit-images/ofi.min.js"></script>
     <script>var basePath = ''</script>
-    <script src="${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/js/theme.30e7c8f9.js"></script>
+    <script src="js/theme.30e7c8f9.js"></script>
     <script src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/jquery.cookie/jquery.cookie.js"> </script>
-    <script src="${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/js/demo.9833433a.js"></script>
+    <script src="js/demo.9833433a.js"></script>
   </body>
 </html>

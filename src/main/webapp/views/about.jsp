@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -12,7 +13,7 @@
     <link rel="stylesheet" href="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/nouislider/nouislider.css">
     <!-- Google fonts - Playfair Display-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/fonts/hkgrotesk/stylesheet.2e9c9834.css">
+    <link rel="stylesheet" href="fonts/hkgrotesk/stylesheet.2e9c9834.css">
     <!-- owl carousel-->
     <link rel="stylesheet" href="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/owl.carousel/assets/owl.carousel.css">
     <!-- Lightbox -->
@@ -33,20 +34,69 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/fontawesome.css" integrity="sha384-ozJwkrqb90Oa3ZNb+yKFW2lToAWYdTiF1vt8JiH5ptTGHTGcN7qdoR1F95e0kYyG" crossorigin="anonymous">
   </head>
   <body>
-    
     <!--  Begin Header -->
-	<%@ include file="/commons/web/headerUser.jsp" %>;
+	<%@ include file="/commons/web/header.jsp" %>;
 	<!-- End Header -->
+
+    <section>
+      <div class="container-fluid">
+        <div class="row my-lg-3">
+          <div class="col-lg-6 order-lg-2 mb-3 mb-lg-0">
+            <div class="d-flex align-items-center p-5 p-xl-6 bg-gray-100 h-100">
+              <div>
+                <h6 class="text-uppercase text-primary letter-spacing-5 mb-3">Giới thiệu</h6>
+                <h1 class="display-3 text-serif fw-bold mb-5">P2TS Shop</h1>
+                <div class="row">
+                  <div class="col-xl-6">
+                    <p class="text-lg text-muted mb-lg-0 text-align-justify">Chào mừng bạn đến với P2TS Shop – điểm đến lý tưởng cho những tín đồ yêu thích thời trang! Tại đây, chúng tôi cung cấp một bộ sưu tập đa dạng các loại quần áo từ phong cách trẻ trung, năng động đến những bộ trang phục thanh lịch, sang trọng. </p>
+                  </div>
+                  <div class="col-xl-6">
+                    <p class="text-lg text-muted mb-0 text-align-justify">Hãy khám phá các bộ sưu tập mới nhất của chúng tôi và tìm kiếm những món đồ hoàn hảo để thể hiện phong cách riêng của bạn. Đừng quên ghé thăm giỏ hàng của bạn để xem tổng chi phí và hoàn tất đơn hàng dễ dàng!</p>
+                  </div>
+                </div>
+                <hr class="my-5">
+                <div class="row">
+                  <div class="col-xl-6">
+                    <h6 class="text-uppercase mb-4">Get in touch</h6>
+                    <p class="text-lg text-muted mb-4 mb-xl-0">123 Firebrigade St<br>San Antonio, CA<br>U.S.A.</p>
+                  </div>
+                  <div class="col-xl-6">
+                    <h6 class="text-uppercase mb-4">Company details</h6>
+                    <p class="text-lg text-muted mb-0">Reg.Id: 15456456<br>VAT Id: 646643463546</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 pe-lg-0 order-lg-1">
+            <div class="dark-overlay mh-full-screen-with-header h-100"><img class="bg-image" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/photo-1534126511673-b6899657816a.jpg" alt=""></div>
+          </div>
+        </div>
+      </div>
+    </section>
     
-    <!--  Begin Slider -->
-	<%@ include file="/commons/web/sliders.jsp" %>;
-	<!-- End Slider -->
-    <!--  Begin Brands -->
-	<%@ include file="/commons/web/brands.jsp" %>;
-	<!-- End Brands -->
-     <!--  Begin Footer -->
-	<%@ include file="/commons/web/footer.jsp" %>;
-	<!-- End Footer -->
+    <!--  Begin footerr -->
+	<%@ include file="/commons/web/footer.jsp" %>
+	<!-- End footer -->
+    
+    <div id="scrollTop"><i class="fa fa-long-arrow-alt-up"></i></div>
+    <button class="btn btn-primary btn-sm d-none d-lg-block" type="button" data-bs-toggle="collapse" data-bs-target="#style-switch" id="style-switch-button"><i class="fa fa-cog fa-2x"></i></button>
+    <div class="collapse" id="style-switch">
+      <div class="p-3">
+        <h6 class="text-uppercase mb-4">Select theme colour</h6>
+        <form class="mb-3">
+          <select class="form-select style-switch-select" name="colour" id="colour">
+            <option value="">select colour variant</option>
+            <option value="css/style.default.7acfaf01.css">blue</option>
+            <option value="css/style.pink.bcb9f645.css">pink</option>
+            <option value="css/style.green.eba38840.css">green</option>
+            <option value="css/style.red.e64fe507.css">red</option>
+            <option value="css/style.violet.00703a6d.css">violet</option>
+          </select>
+        </form>
+        <p class="text-muted text-sm">Stylesheet switching is done with JavaScript and can cause a blink while page loads. This will not happen in your production code.</p>
+      </div>
+    </div>
     <!-- JavaScript files-->
     <script>
       // ------------------------------------------------------- //
@@ -70,7 +120,7 @@
       // inject local SVG sprite (using only 'icons/orion-svg-sprite.a4dea202.svg' path)
       // while using file:// protocol
       // pls don't forget to change to your domain :)
-      injectSvgSprite('${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/1-2-0/icons/orion-svg-sprite.svg'); 
+      injectSvgSprite('https://demo.bootstrapious.com/sell/1-2-0/icons/orion-svg-sprite.svg'); 
       
     </script>
     <!-- jQuery-->
@@ -88,9 +138,9 @@
     <script src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/glightbox/js/glightbox.min.js"> </script>
     <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
     <script src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/object-fit-images/ofi.min.js"></script>
-    <script>var basePath = '${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/'</script>
-    <script src="${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/js/theme.30e7c8f9.js"></script>
+    <script>var basePath = ''</script>
+    <script src="js/theme.30e7c8f9.js"></script>
     <script src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/jquery.cookie/jquery.cookie.js"> </script>
-    <script src="${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/js/demo.9833433a.js"></script>
+    <script src="js/demo.9833433a.js"></script>
   </body>
 </html>
