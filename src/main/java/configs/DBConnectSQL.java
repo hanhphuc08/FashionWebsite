@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DBConnectSQL {
-	private final String serverName = "MSI";
-	private final String dbName = "ltwebct4";
+	private final String serverName = "LAPTOP-3N644IDG";
+	private final String dbName = "DoAnCNTT";
 	private final String portNumber = "1433";
 	private final String instance = "";
 	private final String userID = "sa";
