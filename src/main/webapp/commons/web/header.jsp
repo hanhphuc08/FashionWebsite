@@ -46,7 +46,7 @@
                <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/home">Trang chủ</a>
               </li>
               
-              <li class="nav-item"><a class="nav-link" href="#">Thương hiệu</a>
+              <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/categories">Thương hiệu</a>
               </li>
                
                <li class="nav-item"><a class="nav-link" href="categories">Sản phẩm</a>

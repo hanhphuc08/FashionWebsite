@@ -2,11 +2,16 @@
 
 	<sitemesh>
 		<!-- <mapping path="/*" name="web" decorator="web.jsp" /> -->
-		<!-- <mapping path="/admin/*" name="admin" decorator="admin.jsp" /> -->
+	 <mapping path="/admin/*" name="admin" decorator="admin.jsp" />
 		<!-- Exclude path from decoration. -->
 		<mapping path="/api*" exclude="true" />
 		<mapping path="/home" exclude="true" />
 		<mapping path="/login" exclude="true" />
 		<mapping path="/register" exclude="true" />
 		<mapping path="/categories" exclude="true" />
+<<<<<<< HEAD
+=======
+		<mapping path="/cart" exclude="true" />
+		
+>>>>>>> 3bec862268ae7b3b7538cf6fa0cfb1f11d0d5b98
 	</sitemesh>

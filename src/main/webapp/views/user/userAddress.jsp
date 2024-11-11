@@ -67,7 +67,7 @@
       <!-- Navbar-->
       <nav class="navbar navbar-expand-lg navbar-sticky navbar-airy navbar-light bg-white bg-fixed-white">
         <div class="container-fluid">  
-          <!-- Navbar Header  --><a class="navbar-brand" href="home"><svg class="navbar-brand-svg" viewBox="0 0 231 77" width="231" height="77" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Navbar Header  --><a class="navbar-brand" href="${pageContext.request.contextPath}/user/home"><svg class="navbar-brand-svg" viewBox="0 0 231 77" width="231" height="77" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path class="navbar-brand-svg-text" d="M217 613 c-4 -3 -7 -94 -7 -200 l0 -194 43 3 42 3 3 63 3 62 43 0 c83 0 156 80 142 155 -9 47 -50 92 -94 105 -41 11 -165 14 -175 3z m171 -95 c7 -7 12 -21 12 -33 0 -31 -19 -45 -62 -45 l-38 0 0 45 0 45 38 0 c21 0 43 -5 50 -12z M720 601 c-38 -20 -85 -80 -73 -92 19 -18 69 -13 91 9 15 15 34 22 60 22 43 0 62 -14 62 -47 0 -18 -14 -30 -77 -60 -72 -35 -80 -42 -105 -92 -16 -30 -28 -70 -28 -88 l0 -34 148 3 147 3 0 40 0 40 -92 3 c-51 1 -93 6 -93 11 0 14 34 38 75 52 21 8 57 31 78 51 37 35 39 40 35 83 -3 25 -14 55 -24 67 -44 48 -142 63 -204 29z M1100 575 l0 -45 50 0 50 0 0 -156 0 -155 43 3 42 3 3 152 3 152 47 3 47 3 0 40 0 40 -142 3 -143 3 0 -46z M1593 604 c-40 -20 -67 -74 -59 -118 8 -43 39 -70 111 -100 71 -29 89 -50 61 -72 -29 -21 -61 -17 -93 10 l-29 24 -32 -20 c-39 -25 -40 -32 -4 -68 28 -27 86 -50 127 -50 38 1 103 38 119 69 39 75 2 138 -105 181 -49 19 -64 30 -64 45 0 27 55 33 80 9 15 -16 19 -16 51 -1 40 19 43 36 12 64 -51 46 -115 56 -175 27z M1980 279 c-9 -16 -8 -26 5 -45 8 -13 22 -24 30 -24 19 0 45 28 45 49 0 41 -61 57 -80 20z" transform="translate(0 77) scale(0.1,-0.1)" fill="#212529"/>
 
 </svg></a>
@@ -75,13 +75,13 @@
           <!-- Navbar Collapse -->
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mx-auto">
-               <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/home">Trang chủ</a>
+               <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/user/home">Trang chủ</a>
               </li>
               
               <li class="nav-item"><a class="nav-link" href="#">Thương hiệu</a>
               </li>
                
-               <li class="nav-item"><a class="nav-link" href="categories">Sản phẩm</a>
+               <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/user/categories">Sản phẩm</a>
               </li>
              
               <li class="nav-item"><a class="nav-link" href="#">Giới thiệu</a>
@@ -149,7 +149,7 @@
                   <svg class="svg-icon">
                     <use xlink:href="#male-user-1"> </use>
                   </svg></a>
-                <div class="dropdown-menu dropdown-menu-animated dropdown-menu-end" aria-labelledby="userdetails"> <a class="dropdown-item" href="customer-orders.html">Đơn hàng</a><a class="dropdown-item" href="customer-addresses.html">Địa chỉ</a><a class="dropdown-item" href="userAccount">Hồ sơ của tôi</a>
+                <div class="dropdown-menu dropdown-menu-animated dropdown-menu-end" aria-labelledby="userdetails"> <a class="dropdown-item" href="customer-orders.html">Đơn hàng</a><a class="dropdown-item" href="${pageContext.request.contextPath}/user/UserAddress">Địa chỉ</a><a class="dropdown-item" href="${pageContext.request.contextPath}/user/UserAccount">Hồ sơ của tôi</a>
                   <div class="dropdown-divider my-0"></div><a class="dropdown-item" href="login">Đăng xuất</a>
                 </div>
               </div>
@@ -273,10 +273,10 @@
                   <div class="badge rounded-pill bg-dark fw-normal px-3">5</div></a><a class="active list-group-item d-flex justify-content-between align-items-center text-decoration-none" href="customer-account.html"><span>
                     <svg class="svg-icon svg-icon-heavy me-2">
                       <use xlink:href="#male-user-1"> </use>
-                    </svg>Hồ sơ của tôi</span></a><a class="list-group-item d-flex justify-content-between align-items-center text-decoration-none" href="customer-addresses.html"><span>
+                    </svg>Hồ sơ của tôi</span></a><a class="list-group-item d-flex justify-content-between align-items-center text-decoration-none" href="${pageContext.request.contextPath}/user/UserAccount"><span>
                     <svg class="svg-icon svg-icon-heavy me-2">
                       <use xlink:href="#navigation-map-1"> </use>
-                    </svg>Địa chỉ</span></a><a class="list-group-item d-flex justify-content-between align-items-center text-decoration-none" href="customer-login.html"><span>
+                    </svg>Địa chỉ</span></a><a class="list-group-item d-flex justify-content-between align-items-center text-decoration-none" href="${pageContext.request.contextPath}/user/UserAddress"><span>
                     <svg class="svg-icon svg-icon-heavy me-2">
                       <use xlink:href="#exit-1"> </use>
                     </svg>Đăng xuẩt</span></a>
