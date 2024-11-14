@@ -3,13 +3,17 @@ package controllers;
 import java.io.IOException;
 import java.util.List;
 
-
+import dao.Impl.CategoryDao;
+import dao.Impl.ProductDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import models.CategoryModel;
+import models.CategoryTypeModel;
+import models.ProductModel;
 
 
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, 
@@ -26,31 +30,41 @@ public class CategoryController extends HttpServlet{
 //	public ICategoryService cateService = new CategoryServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		String url = req.getRequestURI();
-//		req.setCharacterEncoding("UTF-8");
-//		resp.setCharacterEncoding("UTF-8");
-//		
-//		if(url.contains("categories")) {
-//			
-//			List<CategoryModel> list = cateService.findAll();
-//			req.setAttribute("listcate", list);
-//			req.getRequestDispatcher("/views/admin/categoryList.jsp").forward(req,  resp);	
-//		} else if(url.contains("add")){
-//			req.getRequestDispatcher("/views/admin/categoryAdd.jsp").forward(req,  resp);	
-//		}else if(url.contains("edit")){
-//			int id = Integer.parseInt(req.getParameter("id"));
-//			
-//			CategoryModel category = cateService.findById(id);
-//			
-//			req.setAttribute("cate", category);
-//			req.getRequestDispatcher("/views/admin/categoryEdit.jsp").forward(req,  resp);	
-//		} else if(url.contains("delete")) {
-//			String id = req.getParameter("id");
-//			cateService.delete(Integer.parseInt(id));
-//			resp.sendRedirect(req.getContextPath() + "/admin/categories");
-//		}
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+		
+		String pageParam = req.getParameter("page");
+	    String orderbyParam = req.getParameter("orderby");
+	    int page = 1; 
+	    try {
+	        if (pageParam != null) {
+	            page = Integer.parseInt(pageParam.trim());
+	        }
+	    } catch (NumberFormatException e) {
+	        page = 1; 
+	    }
+	    int pageSize = 12; 
+	    int orderby = (orderbyParam != null && !orderbyParam.trim().isEmpty()) ? Integer.parseInt(orderbyParam.trim()) : 0;
+		
 
-		req.getRequestDispatcher("/views/category.jsp").forward(req,  resp);
+		CategoryDao daoC = new CategoryDao();
+		List<CategoryModel> listC = daoC.getAllCategory();
+		List<CategoryTypeModel> listType = daoC.getAllCategoryType();
+		req.setAttribute("listC", listC);
+		req.setAttribute("listType", listType);
+		
+
+		 ProductDao dao = new ProductDao();
+		 List<ProductModel> products = dao.getAllProductsByPageAndOrder(page, pageSize, orderby);
+		 int totalPages = dao.getTotalPages(pageSize);
+	    
+		 req.setAttribute("listP", products);
+		 req.setAttribute("currentPage", page);
+		 req.setAttribute("totalPages", totalPages); 
+		 req.setAttribute("orderby", orderby); 
+
+		 req.getRequestDispatcher("/views/category.jsp").forward(req, resp);
+	    
 
 	}
 }
