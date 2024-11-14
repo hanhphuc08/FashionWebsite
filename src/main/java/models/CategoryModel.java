@@ -15,6 +15,8 @@ public class CategoryModel implements Serializable {
 	 private String typeCategoryCode;
 	 private Date createDate;
 	 private Date updateDate;
+	
+	
 	public CategoryModel(String categoryCode, String categoryName, String typeCategoryCode, Date createDate,
 			Date updateDate) {
 		super();
@@ -24,7 +26,7 @@ public class CategoryModel implements Serializable {
 		this.createDate = createDate;
 		this.updateDate = updateDate;
 	}
-	
+
 	public CategoryModel() {
 		super();
 	}
@@ -59,11 +61,17 @@ public class CategoryModel implements Serializable {
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
+
 	@Override
 	public String toString() {
 		return "CategoryModel [categoryCode=" + categoryCode + ", categoryName=" + categoryName + ", typeCategoryCode="
 				+ typeCategoryCode + ", createDate=" + createDate + ", updateDate=" + updateDate + "]";
 	}
+	
+
+	
+
+	
 	
 	 
 }

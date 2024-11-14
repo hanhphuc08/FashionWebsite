@@ -12,6 +12,7 @@ public class ProductModel implements Serializable {
     private String description;
     private double price;
     private String categoryCode;
+    private String typeCategoryCode;
     private String brand;
     private String color;
     private String image;
@@ -19,15 +20,21 @@ public class ProductModel implements Serializable {
     private String status;
     private Date createDate;
     private Date updateDate;
+    
+    private String categoryName;
+
+   
+
 	public ProductModel(String productCode, String productName, String description, double price, String categoryCode,
-			String brand, String color, String image, String moreImage, String status, Date createDate,
-			Date updateDate) {
+			String typeCategoryCode, String brand, String color, String image, String moreImage, String status,
+			Date createDate, Date updateDate, String categoryName) {
 		super();
 		this.productCode = productCode;
 		this.productName = productName;
 		this.description = description;
 		this.price = price;
 		this.categoryCode = categoryCode;
+		this.typeCategoryCode = typeCategoryCode;
 		this.brand = brand;
 		this.color = color;
 		this.image = image;
@@ -35,6 +42,7 @@ public class ProductModel implements Serializable {
 		this.status = status;
 		this.createDate = createDate;
 		this.updateDate = updateDate;
+		this.categoryName = categoryName;
 	}
 	public ProductModel() {
 		super();
@@ -111,13 +119,33 @@ public class ProductModel implements Serializable {
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+	
+	public String getTypeCategoryCode() {
+		return typeCategoryCode;
+	}
+	public void setTypeCategoryCode(String typeCategoryCode) {
+		this.typeCategoryCode = typeCategoryCode;
+	}
 	@Override
 	public String toString() {
 		return "ProductModel [productCode=" + productCode + ", productName=" + productName + ", description="
-				+ description + ", price=" + price + ", categoryCode=" + categoryCode + ", brand=" + brand + ", color="
-				+ color + ", image=" + image + ", moreImage=" + moreImage + ", status=" + status + ", createDate="
-				+ createDate + ", updateDate=" + updateDate + "]";
+				+ description + ", price=" + price + ", categoryCode=" + categoryCode + ", typeCategoryCode="
+				+ typeCategoryCode + ", brand=" + brand + ", color=" + color + ", image=" + image + ", moreImage="
+				+ moreImage + ", status=" + status + ", createDate=" + createDate + ", updateDate=" + updateDate
+				+ ", categoryName=" + categoryName + "]";
 	}
+	
+	
+
+	
 
    
 }

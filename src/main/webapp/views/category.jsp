@@ -88,11 +88,17 @@
             <header class="product-grid-header">
               <div class="me-3 mb-3">
                  Hiển thị <strong>1-12 </strong>trong <strong>158 </strong>sản phẩm</div>
-              <div class="me-3 mb-3"><span class="me-2">Hiển thị</span><a class="product-grid-header-show active" href="#">12    </a><a class="product-grid-header-show " href="#">24    </a><a class="product-grid-header-show " href="#">Toàn bộ    </a>
-              </div>
-              <div class="mb-3 d-flex align-items-center">
+						<div class="me-3 mb-3">
+							<span class="me-2">Hiển thị</span><a
+								class="product-grid-header-show active" href="#">12 </a><a
+								class="product-grid-header-show " href="#">24 </a><a
+								class="product-grid-header-show " href="#">Toàn bộ </a>
+						</div>
+						<div class="mb-3 d-flex align-items-center">
               	<span class="d-inline-block me-2">Sắp xếp theo </span>
               	<form action="${pageContext.request.contextPath}/categories" method ="GET">
+              		<input type="hidden" name="typeCategoryCode" value="${not empty typeCategoryCode ? typeCategoryCode : ''}" />
+              		<input type="hidden" name="categoryCode" value="${not empty categoryCode ? categoryCode : ''}" />
                 	<select class="form-select w-auto border-0" name = "orderby" onchange = "this.form.submit()">
                   		<option value="0" ${orderby == 0 ? 'select' : ''}>Toàn bộ</option>
                   		<option value="1" ${orderby == 1 ? 'select' : ''}>Hàng mới về</option>
@@ -110,7 +116,7 @@
                 <div class="product">
                   <div class="product-image">
                     <div class="ribbon ribbon-info">${o.status}</div>
-                    <img class="img-fluid" src="${o.image }" alt="product"/>
+                    <img class="img-fluid" src="${o.image }" alt="${o.productName }"/>
                     <div class="product-hover-overlay">
                     	<a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/categoryDetail?productCode=${o.productCode}"></a>
                       <div class="product-hover-overlay-buttons">
@@ -123,8 +129,11 @@
                     </div>
                   </div>
                   <div class="py-2">
-                    <p class="text-muted text-sm mb-1">Áo thun</p>
-                    <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/categoryDetail?productCode=${o.productCode}">${o.productName }</a>
+                    	<p class="text-muted text-sm mb-1">${o.categoryName}</p>
+                    
+                    <h3 class="h6 text-uppercase mb-1"><a class="text-dark"
+                    	 href="${pageContext.request.contextPath}/categoryDetail?productCode=${o.productCode}">
+                    	 ${o.productName }</a>
                     </h3>
                     <span class="text-muted">${o.price }</span>
                   </div>
@@ -141,14 +150,15 @@
 							<!-- Nút "Trước" -->
 							<li class="page-item ${currentPage == 1 ? 'disabled' : ''}">
 								<a class="page-link"
-								href="?page=${currentPage - 1}&orderby=${orderby}"
+								href="?typeCategoryCode=${typeCategoryCode}&categoryCode=${categoryCode}&page=${currentPage - 1}&orderby=${orderby}"
 								aria-label="Previous">Trước</a>
 							</li>
 
 							<!-- Các trang -->
 							<c:forEach begin="1" end="${totalPages}" var="i">
 								<li class="page-item ${i == currentPage ? 'active' : ''}">
-									<a class="page-link" href="?page=${i}&orderby=${orderby}">${i}</a>
+									<a class="page-link"
+									 href="?typeCategoryCode=${typeCategoryCode}&categoryCode=${categoryCode}&page=${i}&orderby=${orderby}">${i}</a>
 								</li>
 							</c:forEach>
 
@@ -156,7 +166,7 @@
 							<li
 								class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
 								<a class="page-link"
-								href="?page=${currentPage + 1}&orderby=${orderby}"
+								href="?typeCategoryCode=${typeCategoryCode}&categoryCode=${categoryCode}&page=${currentPage + 1}&orderby=${orderby}"
 								aria-label="Next">Tiếp</a>
 							</li>
 						</ul>
@@ -166,28 +176,36 @@
           
           <!-- Sidebar-->
           <div class="sidebar col-xl-3 col-lg-4 pr-xl-5 order-lg-1">
-            <div class="sidebar-block px-3 px-lg-0"><a class="d-lg-none block-toggler" data-bs-toggle="collapse" href="#categoriesMenu" aria-expanded="false" aria-controls="categoriesMenu">Product Categories</a>
-              <div class="expand-lg collapse" id="categoriesMenu">
-                <div class="nav nav-pills flex-column mt-4 mt-lg-0">
-                		<c:forEach items="${listType }" var = "type">
-                		 	<a class="nav-link d-flex justify-content-between mb-2 " href="#"><span>${type.typeCategoryName }</span>
-                			<span class="sidebar-badge"> 120</span></a>
-                			
-                  				<div class="nav nav-pills flex-column ms-3">
-                  					<c:forEach items = "${listC }" var = "cate">
-                						<c:if test="${cate.typeCategoryCode == type.typeCategoryCode}">
-                  							<a class="nav-link mb-2" href="#">${cate.categoryName}</a>
-                  						</c:if>
-                  					</c:forEach>
-                  				</div>
-                  		</c:forEach>
-                  
-                </div>
-              </div>
-              
-              
-            </div>
-            <div class="sidebar-block px-3 px-lg-0"><a class="d-lg-none block-toggler" data-bs-toggle="collapse" href="#priceFilterMenu" aria-expanded="false" aria-controls="priceFilterMenu">Filter by price</a>
+					<div class="sidebar-block px-3 px-lg-0">
+						<a class="d-lg-none block-toggler" data-bs-toggle="collapse"
+							href="#categoriesMenu" aria-expanded="false"
+							aria-controls="categoriesMenu"> Product Categories </a>
+						<div class="expand-lg collapse" id="categoriesMenu">
+							<div class="nav nav-pills flex-column mt-4 mt-lg-0">
+								<!-- Lặp qua danh sách TypeCategory -->
+								<c:forEach items="${listType}" var="type">
+									<a class="nav-link d-flex justify-content-between mb-2"
+										href="?typeCategoryCode=${type.typeCategoryCode}&page=1&orderby=${orderby}">
+										<span>${type.typeCategoryName}</span> <span
+										class="sidebar-badge">120</span> <!-- Bạn có thể cập nhật số lượng -->
+									</a>
+
+									<!-- Lặp qua danh sách Category liên quan đến TypeCategory -->
+									<div class="nav nav-pills flex-column ms-3">
+										<c:forEach items="${listC}" var="cate">
+											<c:if
+												test="${cate.typeCategoryCode == type.typeCategoryCode}">
+												<a class="nav-link mb-2"
+													href="?categoryCode=${cate.categoryCode}&page=1&orderby=${orderby}">
+													${cate.categoryName} </a>
+											</c:if>
+										</c:forEach>
+									</div>
+								</c:forEach>
+							</div>
+						</div>
+					</div>
+					<div class="sidebar-block px-3 px-lg-0"><a class="d-lg-none block-toggler" data-bs-toggle="collapse" href="#priceFilterMenu" aria-expanded="false" aria-controls="priceFilterMenu">Filter by price</a>
               <div class="expand-lg collapse" id="priceFilterMenu">
                 <h6 class="sidebar-heading d-none d-lg-block">Giá </h6>
                 <div class="mt-4 mt-lg-0" id="slider-snap"> </div>
