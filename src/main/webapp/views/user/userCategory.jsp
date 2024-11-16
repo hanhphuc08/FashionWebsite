@@ -56,7 +56,7 @@
 </head>
 <body>
 	<!--  Begin Header -->
-	<%@ include file="/commons/web/headerUser.jsp" %>;
+	<%@ include file="/commons/user/headerUser.jsp" %>;
 	<!-- End Header -->
 
 	<!-- Hero Section-->
@@ -779,32 +779,16 @@
 						</div>
 						<div class="col-lg-6 d-flex align-items-center">
 							<div>
-								<h2 class="mb-4 mt-4 mt-lg-1">Áo khoác</h2>
+								<h2 class="mb-4 mt-4 mt-lg-1">Áo thun nam trơn</h2>
 								<div
 									class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-sm-between mb-4">
 									<ul class="list-inline mb-2 mb-sm-0">
-										<li class="list-inline-item h4 fw-light mb-0">65.00</li>
-										<li class="list-inline-item text-muted fw-light"><del>90.00</del>
+										<li class="list-inline-item h4 fw-light mb-0">165.000</li>
+										<li class="list-inline-item text-muted fw-light"><del>290.000</del>
 										</li>
 									</ul>
-									<div class="d-flex align-items-center">
-										<ul class="list-inline me-2 mb-0">
-											<li class="list-inline-item me-0"><i
-												class="fa fa-star text-primary"></i></li>
-											<li class="list-inline-item me-0"><i
-												class="fa fa-star text-primary"></i></li>
-											<li class="list-inline-item me-0"><i
-												class="fa fa-star text-primary"></i></li>
-											<li class="list-inline-item me-0"><i
-												class="fa fa-star text-primary"></i></li>
-											<li class="list-inline-item me-0"><i
-												class="fa fa-star text-gray-300"></i></li>
-										</ul>
-										<span class="text-muted text-uppercase text-sm">25 đánh
-											giá</span>
-									</div>
 								</div>
-								<p class="mb-4 text-muted">blablablabla....</p>
+								<p class="mb-4 text-muted">Áo thun trơn đơn giản với chất vải thấm hút mồ hôi tối đa.</p>
 								<form action="#">
 									<div class="row">
 										<div class="col-sm-6 col-lg-12 detail-option mb-3">
@@ -826,52 +810,21 @@
 												for="size_2"> L <input class="input-invisible"
 												type="radio" name="size" value="value_2" id="size_2"
 												required>
-											</label>
-										</div>
-										<div class="col-sm-6 col-lg-12 detail-option mb-3">
-											<h6 class="detail-option-heading">
-												Phân loại <span>(*)</span>
-											</h6>
-											<label
-												class="btn btn-sm btn-outline-secondary detail-option-btn-label"
-												for="material_0"> Hoodie <input
-												class="input-invisible" type="radio" name="material"
-												value="value_0" id="material_0" required>
 											</label> <label
 												class="btn btn-sm btn-outline-secondary detail-option-btn-label"
-												for="material_1"> Cardigan <input
-												class="input-invisible" type="radio" name="material"
-												value="value_1" id="material_1" required>
+												for="size_2"> XL <input class="input-invisible"
+												type="radio" name="size" value="value_3" id="size_3"
+												required>
 											</label>
-										</div>
-										<div class="col-12 detail-option mb-3">
-											<h6 class="detail-option-heading">
-												Màu sắc <span>(*)</span>
-											</h6>
-											<ul class="list-inline mb-0 colours-wrapper">
-												<li class="list-inline-item"><label class="btn-colour"
-													for="colour_Blue" style="background-color: #668cb9">
-												</label> <input class="input-invisible" type="radio" name="colour"
-													value="value_Blue" id="colour_Blue" required></li>
-												<li class="list-inline-item"><label class="btn-colour"
-													for="colour_White" style="background-color: #fff">
-												</label> <input class="input-invisible" type="radio" name="colour"
-													value="value_White" id="colour_White" required></li>
-												<li class="list-inline-item"><label class="btn-colour"
-													for="colour_Violet" style="background-color: #8b6ea4">
-												</label> <input class="input-invisible" type="radio" name="colour"
-													value="value_Violet" id="colour_Violet" required></li>
-												<li class="list-inline-item"><label class="btn-colour"
-													for="colour_Red" style="background-color: #dd6265">
-												</label> <input class="input-invisible" type="radio" name="colour"
-													value="value_Red" id="colour_Red" required></li>
-											</ul>
 										</div>
 										<div class="col-12 col-lg-6 detail-option mb-5">
 											<label class="detail-option-heading fw-bold">Sản phẩm
 												<span>(*)</span>
 											</label> <input class="form-control detail-quantity" name="items"
 												type="number" value="1">
+												
+											<!-- Số lượng hàng có sẵn -->
+                                        <span class="available-stock">Số lượng còn lại: <strong>20</strong></span> 
 										</div>
 									</div>
 									<ul class="list-inline">
@@ -880,10 +833,6 @@
 												<i class="fa fa-shopping-cart me-2"></i>Thêm vào giỏ hàng
 											</button>
 										</li>
-										<li class="list-inline-item"><a
-											class="btn btn-outline-secondary mb-1" href="#"> <i
-												class="far fa-heart me-2"></i>Thêm vào yêu thích
-										</a></li>
 									</ul>
 								</form>
 							</div>
@@ -922,7 +871,7 @@
 	</div>
 
 	<!--  Begin Footer -->
-	<%@ include file="/commons/web/footer.jsp"%>;
+	<%@ include file="/commons/web/footer.jsp"%>
 	<!-- End Footer -->
 	<!-- JavaScript files-->
 	<script>

@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
- <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<%@taglib prefix="fn" uri="jakarta.tags.functions" %>
-<%@taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -17,7 +15,8 @@
 <!-- Google fonts - Playfair Display-->
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/fonts/hkgrotesk/stylesheet.2e9c9834.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/fonts/hkgrotesk/stylesheet.2e9c9834.css">
 <!-- owl carousel-->
 <link rel="stylesheet"
 	href="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/owl.carousel/assets/owl.carousel.css">
@@ -58,15 +57,16 @@
 </head>
 <body>
 	<!--  Begin Header -->
-	<%@ include file="/commons/web/header.jsp"%>;
+	<%@ include file="/commons/admin/header.jsp"%>;
 	<!-- End Header -->
 
-<!-- Hero Section-->
+	<!-- Hero Section-->
 	<section class="hero">
 		<div class="container">
 			<!-- Breadcrumbs -->
 			<ol class="breadcrumb justify-content-center">
-				<li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+				<li class="breadcrumb-item"><a
+					href="${pageContext.request.contextPath}/admin/home">Trang chủ</a></li>
 				<li class="breadcrumb-item active">Cửa hàng</li>
 			</ol>
 			<!-- Hero Content-->
@@ -82,96 +82,6 @@
 		</div>
 	</section>
 
-<<<<<<< HEAD
- <!-- Hero Section-->
-    <section class="hero">
-      <div class="container">
-        <!-- Breadcrumbs -->
-        <ol class="breadcrumb justify-content-center">
-          <li class="breadcrumb-item"><a href="home">Trang chủ</a></li>
-          <li class="breadcrumb-item active">Cửa hàng        </li>
-        </ol>
-        <!-- Hero Content-->
-        <div class="hero-content pb-5 text-center">
-          <h1 class="hero-heading">Toàn bộ sản phẩm</h1>
-          <div class="row">   
-            <div class="col-xl-8 offset-xl-2"><p class="lead text-muted">“ Mang sản phẩm đến cho khách hàng bằng cái Tâm"</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <div class="container-fluid">
-      <div class="px-xl-5">
-        <div class="row">
-          <!-- Grid -->
-          <div class="products-grid col-xl-9 col-lg-8 order-lg-2">
-            <header class="product-grid-header">
-              <div class="me-3 mb-3">
-                 Hiển thị <strong>1-12 </strong>trong <strong>158 </strong>sản phẩm</div>
-
-						<div class="mb-3 d-flex align-items-center">
-							<span class="d-inline-block me-2">Sắp xếp theo </span>
-							<form action="${pageContext.request.contextPath}/categories"
-								method="GET">
-								<input type="hidden" name="typeCategoryCode"
-									value="${not empty typeCategoryCode ? typeCategoryCode : ''}" />
-								<input type="hidden" name="categoryCode"
-									value="${not empty categoryCode ? categoryCode : ''}" /> <select
-									class="form-select w-auto border-0" name="orderby"
-									onchange="this.form.submit()">
-									<option value="0" ${orderby == 0 ? 'select' : ''}>Toàn bộ</option>
-									<option value="1" ${orderby == 1 ? 'select' : ''}>Hàng mới về</option>
-									<option value="2" ${orderby == 2 ? 'select' : ''}>Từ cao đến thấp</option>
-									<option value="3" ${orderby == 3 ? 'select' : ''}>Từ thấp đến cao</option>
-								</select> <input type="hidden" name="page" value="${currentPage }" />
-							</form>
-
-						</div>
-					</header>
-            <div class="row">
-            	<c:choose>
-            		<c:when test="${empty listP}">
-						<div class="col-12 text-center">
-							<p class="text-muted">Hiện chưa có sản phẩm này.</p>
-						</div>
-					</c:when>
-            	</c:choose>
-            	<c:forEach items="${listP}" var= "o">	
-              <!-- product-->
-              <div class="col-xl-3 col-lg-4 col-sm-6">
-                <div class="product">
-                  <div class="product-image">
-                    <div class="ribbon ribbon-info">${o.status}</div>
-                    <img class="img-fluid" src="${o.image }" alt="${o.productName }"/>
-                    <div class="product-hover-overlay">
-                    	<a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/categoryDetail?productCode=${o.productCode}"></a>
-                      <div class="product-hover-overlay-buttons">
-                      	<a class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block" href="#">
-                      		<i class="fa fa-shopping-cart"></i>
-                      	</a>
-                      	<a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/categoryDetail?productCode=${o.productCode}">
-                      		<i class="fa-search fa"></i></a><a class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-expand-arrows-alt"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="py-2">
-                    	<p class="text-muted text-sm mb-1">${o.categoryName}</p>
-                    
-                    <h3 class="h6 text-uppercase mb-1"><a class="text-dark"
-                    	 href="${pageContext.request.contextPath}/categoryDetail?productCode=${o.productCode}">
-                    	 ${o.productName }</a>
-                    </h3>
-                    <span class="text-muted">${o.price }</span>
-                  </div>
-                </div>
-              </div>
-              </c:forEach>
-              <!-- /product-->
-             
-            </div>
-            <!-- Pagination-->
-=======
 	<div class="container-fluid">
 		<div class="px-xl-5">
 			<div class="row">
@@ -211,13 +121,14 @@
 										alt="product" />
 									<div class="product-hover-overlay">
 										<a class="product-hover-overlay-link"
-											href="${pageContext.request.contextPath}/user/categoryDetail"></a>
+											href="${pageContext.request.contextPath}/admin/categoryDetail"></a>
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="#"><i class="fa fa-shopping-cart"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i
+												class="fas fa-pen"></i></a><a
 												class="btn btn-dark btn-buy"
-												href="${pageContext.request.contextPath}/user/categoryDetail"><i
+												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
 												class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block"
 												href="#" data-bs-toggle="modal"
@@ -230,7 +141,7 @@
 									<p class="text-muted text-sm mb-1">Áo thun</p>
 									<h3 class="h6 text-uppercase mb-1">
 										<a class="text-dark"
-											href="${pageContext.request.contextPath}/user/categoryDetail">Áo
+											href="${pageContext.request.contextPath}/admin/categoryDetail">Áo
 											thun trắng</a>
 									</h3>
 									<span class="text-muted">$40.00</span>
@@ -247,13 +158,14 @@
 										alt="product" />
 									<div class="product-hover-overlay">
 										<a class="product-hover-overlay-link"
-											href="${pageContext.request.contextPath}/user/categoryDetail"></a>
+											href="${pageContext.request.contextPath}/admin/categoryDetail"></a>
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="#"><i class="fa fa-shopping-cart"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i
+												class="fas fa-pen"></i></a><a
 												class="btn btn-dark btn-buy"
-												href="${pageContext.request.contextPath}/user/categoryDetail"><i
+												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
 												class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block"
 												href="#" data-bs-toggle="modal"
@@ -266,7 +178,7 @@
 									<p class="text-muted text-sm mb-1">Demin</p>
 									<h3 class="h6 text-uppercase mb-1">
 										<a class="text-dark"
-											href="${pageContext.request.contextPath}/user/categoryDetail">Black
+											href="${pageContext.request.contextPath}/admin/categoryDetail">Black
 											blouse</a>
 									</h3>
 									<span class="text-muted">$40.00</span>
@@ -284,13 +196,14 @@
 										alt="product" />
 									<div class="product-hover-overlay">
 										<a class="product-hover-overlay-link"
-											href="${pageContext.request.contextPath}/user/categoryDetail"></a>
+											href="${pageContext.request.contextPath}/admin/categoryDetail"></a>
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="#"><i class="fa fa-shopping-cart"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i
+												class="fas fa-pen"></i></a><a
 												class="btn btn-dark btn-buy"
-												href="${pageContext.request.contextPath}/user/categoryDetail"><i
+												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
 												class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block"
 												href="#" data-bs-toggle="modal"
@@ -303,7 +216,7 @@
 									<p class="text-muted text-sm mb-1">Accessories</p>
 									<h3 class="h6 text-uppercase mb-1">
 										<a class="text-dark"
-											href="${pageContext.request.contextPath}/user/categoryDetail">College
+											href="${pageContext.request.contextPath}/admin/categoryDetail">College
 											jacket</a>
 									</h3>
 									<span class="text-muted">$40.00</span>
@@ -320,13 +233,14 @@
 										alt="product" />
 									<div class="product-hover-overlay">
 										<a class="product-hover-overlay-link"
-											href="${pageContext.request.contextPath}/user/categoryDetail"></a>
+											href="${pageContext.request.contextPath}/admin/categoryDetail"></a>
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="#"><i class="fa fa-shopping-cart"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i
+												class="fas fa-pen"></i></a><a
 												class="btn btn-dark btn-buy"
-												href="${pageContext.request.contextPath}/user/categoryDetail"><i
+												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
 												class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block"
 												href="#" data-bs-toggle="modal"
@@ -339,7 +253,7 @@
 									<p class="text-muted text-sm mb-1">Denim</p>
 									<h3 class="h6 text-uppercase mb-1">
 										<a class="text-dark"
-											href="${pageContext.request.contextPath}/user/categoryDetail">Carrot-fit
+											href="${pageContext.request.contextPath}/admin/categoryDetail">Carrot-fit
 											jeans</a>
 									</h3>
 									<span class="text-muted">$40.00</span>
@@ -356,13 +270,14 @@
 										alt="product" />
 									<div class="product-hover-overlay">
 										<a class="product-hover-overlay-link"
-											href="${pageContext.request.contextPath}/user/categoryDetail"></a>
+											href="${pageContext.request.contextPath}/admin/categoryDetail"></a>
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="#"><i class="fa fa-shopping-cart"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i
+												class="fas fa-pen"></i></a><a
 												class="btn btn-dark btn-buy"
-												href="${pageContext.request.contextPath}/user/categoryDetail"><i
+												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
 												class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block"
 												href="#" data-bs-toggle="modal"
@@ -375,7 +290,7 @@
 									<p class="text-muted text-sm mb-1">Jackets</p>
 									<h3 class="h6 text-uppercase mb-1">
 										<a class="text-dark"
-											href="${pageContext.request.contextPath}/user/categoryDetail">Striped
+											href="${pageContext.request.contextPath}/admin/categoryDetail">Striped
 											T-Shirt</a>
 									</h3>
 									<span class="text-muted">$40.00</span>
@@ -392,13 +307,14 @@
 										alt="product" />
 									<div class="product-hover-overlay">
 										<a class="product-hover-overlay-link"
-											href="${pageContext.request.contextPath}/user/categoryDetail"></a>
+											href="${pageContext.request.contextPath}/admin/categoryDetail"></a>
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="#"><i class="fa fa-shopping-cart"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i
+												class="fas fa-pen"></i></a><a
 												class="btn btn-dark btn-buy"
-												href="${pageContext.request.contextPath}/user/categoryDetail"><i
+												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
 												class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block"
 												href="#" data-bs-toggle="modal"
@@ -411,7 +327,7 @@
 									<p class="text-muted text-sm mb-1">Shirts</p>
 									<h3 class="h6 text-uppercase mb-1">
 										<a class="text-dark"
-											href="${pageContext.request.contextPath}/user/categoryDetail">Short
+											href="${pageContext.request.contextPath}/admin/categoryDetail">Short
 											top</a>
 									</h3>
 									<span class="text-muted">$40.00</span>
@@ -429,13 +345,14 @@
 										alt="product" />
 									<div class="product-hover-overlay">
 										<a class="product-hover-overlay-link"
-											href="${pageContext.request.contextPath}/user/categoryDetail"></a>
+											href="${pageContext.request.contextPath}/admin/categoryDetail"></a>
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="#"><i class="fa fa-shopping-cart"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i
+												class="fas fa-pen"></i></a><a
 												class="btn btn-dark btn-buy"
-												href="${pageContext.request.contextPath}/user/categoryDetail"><i
+												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
 												class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block"
 												href="#" data-bs-toggle="modal"
@@ -448,7 +365,7 @@
 									<p class="text-muted text-sm mb-1">Sweaters</p>
 									<h3 class="h6 text-uppercase mb-1">
 										<a class="text-dark"
-											href="${pageContext.request.contextPath}/user/categoryDetail">Ethnic
+											href="${pageContext.request.contextPath}/admin/categoryDetail">Ethnic
 											Sweater</a>
 									</h3>
 									<span class="text-muted">$40.00</span>
@@ -465,13 +382,14 @@
 										alt="product" />
 									<div class="product-hover-overlay">
 										<a class="product-hover-overlay-link"
-											href="${pageContext.request.contextPath}/user/categoryDetail"></a>
+											href="${pageContext.request.contextPath}/admin/categoryDetail"></a>
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="#"><i class="fa fa-shopping-cart"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i
+												class="fas fa-pen"></i></a><a
 												class="btn btn-dark btn-buy"
-												href="${pageContext.request.contextPath}/user/categoryDetail"><i
+												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
 												class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block"
 												href="#" data-bs-toggle="modal"
@@ -484,7 +402,7 @@
 									<p class="text-muted text-sm mb-1">Coats</p>
 									<h3 class="h6 text-uppercase mb-1">
 										<a class="text-dark"
-											href="${pageContext.request.contextPath}/user/categoryDetail">Beige</a>
+											href="${pageContext.request.contextPath}/admin/categoryDetail">Beige</a>
 									</h3>
 									<span class="text-muted">$40.00</span>
 								</div>
@@ -500,13 +418,14 @@
 										alt="product" />
 									<div class="product-hover-overlay">
 										<a class="product-hover-overlay-link"
-											href="${pageContext.request.contextPath}/user/categoryDetail"></a>
+											href="${pageContext.request.contextPath}/admin/categoryDetail"></a>
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="#"><i class="fa fa-shopping-cart"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i
+												class="fas fa-pen"></i></a><a
 												class="btn btn-dark btn-buy"
-												href="${pageContext.request.contextPath}/user/categoryDetail"><i
+												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
 												class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block"
 												href="#" data-bs-toggle="modal"
@@ -519,7 +438,7 @@
 									<p class="text-muted text-sm mb-1">T-Shirts</p>
 									<h3 class="h6 text-uppercase mb-1">
 										<a class="text-dark"
-											href="${pageContext.request.contextPath}/user/categoryDetail">Skull
+											href="${pageContext.request.contextPath}/admin/categoryDetail">Skull
 											Tee</a>
 									</h3>
 									<span class="text-muted">$40.00</span>
@@ -536,13 +455,14 @@
 										alt="product" />
 									<div class="product-hover-overlay">
 										<a class="product-hover-overlay-link"
-											href="${pageContext.request.contextPath}/user/categoryDetail"></a>
+											href="${pageContext.request.contextPath}/admin/categoryDetail"></a>
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="#"><i class="fa fa-shopping-cart"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i
+												class="fas fa-pen"></i></a><a
 												class="btn btn-dark btn-buy"
-												href="${pageContext.request.contextPath}/user/categoryDetail"><i
+												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
 												class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block"
 												href="#" data-bs-toggle="modal"
@@ -555,7 +475,7 @@
 									<p class="text-muted text-sm mb-1">Denim</p>
 									<h3 class="h6 text-uppercase mb-1">
 										<a class="text-dark"
-											href="${pageContext.request.contextPath}/user/categoryDetail">Trucker
+											href="${pageContext.request.contextPath}/admin/categoryDetail">Trucker
 											jacket</a>
 									</h3>
 									<span class="text-muted">$40.00</span>
@@ -572,13 +492,14 @@
 										alt="product" />
 									<div class="product-hover-overlay">
 										<a class="product-hover-overlay-link"
-											href="${pageContext.request.contextPath}/user/categoryDetail"></a>
+											href="${pageContext.request.contextPath}/admin/categoryDetail"></a>
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="#"><i class="fa fa-shopping-cart"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i
+												class="fas fa-pen"></i></a><a
 												class="btn btn-dark btn-buy"
-												href="${pageContext.request.contextPath}/user/categoryDetail"><i
+												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
 												class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block"
 												href="#" data-bs-toggle="modal"
@@ -591,7 +512,7 @@
 									<p class="text-muted text-sm mb-1">Denim</p>
 									<h3 class="h6 text-uppercase mb-1">
 										<a class="text-dark"
-											href="${pageContext.request.contextPath}/user/categoryDetail">Blouse</a>
+											href="${pageContext.request.contextPath}/admin/categoryDetail">Blouse</a>
 									</h3>
 									<span class="text-muted">$40.00</span>
 								</div>
@@ -607,13 +528,14 @@
 										alt="product" />
 									<div class="product-hover-overlay">
 										<a class="product-hover-overlay-link"
-											href="${pageContext.request.contextPath}/user/categoryDetail"></a>
+											href="${pageContext.request.contextPath}/admin/categoryDetail"></a>
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="#"><i class="fa fa-shopping-cart"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i
+												class="fa-solid fa-pencil-alt-to-square"></i></a><a
 												class="btn btn-dark btn-buy"
-												href="${pageContext.request.contextPath}/user/categoryDetail"><i
+												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
 												class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block"
 												href="#" data-bs-toggle="modal"
@@ -626,7 +548,7 @@
 									<p class="text-muted text-sm mb-1">Denim</p>
 									<h3 class="h6 text-uppercase mb-1">
 										<a class="text-dark"
-											href="${pageContext.request.contextPath}/user/categoryDetail">Shirt</a>
+											href="${pageContext.request.contextPath}/admin/categoryDetail">Shirt</a>
 									</h3>
 									<span class="text-muted">$40.00</span>
 								</div>
@@ -635,7 +557,6 @@
 						<!-- /product-->
 					</div>
 					<!-- Pagination-->
->>>>>>> 8b60f263d2663fac23ce735c84b08c35a828b690
 					<nav class="d-flex justify-content-center mb-5 mt-3"
 						aria-label="page navigation">
 						<ul class="pagination">
@@ -692,79 +613,6 @@
 							</div>
 						</div>
 					</div>
-<<<<<<< HEAD
-				
-          
-            <div class="sidebar-block px-3 px-lg-0"> <a class="d-lg-none block-toggler" data-bs-toggle="collapse" href="#sizeFilterMenu" aria-expanded="false" aria-controls="sizeFilterMenu">Filter by size</a>
-              <!-- Size filter menu-->
-              <div class="expand-lg collapse" id="sizeFilterMenu"> 
-                <h6 class="sidebar-heading d-none d-lg-block">Size </h6>
-                <form class="mt-4 mt-lg-0" action="#">  
-                  <div class="mb-1">
-                    <div class="form-check">
-                      <input class="form-check-input" id="size0" type="radio" name="size" checked>
-                      <label class="form-check-label" for="size0">S</label>
-                    </div>
-                  </div>
-                  <div class="mb-1">
-                    <div class="form-check">
-                      <input class="form-check-input" id="size1" type="radio" name="size">
-                      <label class="form-check-label" for="size1">M</label>
-                    </div>
-                  </div>
-                  <div class="mb-1">
-                    <div class="form-check">
-                      <input class="form-check-input" id="size2" type="radio" name="size">
-                      <label class="form-check-label" for="size2">L</label>
-                    </div>
-                  </div>
-                  <div class="mb-1">
-                    <div class="form-check">
-                      <input class="form-check-input" id="size3" type="radio" name="size">
-                      <label class="form-check-label" for="size3">XL</label>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-            <div class="sidebar-block px-3 px-lg-0"><a class="d-lg-none block-toggler" data-bs-toggle="collapse" href="#colourFilterMenu" aria-expanded="false" aria-controls="colourFilterMenu">Filter by colour</a>
-              <!-- Size filter menu-->
-              <div class="expand-lg collapse" id="colourFilterMenu">
-                <h6 class="sidebar-heading d-none d-lg-block">Màu sắc </h6>
-                <div class="mt-4 mt-lg-0"> 
-                  <ul class="list-inline mb-0 colours-wrapper">
-                    <li class="list-inline-item">
-                      <label class="btn-colour" for="colour_sidebar_Blue" style="background-color: #668cb9" data-allow-multiple> </label>
-                      <input class="input-invisible" type="checkbox" name="colour" value="value_sidebar_Blue" id="colour_sidebar_Blue">
-                    </li>
-                    <li class="list-inline-item">
-                      <label class="btn-colour" for="colour_sidebar_White" style="background-color: #fff" data-allow-multiple> </label>
-                      <input class="input-invisible" type="checkbox" name="colour" value="value_sidebar_White" id="colour_sidebar_White">
-                    </li>
-                    <li class="list-inline-item">
-                      <label class="btn-colour" for="colour_sidebar_Violet" style="background-color: #8b6ea4" data-allow-multiple> </label>
-                      <input class="input-invisible" type="checkbox" name="colour" value="value_sidebar_Violet" id="colour_sidebar_Violet">
-                    </li>
-                    <li class="list-inline-item">
-                      <label class="btn-colour" for="colour_sidebar_Red" style="background-color: #dd6265" data-allow-multiple> </label>
-                      <input class="input-invisible" type="checkbox" name="colour" value="value_sidebar_Red" id="colour_sidebar_Red">
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- /Sidebar end-->
-        </div>
-      </div>
-    </div>
-    <!-- Quickview Modal    -->
-    <div class="modal fade quickview" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <button class="close modal-close" type="button" data-bs-dismiss="modal" aria-label="Close">
-            <svg class="svg-icon w-100 h-100 svg-icon-light align-middle">
-=======
 					<div class="sidebar-block px-3 px-lg-0">
 						<a class="d-lg-none block-toggler" data-bs-toggle="collapse"
 							href="#priceFilterMenu" aria-expanded="false"
@@ -917,7 +765,6 @@
 				<button class="close modal-close" type="button"
 					data-bs-dismiss="modal" aria-label="Close">
 					<svg class="svg-icon w-100 h-100 svg-icon-light align-middle">
->>>>>>> 8b60f263d2663fac23ce735c84b08c35a828b690
               <use xlink:href="#close-1"> </use>
             </svg>
 				</button>
@@ -955,7 +802,8 @@
 										</li>
 									</ul>
 								</div>
-								<p class="mb-4 text-muted">Áo thun trơn đơn giản với chất vải thấm hút mồ hôi tối đa.</p>
+								<p class="mb-4 text-muted">Áo thun trơn đơn giản với chất
+									vải thấm hút mồ hôi tối đa.</p>
 								<form action="#">
 									<div class="row">
 										<div class="col-sm-6 col-lg-12 detail-option mb-3">
@@ -989,9 +837,9 @@
 												<span>(*)</span>
 											</label> <input class="form-control detail-quantity" name="items"
 												type="number" value="1">
-												
+
 											<!-- Số lượng hàng có sẵn -->
-                                        <span class="available-stock">Số lượng còn lại: <strong>20</strong></span> 
+											<span class="available-stock">Số lượng còn lại: <strong>20</strong></span>
 										</div>
 									</div>
 									<ul class="list-inline">
@@ -1036,7 +884,6 @@
 				happen in your production code.</p>
 		</div>
 	</div>
-
 
 	<!--  Begin Footer -->
 	<%@ include file="/commons/web/footer.jsp"%>

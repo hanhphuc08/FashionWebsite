@@ -37,7 +37,7 @@
   <body>
       
 	<!--  Begin Header -->
-	<%@ include file="/commons/user/headerUser.jsp" %>;
+	<%@ include file="/commons/admin/header.jsp" %>;
 	<!-- End Header -->
 
      <!-- Hero Section-->
@@ -56,8 +56,8 @@
                 <div class="align-items-start col-lg-6 col-xl-5 ps-lg-5 mb-5 order-1 order-lg-2">
                     <div>
                         <ul class="breadcrumb justify-content-start">
-                            <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/user/home">Trang chủ</a></li>
-                            <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/user/categories">Toàn bộ sản phẩm</a></li>
+                            <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/admin/home">Trang chủ</a></li>
+                            <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/admin/categories">Toàn bộ sản phẩm</a></li>
                             <li class="breadcrumb-item active">Áo khoác</li>
                         </ul>
                         <h3 class="mb-4">Áo thun nam trơn</h3>
