@@ -56,7 +56,7 @@
 </head>
 <body>
 	<!--  Begin Header -->
-	<%@ include file="/commons/web/headerUser.jsp" %>;
+	<%@ include file="/commons/admin/header.jsp" %>;
 	<!-- End Header -->
 
 	<!-- Hero Section-->
@@ -64,7 +64,7 @@
 		<div class="container">
 			<!-- Breadcrumbs -->
 			<ol class="breadcrumb justify-content-center">
-				<li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+				<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/admin/home">Trang chủ</a></li>
 				<li class="breadcrumb-item active">Cửa hàng</li>
 			</ol>
 			<!-- Hero Content-->
@@ -119,13 +119,13 @@
 										alt="product" />
 									<div class="product-hover-overlay">
 										<a class="product-hover-overlay-link"
-											href="${pageContext.request.contextPath}/user/categoryDetail"></a>
+											href="${pageContext.request.contextPath}/admin/categoryDetail"></a>
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="#"><i class="fa fa-shopping-cart"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i class="fa-solid fa-pen-to-square"></i></a><a
 												class="btn btn-dark btn-buy"
-												href="${pageContext.request.contextPath}/user/categoryDetail"><i
+												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
 												class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block"
 												href="#" data-bs-toggle="modal"
@@ -138,7 +138,7 @@
 									<p class="text-muted text-sm mb-1">Áo thun</p>
 									<h3 class="h6 text-uppercase mb-1">
 										<a class="text-dark"
-											href="${pageContext.request.contextPath}/user/categoryDetail">Áo
+											href="${pageContext.request.contextPath}/admin/categoryDetail">Áo
 											thun trắng</a>
 									</h3>
 									<span class="text-muted">$40.00</span>
@@ -155,13 +155,13 @@
 										alt="product" />
 									<div class="product-hover-overlay">
 										<a class="product-hover-overlay-link"
-											href="${pageContext.request.contextPath}/user/categoryDetail"></a>
+											href="${pageContext.request.contextPath}/admin/categoryDetail"></a>
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="#"><i class="fa fa-shopping-cart"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i class="fa-solid fa-pen-to-square"></i></a><a
 												class="btn btn-dark btn-buy"
-												href="${pageContext.request.contextPath}/user/categoryDetail"><i
+												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
 												class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block"
 												href="#" data-bs-toggle="modal"
@@ -174,7 +174,7 @@
 									<p class="text-muted text-sm mb-1">Demin</p>
 									<h3 class="h6 text-uppercase mb-1">
 										<a class="text-dark"
-											href="${pageContext.request.contextPath}/user/categoryDetail">Black
+											href="${pageContext.request.contextPath}/admin/categoryDetail">Black
 											blouse</a>
 									</h3>
 									<span class="text-muted">$40.00</span>
@@ -192,13 +192,13 @@
 										alt="product" />
 									<div class="product-hover-overlay">
 										<a class="product-hover-overlay-link"
-											href="${pageContext.request.contextPath}/user/categoryDetail"></a>
+											href="${pageContext.request.contextPath}/admin/categoryDetail"></a>
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="#"><i class="fa fa-shopping-cart"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i class="fa-solid fa-pen-to-square"></i></a><a
 												class="btn btn-dark btn-buy"
-												href="${pageContext.request.contextPath}/user/categoryDetail"><i
+												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
 												class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block"
 												href="#" data-bs-toggle="modal"
@@ -211,7 +211,7 @@
 									<p class="text-muted text-sm mb-1">Accessories</p>
 									<h3 class="h6 text-uppercase mb-1">
 										<a class="text-dark"
-											href="${pageContext.request.contextPath}/user/categoryDetail">College
+											href="${pageContext.request.contextPath}/admin/categoryDetail">College
 											jacket</a>
 									</h3>
 									<span class="text-muted">$40.00</span>
@@ -228,13 +228,13 @@
 										alt="product" />
 									<div class="product-hover-overlay">
 										<a class="product-hover-overlay-link"
-											href="${pageContext.request.contextPath}/user/categoryDetail"></a>
+											href="${pageContext.request.contextPath}/admin/categoryDetail"></a>
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="#"><i class="fa fa-shopping-cart"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i class="fa-solid fa-pen-to-square"></i></a><a
 												class="btn btn-dark btn-buy"
-												href="${pageContext.request.contextPath}/user/categoryDetail"><i
+												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
 												class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block"
 												href="#" data-bs-toggle="modal"
@@ -247,7 +247,7 @@
 									<p class="text-muted text-sm mb-1">Denim</p>
 									<h3 class="h6 text-uppercase mb-1">
 										<a class="text-dark"
-											href="${pageContext.request.contextPath}/user/categoryDetail">Carrot-fit
+											href="${pageContext.request.contextPath}/admin/categoryDetail">Carrot-fit
 											jeans</a>
 									</h3>
 									<span class="text-muted">$40.00</span>
@@ -264,13 +264,13 @@
 										alt="product" />
 									<div class="product-hover-overlay">
 										<a class="product-hover-overlay-link"
-											href="${pageContext.request.contextPath}/user/categoryDetail"></a>
+											href="${pageContext.request.contextPath}/admin/categoryDetail"></a>
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="#"><i class="fa fa-shopping-cart"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i class="fa-solid fa-pen-to-square"></i></a><a
 												class="btn btn-dark btn-buy"
-												href="${pageContext.request.contextPath}/user/categoryDetail"><i
+												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
 												class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block"
 												href="#" data-bs-toggle="modal"
@@ -283,7 +283,7 @@
 									<p class="text-muted text-sm mb-1">Jackets</p>
 									<h3 class="h6 text-uppercase mb-1">
 										<a class="text-dark"
-											href="${pageContext.request.contextPath}/user/categoryDetail">Striped
+											href="${pageContext.request.contextPath}/admin/categoryDetail">Striped
 											T-Shirt</a>
 									</h3>
 									<span class="text-muted">$40.00</span>
@@ -300,13 +300,13 @@
 										alt="product" />
 									<div class="product-hover-overlay">
 										<a class="product-hover-overlay-link"
-											href="${pageContext.request.contextPath}/user/categoryDetail"></a>
+											href="${pageContext.request.contextPath}/admin/categoryDetail"></a>
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="#"><i class="fa fa-shopping-cart"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i class="fa-solid fa-pen-to-square"></i></a><a
 												class="btn btn-dark btn-buy"
-												href="${pageContext.request.contextPath}/user/categoryDetail"><i
+												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
 												class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block"
 												href="#" data-bs-toggle="modal"
@@ -319,7 +319,7 @@
 									<p class="text-muted text-sm mb-1">Shirts</p>
 									<h3 class="h6 text-uppercase mb-1">
 										<a class="text-dark"
-											href="${pageContext.request.contextPath}/user/categoryDetail">Short
+											href="${pageContext.request.contextPath}/admin/categoryDetail">Short
 											top</a>
 									</h3>
 									<span class="text-muted">$40.00</span>
@@ -337,13 +337,13 @@
 										alt="product" />
 									<div class="product-hover-overlay">
 										<a class="product-hover-overlay-link"
-											href="${pageContext.request.contextPath}/user/categoryDetail"></a>
+											href="${pageContext.request.contextPath}/admin/categoryDetail"></a>
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="#"><i class="fa fa-shopping-cart"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i class="fa-solid fa-pen-to-square"></i></a><a
 												class="btn btn-dark btn-buy"
-												href="${pageContext.request.contextPath}/user/categoryDetail"><i
+												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
 												class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block"
 												href="#" data-bs-toggle="modal"
@@ -356,7 +356,7 @@
 									<p class="text-muted text-sm mb-1">Sweaters</p>
 									<h3 class="h6 text-uppercase mb-1">
 										<a class="text-dark"
-											href="${pageContext.request.contextPath}/user/categoryDetail">Ethnic
+											href="${pageContext.request.contextPath}/admin/categoryDetail">Ethnic
 											Sweater</a>
 									</h3>
 									<span class="text-muted">$40.00</span>
@@ -373,13 +373,13 @@
 										alt="product" />
 									<div class="product-hover-overlay">
 										<a class="product-hover-overlay-link"
-											href="${pageContext.request.contextPath}/user/categoryDetail"></a>
+											href="${pageContext.request.contextPath}/admin/categoryDetail"></a>
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="#"><i class="fa fa-shopping-cart"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i class="fa-solid fa-pen-to-square"></i></a><a
 												class="btn btn-dark btn-buy"
-												href="${pageContext.request.contextPath}/user/categoryDetail"><i
+												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
 												class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block"
 												href="#" data-bs-toggle="modal"
@@ -392,7 +392,7 @@
 									<p class="text-muted text-sm mb-1">Coats</p>
 									<h3 class="h6 text-uppercase mb-1">
 										<a class="text-dark"
-											href="${pageContext.request.contextPath}/user/categoryDetail">Beige</a>
+											href="${pageContext.request.contextPath}/admin/categoryDetail">Beige</a>
 									</h3>
 									<span class="text-muted">$40.00</span>
 								</div>
@@ -408,13 +408,13 @@
 										alt="product" />
 									<div class="product-hover-overlay">
 										<a class="product-hover-overlay-link"
-											href="${pageContext.request.contextPath}/user/categoryDetail"></a>
+											href="${pageContext.request.contextPath}/admin/categoryDetail"></a>
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="#"><i class="fa fa-shopping-cart"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i class="fa-solid fa-pen-to-square"></i></a><a
 												class="btn btn-dark btn-buy"
-												href="${pageContext.request.contextPath}/user/categoryDetail"><i
+												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
 												class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block"
 												href="#" data-bs-toggle="modal"
@@ -427,7 +427,7 @@
 									<p class="text-muted text-sm mb-1">T-Shirts</p>
 									<h3 class="h6 text-uppercase mb-1">
 										<a class="text-dark"
-											href="${pageContext.request.contextPath}/user/categoryDetail">Skull
+											href="${pageContext.request.contextPath}/admin/categoryDetail">Skull
 											Tee</a>
 									</h3>
 									<span class="text-muted">$40.00</span>
@@ -444,13 +444,13 @@
 										alt="product" />
 									<div class="product-hover-overlay">
 										<a class="product-hover-overlay-link"
-											href="${pageContext.request.contextPath}/user/categoryDetail"></a>
+											href="${pageContext.request.contextPath}/admin/categoryDetail"></a>
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="#"><i class="fa fa-shopping-cart"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i class="fa-solid fa-pen-to-square"></i></a><a
 												class="btn btn-dark btn-buy"
-												href="${pageContext.request.contextPath}/user/categoryDetail"><i
+												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
 												class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block"
 												href="#" data-bs-toggle="modal"
@@ -463,7 +463,7 @@
 									<p class="text-muted text-sm mb-1">Denim</p>
 									<h3 class="h6 text-uppercase mb-1">
 										<a class="text-dark"
-											href="${pageContext.request.contextPath}/user/categoryDetail">Trucker
+											href="${pageContext.request.contextPath}/admin/categoryDetail">Trucker
 											jacket</a>
 									</h3>
 									<span class="text-muted">$40.00</span>
@@ -480,13 +480,13 @@
 										alt="product" />
 									<div class="product-hover-overlay">
 										<a class="product-hover-overlay-link"
-											href="${pageContext.request.contextPath}/user/categoryDetail"></a>
+											href="${pageContext.request.contextPath}/admin/categoryDetail"></a>
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="#"><i class="fa fa-shopping-cart"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i class="fa-solid fa-pen-to-square"></i></a><a
 												class="btn btn-dark btn-buy"
-												href="${pageContext.request.contextPath}/user/categoryDetail"><i
+												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
 												class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block"
 												href="#" data-bs-toggle="modal"
@@ -499,7 +499,7 @@
 									<p class="text-muted text-sm mb-1">Denim</p>
 									<h3 class="h6 text-uppercase mb-1">
 										<a class="text-dark"
-											href="${pageContext.request.contextPath}/user/categoryDetail">Blouse</a>
+											href="${pageContext.request.contextPath}/admin/categoryDetail">Blouse</a>
 									</h3>
 									<span class="text-muted">$40.00</span>
 								</div>
@@ -515,13 +515,13 @@
 										alt="product" />
 									<div class="product-hover-overlay">
 										<a class="product-hover-overlay-link"
-											href="${pageContext.request.contextPath}/user/categoryDetail"></a>
+											href="${pageContext.request.contextPath}/admin/categoryDetail"></a>
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="#"><i class="fa fa-shopping-cart"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i class="fa-solid fa-pen-to-square"></i></a><a
 												class="btn btn-dark btn-buy"
-												href="${pageContext.request.contextPath}/user/categoryDetail"><i
+												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
 												class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block"
 												href="#" data-bs-toggle="modal"
@@ -534,7 +534,7 @@
 									<p class="text-muted text-sm mb-1">Denim</p>
 									<h3 class="h6 text-uppercase mb-1">
 										<a class="text-dark"
-											href="${pageContext.request.contextPath}/user/categoryDetail">Shirt</a>
+											href="${pageContext.request.contextPath}/admin/categoryDetail">Shirt</a>
 									</h3>
 									<span class="text-muted">$40.00</span>
 								</div>

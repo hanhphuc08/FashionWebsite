@@ -59,7 +59,8 @@
     <script src="${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/js/theme.30e7c8f9.js"></script>
     <script src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/jquery.cookie/jquery.cookie.js"> </script>
     <script src="${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/js/demo.9833433a.js"></script>
-<%@ include file="/commons/admin/header.jsp" %>;
+    
+	<%@ include file="/commons/admin/header.jsp" %>;
 
     <div class="container-fluid">
 
@@ -522,7 +523,7 @@
                 <div class="row">
                     <div class="col-xxl-6 d-flex">
 
-                        <!-- Card -->
+                       <!-- Card -->
                         <div class="card border-0 flex-fill w-100">
                             <div class="card-header border-0 card-header-space-between">
 
@@ -1115,7 +1116,9 @@
                 </div> <!-- / .row -->
             </div> <!-- / .container-fluid -->
                 </body>
+                
                 <script src="${pageContext.request.contextPath}/Template/assets/js/theme.bundle.js"></script>
                 <link rel="stylesheet" href="${pageContext.request.contextPath}/Template/assets/css/theme.bundle.css" id="stylesheetLTR">
             <link rel="stylesheet" href="${pageContext.request.contextPath}/Template/assets/css/theme.rtl.bundle.css" id="stylesheetRTL">
-            <%@ include file="/commons/admin/footer.jsp" %>;
+            
+            <%@ include file="/commons/admin/footer.jsp" %>

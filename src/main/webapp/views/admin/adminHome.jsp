@@ -34,7 +34,7 @@
   </head>
   <body>
     
-    <header class="header">
+   
       <!-- Top Bar-->
       <div class="top-bar">
         <div class="container-fluid">
@@ -43,7 +43,7 @@
               <ul class="list-inline topbar-text mb-0">
                 <li class="list-inline-item pe-3 me-0">
                   <svg class="svg-icon me-2">
-                    <use xlink:href="#calls-1"> </use>
+         <header class="header">            <use xlink:href="#calls-1"> </use>
                   </svg>0362 980 918
                 </li>
                 <li class="list-inline-item px-3 border-start d-none d-lg-inline-block">Miễn phí vận chuyển cho đơn hàng từ $300</li>
@@ -77,7 +77,7 @@
                <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/home">Trang chủ</a>
               </li>
               
-              <li class="nav-item"><a class="nav-link" href="#">Thương hiệu</a>
+              <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/statistic">Quản lý</a>
               </li>
                
                <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/categories">Sản phẩm</a>
@@ -99,49 +99,6 @@
               </div>
               
               <!-- Cart Dropdown-->
-              <div class="nav-item dropdown"><a class="navbar-icon-link d-lg-none" href="cart.html"> 
-                  <svg class="svg-icon">
-                    <use xlink:href="#cart-1"> </use>
-                  </svg><span class="text-sm ms-2 ms-lg-0 text-uppercase text-sm fw-bold d-none d-sm-inline d-lg-none">giỏ hàng</span></a>
-                  <div class="d-none d-lg-block"><a class="navbar-icon-link" id="cartdetails" href="cart" data-bs-target="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <svg class="svg-icon">
-                      <use xlink:href="#cart-1"> </use>
-                    </svg>
-                    <div class="navbar-icon-link-badge">3                         </div></a>
-                  <div class="dropdown-menu dropdown-menu-animated dropdown-menu-end p-4" aria-labelledby="cartdetails">
-                    <div class="navbar-cart-product-wrapper">
-                      <!-- cart item-->
-                      <div class="navbar-cart-product"> 
-                        <div class="d-flex align-items-center"><a href="detail.html"><img class="img-fluid navbar-cart-product-image" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/product-square-ian-dooley-347968-unsplash.jpg" alt="..."></a>
-                          <div class="w-100"><a class="navbar-cart-product-close" href="#"><i class="fa fa-times">                                                   </i></a>
-                            <div class="ps-3"> <a class="navbar-cart-product-link" href="detail.html">Skull Tee</a><small class="d-block text-muted">Quantity: 1 </small><strong class="d-block text-sm">$75.00 </strong></div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- cart item-->
-                      <div class="navbar-cart-product"> 
-                        <div class="d-flex align-items-center"><a href="detail.html"><img class="img-fluid navbar-cart-product-image" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/product-square-kyle-loftus-596319-unsplash.jpg" alt="..."></a>
-                          <div class="w-100"><a class="navbar-cart-product-close" href="#"><i class="fa fa-times">                                                   </i></a>
-                            <div class="ps-3"> <a class="navbar-cart-product-link" href="detail.html">Transparent Blouse</a><small class="d-block text-muted">Quantity: 1 </small><strong class="d-block text-sm">$75.00 </strong></div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- cart item-->
-                      <div class="navbar-cart-product"> 
-                        <div class="d-flex align-items-center"><a href="detail.html"><img class="img-fluid navbar-cart-product-image" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/product-square-serrah-galos-494312-unsplash.jpg" alt="..."></a>
-                          <div class="w-100"><a class="navbar-cart-product-close" href="#"><i class="fa fa-times">                                                   </i></a>
-                          <div class="ps-3"> <a class="navbar-cart-product-link" href="detail.html">White Tee</a><small class="d-block text-muted">Quantity: 1 </small><strong class="d-block text-sm">$75.00 </strong></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- total price-->
-                    <div class="navbar-cart-total"><span class="text-uppercase text-muted">Tổng tiển</span><strong class="text-uppercase">$75.00</strong></div>
-                    <!-- buttons-->
-                    <div class="d-flex justify-content-between"><a class="btn btn-link text-dark me-3" href="cart">giỏ hàng<i class="fa-arrow-right fa"></i></a><a class="btn btn-outline-dark" href="checkout1.html">Thanh toán</a></div>
-                  </div>
-                </div>
-              </div>
 
               <!-- User Not Logged - link to login page-->
               <div class="nav-item dropdown"><a class="navbar-icon-link" id="userdetails" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -184,7 +141,7 @@
 	<%@ include file="/commons/admin/brands.jsp" %>;
 	<!-- End Brands -->
      <!--  Begin Footer -->
-	<%@ include file="/commons/admin/footer.jsp" %>;
+	<%@ include file="/commons/admin/footer.jsp" %>
 	<!-- End Footer -->
     <!-- JavaScript files-->
     <script>

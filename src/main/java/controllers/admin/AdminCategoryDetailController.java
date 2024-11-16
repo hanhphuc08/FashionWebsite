@@ -8,8 +8,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = { "/admin/home" })
-public class HomeController extends HttpServlet {
+@WebServlet(urlPatterns = { "/admin/categoryDetail" })
+public class AdminCategoryDetailController extends HttpServlet {
 
 	/**
 	 * 
@@ -18,7 +18,7 @@ public class HomeController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/views/admin/home.jsp").forward(req, resp);
+		req.getRequestDispatcher("/views/admin/adminCategoryDetail.jsp").forward(req, resp);
 	}
 	
 }

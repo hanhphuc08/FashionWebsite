@@ -13,7 +13,7 @@
                 <h5 class="text-uppercase text-white fw-light mb-4 letter-spacing-5"> Just arrived</h5>
                 <h1 class="mb-5 display-2 fw-bold text-serif">Denim Jackets</h1>
                 <p class="lead mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <p> <a class="btn btn-light" href="category.html">View collection</a></p>
+                <p> <a class="btn btn-light" href="${pageContext.request.contextPath}/categories">View collection</a></p>
               </div>
             </div>
           </div>
