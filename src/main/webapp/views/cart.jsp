@@ -78,8 +78,8 @@
                   <div class="cart-item">
                     <div class="row d-flex align-items-center text-center">
                       <div class="col-5">
-                        <div class="d-flex align-items-center"><a href="detail.html"><img class="cart-item-img" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/product-square-ian-dooley-347968-unsplash.jpg" alt="..."></a>
-                          <div class="cart-title text-start"><a class="text-uppercase text-dark" href="detail.html"><strong>Skull Tee</strong></a><br><span class="text-muted text-sm">Size: Large</span><br><span class="text-muted text-sm">Colour: Green</span>
+                        <div class="d-flex align-items-center"><a href="${pageContext.request.contextPath}/categoryDetail"><img class="cart-item-img" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/product-square-ian-dooley-347968-unsplash.jpg" alt="..."></a>
+                          <div class="cart-title text-start"><a class="text-uppercase text-dark" href="${pageContext.request.contextPath}/categoryDetail"><strong>Skull Tee</strong></a><br><span class="text-muted text-sm">Size: Large</span><br><span class="text-muted text-sm">Colour: Green</span>
                           </div>
                         </div>
                       </div>
@@ -99,8 +99,8 @@
                   <div class="cart-item">
                     <div class="row d-flex align-items-center text-center">
                       <div class="col-5">
-                        <div class="d-flex align-items-center"><a href="detail.html"><img class="cart-item-img" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/product-square-kyle-loftus-596319-unsplash.jpg" alt="..."></a>
-                          <div class="cart-title text-start"><a class="text-uppercase text-dark" href="detail.html"><strong>Transparent Blouse</strong></a><br><span class="text-muted text-sm">Size: Medium</span>
+                        <div class="d-flex align-items-center"><a href="${pageContext.request.contextPath}/categoryDetail"><img class="cart-item-img" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/product-square-kyle-loftus-596319-unsplash.jpg" alt="..."></a>
+                          <div class="cart-title text-start"><a class="text-uppercase text-dark" href="${pageContext.request.contextPath}/categoryDetail"><strong>Transparent Blouse</strong></a><br><span class="text-muted text-sm">Size: Medium</span>
                           </div>
                         </div>
                       </div>
@@ -120,8 +120,8 @@
                   <div class="cart-item">
                     <div class="row d-flex align-items-center text-center">
                       <div class="col-5">
-                        <div class="d-flex align-items-center"><a href="detail.html"><img class="cart-item-img" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/product-square-serrah-galos-494312-unsplash.jpg" alt="..."></a>
-                          <div class="cart-title text-start"><a class="text-uppercase text-dark" href="detail.html"><strong>White Tee</strong></a><br><span class="text-muted text-sm">Size: Medium</span>
+                        <div class="d-flex align-items-center"><a href="${pageContext.request.contextPath}/categoryDetail"><img class="cart-item-img" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/product-square-serrah-galos-494312-unsplash.jpg" alt="..."></a>
+                          <div class="cart-title text-start"><a class="text-uppercase text-dark" href="${pageContext.request.contextPath}/categoryDetail"><strong>White Tee</strong></a><br><span class="text-muted text-sm">Size: Medium</span>
                           </div>
                         </div>
                       </div>
@@ -140,7 +140,7 @@
                 </div>
               </div>
             </div>
-            <div class="my-5 d-flex justify-content-between flex-column flex-lg-row"><a class="btn btn-link text-muted" href="category.html"><i class="fa fa-chevron-left"></i>Tiếp tục mua sắm</a><a class="btn btn-dark" href="checkout1.html">Tiến hành thanh toán<i class="fa fa-chevron-right"></i>                                                     </a></div>
+            <div class="my-5 d-flex justify-content-between flex-column flex-lg-row"><a class="btn btn-link text-muted" href="${pageContext.request.contextPath}/categories"><i class="fa fa-chevron-left"></i>Tiếp tục mua sắm</a><a class="btn btn-dark" href="login">Tiến hành thanh toán<i class="fa fa-chevron-right"></i>                                                     </a></div>
           </div>
           <div class="col-lg-4">
             <div class="block mb-5">
@@ -163,7 +163,7 @@
     </section>
 
 	<!--  Begin Footer -->
-	<%@ include file="/commons/web/footer.jsp"%>;
+	<%@ include file="/commons/web/footer.jsp"%>
 	<!-- End Footer -->
 
 	<!-- JavaScript files-->

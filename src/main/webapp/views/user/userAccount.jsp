@@ -45,7 +45,7 @@
       <div class="container">
         <!-- Breadcrumbs -->
         <ol class="breadcrumb justify-content-center">
-          <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+          <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/user/home">Trang chủ</a></li>
           <li class="breadcrumb-item active">Hồ sơ của tôi</li>
         </ol>
         <!-- Hero Content-->
@@ -172,7 +172,7 @@
       </div>
     </section>
  <!--  Begin Footer -->
-	<%@ include file="/commons/web/footer.jsp" %>;
+	<%@ include file="/commons/web/footer.jsp" %>
 	<!-- End Footer -->
     
     <div id="scrollTop"><i class="fa fa-long-arrow-alt-up"></i></div>

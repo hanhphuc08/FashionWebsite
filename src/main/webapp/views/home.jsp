@@ -43,7 +43,7 @@
 	<%@ include file="/commons/web/brands.jsp" %>;
 	<!-- End Brands -->
      <!--  Begin Footer -->
-	<%@ include file="/commons/web/footer.jsp" %>;
+	<%@ include file="/commons/web/footer.jsp" %>
 	<!-- End Footer -->
     <!-- JavaScript files-->
     <script>

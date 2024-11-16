@@ -90,12 +90,12 @@
 							Hiển thị <strong>1-12 </strong>trong <strong>158 </strong>sản
 							phẩm
 						</div>
-						<div class="me-3 mb-3">
+						<!--  <div class="me-3 mb-3">
 							<span class="me-2">Hiển thị</span><a
 								class="product-grid-header-show active" href="#">12 </a><a
 								class="product-grid-header-show " href="#">24 </a><a
 								class="product-grid-header-show " href="#">Toàn bộ </a>
-						</div>
+						</div>  -->
 						<div class="mb-3 d-flex align-items-center">
 							<span class="d-inline-block me-2">Sắp xếp theo </span> <select
 								class="form-select w-auto border-0">

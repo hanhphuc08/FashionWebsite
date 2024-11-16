@@ -44,7 +44,7 @@
       <div class="container">
         <!-- Breadcrumbs -->
         <ol class="breadcrumb justify-content-center">
-          <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+          <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/user/home">Trang chủ</a></li>
           <li class="breadcrumb-item active">Địa chỉ giao hàng</li>
         </ol>
         <!-- Hero Content-->

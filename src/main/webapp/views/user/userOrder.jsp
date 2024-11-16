@@ -75,8 +75,8 @@
                   <div class="cart-item">
                     <div class="row d-flex align-items-center text-center">
                       <div class="col-6">
-                        <div class="d-flex align-items-center"><a href="detail.html"><img class="cart-item-img" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/product-square-ian-dooley-347968-unsplash.jpg" alt="..."></a>
-                          <div class="cart-title text-start"><a class="text-uppercase text-dark" href="detail.html"><strong>Skull Tee</strong></a><br><span class="text-muted text-sm">Size: Large</span><br><span class="text-muted text-sm">Colour: Green</span>
+                        <div class="d-flex align-items-center"><a href="${pageContext.request.contextPath}/user/categoryDetail"><img class="cart-item-img" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/product-square-ian-dooley-347968-unsplash.jpg" alt="..."></a>
+                          <div class="cart-title text-start"><a class="text-uppercase text-dark" href="${pageContext.request.contextPath}/user/categoryDetail"><strong>Skull Tee</strong></a><br><span class="text-muted text-sm">Size: Large</span><br><span class="text-muted text-sm">Colour: Green</span>
                           </div>
                         </div>
                       </div>
@@ -90,8 +90,8 @@
                   <div class="cart-item">
                     <div class="row d-flex align-items-center text-center">
                       <div class="col-6">
-                        <div class="d-flex align-items-center"><a href="detail.html"><img class="cart-item-img" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/product-square-kyle-loftus-596319-unsplash.jpg" alt="..."></a>
-                          <div class="cart-title text-start"><a class="text-uppercase text-dark" href="detail.html"><strong>Transparent Blouse</strong></a><br><span class="text-muted text-sm">Size: Medium</span>
+                        <div class="d-flex align-items-center"><a href="${pageContext.request.contextPath}/user/categoryDetail"><img class="cart-item-img" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/product-square-kyle-loftus-596319-unsplash.jpg" alt="..."></a>
+                          <div class="cart-title text-start"><a class="text-uppercase text-dark" href="${pageContext.request.contextPath}/user/categoryDetail"><strong>Transparent Blouse</strong></a><br><span class="text-muted text-sm">Size: Medium</span>
                           </div>
                         </div>
                       </div>
@@ -105,8 +105,8 @@
                   <div class="cart-item">
                     <div class="row d-flex align-items-center text-center">
                       <div class="col-6">
-                        <div class="d-flex align-items-center"><a href="detail.html"><img class="cart-item-img" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/product-square-serrah-galos-494312-unsplash.jpg" alt="..."></a>
-                          <div class="cart-title text-start"><a class="text-uppercase text-dark" href="detail.html"><strong>White Tee</strong></a><br><span class="text-muted text-sm">Size: Medium</span>
+                        <div class="d-flex align-items-center"><a href="${pageContext.request.contextPath}/user/categoryDetail"><img class="cart-item-img" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/product-square-serrah-galos-494312-unsplash.jpg" alt="..."></a>
+                          <div class="cart-title text-start"><a class="text-uppercase text-dark" href="${pageContext.request.contextPath}/user/categoryDetail"><strong>White Tee</strong></a><br><span class="text-muted text-sm">Size: Medium</span>
                           </div>
                         </div>
                       </div>

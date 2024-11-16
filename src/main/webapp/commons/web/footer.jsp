@@ -12,8 +12,8 @@
                 <use xlink:href="#delivery-time-1"> </use>
               </svg>
               <div class="service-text">
-                <h6 class="text-uppercase">Free shipping &amp; return</h6>
-                <p class="text-muted fw-light text-sm mb-0">Free Shipping over $300</p>
+                <h6 class="text-uppercase">Miễn phí vận chuyển &amp; hoàn trả</h6>
+                <p class="text-muted fw-light text-sm mb-0">Miễn phí vận chuyển cho đơn hàng từ 500.000 VNĐ</p>
               </div>
             </div>
             <div class="col-lg-4 service-column">
@@ -21,8 +21,8 @@
                 <use xlink:href="#money-1"> </use>
               </svg>
               <div class="service-text">
-                <h6 class="text-uppercase">Money back guarantee</h6>
-                <p class="text-muted fw-light text-sm mb-0">30 Days Money Back Guarantee</p>
+                <h6 class="text-uppercase">Chính sách hoàn tiền</h6>
+                <p class="text-muted fw-light text-sm mb-0">Đảm bảo hoàn trả tiền trong vòng 30 ngày</p>
               </div>
             </div>
             <div class="col-lg-4 service-column">
@@ -30,8 +30,8 @@
                 <use xlink:href="#customer-support-1"> </use>
               </svg>
               <div class="service-text">
-                <h6 class="text-uppercase">020-800-456-747</h6>
-                <p class="text-muted fw-light text-sm mb-0">24/7 Available Support</p>
+                <h6 class="text-uppercase">0362-980-918</h6>
+                <p class="text-muted fw-light text-sm mb-0">Luôn sẵn sàng hô trợ 24/7</p>
               </div>
             </div>
           </div>
@@ -42,8 +42,8 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-4 mb-5 mb-lg-0">
-              <div class="fw-bold text-uppercase text-lg text-dark mb-3">P2TS<span class="text-dark">.</span></div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+              <div class="fw-bold text-uppercase text-lg text-dark mb-3">P2TS Shop<span class="text-dark">.</span></div>
+              <p>Mang đến trải nghiệm mua sắm tuyệt vời nhất.</p>
               <ul class="list-inline">
                 <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="twitter"><i class="fab fa-twitter"></i></a></li>
                 <li class="list-inline-item"><a class="text-muted text-primary-hover" href="#" target="_blank" title="facebook"><i class="fab fa-facebook"></i></a></li>
@@ -53,23 +53,19 @@
               </ul>
             </div>
             <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
-              <h6 class="text-uppercase text-dark mb-3">Shop</h6>
+              <h6 class="text-uppercase text-dark mb-3">Về P2TS</h6>
               <ul class="list-unstyled">
-                <li> <a class="text-muted" href="#">For Women</a></li>
-                <li> <a class="text-muted" href="#">For Men</a></li>
-                <li> <a class="text-muted" href="#">Stores</a></li>
-                <li> <a class="text-muted" href="#">Our Blog</a></li>
-                <li> <a class="text-muted" href="#">Shop</a></li>
+                <li> <a class="text-muted" href="#">Giới thiệu</a></li>
+                <li> <a class="text-muted" href="#">Điều khoản mua bán</a></li>
+                <li> <a class="text-muted" href="#">Chăm sóc khách hàng</a></li>
+                <li> <a class="text-muted" href="#">Quy chế hoạt động</a></li>
               </ul>
             </div>
             <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
-              <h6 class="text-uppercase text-dark mb-3">Company</h6>
+              <h6 class="text-uppercase text-dark mb-3">Shop</h6>
               <ul class="list-unstyled">
-                <li> <a class="text-muted" href="#">Login                    </a></li>
-                <li> <a class="text-muted" href="#">Register                    </a></li>
-                <li> <a class="text-muted" href="#">Wishlist                    </a></li>
-                <li> <a class="text-muted" href="#">Our Products                    </a></li>
-                <li> <a class="text-muted" href="#">Checkouts                    </a></li>
+                <li> <a class="text-muted" href="login">Sản phẩm của chúng tôi</a></li>
+                <li> <a class="text-muted" href="#">FAQ</a></li>
               </ul>
             </div>
             <div class="col-lg-4">
@@ -77,7 +73,7 @@
               <p class="mb-3"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. At itaque temporibus.</p>
               <form action="#" id="newsletter-form">
                 <div class="input-group mb-3">
-                  <input class="form-control bg-transparent border-secondary border-end-0" type="email" placeholder="Your Email Address" aria-label="Your Email Address">
+                  <input class="form-control bg-transparent border-secondary border-end-0" type="email" placeholder="Nhập Email của bạn" aria-label="Your Email Address">
                   <div class="input-group-append">
                     <button class="btn btn-outline-secondary border-start-0" type="submit"> <i class="fa fa-paper-plane text-lg text-dark"></i></button>
                   </div>
@@ -92,7 +88,7 @@
         <div class="container">
           <div class="row align-items-center">
             <div class="col-md-6 text-center text-md-start">
-              <p class="mb-md-0">&copy; 2020 Your company.  All rights reserved.</p>
+              <p class="mb-md-0">&copy; 2024 - CÔNG TY TNHH P2TS VN</p>
             </div>
             <div class="col-md-6">
               <ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-md-end">

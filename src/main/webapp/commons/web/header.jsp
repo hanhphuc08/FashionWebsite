@@ -13,9 +13,9 @@
                 <li class="list-inline-item pe-3 me-0">
                   <svg class="svg-icon me-2">
                     <use xlink:href="#calls-1"> </use>
-                  </svg>0362 980 918
+                  </svg>0362-980-918
                 </li>
-                <li class="list-inline-item px-3 border-start d-none d-lg-inline-block">Miễn phí vận chuyển cho đơn hàng từ $300</li>
+                <li class="list-inline-item px-3 border-start d-none d-lg-inline-block">Miễn phí vận chuyển cho đơn hàng từ 500.000 VNĐ</li>
               </ul>
             </div>
             <div class="col-sm-5 d-flex justify-content-end">
