@@ -88,41 +88,34 @@
             <header class="product-grid-header">
               <div class="me-3 mb-3">
                  Hiển thị <strong>1-12 </strong>trong <strong>158 </strong>sản phẩm</div>
-<<<<<<< HEAD
-             
-              <div class="mb-3 d-flex align-items-center"><span class="d-inline-block me-2">Sắp xếp theo </span>
-                <select class="form-select w-auto border-0">
-                  <option value="orderby_0">Toàn bộ</option>
-                  <option value="orderby_1">Hàng mới về</option>
-                  <option value="orderby_2">Nổi bật</option>
-                  <option value="orderby_3">Từ cao đến thấp</option>
-                  <option value="orderby_3">Từ thấp đến cao</option>
-                  <option value="orderby_3">Đang giảm giá</option>
-                </select>
-=======
-						<div class="me-3 mb-3">
-							<span class="me-2">Hiển thị</span><a
-								class="product-grid-header-show active" href="#">12 </a><a
-								class="product-grid-header-show " href="#">24 </a><a
-								class="product-grid-header-show " href="#">Toàn bộ </a>
-						</div>
+
 						<div class="mb-3 d-flex align-items-center">
-              	<span class="d-inline-block me-2">Sắp xếp theo </span>
-              	<form action="${pageContext.request.contextPath}/categories" method ="GET">
-              		<input type="hidden" name="typeCategoryCode" value="${not empty typeCategoryCode ? typeCategoryCode : ''}" />
-              		<input type="hidden" name="categoryCode" value="${not empty categoryCode ? categoryCode : ''}" />
-                	<select class="form-select w-auto border-0" name = "orderby" onchange = "this.form.submit()">
-                  		<option value="0" ${orderby == 0 ? 'select' : ''}>Toàn bộ</option>
-                  		<option value="1" ${orderby == 1 ? 'select' : ''}>Hàng mới về</option>
-                  		<option value="2" ${orderby == 2 ? 'select' : ''}>Từ cao đến thấp</option>
-                  		<option value="3" ${orderby == 3 ? 'select' : ''}>Từ thấp đến cao</option>
-                	</select>
-                	<input type = "hidden" name = "page" value="${currentPage }"/>
-                </form>
->>>>>>> 39361749a8b61421885330aa72cef80088a1acc0
-              </div>
-            </header>
+							<span class="d-inline-block me-2">Sắp xếp theo </span>
+							<form action="${pageContext.request.contextPath}/categories"
+								method="GET">
+								<input type="hidden" name="typeCategoryCode"
+									value="${not empty typeCategoryCode ? typeCategoryCode : ''}" />
+								<input type="hidden" name="categoryCode"
+									value="${not empty categoryCode ? categoryCode : ''}" /> <select
+									class="form-select w-auto border-0" name="orderby"
+									onchange="this.form.submit()">
+									<option value="0" ${orderby == 0 ? 'select' : ''}>Toàn bộ</option>
+									<option value="1" ${orderby == 1 ? 'select' : ''}>Hàng mới về</option>
+									<option value="2" ${orderby == 2 ? 'select' : ''}>Từ cao đến thấp</option>
+									<option value="3" ${orderby == 3 ? 'select' : ''}>Từ thấp đến cao</option>
+								</select> <input type="hidden" name="page" value="${currentPage }" />
+							</form>
+
+						</div>
+					</header>
             <div class="row">
+            	<c:choose>
+            		<c:when test="${empty listP}">
+						<div class="col-12 text-center">
+							<p class="text-muted">Hiện chưa có sản phẩm này.</p>
+						</div>
+					</c:when>
+            	</c:choose>
             	<c:forEach items="${listP}" var= "o">	
               <!-- product-->
               <div class="col-xl-3 col-lg-4 col-sm-6">
@@ -218,56 +211,8 @@
 							</div>
 						</div>
 					</div>
-					<div class="sidebar-block px-3 px-lg-0"><a class="d-lg-none block-toggler" data-bs-toggle="collapse" href="#priceFilterMenu" aria-expanded="false" aria-controls="priceFilterMenu">Filter by price</a>
-              <div class="expand-lg collapse" id="priceFilterMenu">
-                <h6 class="sidebar-heading d-none d-lg-block">Giá </h6>
-                <div class="mt-4 mt-lg-0" id="slider-snap"> </div>
-                <div class="nouislider-values">
-                  <div class="min">Từ <span id="slider-snap-value-lower"></span></div>
-                  <div class="max">Đến <span id="slider-snap-value-upper"></span></div>
-                  <input class="slider-snap-input" type="hidden" name="pricefrom" id="slider-snap-input-lower" value="40">
-                  <input class="slider-snap-input" type="hidden" name="priceto" id="slider-snap-input-upper" value="110">
-                </div>
-              </div>
-            </div>
-            <div class="sidebar-block px-3 px-lg-0"><a class="d-lg-none block-toggler" data-bs-toggle="collapse" href="#brandFilterMenu" aria-expanded="true" aria-controls="brandFilterMenu">Filter by brand</a>
-              <!-- Brand filter menu - this menu has .show class, so is expanded by default-->
-              <div class="expand-lg collapse show" id="brandFilterMenu">
-                <h6 class="sidebar-heading d-none d-lg-block">Thương hiệu </h6>
-                <form class="mt-4 mt-lg-0" action="#"> 
-                  <div class="mb-1">
-                    <div class="form-check">
-                      <input class="form-check-input" id="brand0" type="checkbox" name="clothes-brand" checked>
-                      <label class="form-check-label" for="brand0">Calvin Klein <small>(18)</small></label>
-                    </div>
-                  </div>
-                  <div class="mb-1">
-                    <div class="form-check">
-                      <input class="form-check-input" id="brand1" type="checkbox" name="clothes-brand" checked>
-                      <label class="form-check-label" for="brand1">Levi Strauss <small>(30)</small></label>
-                    </div>
-                  </div>
-                  <div class="mb-1">
-                    <div class="form-check">
-                      <input class="form-check-input" id="brand2" type="checkbox" name="clothes-brand">
-                      <label class="form-check-label" for="brand2">Hugo Boss <small>(120)</small></label>
-                    </div>
-                  </div>
-                  <div class="mb-1">
-                    <div class="form-check">
-                      <input class="form-check-input" id="brand3" type="checkbox" name="clothes-brand">
-                      <label class="form-check-label" for="brand3">Tomi Hilfiger <small>(70)</small></label>
-                    </div>
-                  </div>
-                  <div class="mb-1">
-                    <div class="form-check">
-                      <input class="form-check-input" id="brand4" type="checkbox" name="clothes-brand">
-                      <label class="form-check-label" for="brand4">Tom Ford  <small>(110)</small></label>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
+				
+          
             <div class="sidebar-block px-3 px-lg-0"> <a class="d-lg-none block-toggler" data-bs-toggle="collapse" href="#sizeFilterMenu" aria-expanded="false" aria-controls="sizeFilterMenu">Filter by size</a>
               <!-- Size filter menu-->
               <div class="expand-lg collapse" id="sizeFilterMenu"> 

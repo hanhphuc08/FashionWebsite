@@ -123,23 +123,47 @@
       <!-- /Navbar -->
       <!-- Fullscreen search area-->
       <div class="search-area-wrapper">
-        <div class="search-area d-flex align-items-center justify-content-center">
-          <div class="close-btn">
+    <div class="search-area d-flex align-items-center justify-content-center">
+        <div class="close-btn">
             <svg class="svg-icon svg-icon-light w-3rem h-3rem">
-              <use xlink:href="#close-1"> </use>
+                <use xlink:href="#close-1"> </use>
             </svg>
-          </div>
-          <form class="search-area-form" action="#">
-            <div class="mb-4 position-relative">
-              <input class="search-area-input" type="search" name="search" id="search" placeholder="What are you looking for?">
-              <button class="search-area-button" type="submit">
-                <svg class="svg-icon">
-                  <use xlink:href="#search-1"> </use>
-                </svg>
-              </button>
-            </div>
-          </form>
         </div>
-      </div>
+        <form class="search-area-form" action="${pageContext.request.contextPath}/categories" method="GET" onsubmit="return cleanForm();">
+            <div class="mb-4 position-relative">
+                <input class="search-area-input" 
+                       type="search" 
+                       name="searchQuery" 
+                       id="search" 
+                       placeholder="What are you looking for?" 
+                       value="${not empty searchQuery ? searchQuery : ''}">
+                <button class="search-area-button" type="submit">
+                    <svg class="svg-icon">
+                        <use xlink:href="#search-1"> </use>
+                    </svg>
+                </button>
+            </div>
+            <!-- Hidden inputs -->
+            <input type="hidden" name="typeCategoryCode" value="${not empty typeCategoryCode ? typeCategoryCode : ''}" />
+            <input type="hidden" name="categoryCode" value="${not empty categoryCode ? categoryCode : ''}" />
+            <input type="hidden" name="page" value="${currentPage}" />
+            <input type="hidden" name="orderby" value="${orderby}" />
+        </form>
+    </div>
+</div>
       <!-- /Fullscreen search area-->
+      
+      <script>
+    // Hàm JavaScript để loại bỏ các input rỗng trước khi gửi form
+    function cleanForm() {
+        const form = document.querySelector('.search-area-form');
+        const inputs = form.querySelectorAll('input[type="hidden"]');
+        inputs.forEach(input => {
+            if (!input.value) {
+                input.parentNode.removeChild(input); // Loại bỏ các input rỗng
+            }
+        });
+        return true; // Tiếp tục gửi form
+    }
+</script>
     </header>

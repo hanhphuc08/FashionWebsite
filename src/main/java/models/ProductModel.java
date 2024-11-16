@@ -2,6 +2,7 @@ package models;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class ProductModel implements Serializable {
 
@@ -22,9 +23,26 @@ public class ProductModel implements Serializable {
     private Date updateDate;
     
     private String categoryName;
+    
+    private List<String> sizes;
 
-   
+    public List<String> getSizes() {
+        return sizes;
+    }
 
+    public void setSizes(List<String> sizes) {
+        this.sizes = sizes;
+    }
+
+    private List<ProductSizeModel> productSizes;
+    
+	public List<ProductSizeModel> getProductSizes() {
+		return productSizes;
+	}
+	public void setProductSizes(List<ProductSizeModel> productSizes) {
+		this.productSizes = productSizes;
+	}
+	
 	public ProductModel(String productCode, String productName, String description, double price, String categoryCode,
 			String typeCategoryCode, String brand, String color, String image, String moreImage, String status,
 			Date createDate, Date updateDate, String categoryName) {
