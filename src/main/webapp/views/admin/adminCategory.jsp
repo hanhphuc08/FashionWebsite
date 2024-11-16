@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -56,7 +57,7 @@
 </head>
 <body>
 	<!--  Begin Header -->
-	<%@ include file="/commons/admin/header.jsp" %>;
+	<%@ include file="/commons/admin/header.jsp"%>;
 	<!-- End Header -->
 
 	<!-- Hero Section-->
@@ -64,7 +65,8 @@
 		<div class="container">
 			<!-- Breadcrumbs -->
 			<ol class="breadcrumb justify-content-center">
-				<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/admin/home">Trang chủ</a></li>
+				<li class="breadcrumb-item"><a
+					href="${pageContext.request.contextPath}/admin/home">Trang chủ</a></li>
 				<li class="breadcrumb-item active">Cửa hàng</li>
 			</ol>
 			<!-- Hero Content-->
@@ -123,7 +125,8 @@
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="${pageContext.request.contextPath}/admin/manageCategory"><i class="fa-solid fa-pen-to-square"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i
+												class="fas fa-pen"></i></a><a
 												class="btn btn-dark btn-buy"
 												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
@@ -159,7 +162,8 @@
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="${pageContext.request.contextPath}/admin/manageCategory"><i class="fa-solid fa-pen-to-square"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i
+												class="fas fa-pen"></i></a><a
 												class="btn btn-dark btn-buy"
 												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
@@ -196,7 +200,8 @@
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="${pageContext.request.contextPath}/admin/manageCategory"><i class="fa-solid fa-pen-to-square"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i
+												class="fas fa-pen"></i></a><a
 												class="btn btn-dark btn-buy"
 												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
@@ -232,7 +237,8 @@
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="${pageContext.request.contextPath}/admin/manageCategory"><i class="fa-solid fa-pen-to-square"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i
+												class="fas fa-pen"></i></a><a
 												class="btn btn-dark btn-buy"
 												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
@@ -268,7 +274,8 @@
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="${pageContext.request.contextPath}/admin/manageCategory"><i class="fa-solid fa-pen-to-square"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i
+												class="fas fa-pen"></i></a><a
 												class="btn btn-dark btn-buy"
 												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
@@ -304,7 +311,8 @@
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="${pageContext.request.contextPath}/admin/manageCategory"><i class="fa-solid fa-pen-to-square"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i
+												class="fas fa-pen"></i></a><a
 												class="btn btn-dark btn-buy"
 												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
@@ -341,7 +349,8 @@
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="${pageContext.request.contextPath}/admin/manageCategory"><i class="fa-solid fa-pen-to-square"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i
+												class="fas fa-pen"></i></a><a
 												class="btn btn-dark btn-buy"
 												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
@@ -377,7 +386,8 @@
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="${pageContext.request.contextPath}/admin/manageCategory"><i class="fa-solid fa-pen-to-square"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i
+												class="fas fa-pen"></i></a><a
 												class="btn btn-dark btn-buy"
 												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
@@ -412,7 +422,8 @@
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="${pageContext.request.contextPath}/admin/manageCategory"><i class="fa-solid fa-pen-to-square"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i
+												class="fas fa-pen"></i></a><a
 												class="btn btn-dark btn-buy"
 												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
@@ -448,7 +459,8 @@
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="${pageContext.request.contextPath}/admin/manageCategory"><i class="fa-solid fa-pen-to-square"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i
+												class="fas fa-pen"></i></a><a
 												class="btn btn-dark btn-buy"
 												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
@@ -484,7 +496,8 @@
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="${pageContext.request.contextPath}/admin/manageCategory"><i class="fa-solid fa-pen-to-square"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i
+												class="fas fa-pen"></i></a><a
 												class="btn btn-dark btn-buy"
 												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
@@ -519,7 +532,8 @@
 										<div class="product-hover-overlay-buttons">
 											<a
 												class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-												href="${pageContext.request.contextPath}/admin/manageCategory"><i class="fa-solid fa-pen-to-square"></i></a><a
+												href="${pageContext.request.contextPath}/admin/manageCategory"><i
+												class="fa-solid fa-pencil-alt-to-square"></i></a><a
 												class="btn btn-dark btn-buy"
 												href="${pageContext.request.contextPath}/admin/categoryDetail"><i
 												class="fa-search fa"></i></a><a
@@ -788,7 +802,8 @@
 										</li>
 									</ul>
 								</div>
-								<p class="mb-4 text-muted">Áo thun trơn đơn giản với chất vải thấm hút mồ hôi tối đa.</p>
+								<p class="mb-4 text-muted">Áo thun trơn đơn giản với chất
+									vải thấm hút mồ hôi tối đa.</p>
 								<form action="#">
 									<div class="row">
 										<div class="col-sm-6 col-lg-12 detail-option mb-3">
@@ -822,9 +837,9 @@
 												<span>(*)</span>
 											</label> <input class="form-control detail-quantity" name="items"
 												type="number" value="1">
-												
+
 											<!-- Số lượng hàng có sẵn -->
-                                        <span class="available-stock">Số lượng còn lại: <strong>20</strong></span> 
+											<span class="available-stock">Số lượng còn lại: <strong>20</strong></span>
 										</div>
 									</div>
 									<ul class="list-inline">

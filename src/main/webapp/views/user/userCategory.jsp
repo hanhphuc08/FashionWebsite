@@ -56,7 +56,7 @@
 </head>
 <body>
 	<!--  Begin Header -->
-	<%@ include file="/commons/web/headerUser.jsp" %>;
+	<%@ include file="/commons/user/headerUser.jsp" %>;
 	<!-- End Header -->
 
 	<!-- Hero Section-->
