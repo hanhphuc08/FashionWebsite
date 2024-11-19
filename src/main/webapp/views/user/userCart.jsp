@@ -51,7 +51,7 @@
         <div class="hero-content pb-5 text-center">
           <h1 class="hero-heading">Chi tiết giỏ hàng</h1>
           <div class="row">   
-            <div class="col-xl-8 offset-xl-2"><p class="lead text-muted">Bạn đang có 3 sản phẩm trong giỏ hàng</p></div>
+            <div class="col-xl-8 offset-xl-2"><p class="lead text-muted">Bạn đang có ${cartItems.size() > 0 ? cartItems.size() : "0"} sản phẩm trong giỏ hàng</p></div>
           </div>
         </div>
       </div>
@@ -73,69 +73,45 @@
                   </div>
                 </div>
                 <div class="cart-body">
+                 			<c:if test="${cartItems.size() == 0}">
+                                <div class="cart-item text-center">
+                                    <p class="text-muted">Giỏ hàng của bạn hiện đang trống!</p>
+                                </div>
+                            </c:if>
                   <!-- Product-->
                   <div class="cart-item">
+                  <c:forEach items="${cartItems}" var="item">
                     <div class="row d-flex align-items-center text-center">
                       <div class="col-5">
-                        <div class="d-flex align-items-center"><a href="${pageContext.request.contextPath}/user/categoryDetail"><img class="cart-item-img" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/product-square-ian-dooley-347968-unsplash.jpg" alt="..."></a>
-                          <div class="cart-title text-start"><a class="text-uppercase text-dark" href="${pageContext.request.contextPath}/user/categoryDetail"><strong>Skull Tee</strong></a><br><span class="text-muted text-sm">Size: Large</span><br><span class="text-muted text-sm">Colour: Green</span>
+                        <div class="d-flex align-items-center"><a href="${pageContext.request.contextPath}/user/categoryDetail?productCode=${item.productCode}">
+                        <img class="cart-item-img" src="${item.image}" alt="${item.productName}"></a>
+                          <div class="cart-title text-start"><a class="text-uppercase text-dark" 
+                          href="${pageContext.request.contextPath}/user/categoryDetail?productCode=${item.productCode}">
+                          <strong>${item.productName}</strong>
+                          </a><br><span class="text-muted text-sm">Size: ${item.size}</span><br>
+                          <span class="text-muted text-sm">Colour: hehe</span>
                           </div>
                         </div>
                       </div>
-                      <div class="col-2">$65.00</div>
+                      <div class="col-2">${item.price}</div>
                       <div class="col-2">
-                        <div class="d-flex align-items-center">
-                          <div class="btn btn-items btn-items-decrease">-</div>
-                          <input class="form-control text-center input-items" type="text" value="4">
-                          <div class="btn btn-items btn-items-increase">+</div>
-                        </div>
-                      </div>
-                      <div class="col-2 text-center">$260.00</div>
-                      <div class="col-1 text-center"><a class="cart-remove" href="#"> <i class="fa fa-times"></i></a></div>
+							<div class="d-flex align-items-center">
+								<a
+									href="${pageContext.request.contextPath}/cart/update?cartID=${item.cartID}&quantity=${item.quantity - 1}"
+									class="btn btn-items btn-items-decrease">-</a> <input
+									class="form-control text-center input-items" type="text"
+									value="${item.quantity}" readonly> <a
+									href="${pageContext.request.contextPath}/cart/update?cartID=${item.cartID}&quantity=${item.quantity + 1}"
+									class="btn btn-items btn-items-increase">+</a>
+							</div>
+						</div>
+                      <div class="col-2 text-center">${item.price * item.quantity}</div>
+                      <div class="col-1 text-center"><a class="cart-remove" href="${pageContext.request.contextPath}/cart/remove?cartID=${item.cartID}"> <i class="fa fa-times"></i></a></div>
                     </div>
+                    </c:forEach>
                   </div>
                   <!-- Product-->
-                  <div class="cart-item">
-                    <div class="row d-flex align-items-center text-center">
-                      <div class="col-5">
-                        <div class="d-flex align-items-center"><a href="${pageContext.request.contextPath}/user/categoryDetail"><img class="cart-item-img" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/product-square-kyle-loftus-596319-unsplash.jpg" alt="..."></a>
-                          <div class="cart-title text-start"><a class="text-uppercase text-dark" href="${pageContext.request.contextPath}/user/categoryDetail"><strong>Transparent Blouse</strong></a><br><span class="text-muted text-sm">Size: Medium</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-2">$55.00</div>
-                      <div class="col-2">
-                        <div class="d-flex align-items-center">
-                          <div class="btn btn-items btn-items-decrease">-</div>
-                          <input class="form-control text-center input-items" type="text" value="3">
-                          <div class="btn btn-items btn-items-increase">+</div>
-                        </div>
-                      </div>
-                      <div class="col-2 text-center">$165.00</div>
-                      <div class="col-1 text-center"><a class="cart-remove" href="#"> <i class="fa fa-times"></i></a></div>
-                    </div>
-                  </div>
-                  <!-- Product-->
-                  <div class="cart-item">
-                    <div class="row d-flex align-items-center text-center">
-                      <div class="col-5">
-                        <div class="d-flex align-items-center"><a href="${pageContext.request.contextPath}/user/categoryDetail"><img class="cart-item-img" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/product-square-serrah-galos-494312-unsplash.jpg" alt="..."></a>
-                          <div class="cart-title text-start"><a class="text-uppercase text-dark" href="${pageContext.request.contextPath}/user/categoryDetail"><strong>White Tee</strong></a><br><span class="text-muted text-sm">Size: Medium</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-2">$55.00</div>
-                      <div class="col-2">
-                        <div class="d-flex align-items-center">
-                          <div class="btn btn-items btn-items-decrease">-</div>
-                          <input class="form-control text-center input-items" type="text" value="3">
-                          <div class="btn btn-items btn-items-increase">+</div>
-                        </div>
-                      </div>
-                      <div class="col-2 text-center">$165.00</div>
-                      <div class="col-1 text-center"><a class="cart-remove" href="#"> <i class="fa fa-times"></i></a></div>
-                    </div>
-                  </div>
+                  
                 </div>
               </div>
             </div>

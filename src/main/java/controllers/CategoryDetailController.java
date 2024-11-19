@@ -9,6 +9,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import models.ProductModel;
 import models.ProductSizeModel;
 
@@ -24,6 +25,15 @@ public class CategoryDetailController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		 	req.setCharacterEncoding("UTF-8");
 		    resp.setCharacterEncoding("UTF-8");
+		    HttpSession session = req.getSession();
+			/*
+			 * Object user = session.getAttribute("currentUser");
+			 * 
+			 * if(user == null) { String currentUrl = req.getRequestURL() + "?" +
+			 * req.getQueryString(); String userUrl = currentUrl.replace("/categoryDetail",
+			 * "/user/categoryDetail"); session.setAttribute("redirectAfterLogin", userUrl);
+			 * resp.sendRedirect(req.getContextPath() + "/login"); return; }
+			 */
 
 		    String productCode = req.getParameter("productCode");
 

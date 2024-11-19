@@ -57,28 +57,34 @@ public class LoginController extends HttpServlet {
 		}
 		UserModel user = service.login(username, password);
 		if (user != null) {
+
 			HttpSession session = req.getSession(true);
 			session.setAttribute("account", user);
-			
-			Cookie cookie = new Cookie("username", user.getEmail() != null ? user.getEmail() : user.getPhone());
-			cookie.setMaxAge(3600);
-			resp.addCookie(cookie);
-			
-			if("Admin".equals(user.getRoleID()))
-			{
+
+
+			if ("Admin".equals(user.getRoleID())) {
+
 				resp.sendRedirect(req.getContextPath() + "/admin/home");
-			}else if("Customer".equals(user.getRoleID())){
-				resp.sendRedirect(req.getContextPath() + "/user/home");
-			}
-			else {
-				resp.sendRedirect(req.getContextPath() + "/waiting");
+			} else {
+				 String redirectUrl = (String) session.getAttribute("redirectUrl");
+		            session.removeAttribute("redirectUrl");
+
+		            if (redirectUrl != null) {
+		                if (redirectUrl.contains("/categoryDetail")) {
+		                    redirectUrl = redirectUrl.replace("/categoryDetail", "/user/categoryDetail");
+		                }
+		                resp.sendRedirect(redirectUrl);
+		            } else {
+		                resp.sendRedirect(req.getContextPath() + "/user/home");
+		            }
 			}
 		} else {
-			alertMsg = "Tài khoản hoặc mật khẩu không đúng";
+
+			alertMsg = "Tài khoản hoặc mật khẩu không đúng.";
 			req.setAttribute("alert", alertMsg);
 			req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
-
 		}
+
 	}
 
 	/*

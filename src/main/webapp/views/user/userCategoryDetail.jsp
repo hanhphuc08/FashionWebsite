@@ -56,53 +56,61 @@
                 <div class="align-items-start col-lg-6 col-xl-5 ps-lg-5 mb-5 order-1 order-lg-2">
                     <div>
                         <ul class="breadcrumb justify-content-start">
-                            <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/user/home">Trang chủ</a></li>
-                            <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/user/categories">Toàn bộ sản phẩm</a></li>
-                            <li class="breadcrumb-item active">Áo khoác</li>
+                            <li class="breadcrumb-item"><a href="user/home">Trang chủ</a></li>
+                            <li class="breadcrumb-item"><a href="user/categories">Toàn bộ sản phẩm</a></li>
+                            <li class="breadcrumb-item active">${product.categoryName}</li>
                         </ul>
-                        <h3 class="mb-4">Áo thun nam trơn</h3>
+                        <h3 class="mb-4">${product.productName}</h3>
                         <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-sm-between mb-4">
                             <ul class="list-inline mb-2 mb-sm-0">
-                                <li class="list-inline-item h4 fw-light mb-0">165.000</li>
-                                <li class="list-inline-item text-muted fw-light">
-                                    <del>290.000</del>
-                                </li>
+                                <li class="list-inline-item h4 fw-light mb-0">${product.price }</li>
                             </ul>
                         </div>
-                        <p class="text-muted">Áo thun trơn đơn giản với chất vải thấm hút mồ hôi tối đa.</p>
+                        <p class="text-muted">${product.categoryName }</p>
     
-                        <form action="#">
+                        <form action="${pageContext.request.contextPath}/user/cart" method = "POST">
+                        	<input type="hidden" name="productCode" value="${product.productCode}" />
+    						<input type="hidden" name="categoryCode" value="${product.categoryCode}" />
+    						<input type="hidden" name="redirectUrl" value="${pageContext.request.contextPath}/user/categoryDetail?productCode=${product.productCode}" />
                             <div class="row mb-3">
                                 <div class="col-sm-6 detail-option">
                                     <h6 class="detail-option-heading">Size <span>(*)</span></h6>
-                                    <label class="btn btn-sm btn-outline-secondary detail-option-btn-label" for="size_0"> S
-                                        <input class="input-invisible" type="radio" name="size" value="value_0" id="size_0" required>
-                                    </label>
-                                    <label class="btn btn-sm btn-outline-secondary detail-option-btn-label" for="size_1"> M
-                                        <input class="input-invisible" type="radio" name="size" value="value_1" id="size_1" required>
-                                    </label>
-                                    <label class="btn btn-sm btn-outline-secondary detail-option-btn-label" for="size_2"> L
-                                        <input class="input-invisible" type="radio" name="size" value="value_2" id="size_2" required>
-                                    </label>
-                                    <label class="btn btn-sm btn-outline-secondary detail-option-btn-label" for="size_3"> XL
-                                        <input class="input-invisible" type="radio" name="size" value="value_3" id="size_3" required>
-                                    </label>
-                                </div>
+									<c:forEach items="${product.productSizes}" var="size">
+										<c:if test="${size.stockQuantity > 0}">
+											<label
+												class="btn btn-sm btn-outline-secondary detail-option-btn-label"
+												for="size_${size.size}"> ${size.size}
+												 <input
+												class="input-invisible" type="radio" name="size"
+												value="${size.size}" id="size_${size.size}"
+												${size.stockQuantity == 0 ? 'disabled' : '' }
+												data-stock="${size.stockQuantity}"
+												onclick="updateStock(${size.stockQuantity})" required>
+											</label>
+										</c:if>
+									</c:forEach>
+
+								</div>
                             </div>
     
                             <div class="row mb-3">
-                                <div class="col-sm-6 detail-option">
-                                    <label class="detail-option-heading fw-bold">Sản phẩm <span>(*)</span></label>
-                                    <div class="d-flex align-items-center">
-                                        <input class="form-control detail-quantity" name="items" type="number" value="1">
-                                        <!-- Số lượng hàng có sẵn -->
-                                        <span class="available-stock ms-2">Số lượng còn lại: <strong>20</strong></span> 
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 detail-option">
+								<div class="col-sm-6 detail-option">
+									<label class="detail-option-heading fw-bold">Sản phẩm <span>(*)</span></label>
+									<div class="d-flex align-items-center">
+										<input class="form-control detail-quantity" id="quantity"
+											name="quantity" type="number" value="1" min="1" max="1">
+										<!-- Số lượng hàng có sẵn -->
+										<span class="available-stock ms-2">Số lượng còn lại:
+										 <strong
+											id="stockQuantity">0
+										</strong></span>
+									</div>
+								</div>
+								<div class="col-sm-6 detail-option">
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <button class="btn btn-dark btn-lg mb-1" type="submit"> <i class="fa fa-shopping-cart me-2"></i>Thêm vào giỏ hàng</button>
+                                    <button class="btn btn-dark btn-lg mb-1" type="submit"> 
+                                    <i class="fa fa-shopping-cart me-2"></i>Thêm vào giỏ hàng</button>
                                 </li>
                             </ul>
                         </div>
@@ -110,9 +118,7 @@
                         </form>
                         <div class="mt-2">
                             <h6 class="detail-option-heading">Mô tả sản phẩm</h6>
-                            <p class="text-muted my-2">1. Kiểu sản phẩm: Áo thun trơn tay ngắn</p>
-                            <p class="text-muted my-2">2. Co giãn tốt, chống co rút tốt, giữ form tốt dù có giặt qua nhiều nước, thấm hút và thoát mồ hôi tốt.</p>
-                            <p class="text-muted my-2">3. Chất liệu: 100% cotton</p>
+                             <p class="text-muted my-2">${product.description}</p>
                         </div>
                     </div>
                 </div>
@@ -137,104 +143,31 @@
             <h4 class="text-uppercase mb-5">Sản phẩm tương tự</h4>
           </header>
           <div class="row">
+          	<c:forEach items = "${similarProduct }" var = "similarProduct">
+          	
             <!-- product-->
             <div class="col-lg-2 col-md-4 col-6">
               <div class="product">
                 <div class="product-image">
-                  <div class="ribbon ribbon-info">Mới</div><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/serrah-galos-494312-unsplash.jpg" alt="product"/>
-                  <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/user/categoryDetail"></a>
-                    <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/user/categoryDetail"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">Xem</span></a>
+                  <img class="img-fluid" src="${similarProduct.image }" alt="${similarProduct.productName}"/>
+                  <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/user/categoryDetail?productCode=${similarProduct.productCode}"></a>
+                    <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/user/categoryDetail?productCode=${similarProduct.productCode}"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">Xem</span></a>
                     </div>
                   </div>
                 </div>
                 <div class="py-2">
-                  <p class="text-muted text-sm mb-1">Jackets</p>
-                  <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/user/categoryDetail">White Tee</a></h3><span class="text-muted">$40.00</span>
+                  <p class="text-muted text-sm mb-1">${similarProduct.categoryName }</p>
+                  <h3 class="h6 text-uppercase mb-1">
+                                <a class="text-dark" href="${pageContext.request.contextPath}/user/categoryDetail?productCode=${similarProduct.productCode}">
+                                    ${similarProduct.productName}
+                                </a>
+                            </h3>
+                  <span class="text-muted">${similarProduct.price}</span>
                 </div>
               </div>
             </div>
             <!-- /product-->
-            <!-- product-->
-            <div class="col-lg-2 col-md-4 col-6">
-              <div class="product">
-                <div class="product-image"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/kyle-loftus-590881-unsplash.jpg" alt="product"/>
-                  <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/user/categoryDetail"></a>
-                    <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/user/categoryDetail"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">Xem</span></a>
-                    </div>
-                  </div>
-                </div>
-                <div class="py-2">
-                  <p class="text-muted text-sm mb-1">Denim</p>
-                  <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/user/categoryDetail">Black blouse</a></h3><span class="text-muted">$40.00</span>
-                </div>
-              </div>
-            </div>
-            <!-- /product-->
-            <!-- product-->
-            <div class="col-lg-2 col-md-4 col-6">
-              <div class="product">
-                <div class="product-image">
-                  <div class="ribbon ribbon-primary">Giảm giá</div><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/kyle-loftus-596319-unsplash.jpg" alt="product"/>
-                  <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/user/categoryDetail"></a>
-                    <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/user/categoryDetail"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">Xem</span></a>
-                    </div>
-                  </div>
-                </div>
-                <div class="py-2">
-                  <p class="text-muted text-sm mb-1">Accessories</p>
-                  <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/user/categoryDetail">College jacket</a></h3><span class="text-muted">$40.00</span>
-                </div>
-              </div>
-            </div>
-            <!-- /product-->
-            <!-- product-->
-            <div class="col-lg-2 col-md-4 col-6">
-              <div class="product">
-                <div class="product-image"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/ethan-haddox-484912-unsplash.jpg" alt="product"/>
-                  <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/user/categoryDetail"></a>
-                    <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/user/categoryDetail"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">Xem</span></a>
-                    </div>
-                  </div>
-                </div>
-                <div class="py-2">
-                  <p class="text-muted text-sm mb-1">Denim</p>
-                  <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/user/categoryDetail">Carrot-fit jeans</a></h3><span class="text-muted">$40.00</span>
-                </div>
-              </div>
-            </div>
-            <!-- /product-->
-            <!-- product-->
-            <div class="col-lg-2 col-md-4 col-6">
-              <div class="product">
-                <div class="product-image"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/serrah-galos-494231-unsplash.jpg" alt="product"/>
-                  <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/user/categoryDetail"></a>
-                    <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/user/categoryDetail"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">Xem</span></a>
-                    </div>
-                  </div>
-                </div>
-                <div class="py-2">
-                  <p class="text-muted text-sm mb-1">Jackets</p>
-                  <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/user/categoryDetail">Striped T-Shirt</a></h3><span class="text-muted">$40.00</span>
-                </div>
-              </div>
-            </div>
-            <!-- /product-->
-            <!-- product-->
-            <div class="col-lg-2 col-md-4 col-6">
-              <div class="product">
-                <div class="product-image"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/averie-woodard-319832-unsplash.jpg" alt="product"/>
-                  <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/user/categoryDetail"></a>
-                    <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/user/categoryDetail"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">Xem</span></a>
-                    </div>
-                  </div>
-                </div>
-                <div class="py-2">
-                  <p class="text-muted text-sm mb-1">Shirts</p>
-                  <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/user/categoryDetail">Short top</a></h3><span class="text-muted">$40.00</span>
-                </div>
-              </div>
-            </div>
-            <!-- /product-->
+          </c:forEach>
           </div>
         </div>
       </section>
@@ -260,6 +193,20 @@
           div.className = 'd-none';
           div.innerHTML = ajax.responseText;
           document.body.insertBefore(div, document.body.childNodes[0]);
+          }
+      }
+      function updateStock(stockQuantity) {
+          // Cập nhật giá trị tối đa của input số lượng
+          const quantityInput = document.getElementById('quantity');
+          const stockSpan = document.getElementById('stockQuantity');
+
+          // Cập nhật số lượng tối đa và hiện số lượng còn lại
+          quantityInput.max = stockQuantity;
+          stockSpan.textContent = stockQuantity;
+
+          // Đặt lại giá trị hiện tại nếu vượt quá số lượng còn lại
+          if (quantityInput.value > stockQuantity) {
+              quantityInput.value = stockQuantity;
           }
       }
       // this is set to Bootstrapious website as you cannot 

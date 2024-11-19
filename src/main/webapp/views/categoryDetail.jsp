@@ -74,8 +74,10 @@
                         </div>
                         <p class="text-muted">${product.categoryName }</p>
     
-                        <form action="cart" method = "POST">
-                        	 <input type="hidden" name="productCode" value="${product.productCode}" />
+                        <form action="${pageContext.request.contextPath}/cart" method = "POST">
+							 <input type="hidden" name="productCode" value="${product.productCode}" />
+   							 <input type="hidden" name="categoryCode" value="${product.categoryCode}" />
+    						<input type="hidden" name="redirectUrl" value="${pageContext.request.contextPath}/categoryDetail?productCode=${product.productCode}" />
                             <div class="row mb-3">
                                 <div class="col-sm-6 detail-option">
                                     <h6 class="detail-option-heading">Size <span>(*)</span></h6>
@@ -113,7 +115,8 @@
 								<div class="col-sm-6 detail-option">
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <button class="btn btn-dark btn-lg mb-1" type="submit"> <i class="fa fa-shopping-cart me-2"></i>Thêm vào giỏ hàng</button>
+                                    <button class="btn btn-dark btn-lg mb-1" type="submit"> 
+                                    <i class="fa fa-shopping-cart me-2"></i>Thêm vào giỏ hàng</button>
                                 </li>
                             </ul>
                         </div>
