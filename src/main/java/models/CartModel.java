@@ -17,6 +17,25 @@ public class CartModel implements Serializable {
 	private String productName;
 	private double price;
 	private String image;
+	private String color;
+	private int stockQuantity;
+	
+
+	public int getStockQuantity() {
+		return stockQuantity;
+	}
+
+	public void setStockQuantity(int stockQuantity) {
+		this.stockQuantity = stockQuantity;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
 
 	// Getters và Setters
 	public String getProductName() {

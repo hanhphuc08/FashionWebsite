@@ -89,7 +89,7 @@
                           href="${pageContext.request.contextPath}/user/categoryDetail?productCode=${item.productCode}">
                           <strong>${item.productName}</strong>
                           </a><br><span class="text-muted text-sm">Size: ${item.size}</span><br>
-                          <span class="text-muted text-sm">Colour: hehe</span>
+                          <span class="text-muted text-sm">Colour: ${item.color }</span>
                           </div>
                         </div>
                       </div>
@@ -97,16 +97,21 @@
                       <div class="col-2">
 							<div class="d-flex align-items-center">
 								<a
-									href="${pageContext.request.contextPath}/cart/update?cartID=${item.cartID}&quantity=${item.quantity - 1}"
-									class="btn btn-items btn-items-decrease">-</a> <input
-									class="form-control text-center input-items" type="text"
-									value="${item.quantity}" readonly> <a
-									href="${pageContext.request.contextPath}/cart/update?cartID=${item.cartID}&quantity=${item.quantity + 1}"
-									class="btn btn-items btn-items-increase">+</a>
+									href="${pageContext.request.contextPath}/user/cart/?action=remove&productCode=${item.productCode}&size=${item.size }&quantityChange=-1"
+									class="btn btn-items btn-items-decrease">
+									<c:if test="${item.quantity <= 1}">style="pointer-events: none; opacity: 0.5;"</c:if>-</a>
+									
+									<input
+										class="form-control text-center input-items" type="text"
+										value="${item.quantity}" readonly>
+									<a
+										href="${pageContext.request.contextPath}/user/cart?action=add&productCode=${item.productCode}&size=${item.size}&quantityChange=1"  
+            								class="btn btn-items btn-items-increase" 
+            							<c:if test="${item.quantity >= item.stockQuantity}">style="pointer-events: none; opacity: 0.5;"</c:if>>+</a>
 							</div>
 						</div>
                       <div class="col-2 text-center">${item.price * item.quantity}</div>
-                      <div class="col-1 text-center"><a class="cart-remove" href="${pageContext.request.contextPath}/cart/remove?cartID=${item.cartID}"> <i class="fa fa-times"></i></a></div>
+                      <div class="col-1 text-center"><a class="cart-remove" href="${pageContext.request.contextPath}/user/cart?action=delete&productCode=${item.productCode}&size=${item.size}"> <i class="fa fa-times"></i></a></div>
                     </div>
                     </c:forEach>
                   </div>
@@ -125,10 +130,10 @@
               <div class="block-body bg-light pt-1">
                 <p class="text-sm">Chi phí vận chuyển và chi phí bổ sung sẽ được tính dựa trên các sản phẩm bạn đã chọn.</p>
                 <ul class="order-summary mb-0 list-unstyled">
-                  <li class="order-summary-item"><span>Tổng tiền ước tính</span><span>$390.00</span></li>
-                  <li class="order-summary-item"><span>Phí vận chuyện</span><span>$10.00</span></li>
-                  <li class="order-summary-item"><span>Thuế dịch vụ</span><span>$0.00</span></li>
-                  <li class="order-summary-item border-0"><span>Tổng tiền</span><strong class="order-summary-total">$400.00</strong></li>
+                  <li class="order-summary-item"><span>Tổng tiền ước tính</span><span>${totalAmount }</span></li>
+                  <li class="order-summary-item"><span>Phí vận chuyện</span><span>${shipping}</span></li>
+                  <li class="order-summary-item"><span>Thuế dịch vụ</span><span>${serviceTax }</span></li>
+                  <li class="order-summary-item border-0"><span>Tổng tiền</span><strong class="order-summary-total">${finalTotal }</strong></li>
                 </ul>
               </div>
             </div>

@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.IOException;
 
+import dao.Impl.CartDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.Cookie;
@@ -21,15 +22,7 @@ public class LoginController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		/*
-		 * HttpSession session = req.getSession(false); if(session != null &&
-		 * session.getAttribute("account") != null) { UserModel user = (UserModel)
-		 * session.getAttribute("account");
-		 * 
-		 * if (user.getRoleID().equals("Admin")) {
-		 * resp.sendRedirect(req.getContextPath() + "/admin/home"); } else {
-		 * resp.sendRedirect(req.getContextPath() + "/waiting"); } return; }
-		 */
+		
 		 req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
 		
 		
@@ -60,23 +53,24 @@ public class LoginController extends HttpServlet {
 
 			HttpSession session = req.getSession(true);
 			session.setAttribute("account", user);
+			
+			CartDao cartDao = new CartDao();
+	        int cartItemCount = cartDao.getCartItemCount(user.getUserID());
+	        session.setAttribute("cartItemCount", cartItemCount);
 
 
 			if ("Admin".equals(user.getRoleID())) {
 
 				resp.sendRedirect(req.getContextPath() + "/admin/home");
 			} else {
-				 String redirectUrl = (String) session.getAttribute("redirectUrl");
-		            session.removeAttribute("redirectUrl");
+				String productCode = (String) session.getAttribute("productCode");
+                session.removeAttribute("productCode"); // Xóa productCode sau khi sử dụng
 
-		            if (redirectUrl != null) {
-		                if (redirectUrl.contains("/categoryDetail")) {
-		                    redirectUrl = redirectUrl.replace("/categoryDetail", "/user/categoryDetail");
-		                }
-		                resp.sendRedirect(redirectUrl);
-		            } else {
-		                resp.sendRedirect(req.getContextPath() + "/user/home");
-		            }
+                if (productCode != null) {
+                    resp.sendRedirect(req.getContextPath() + "/user/categoryDetail?productCode=" + productCode);
+                } else {
+                    resp.sendRedirect(req.getContextPath() + "/user/home");
+                }
 			}
 		} else {
 
@@ -87,9 +81,4 @@ public class LoginController extends HttpServlet {
 
 	}
 
-	/*
-	 * private void saveRemeberMe(HttpServletResponse response, String username) {
-	 * Cookie cookie = new Cookie(Constants.COOKIE_REMEMBER, username);
-	 * cookie.setMaxAge(30 * 60); response.addCookie(cookie); }
-	 */
 }

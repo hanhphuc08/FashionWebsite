@@ -73,11 +73,24 @@
                             </ul>
                         </div>
                         <p class="text-muted">${product.categoryName }</p>
-    
-                        <form action="${pageContext.request.contextPath}/cart" method = "POST">
+    						
+						  <!-- Hiển thị thông báo thành công -->
+						<c:if test="${not empty successMessage}">
+						    <div class="alert alert-success">
+						        ${successMessage}
+						    </div>
+						</c:if>
+						
+						<!-- Hiển thị thông báo lỗi -->
+						<c:if test="${not empty errorMessage}">
+						    <div class="alert alert-danger">
+						        ${errorMessage}
+						    </div>
+						</c:if>
+                        <form action="${pageContext.request.contextPath}/categoryDetail" method="POST">
 							 <input type="hidden" name="productCode" value="${product.productCode}" />
    							 <input type="hidden" name="categoryCode" value="${product.categoryCode}" />
-    						<input type="hidden" name="redirectUrl" value="${pageContext.request.contextPath}/categoryDetail?productCode=${product.productCode}" />
+    						
                             <div class="row mb-3">
                                 <div class="col-sm-6 detail-option">
                                     <h6 class="detail-option-heading">Size <span>(*)</span></h6>

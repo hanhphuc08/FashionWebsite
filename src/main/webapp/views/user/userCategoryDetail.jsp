@@ -67,11 +67,20 @@
                             </ul>
                         </div>
                         <p class="text-muted">${product.categoryName }</p>
-    
-                        <form action="${pageContext.request.contextPath}/user/cart" method = "POST">
+    					
+    					<c:if test="${not empty successMessage}">
+                  <div class="alert alert-success">
+                    ${successMessage}
+                  </div>
+                </c:if>
+                <c:if test="${not empty errorMessage}">
+                  <div class="alert alert-danger">
+                    ${errorMessage}
+                  </div>
+                </c:if>
+                        <form action="${pageContext.request.contextPath}/user/categoryDetail" method = "POST">
                         	<input type="hidden" name="productCode" value="${product.productCode}" />
     						<input type="hidden" name="categoryCode" value="${product.categoryCode}" />
-    						<input type="hidden" name="redirectUrl" value="${pageContext.request.contextPath}/user/categoryDetail?productCode=${product.productCode}" />
                             <div class="row mb-3">
                                 <div class="col-sm-6 detail-option">
                                     <h6 class="detail-option-heading">Size <span>(*)</span></h6>

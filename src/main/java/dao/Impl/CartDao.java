@@ -51,7 +51,7 @@ public class CartDao {
     // Lấy danh sách giỏ hàng chi tiết
     public List<CartModel> getAllCartWithDetail(int userId) {
         List<CartModel> cartItems = new ArrayList<>();
-        String sql = "SELECT c.*, p.ProductName, p.Price, ps.StockQuantity, p.Image " +
+        String sql = "SELECT c.*, p.ProductName, p.Price, ps.StockQuantity, p.Image, p.Color, ps.StockQuantity " +
                      "FROM Cart c " +
                      "INNER JOIN Products p ON c.ProductCode = p.ProductCode " +
                      "INNER JOIN ProductSizes ps ON c.ProductCode = ps.ProductCode AND c.Size = ps.Size " +
@@ -72,8 +72,9 @@ public class CartDao {
                     item.setQuantity(rs.getInt("Quantity"));
                     item.setProductName(rs.getString("ProductName"));
                     item.setPrice(rs.getDouble("Price"));
-                    item.setQuantity(rs.getInt("StockQuantity"));
+                    item.setStockQuantity(rs.getInt("StockQuantity"));
                     item.setImage(rs.getString("Image"));
+                    item.setColor(rs.getString("Color"));
                     cartItems.add(item);
                 }
             }
@@ -84,7 +85,7 @@ public class CartDao {
     }
 
     // Xóa sản phẩm khỏi giỏ hàng
-    public void removeFromCart(int userId, String productCode, String size) {
+    public boolean removeFromCart(int userId, String productCode, String size) {
         String sql = "DELETE FROM Cart WHERE UserID = ? AND ProductCode = ? AND Size = ?";
 
         try (Connection conn = new DBConnectSQL().getConnection();
@@ -93,10 +94,13 @@ public class CartDao {
             ps.setInt(1, userId);
             ps.setString(2, productCode);
             ps.setString(3, size);
-            ps.executeUpdate();
+            
+            return ps.executeUpdate() > 0;
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
+        return false;
     }
     public int getCartItemCount(int userId) {
         String sql = "SELECT SUM(Quantity) AS TotalQuantity FROM Cart WHERE UserID = ?";
@@ -113,6 +117,25 @@ public class CartDao {
         }
         return 0;
     }
+    public boolean updateQuantity(int userId, String productCode, String size, int quantityChange) {
+        String sql = "UPDATE Cart " +
+                     "SET Quantity = Quantity + ? " +
+                     "WHERE UserID = ? AND ProductCode = ? AND Size = ? AND Quantity + ? > 0";
 
+        try (Connection conn = new DBConnectSQL().getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, quantityChange);
+            ps.setInt(2, userId);
+            ps.setString(3, productCode);
+            ps.setString(4, size);
+            ps.setInt(5, quantityChange);
+
+            return ps.executeUpdate() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
     
 }

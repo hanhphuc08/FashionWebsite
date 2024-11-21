@@ -66,54 +66,17 @@
                   <use xlink:href="#search-1"> </use>
                 </svg>
               </div>
-              
-              <!-- Cart Dropdown-->
-              <div class="nav-item dropdown"><a class="navbar-icon-link d-lg-none" href="cart.html"> 
-                  <svg class="svg-icon">
-                    <use xlink:href="#cart-1"> </use>
-                  </svg><span class="text-sm ms-2 ms-lg-0 text-uppercase text-sm fw-bold d-none d-sm-inline d-lg-none">giỏ hàng</span></a>
-                  <div class="d-none d-lg-block"><a class="navbar-icon-link" id="cartdetails" href="${pageContext.request.contextPath}/user/cart" data-bs-target="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <svg class="svg-icon">
-                      <use xlink:href="#cart-1"> </use>
-                    </svg>
-                    <div class="navbar-icon-link-badge">3</div></a>
-                  <div class="dropdown-menu dropdown-menu-animated dropdown-menu-end p-4" aria-labelledby="cartdetails">
-                    <div class="navbar-cart-product-wrapper">
-                      <!-- Cart Icon -->
-						<div class="nav-item">
-						<%-- <c:choose>
-						<!-- Nếu chưa đăng nhập -->
-							<c:when test="${empty sessionScope.account}">
-								<a class="navbar-icon-link"
-								href="${pageContext.request.contextPath}/login"> <svg class="svg-icon"> <use xlink:href="#cart-1"></use> </svg>
-									<div class="navbar-icon-link-badge">0</div>
-								</a>
-							</c:when>
-						<!-- Nếu đã đăng nhập -->
-							<c:otherwise>
-							<a class="navbar-icon-link"
-								href="${pageContext.request.contextPath}/user/cart"> <svg class="svg-icon"><use xlink:href="#cart-1"></use> </svg>
-									<div class="navbar-icon-link-badge">${sessionScope.cartItemCount}</div>
-							</a>
-							</c:otherwise>
-						</c:choose> --%>
-						</div>
+          
+             <div class="nav-item">
+   					 <a class="navbar-icon-link" href="${pageContext.request.contextPath}/user/cart">
+                <svg class="svg-icon">
+                    <use xlink:href="#cart-1"></use>
+                </svg>
+                <div class="navbar-icon-link-badge">${cartItemCount}</div>
+            </a>
+			</div>
 
-					</div>
-                    <!-- total price-->
-					<div class="navbar-cart-total">
-                        <span class="text-uppercase text-muted">Tổng tiền</span>
-                        <strong class="text-uppercase">${sessionScope.totalCartPrice} VND</strong>
-                    </div>
-                    <!-- buttons-->
-                    <div class="d-flex justify-content-between">
-                        <a class="btn btn-link text-dark me-3" href="${pageContext.request.contextPath}/user/cart">giỏ hàng<i class="fa-arrow-right fa"></i></a>
-                        <a class="btn btn-outline-dark" href="${pageContext.request.contextPath}/user/checkoutAddress">Thanh toán</a>
-                    </div>
-                  </div>
-                </div>
               </div>
-
               <!-- User Not Logged - link to login page-->
               <div class="nav-item dropdown"><a class="navbar-icon-link" id="userdetails" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <svg class="svg-icon">
