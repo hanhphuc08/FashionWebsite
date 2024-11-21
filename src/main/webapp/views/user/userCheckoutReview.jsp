@@ -62,9 +62,8 @@
           <div class="col-lg-8">
             <ul class="custom-nav nav nav-pills mb-5">
               <li class="nav-item w-25"><a class="nav-link text-sm disabled" href="${pageContext.request.contextPath}/user/checkoutAddress">Địa chỉ</a></li>
-              <li class="nav-item w-25"><a class="nav-link text-sm disabled" href="${pageContext.request.contextPath}/user/checkoutDelivery">Phương thức vận chuyển</a></li>
-              <li class="nav-item w-25"><a class="nav-link text-sm disabled" href="${pageContext.request.contextPath}/user/checkoutPayment">Phương thức thanh toán</a></li>
               <li class="nav-item w-25"><a class="nav-link text-sm active" href="${pageContext.request.contextPath}/user/checkoutReview">Đơn hàng</a></li>
+              <li class="nav-item w-50"><a class="nav-link text-sm disabled" href="${pageContext.request.contextPath}/user/checkoutPauyment">Phương thức thanh toán</a></li>
             </ul>
             <div class="mb-5">
               <div class="cart">
@@ -127,7 +126,7 @@
                 </div>
               </div>
             </div>
-            <div class="mb-5 d-flex justify-content-between flex-column flex-lg-row"><a class="btn btn-link text-muted" href="${pageContext.request.contextPath}/user/checkoutPayment"> <i class="fa fa-angle-left me-2"></i>Quay lại phương thức thanh toán</a><a class="btn btn-dark" href="${pageContext.request.contextPath}/user/checkoutConfirm">Đặt hàng<i class="fa fa-angle-right ms-2"></i></a></div>
+            <div class="mb-5 d-flex justify-content-between flex-column flex-lg-row"><a class="btn btn-link text-muted" href="${pageContext.request.contextPath}/user/checkoutAddress"> <i class="fa fa-angle-left me-2"></i>Quay lại trang địa chỉ</a><a class="btn btn-dark" href="${pageContext.request.contextPath}/user/checkoutPayment">Thanh toán<i class="fa fa-angle-right ms-2"></i></a></div>
           </div>
           <div class="col-lg-4">
             <div class="block mb-5">
@@ -194,7 +193,7 @@
       // inject local SVG sprite (using only 'icons/orion-svg-sprite.a4dea202.svg' path)
       // while using file:// protocol
       // pls don't forget to change to your domain :)
-      injectSvgSprite('https://demo.bootstrapious.com/sell/1-2-0/icons/orion-svg-sprite.svg'); 
+      injectSvgSprite('${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/1-2-0/icons/orion-svg-sprite.svg'); 
       
     </script>
     <!-- jQuery-->
@@ -212,7 +211,7 @@
     <script src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/glightbox/js/glightbox.min.js"> </script>
     <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
     <script src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/object-fit-images/ofi.min.js"></script>
-    <script>var basePath = ''</script>
+    <script>var basePath = '${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/'</script>
     <script src="js/theme.30e7c8f9.js"></script>
     <script src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/jquery.cookie/jquery.cookie.js"> </script>
     <script src="js/demo.9833433a.js"></script>
