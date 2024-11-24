@@ -95,28 +95,37 @@ public class CartDao {
             ps.setString(2, productCode);
             ps.setString(3, size);
             
-            return ps.executeUpdate() > 0;
+            System.out.println("Executing SQL: " + ps);
+            System.out.println("Executing SQL: " + sql);
+            System.out.println("Parameters: UserID=" + userId + ", ProductCode=" + productCode + ", Size=" + size);
+            
+            int rowsAffected = ps.executeUpdate();
+            System.out.println("Rows affected: " + rowsAffected); // Log số bản ghi bị xóa
+            return rowsAffected > 0;
         } catch (Exception e) {
             e.printStackTrace();
         }
         
         return false;
     }
+
     public int getCartItemCount(int userId) {
-        String sql = "SELECT SUM(Quantity) AS TotalQuantity FROM Cart WHERE UserID = ?";
-        try {
-            conn = new DBConnectSQL().getConnection();
-            ps = conn.prepareStatement(sql);
+        String sql = "SELECT COUNT(*) AS TotalItems FROM Cart WHERE UserID = ?";
+        try (Connection conn = new DBConnectSQL().getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
             ps.setInt(1, userId);
-            rs = ps.executeQuery();
-            if (rs.next()) {
-                return rs.getInt("TotalQuantity");
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt("TotalItems"); // Trả về số dòng
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return 0;
+        return 0; // Trả về 0 nếu có lỗi hoặc không có dòng nào
     }
+
     public boolean updateQuantity(int userId, String productCode, String size, int quantityChange) {
         String sql = "UPDATE Cart " +
                      "SET Quantity = Quantity + ? " +

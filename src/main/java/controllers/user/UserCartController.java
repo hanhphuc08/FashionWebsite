@@ -50,73 +50,90 @@ public class UserCartController extends HttpServlet {
 	        req.setAttribute("finalTotal", finalToTal);
 		    
 		    req.setAttribute("cartItems", cartItems);
+		    
+		    int cartItemCount = cartDao.getCartItemCount(user.getUserID());
+		    session.setAttribute("cartItemCount", cartItemCount);
+
+		    
 
 		    req.getRequestDispatcher("/views/user/userCart.jsp").forward(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		  HttpSession session = req.getSession(false);
-		    if (session == null) {
-		        session = req.getSession(true); 
-		    }
-		 
-	        UserModel user =  (UserModel) session.getAttribute("account");
+	    HttpSession session = req.getSession(false);
+	    if (session == null) {
+	        session = req.getSession(true); 
+	    }
 
-	        if (user == null) {
-	        	 String currentUrl = req.getRequestURL() + 
-	        		        (req.getQueryString() != null ? "?" + req.getQueryString() : "");
-	        		    session.setAttribute("redirectUrl", currentUrl);
-	        		    resp.sendRedirect(req.getContextPath() + "/login");
-	        		    return;
+	    UserModel user = (UserModel) session.getAttribute("account");
+
+	    if (user == null) {
+	        String currentUrl = req.getRequestURL() + 
+	                            (req.getQueryString() != null ? "?" + req.getQueryString() : "");
+	        session.setAttribute("redirectUrl", currentUrl);
+	        resp.sendRedirect(req.getContextPath() + "/login");
+	        return;
+	    }
+
+	    String action = req.getParameter("action");
+	    String productCode = req.getParameter("productCode");
+	    String categoryCode = req.getParameter("categoryCode");
+	    String size = req.getParameter("size");
+
+	    System.out.println("Action: " + action);
+	    System.out.println("UserID: " + user.getUserID());
+	    System.out.println("ProductCode: " + productCode);
+	    System.out.println("Size: " + size);
+
+	    // Xử lý action "delete"
+	    if ("delete".equals(action)) {
+	        boolean result = cartDao.removeFromCart(user.getUserID(), productCode, size);
+	        System.out.println("Remove result: " + result);
+
+	        if (result) {
+	            session.setAttribute("cartMessage", "Sản phẩm đã được xóa khỏi giỏ hàng.");
+	            int cartItemCount = cartDao.getCartItemCount(user.getUserID());
+	            session.setAttribute("cartItemCount", cartItemCount);
+	        } else {
+	            session.setAttribute("cartError", "Không thể xóa sản phẩm khỏi giỏ hàng. Vui lòng thử lại.");
 	        }
-	        String action = req.getParameter("action");
-	        String productCode = req.getParameter("productCode");
-	        String categoryCode = req.getParameter("categoryCode");
-	        String size = req.getParameter("size");
-	        int quantity = Integer.parseInt(req.getParameter("quantity"));
-	        int quantityChange = Integer.parseInt(req.getParameter("quantityChange"));
-	        
-	        if (categoryCode == null || categoryCode.isEmpty()) {
-	            session.setAttribute("cartError", "Lỗi: Không xác định được mã loại sản phẩm.");
-	            resp.sendRedirect(req.getHeader("Referer"));
-	            return;
-	        }
-	        boolean result = false;
-	        
-	        switch(action)
-	        { 
-	        case "add" : 
-	        case "remove" :
-	        	result = cartDao.updateQuantity(user.getUserID(), productCode, size, quantityChange);
-	        	break;
-	        case "delete" :
-	        	result = cartDao.removeFromCart(user.getUserID(), productCode, size);
-	        	break;
+	    } else {
+	        // Xử lý các hành động khác (add, update)
+	        String quantityStr = req.getParameter("quantity");
+	        if (quantityStr == null || quantityStr.isEmpty()) {
+	            quantityStr = "0"; // Giá trị mặc định nếu thiếu
 	        }
 
+	        int quantity = Integer.parseInt(quantityStr);
+
+	        // Tiếp tục xử lý logic thêm hoặc cập nhật giỏ hàng
 	        CartModel cartItem = new CartModel();
 	        cartItem.setUserID(user.getUserID());
 	        cartItem.setProductCode(productCode);
 	        cartItem.setCategoryCode(categoryCode);
 	        cartItem.setSize(size);
 	        cartItem.setQuantity(quantity);
-	        
-	       
-	        
+
 	        boolean isAdded = cartDao.addToCart(cartItem);
+	        int itemCount = cartDao.getCartItemCount(user.getUserID());
 	        if (isAdded) {
 	            session.setAttribute("cartMessage", "Sản phẩm đã được thêm vào giỏ hàng.");
+	            int cartItemCount = cartDao.getCartItemCount(user.getUserID());
+	            session.setAttribute("cartItemCount", cartItemCount);
 	        } else {
 	            session.setAttribute("cartError", "Không thể thêm sản phẩm vào giỏ hàng. Vui lòng thử lại.");
 	        }
-	        if (result) {
-	            session.setAttribute("cartMessage", "Giỏ hàng đã được cập nhật thành công.");
-	        } else {
-	            session.setAttribute("cartError", "Không thể cập nhật giỏ hàng. Vui lòng thử lại.");
-	        }
-	        
-	        // Chuyển hướng về trang chi tiết sản phẩm hoặc giỏ hàng
-	        String referer = req.getHeader("Referer");
-	        resp.sendRedirect((referer != null) ? referer : req.getContextPath() + "/user/userCart");
+	        session.setAttribute("itemCount", itemCount);
+	    }
+
+	    // Cập nhật danh sách giỏ hàng
+	    List<CartModel> updatedCartItems = cartDao.getAllCartWithDetail(user.getUserID());
+	    System.out.println("Updated cart size: " + updatedCartItems.size());
+	    req.setAttribute("cartItems", updatedCartItems);
+
+	    // Chuyển hướng về trang chi tiết sản phẩm hoặc giỏ hàng
+	    String referer = req.getHeader("Referer");
+	    resp.sendRedirect((referer != null) ? referer : req.getContextPath() + "/user/cart");
 	}
+
 }

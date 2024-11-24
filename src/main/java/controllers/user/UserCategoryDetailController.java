@@ -74,6 +74,8 @@ public class UserCategoryDetailController extends HttpServlet {
 
 	        if (isAdded) {
 	            req.setAttribute("successMessage", "Sản phẩm đã được thêm vào giỏ hàng thành công.");
+	            int cartItemCount = cartDao.getCartItemCount(user.getUserID());
+	            session.setAttribute("cartItemCount", cartItemCount);
 	        } else {
 	            req.setAttribute("errorMessage", "Đã xảy ra lỗi khi thêm sản phẩm vào giỏ hàng.");
 	        }

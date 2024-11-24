@@ -71,27 +71,51 @@
                   <div class="block-header" id="headingOne" role="tab"><strong><a class="accordion-link" data-bs-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">TÀI KHOẢN NGÂN HÀNG</a></strong></div>
                   <div class="collapse show" id="collapseOne" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="block-body">
-                      <form action="#">
+                     <form action="${pageContext.request.contextPath}/user/checkoutPayment" method ="POST">
                         <div class="row">
 
   <div class="col-md-6">
+    <div class="mb-4">
+        <label class="form-label" for="card-name">Tên Ngân hàng</label>
+        <input class="form-control" type="text" name="card-name" id="card-name" 
+               value="Ngân hàng VCB" readonly>
+    </div>
 
     <div class="mb-4">
-      <label class="form-label" for="card-name">Tên Ngân hàng</label>
-      <input class="form-control" type="text" name="card-name" placeholder="Tên ngân hàng" id="card-name">
+        <label class="form-label" for="card-number">Số tài khoản</label>
+        <input class="form-control" type="text" name="card-number" id="card-number" 
+               value="1031454525" readonly>
     </div>
- 
+    
     <div class="mb-4">
-      <label class="form-label" for="card-number">Số tài khoản</label>
-      <input class="form-control" type="text" name="card-number" placeholder="Số tài khoản" id="card-number">
+        <label class="form-label" for="card-number">Chủ tài khoản</label>
+        <input class="form-control" type="text" name="card-number" id="name-card" 
+               value="HOÀNG MẠNH TƯỜNG	" readonly>
     </div>
-  </div>
+
+    <div class="mb-4">
+        <label class="form-label" for="card-amount">Số tiền</label>
+        <input class="form-control" type="text" name="finalTotal" id="card-amount" 
+               value= ${ finalTotal} readonly>
+    </div>
+
+    <div class="mb-4">
+        <label class="form-label" for="card-note">Nội dung chuyển khoản</label>
+        <input class="form-control" type="text" name="noidungck" id="card-note" 
+       value="P2TS${userID}" readonly>
+    </div>
+</div>
+  
+  
 
 
   <div class="col-md-6 d-flex align-items-center">
     <div class="text-center w-100">
       <label class="form-label d-block" for="qr-code">QR Code</label>
-      <img src="path/to/qr-code-image.jpg" alt="QR Code" id="qr-code" class="img-fluid" style="max-width: 200px; height: auto; border: 1px solid #ddd;">
+    <img src="https://qr.sepay.vn/img?bank=Vietcombank&acc=1031454525&template=compact&amount=${finalTotal}&des=P2TS${userID}" 
+     alt="QR Code" id="qr-code" class="img-fluid"
+      style="max-width: 200px; height: auto; border: 1px solid #ddd;">
+
     </div>
   </div>
 </div>
@@ -103,15 +127,34 @@
                 <div class="block mb-3">
                   <div class="block-header" id="headingThree" role="tab"><strong><a class="accordion-link collapsed" data-bs-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Thanh toán khi nhận hàng</a></strong></div>
                   <div class="collapse" id="collapseThree" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+                  
+                  <form action="${pageContext.request.contextPath}/user/checkoutPayment" method="post">
                     <div class="block-body py-5 d-flex align-items-center">
-                      <input type="radio" name="shippping" id="payment-method-2">
-                      <label class="ms-3" for="payment-method-2"><strong class="d-block text-uppercase mb-2">Thanh toán khi nhận hàng</strong><span class="text-muted text-sm">Hãy chú ý theo dõi đơn hàng của bạn</span></label>
+                      	 <input class="form-check-input" type="radio" name="paymentMethod" id="cashOnDelivery" value="Tien mat">
+                      	<label class="ms-3" for="cashOnDelivery">
+                      	<strong class="d-block text-uppercase mb-2">Thanh toán khi nhận hàng</strong>
+                      		<span class="text-muted text-sm">Hãy chú ý theo dõi đơn hàng của bạn</span>
+                      </label>
                     </div>
+            	</form>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="mb-5 d-flex justify-content-between flex-column flex-lg-row"><a class="btn btn-link text-muted" href="${pageContext.request.contextPath}/user/checkoutReview"> <i class="fa fa-angle-left me-2"></i>Quay lại trang đơn hàng</a><a class="btn btn-dark" href="${pageContext.request.contextPath}/user/checkoutConfirm">Đặt hàng<i class="fa fa-angle-right ms-2"></i></a></div>
+            
+            <div class="mb-5 d-flex justify-content-between flex-column flex-lg-row">
+    			<!-- Nút quay lại -->
+    			<a class="btn btn-link text-muted" 
+      				 href="${pageContext.request.contextPath}/user/checkoutReview"> 
+        			<i class="fa fa-angle-left me-2"></i> Quay lại trang đơn hàng
+   				 </a>
+    
+    					<!-- Form xác nhận đặt hàng -->
+   				 <form action="${pageContext.request.contextPath}/user/checkoutPayment" method="post">
+        			<button type="submit" class="btn btn-dark">Đặt hàng</button>
+    			</form>
+			</div>
+            
           </div>
           <div class="col-lg-4">
             <div class="block mb-5">
@@ -121,10 +164,10 @@
               <div class="block-body bg-light pt-1">
                 <p class="text-sm">Chi phí vận chuyển và chi phí bổ sung sẽ được tính dựa trên các sản phẩm bạn đã chọn.</p>
                 <ul class="order-summary mb-0 list-unstyled">
-                  <li class="order-summary-item"><span>Tổng tiền ước tính</span><span>$390.00</span></li>
-                  <li class="order-summary-item"><span>Phí vận chuyển</span><span>$10.00</span></li>
-                  <li class="order-summary-item"><span>Thuế dịch vụ</span><span>$0.00</span></li>
-                  <li class="order-summary-item border-0"><span>Tổng tiền</span><strong class="order-summary-total">$400.00</strong></li>
+                  <li class="order-summary-item"><span>Tổng tiền ước tính</span><span>${totalAmount }</span></li>
+                  <li class="order-summary-item"><span>Phí vận chuyện</span><span>${shipping }</span></li>
+                  <li class="order-summary-item"><span>Thuế dịch vụ</span><span>${serviceTax }</span></li>
+                  <li class="order-summary-item border-0"><span>Tổng tiền</span><strong class="order-summary-total">${finalTotal }</strong></li>
                 </ul>
               </div>
             </div>
@@ -172,13 +215,22 @@
           div.innerHTML = ajax.responseText;
           document.body.insertBefore(div, document.body.childNodes[0]);
           }
+          
+          
       }
       // this is set to Bootstrapious website as you cannot 
       // inject local SVG sprite (using only 'icons/orion-svg-sprite.a4dea202.svg' path)
       // while using file:// protocol
       // pls don't forget to change to your domain :)
       injectSvgSprite('${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/1-2-0/icons/orion-svg-sprite.svg'); 
-      
+    </script>
+    
+    <script>
+		    document.querySelector("form").addEventListener("submit", function (e) {
+			    const submitButton = this.querySelector("button[type='submit']");
+			    submitButton.disabled = true;
+			});
+    
     </script>
     <!-- jQuery-->
     <script src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/jquery/jquery.min.js"></script>

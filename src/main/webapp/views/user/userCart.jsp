@@ -81,6 +81,7 @@
                   <!-- Product-->
                   <div class="cart-item">
                   <c:forEach items="${cartItems}" var="item">
+   
                     <div class="row d-flex align-items-center text-center">
                       <div class="col-5">
                         <div class="d-flex align-items-center"><a href="${pageContext.request.contextPath}/user/categoryDetail?productCode=${item.productCode}">
@@ -96,22 +97,31 @@
                       <div class="col-2">${item.price}</div>
                       <div class="col-2">
 							<div class="d-flex align-items-center">
-								<a
+								<%-- <a
 									href="${pageContext.request.contextPath}/user/cart/?action=remove&productCode=${item.productCode}&size=${item.size }&quantityChange=-1"
 									class="btn btn-items btn-items-decrease">
-									<c:if test="${item.quantity <= 1}">style="pointer-events: none; opacity: 0.5;"</c:if>-</a>
+									<c:if test="${item.quantity <= 1}">style="pointer-events: none; opacity: 0.5;"</c:if>-</a> --%>
 									
-									<input
-										class="form-control text-center input-items" type="text"
+									<input class="form-control text-center input-items" type="text"
 										value="${item.quantity}" readonly>
-									<a
+									<%-- <a
 										href="${pageContext.request.contextPath}/user/cart?action=add&productCode=${item.productCode}&size=${item.size}&quantityChange=1"  
             								class="btn btn-items btn-items-increase" 
-            							<c:if test="${item.quantity >= item.stockQuantity}">style="pointer-events: none; opacity: 0.5;"</c:if>>+</a>
+            							<c:if test="${item.quantity >= item.stockQuantity}">style="pointer-events: none; opacity: 0.5;"</c:if>>+</a> --%>
 							</div>
 						</div>
                       <div class="col-2 text-center">${item.price * item.quantity}</div>
-                      <div class="col-1 text-center"><a class="cart-remove" href="${pageContext.request.contextPath}/user/cart?action=delete&productCode=${item.productCode}&size=${item.size}"> <i class="fa fa-times"></i></a></div>
+                      <div class="col-1 text-center">
+                     <form action="${pageContext.request.contextPath}/user/cart" method="POST">
+    					<input type="hidden" name="action" value="delete">
+    					<input type="hidden" name="productCode" value="${item.productCode}">
+    					<input type="hidden" name="size" value="${item.size}">
+    					<input type="hidden" name="quantity" value="${item.quantity}">
+    						<button type="submit" class="cart-remove btn btn-link">
+        						<i class="fa fa-times"></i>
+    						</button>
+					</form>
+                     </div>
                     </div>
                     </c:forEach>
                   </div>

@@ -67,14 +67,17 @@
                 </svg>
               </div>
           
-             <div class="nav-item">
-   					 <a class="navbar-icon-link" href="${pageContext.request.contextPath}/user/cart">
-                <svg class="svg-icon">
-                    <use xlink:href="#cart-1"></use>
-                </svg>
-                <div class="navbar-icon-link-badge">${cartItemCount}</div>
-            </a>
+            <div class="nav-item">
+    			<a class="navbar-icon-link" href="${pageContext.request.contextPath}/user/cart">
+       			 <svg class="svg-icon">
+            		<use xlink:href="#cart-1"></use>
+        		</svg>
+        		<div class="navbar-icon-link-badge">
+            		<c:out value="${sessionScope.cartItemCount}" default="0" />
+       			 </div>
+   				 </a>
 			</div>
+
 
               </div>
               <!-- User Not Logged - link to login page-->

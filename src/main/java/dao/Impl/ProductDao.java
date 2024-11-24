@@ -401,7 +401,40 @@ public class ProductDao {
 
 	    return (int) Math.ceil((double) total / pageSize);
 	}
-	
+	public List<ProductModel> getLatestProductsWithCategory(int limit) {
+	    String sql = "SELECT p.ProductCode, p.ProductName, p.Image, p.Description, p.Price, p.CreateDate, c.CategoryName " +
+	                 "FROM Products p " +
+	                 "INNER JOIN Categories c ON p.CategoryCode = c.CategoryCode " +
+	                 "ORDER BY p.CreateDate DESC " +
+	                 "OFFSET 0 ROWS FETCH NEXT ? ROWS ONLY";
+
+	    List<ProductModel> latestProducts = new ArrayList<>();
+	    try (Connection conn = new DBConnectSQL().getConnection();
+	         PreparedStatement ps = conn.prepareStatement(sql)) {
+	        ps.setInt(1, limit);
+
+	        try (ResultSet rs = ps.executeQuery()) {
+	            while (rs.next()) {
+	                ProductModel product = new ProductModel();
+	                product.setProductCode(rs.getString("ProductCode"));
+	                product.setProductName(rs.getString("ProductName"));
+	                product.setImage(rs.getString("Image"));
+	                product.setDescription(rs.getString("Description"));
+	                product.setPrice(rs.getDouble("Price"));
+	                product.setCreateDate(rs.getDate("CreateDate"));
+	                product.setCategoryName(rs.getString("CategoryName"));
+	                latestProducts.add(product);
+	            }
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return latestProducts;
+	}
+
+
+
+
 
 	public static void main(String[] args) {
 		 ProductDao dao = new ProductDao();

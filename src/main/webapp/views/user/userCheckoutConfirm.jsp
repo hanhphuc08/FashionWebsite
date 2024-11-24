@@ -60,9 +60,9 @@
             <use xlink:href="#checkmark-1"> </use>
           </svg>
         </div>
-        <h4 class="mb-3 ff-base">Cảm ơn, Anhthu. Đơn hàng của bạn đã được xác nhận</h4>
-        <p class="text-muted mb-5">Đơn hàng của bạn đang đợi để giao cho đơn vị vận chuyển</p>
-        <p> <a class="btn btn-outline-dark" href="${pageContext.request.contextPath}/user/order">Xem đơn hàng của bạn</a></p>
+        <h4 class="mb-3 ff-base">Cảm ơn, bạn. Đơn hàng của bạn đã đặt thành công</h4>
+        <p class="text-muted mb-5">Vui lòng đợi xác thực đơn hàng của mình</p>
+        <p> <a class="btn btn-outline-dark" href="${pageContext.request.contextPath}/user/orderDetail">Xem đơn hàng của bạn</a></p>
       </div>
     </section>
 

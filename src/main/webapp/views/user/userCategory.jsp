@@ -58,7 +58,7 @@
 </head>
 <body>
 	<!--  Begin Header -->
-	<%@ include file="/commons/web/header.jsp"%>;
+	<%@ include file="/commons/user/headerUser.jsp"%>;
 	<!-- End Header -->
 
 

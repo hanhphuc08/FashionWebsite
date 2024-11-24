@@ -1,45 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
 <!-- Hero Section-->
     <section>
       <!-- Hero Slider-->
       <div class="owl-carousel owl-theme owl-dots-modern home-slider">
-        <div class="item d-flex align-items-center" style="background: #f8d5cf;"><img class="bg-image" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/matheus-ferrero-334418-unsplash.jpg" alt="">
+        <c:forEach items="${latestProducts}" var="product">
+        <div class="item d-flex align-items-center" style="background: #f8d5cf;">
+        <img class="bg-image" src="${product.image}" alt="${product.productName}">
           <div class="container py-6">
             <div class="row">
               <div class="col-lg-8 col-xl-6 mx-auto text-white text-center position-relative">
-                <h5 class="text-uppercase text-white fw-light mb-4 letter-spacing-5"> Just arrived</h5>
-                <h1 class="mb-5 display-2 fw-bold text-serif">Denim Jackets</h1>
-                <p class="lead mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <p> <a class="btn btn-light" href="${pageContext.request.contextPath}/categories">View collection</a></p>
+                <h5 class="text-uppercase text-white fw-light mb-4 letter-spacing-5">Mới nhất</h5>
+                <h1 class="mb-5 display-2 fw-bold text-serif">${product.categoryName}</h1>
+                <p class="lead mb-4">${product.productName}</p>
+                <p> 
+                	<a class="btn btn-light" href="${pageContext.request.contextPath}/categoryDetail?productCode=${product.productCode}">
+                		Xem ngay
+                	</a>
+                </p>
               </div>
             </div>
           </div>
         </div>
-        <div class="item d-flex align-items-center bg-dark dark-overlay"><img class="bg-image" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/ian-dooley-347942-unsplash.jpg" alt="">
-          <div class="container py-6">
-            <div class="row">
-              <div class="col-lg-8 col-xl-6 mx-auto text-white text-center overlay-content">
-                <h1 class="mb-4 display-2 text-uppercase fw-bold">Skeleton Tees</h1>
-                <p class="lead mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <p> <a class="btn btn-light" href="category.html">Start shopping</a></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="item d-flex align-items-center"><img class="bg-image" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/haley-phelps-62815-unsplash.jpg" alt="">
-          <div class="container py-6">
-            <div class="row">
-              <div class="col-lg-8 col-xl-6 mx-auto text-white text-center position-relative">
-                <h5 class="text-uppercase fw-light mb-4 letter-spacing-5"> Our bestseller</h5>
-                <h1 class="mb-5 display-1 fw-bold text-serif">Skinny Jeans</h1>
-                <p> <a class="btn btn-light" href="category.html">View collection</a></p>
-              </div>
-            </div>
-          </div>
-        </div>
+       </c:forEach>
       </div>
     </section>
     <!-- Our picks section-->
