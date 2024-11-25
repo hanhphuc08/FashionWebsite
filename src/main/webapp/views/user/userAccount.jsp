@@ -96,10 +96,7 @@
                       <button class="btn btn-outline-dark" type="submit"><i class="far fa-save me-2"></i>Thay đổi mật khẩu</button>
                     </div>
                   </div>
-                <form>
-                  
-                 
-                      
+                <form>   
               </div>
             </div>
             <div class="block mb-5">
