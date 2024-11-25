@@ -59,7 +59,7 @@
     <script src="${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/js/theme.30e7c8f9.js"></script>
     <script src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/jquery.cookie/jquery.cookie.js"> </script>
     <script src="${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/js/demo.9833433a.js"></script>
-<%@ include file="/commons/admin/header.jsp" %>;
+<%@ include file="/commons/admin/headerAdmin.jsp" %>;
 
     <div class="container-fluid">
 

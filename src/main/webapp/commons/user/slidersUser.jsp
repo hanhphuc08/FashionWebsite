@@ -4,12 +4,10 @@
 <!DOCTYPE html>
 <html>
 <!-- Hero Section-->
-     <section>
+    <section>
       <!-- Hero Slider-->
       <div class="owl-carousel owl-theme owl-dots-modern home-slider">
-        <c:forEach items="${latestProducts}" var="product">
-        <div class="item d-flex align-items-center" style="background: #f8d5cf;">
-        <img class="bg-image" src="${product.image}" alt="${product.productName}">
+        <div class="item d-flex align-items-center" style="background: #f8d5cf;"><img class="bg-image" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/matheus-ferrero-334418-unsplash.jpg" alt="">
           <div class="container py-6">
             <div class="row">
               <div class="col-lg-8 col-xl-6 mx-auto text-white text-center position-relative">
@@ -17,7 +15,7 @@
                 <h1 class="mb-5 display-2 fw-bold text-serif">${product.categoryName}</h1>
                 <p class="lead mb-4">${product.productName}</p>
                 <p> 
-                	<a class="btn btn-light" href="${pageContext.request.contextPath}/categoryDetail?productCode=${product.productCode}">
+                	<a class="btn btn-light" href="${pageContext.request.contextPath}/user/categoryDetail?productCode=${product.productCode}">
                 		Xem ngay
                 	</a>
                 </p>
@@ -25,8 +23,6 @@
             </div>
           </div>
         </div>
-       </c:forEach>
-      </div>
     </section>
     <!-- Our picks section-->
     <section>
@@ -102,14 +98,14 @@
           <div class="product-slider-item">
             <div class="product">
               <div class="product-image"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/serrah-galos-494231-unsplash.jpg" alt="product"/>
-                <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/categoryDetail"></a>
-                  <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/categoryDetail"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">Xem</span></a>
+                <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/user/categoryDetail"></a>
+                  <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href=${pageContext.request.contextPath}/user/categoryDetail"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">Xem</span></a>
                   </div>
                 </div>
               </div>
               <div class="py-2">
                 <p class="text-muted text-sm mb-1">Jackets</p>
-                <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/categoryDetail">Striped T-Shirt</a></h3><span class="text-muted">$40.00</span>
+                <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/user/categoryDetail">Striped T-Shirt</a></h3><span class="text-muted">$40.00</span>
               </div>
             </div>
           </div>
@@ -118,14 +114,14 @@
           <div class="product-slider-item">
             <div class="product">
               <div class="product-image"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/averie-woodard-319832-unsplash.jpg" alt="product"/>
-                <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/categoryDetail"></a>
-                  <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/categoryDetail"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">xem</span></a>
+                <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/user/categoryDetail"></a>
+                  <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/user/categoryDetail"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">xem</span></a>
                   </div>
                 </div>
               </div>
               <div class="py-2">
                 <p class="text-muted text-sm mb-1">Shirts</p>
-                <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/categoryDetail">Short top</a></h3><span class="text-muted">$40.00</span>
+                <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/user/categoryDetail">Short top</a></h3><span class="text-muted">$40.00</span>
               </div>
             </div>
           </div>
@@ -135,14 +131,14 @@
             <div class="product">
               <div class="product-image">
                 <div class="ribbon ribbon-danger">hết hàng</div><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/serrah-galos-494279-unsplash.jpg" alt="product"/>
-                <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/categoryDetail"></a>
-                  <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/categoryDetail"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">Xem</span></a>
+                <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/user/categoryDetail"></a>
+                  <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/user/categoryDetail"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">Xem</span></a>
                   </div>
                 </div>
               </div>
               <div class="py-2">
                 <p class="text-muted text-sm mb-1">Sweaters</p>
-                <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/categoryDetail">Ethnic Sweater</a></h3><span class="text-muted">$40.00</span>
+                <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/user/categoryDetail">Ethnic Sweater</a></h3><span class="text-muted">$40.00</span>
               </div>
             </div>
           </div>
@@ -151,14 +147,14 @@
           <div class="product-slider-item">
             <div class="product">
               <div class="product-image"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/dmitriy-ilkevich-437760-unsplash.jpg" alt="product"/>
-                <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/categoryDetail"></a>
-                  <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/categoryDetail"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">Xem</span></a>
+                <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/user/categoryDetail"></a>
+                  <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="v"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">Xem</span></a>
                   </div>
                 </div>
               </div>
               <div class="py-2">
                 <p class="text-muted text-sm mb-1">Coats</p>
-                <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/categoryDetail">Beige</a></h3><span class="text-muted">$40.00</span>
+                <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/user/categoryDetail">Beige</a></h3><span class="text-muted">$40.00</span>
               </div>
             </div>
           </div>
@@ -167,14 +163,14 @@
           <div class="product-slider-item">
             <div class="product">
               <div class="product-image"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/ian-dooley-347968-unsplash.jpg" alt="product"/>
-                <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/categoryDetail"></a>
-                  <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/categoryDetail"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">Xem</span></a>
+                <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/user/categoryDetail"></a>
+                  <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/user/categoryDetail"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">Xem</span></a>
                   </div>
                 </div>
               </div>
               <div class="py-2">
                 <p class="text-muted text-sm mb-1">T-Shirts</p>
-                <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/categoryDetail">Skull Tee</a></h3><span class="text-muted">$40.00</span>
+                <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/user/categoryDetail">Skull Tee</a></h3><span class="text-muted">$40.00</span>
               </div>
             </div>
           </div>
@@ -183,14 +179,14 @@
           <div class="product-slider-item">
             <div class="product">
               <div class="product-image"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/alex-holyoake-571682-unsplash.jpg" alt="product"/>
-                <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/categoryDetail"></a>
-                  <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/categoryDetail"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">Xem</span></a>
+                <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/user/categoryDetail"></a>
+                  <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/user/categoryDetail"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">Xem</span></a>
                   </div>
                 </div>
               </div>
               <div class="py-2">
                 <p class="text-muted text-sm mb-1">Denim</p>
-                <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/categoryDetail">Trucker jacket</a></h3><span class="text-muted">$40.00</span>
+                <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/user/categoryDetail">Trucker jacket</a></h3><span class="text-muted">$40.00</span>
               </div>
             </div>
           </div>
@@ -199,14 +195,14 @@
           <div class="product-slider-item">
             <div class="product">
               <div class="product-image"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/ao-456813-unsplash.jpg" alt="product"/>
-                <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/categoryDetail"></a>
-                  <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/categoryDetail"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">Xem</span></a>
+                <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/user/categoryDetail"></a>
+                  <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/user/categoryDetail"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">Xem</span></a>
                   </div>
                 </div>
               </div>
               <div class="py-2">
                 <p class="text-muted text-sm mb-1">Denim</p>
-                <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/categoryDetail">Blouse</a></h3><span class="text-muted">$40.00</span>
+                <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/user/categoryDetail">Blouse</a></h3><span class="text-muted">$40.00</span>
               </div>
             </div>
           </div>
@@ -215,14 +211,14 @@
           <div class="product-slider-item">
             <div class="product">
               <div class="product-image"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/kyle-loftus-592041-unsplash.jpg" alt="product"/>
-                <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/categoryDetail"></a>
-                  <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/categoryDetail"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">Xem</span></a>
+                <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/user/categoryDetail"></a>
+                  <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/user/categoryDetail"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">Xem</span></a>
                   </div>
                 </div>
               </div>
               <div class="py-2">
                 <p class="text-muted text-sm mb-1">Denim</p>
-                <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/categoryDetail">Shirt</a></h3><span class="text-muted">$40.00</span>
+                <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/user/categoryDetail">Shirt</a></h3><span class="text-muted">$40.00</span>
               </div>
             </div>
           </div>

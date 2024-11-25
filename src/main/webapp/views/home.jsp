@@ -39,9 +39,10 @@
     <!--  Begin Slider -->
 	<%@ include file="/commons/web/sliders.jsp" %>;
 	<!-- End Slider -->
+	
     <!--  Begin Brands -->
-	<%@ include file="/commons/web/brands.jsp" %>;
 	<!-- End Brands -->
+	
      <!--  Begin Footer -->
 	<%@ include file="/commons/web/footer.jsp" %>
 	<!-- End Footer -->

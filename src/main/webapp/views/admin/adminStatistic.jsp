@@ -96,7 +96,7 @@
 	<script
 		src="${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/js/demo.9833433a.js"></script>
 
-	<%@ include file="/commons/admin/header.jsp"%>;
+	<%@ include file="/commons/admin/headerAdmin.jsp"%>;
 
 	<div class="container-fluid">
 

@@ -8,8 +8,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns={"/user/UserAddress"})
-public class UserAddressController extends HttpServlet {
+@WebServlet(urlPatterns={"/user/forgotPassword"})
+public class UserForgotPasswordController extends HttpServlet {
 
 	/**
 	 * 
@@ -19,9 +19,6 @@ public class UserAddressController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		req.getRequestDispatcher("/views/user/userAddress.jsp").forward(req, resp);
+		req.getRequestDispatcher("/views/user/userForgotPassword.jsp").forward(req, resp);
 	}
-	
-	
-
 }

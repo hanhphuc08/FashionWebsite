@@ -86,11 +86,6 @@
                         <input class="form-control" id="oldPassword" name = "oldPassword" type="password">
                       </div>
                     </div>
-                    <div class="col-sm-6">
-                      <div class="text-center mt-4">
-                        <button class="btn btn-outline-dark" type="submit" href="forgotPassword">không được quên mật khẩu</button>
-                      </div>
-                    </div>
                   </div>
                   <!-- /.row-->
                   <div class="row">
@@ -110,14 +105,8 @@
                       <button class="btn btn-outline-dark" type="submit"><i class="far fa-save me-2"></i>Thay đổi mật khẩu</button>
                     </div>
                   </div>
-<<<<<<< HEAD
                 <form>   
-=======
                 </form>
-                  
-                 
-                      
->>>>>>> adf71bb2109bf3df40b69a1139f77aa343f55e98
               </div>
             </div>
             <div class="block mb-5">
@@ -157,31 +146,9 @@
               </div>
             </div>
           </div>
-          <!-- Customer Sidebar-->
-          <div class="col-xl-3 col-lg-4 mb-5">
-            <div class="customer-sidebar card border-0"> 
-              <div class="customer-profile"><a class="d-inline-block" href="#"><img class="img-fluid rounded-circle customer-image shadow" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-589739-unsplash-avatar.jpg" alt=""></a>
-                <h5>${user.fullname }</h5>
-                <p class="text-muted text-sm mb-0">ở nhà</p>
-              </div>
-              <nav class="list-group customer-nav"><a class="list-group-item d-flex justify-content-between align-items-center text-decoration-none" href="${pageContext.request.contextPath}/user/orders"><span>
-                    <svg class="svg-icon svg-icon-heavy me-2">
-                      <use xlink:href="#paper-bag-1"> </use>
-                    </svg>Đơn hàng</span>
-                  <div class="badge rounded-pill bg-dark fw-normal px-3">5</div></a><a class="active list-group-item d-flex justify-content-between align-items-center text-decoration-none" href="${pageContext.request.contextPath}/user/UserAccount"><span>
-                    <svg class="svg-icon svg-icon-heavy me-2">
-                      <use xlink:href="#male-user-1"> </use>
-                    </svg>Hồ sơ của tôi</span></a><a class="list-group-item d-flex justify-content-between align-items-center text-decoration-none" href="${pageContext.request.contextPath}/user/UserAccount"><span>
-                    <svg class="svg-icon svg-icon-heavy me-2">
-                      <use xlink:href="#navigation-map-1"> </use>
-                    </svg>Địa chỉ</span></a><a class="list-group-item d-flex justify-content-between align-items-center text-decoration-none" href="${pageContext.request.contextPath}/user/UserAddress"><span>
-                    <svg class="svg-icon svg-icon-heavy me-2">
-                      <use xlink:href="#exit-1"> </use>
-                    </svg>Đăng xuẩt</span></a>
-              </nav>
-            </div>
-          </div>
-          <!-- /Customer Sidebar-->
+          <!-- Begin Customer Sidebar-->
+          <%@ include file="/commons/user/customerSidebar.jsp" %>;
+          <!-- End Customer Sidebar-->
         </div>
       </div>
     </section>
