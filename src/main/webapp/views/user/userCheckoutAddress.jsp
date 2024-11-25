@@ -35,7 +35,7 @@
   </head>
   <body>
   	<!--  Begin Header -->
-	<%@ include file="/commons/web/headerUser.jsp" %>;
+	<%@ include file="/commons/user/headerUser.jsp" %>;
 	<!-- End Header -->
 
     <!-- Hero Section-->
@@ -62,11 +62,10 @@
           <div class="col-lg-8">
             <ul class="custom-nav nav nav-pills mb-5">
               <li class="nav-item w-25"><a class="nav-link text-sm active" href="${pageContext.request.contextPath}/user/checkoutAddress">Địa chỉ</a></li>
-              <li class="nav-item w-25"><a class="nav-link text-sm disabled" href="${pageContext.request.contextPath}/user/checkoutDelivery">Phương thức vận chuyển</a></li>
-              <li class="nav-item w-25"><a class="nav-link text-sm disabled" href="${pageContext.request.contextPath}/user/checkoutPayment">Phương thức thanh toán</a></li>
               <li class="nav-item w-25"><a class="nav-link text-sm disabled" href="${pageContext.request.contextPath}/user/checkoutReview">Đơn hàng</a></li>
+              <li class="nav-item w-50"><a class="nav-link text-sm disabled" href="${pageContext.request.contextPath}/user/checkoutPauyment">Phương thức thanh toán</a></li>
             </ul>
-            <form action="#">
+            <form action="${pageContext.request.contextPath}/user/checkoutAddress" method ="POST">
               <div class="block">
                  <!-- Invoice Address-->
                  <div class="block-header">
@@ -77,56 +76,66 @@
                   
                     <div class="form-group col-md-6">
                       <label class="form-label" for="fullname_invoice">Tên</label>
-                      <input class="form-control" type="text" name="fullname_invoice" placeholder="AnhThu" id="fullname_invoice">
-                    </div>    
-                    
-                    <div class="form-group col-md-6">
-                		<label class="form-label" for="Username2">Tỉnh / Thành phố </label>
-               			 <select class="form-control" id="City" name="city" required>
-                 		 <option value=""></option>
-                  		 <option value="Hanoi">Hà Nội</option>
-                 		 <option value="HCM">Thành phố Hồ Chí Minh</option>
-                  		 <option value="DaNang">Đà Nẵng</option>
-                  		 <option value="HaiPhong">Hải Phòng</option>
-                  		 <option value="CanTho">Cần Thơ</option>
-                 		 <option value="NhaTrang">Nha Trang</option>
-                		 </select>
-             		</div>
-             		
-             		<div class="form-group col-md-6">
-                      <label class="form-label" for="emailaddress_invoice">Email</label>
-                      <input class="form-control" type="text" name="emailaddress_invoice" placeholder="meowmeow@gmail.com" id="emailaddress_invoice">
+                      <input class="form-control" type="text" name="fullname_invoice" placeholder= "Tên đầy đủ" 
+                      id="fullname_invoice" value = "${address != null ? address.fullNameUA : '' }" required>
+                    </div>
+<%-- 
+<div class="form-group col-md-6">
+<label class="form-label" for="City">Tỉnh / Thành phố</label>
+<select class="form-control" id="City" name="provinceID"
+required>
+<option value="">Chọn tỉnh / thành phố</option>
+<c:forEach items="${provinces}" var="province">
+<option value="${province.provinceID}"
+${address != null && address.provinceID == province.provinceID ? 'selected' : ''}>
+${province.pname}</option>
+</c:forEach>
+</select>
+</div> --%>
+					<div class="form-group col-md-6">
+                      <label class="form-label" for="phonenumber_invoice">Tỉnh / Thành phố</label>
+                      <input class="form-control" type="text" name="provinceName" placeholder="Tỉnh" id ="cicty"
+                      	value="${address != null ? address.provinceName : ''}" required >
                     </div>
                     
-                    <div class="form-group col-md-6">
-                		<label class="form-label" for="Username2">Quận / Huyện </label>
-               			 <select class="form-control custom-select" id="District" name="district" required>
-                 		 <option value=""></option>
-                 		 <option value="HoanKiem">Hoàn Kiếm</option>
-                 		 <option value="DongDa">Đống Đa</option>
-                  		 <option value="HaiBaTrung">Hai Bà Trưng</option>
-                 		 <option value="NamTuLiem">Nam Từ Liêm</option>
-                		 <option value="BinhThanh">Bình Thạnh</option>
-                 		 <option value="GoVap">Gò Vấp</option>
-               			 </select>
-              		</div>
-              		
-               		<div class="form-group col-md-6">
+					<div class="form-group col-md-6">
+                      <label class="form-label" for="emailaddress_invoice">Email</label>
+                      <input class="form-control" type="text" name="emailaddress_invoice" placeholder="Email"
+                       id="emailaddress_invoice" value="${address != null ? address.emailUA : ''}" required>
+                    </div>
+
+					<div class="form-group col-md-6">
+   						 <label class="form-label" for="District">Quận / Huyện</label>
+   						 <input class="form-control" id="District" name="districtName" type="text"  placeholder="Nhập Quận/Huyện"
+    						value="${address != null ? address.districtName : ''}" required>
+					</div>
+
+					<div class="form-group col-md-6">
                       <label class="form-label" for="phonenumber_invoice">Số điện thoại</label>
-                      <input class="form-control" type="text" name="phonenumber_invoice" placeholder="Số điện thoại" id="phonenumber_invoice">
+                      <input class="form-control" type="text" name="phonenumber_invoice" placeholder="Số điện thoại"
+                      	value="${address != null ? address.phoneUA : ''}" required id="phonenumber_invoice">
                     </div>
                   
                   <div class="form-group col-md-6">
                 		<label class="form-label" for="Address">Địa chỉ nhà, Đường cụ thể</label>
-               			<input class="form-control" id="Address" type="text" name="address" placeholder="" required>
+               			<input class="form-control" id="Address" type="text" name="address" placeholder="Địa chỉ cụ thể"
+               				value="${address != null ? address.specificAddress : ''}" required>
               	 </div>
                   <!-- /Invoice Address-->
                 </div>
                 </div>
               </div>
-              <div class="mb-5 d-flex justify-content-between flex-column flex-lg-row"><a class="btn btn-link text-muted" href="${pageContext.request.contextPath}/user/cart"> <i class="fa fa-angle-left me-2"></i>Quay lại</a><a class="btn btn-dark" href="${pageContext.request.contextPath}/user/checkoutDelivery">Chọn phương thức vận chuyển<i class="fa fa-angle-right ms-2"></i></a></div>
+              <div class="mb-5 d-flex justify-content-between flex-column flex-lg-row">
+              		<a href="${pageContext.request.contextPath}/user/cart" class="btn btn-link text-muted" > 
+              			<i class="fa fa-angle-left me-2"></i>Quay lại
+             		 </a>
+              		<button type="submit" name="action" value="review" class="btn btn-dark">
+            			Xem đơn hàng <i class="fa fa-angle-right ms-2"></i>
+        			</button>
+              </div>
             </form>
           </div>
+    
           <div class="col-lg-4">
             <div class="block mb-5">
               <div class="block-header">
@@ -135,14 +144,15 @@
               <div class="block-body bg-light pt-1">
                 <p class="text-sm">Chi phí vận chuyển và chi phí bổ sung sẽ được tính dựa trên các sản phẩm bạn đã chọn.</p>
                 <ul class="order-summary mb-0 list-unstyled">
-                  <li class="order-summary-item"><span>Tổng tiền ước tính</span><span>$390.00</span></li>
-                  <li class="order-summary-item"><span>Phí vận chuyện</span><span>$10.00</span></li>
-                  <li class="order-summary-item"><span>Thuế dịch vụ</span><span>$0.00</span></li>
-                  <li class="order-summary-item border-0"><span>Tổng tiền</span><strong class="order-summary-total">$400.00</strong></li>
+                  <li class="order-summary-item"><span>Tổng tiền ước tính</span><span>${totalAmount }</span></li>
+                  <li class="order-summary-item"><span>Phí vận chuyện</span><span>${shipping }</span></li>
+                  <li class="order-summary-item"><span>Thuế dịch vụ</span><span>${serviceTax }</span></li>
+                  <li class="order-summary-item border-0"><span>Tổng tiền</span><strong class="order-summary-total">${finalTotal }</strong></li>
                 </ul>
               </div>
             </div>
           </div>
+          
         </div>
       </div>
     </section>
@@ -188,13 +198,43 @@
           document.body.insertBefore(div, document.body.childNodes[0]);
           }
       }
+     
+     
+
       // this is set to Bootstrapious website as you cannot 
       // inject local SVG sprite (using only 'icons/orion-svg-sprite.a4dea202.svg' path)
       // while using file:// protocol
       // pls don't forget to change to your domain :)
-      injectSvgSprite('https://demo.bootstrapious.com/sell/1-2-0/icons/orion-svg-sprite.svg'); 
+      injectSvgSprite('${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/1-2-0/icons/orion-svg-sprite.svg'); 
       
     </script>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const checkoutButton = document.querySelector('.btn-dark');
+        const form = document.querySelector('form');
+
+        checkoutButton.addEventListener('click', function (event) {
+            const inputs = form.querySelectorAll('input[required], select[required]');
+            let valid = true;
+
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    input.classList.add('is-invalid'); // Thêm class để hiển thị lỗi
+                    valid = false;
+                } else {
+                    input.classList.remove('is-invalid');
+                }
+            });
+
+            if (!valid) {
+                event.preventDefault();
+                alert('Vui lòng điền đầy đủ thông tin trước khi tiếp tục.');
+            }
+        });
+    });
+    </script>
+
+    
     <!-- jQuery-->
     <script src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/jquery/jquery.min.js"></script>
     <!-- Bootstrap JavaScript Bundle (Popper.js included)-->
@@ -210,7 +250,7 @@
     <script src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/glightbox/js/glightbox.min.js"> </script>
     <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
     <script src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/object-fit-images/ofi.min.js"></script>
-    <script>var basePath = ''</script>
+    <script>var basePath = '${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sel/2-0-1/'</script>
     <script src="js/theme.30e7c8f9.js"></script>
     <script src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/jquery.cookie/jquery.cookie.js"> </script>
     <script src="js/demo.9833433a.js"></script>

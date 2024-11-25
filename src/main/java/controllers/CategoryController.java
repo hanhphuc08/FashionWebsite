@@ -37,6 +37,7 @@ public class CategoryController extends HttpServlet{
 		String pageParam = req.getParameter("page");
 	    String orderbyParam = req.getParameter("orderby");
 	    String categoryCode = req.getParameter("categoryCode");
+	    String searchQuery = req.getParameter("searchQuery");
 	    
 	    int page = 1; 
 	    try {
@@ -60,8 +61,12 @@ public class CategoryController extends HttpServlet{
 		ProductDao dao = new ProductDao();
 	    List<ProductModel> products;
 	    int totalPages;
-		 
-		 if(typeCategoryCode != null && !typeCategoryCode.trim().isEmpty())
+		 if(searchQuery != null && !searchQuery.trim().isEmpty())
+		 {
+			 totalPages = dao.getTotalPagesBySearch(searchQuery,categoryCode, pageSize);
+		     products = dao.getAllProductBySearch(searchQuery,categoryCode, page, pageSize, orderby);
+		 }
+		 else if(typeCategoryCode != null && !typeCategoryCode.trim().isEmpty())
 		 {
 			 totalPages = dao.getTotalPagesByTypeCategoryCode(typeCategoryCode, pageSize);
 		     products = dao.getAllProductsByTypeCategoryCode(typeCategoryCode, page, pageSize, orderby);
@@ -82,6 +87,7 @@ public class CategoryController extends HttpServlet{
 		 req.setAttribute("orderby", orderby); 
 		 req.setAttribute("typeCategoryCode", typeCategoryCode);
 		 req.setAttribute("categoryCode", categoryCode);
+		 req.setAttribute("searchQuery", searchQuery);
 		 req.getRequestDispatcher("/views/category.jsp").forward(req, resp);
 		
 	}

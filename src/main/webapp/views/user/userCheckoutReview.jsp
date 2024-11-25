@@ -35,7 +35,7 @@
   </head>
   <body>
     <!--  Begin Header -->
-	<%@ include file="/commons/web/headerUser.jsp" %>;
+	<%@ include file="/commons/user/headerUser.jsp" %>;
 	<!-- End Header -->
 
     <!-- Hero Section-->
@@ -62,9 +62,8 @@
           <div class="col-lg-8">
             <ul class="custom-nav nav nav-pills mb-5">
               <li class="nav-item w-25"><a class="nav-link text-sm disabled" href="${pageContext.request.contextPath}/user/checkoutAddress">Địa chỉ</a></li>
-              <li class="nav-item w-25"><a class="nav-link text-sm disabled" href="${pageContext.request.contextPath}/user/checkoutDelivery">Phương thức vận chuyển</a></li>
-              <li class="nav-item w-25"><a class="nav-link text-sm disabled" href="${pageContext.request.contextPath}/user/checkoutPayment">Phương thức thanh toán</a></li>
               <li class="nav-item w-25"><a class="nav-link text-sm active" href="${pageContext.request.contextPath}/user/checkoutReview">Đơn hàng</a></li>
+              <li class="nav-item w-50"><a class="nav-link text-sm disabled" href="${pageContext.request.contextPath}/user/checkoutPauyment">Phương thức thanh toán</a></li>
             </ul>
             <div class="mb-5">
               <div class="cart">
@@ -78,56 +77,46 @@
                     </div>
                   </div>
                   <div class="cart-body">
+                
                     <!-- Product-->
                     <div class="cart-item">
+                      <c:forEach items="${cartItems}" var="item">
                       <div class="row d-flex align-items-center text-center">
                         <div class="col-6">
-                          <div class="d-flex align-items-center"><a href="${pageContext.request.contextPath}/user/categoryDetail"><img class="cart-item-img" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/product-square-ian-dooley-347968-unsplash.jpg" alt="..."></a>
-                            <div class="cart-title text-start"><a class="text-uppercase text-dark" href="${pageContext.request.contextPath}/user/categoryDetail"><strong>Skull Tee</strong></a><br><span class="text-muted text-sm">Size: Large</span><br><span class="text-muted text-sm">Colour: Green</span>
+                          <div class="d-flex align-items-center">
+                          <a href="${pageContext.request.contextPath}/user/categoryDetail?productCode=${item.productCode}">
+                          <img class="cart-item-img" 
+                          src="${item.image }" 
+                          alt="${item.productName}"></a>
+                            <div class="cart-title text-start"><a class="text-uppercase text-dark" 
+                            href="${pageContext.request.contextPath}/user/categoryDetail?productCode=${item.productCode}">
+                            <strong>${item.productName }</strong>
+                            </a><br><span class="text-muted text-sm">Size: ${item.size}</span><br>
+                            <span class="text-muted text-sm">Colour: ${item.color }</span>
                             </div>
                           </div>
                         </div>
-                        <div class="col-2">$65.00</div>
-                        <div class="col-2">4
-                        </div>
-                        <div class="col-2 text-center">$260.00</div>
+                        <div class="col-2">${item.price }</div>
+                        <div class="col-2">${item.quantity } </div>
+                        <div class="col-2 text-center">${item.price * item.quantity}</div>
                       </div>
-                    </div>
-                    <!-- Product-->
-                    <div class="cart-item">
-                      <div class="row d-flex align-items-center text-center">
-                        <div class="col-6">
-                          <div class="d-flex align-items-center"><a href="${pageContext.request.contextPath}/user/categoryDetail"><img class="cart-item-img" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/product-square-kyle-loftus-596319-unsplash.jpg" alt="..."></a>
-                            <div class="cart-title text-start"><a class="text-uppercase text-dark" href="${pageContext.request.contextPath}/user/categoryDetail"><strong>Transparent Blouse</strong></a><br><span class="text-muted text-sm">Size: Medium</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-2">$55.00</div>
-                        <div class="col-2">3
-                        </div>
-                        <div class="col-2 text-center">$165.00</div>
-                      </div>
-                    </div>
-                    <!-- Product-->
-                    <div class="cart-item">
-                      <div class="row d-flex align-items-center text-center">
-                        <div class="col-6">
-                          <div class="d-flex align-items-center"><a href="${pageContext.request.contextPath}/user/categoryDetail"><img class="cart-item-img" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/product-square-serrah-galos-494312-unsplash.jpg" alt="..."></a>
-                            <div class="cart-title text-start"><a class="text-uppercase text-dark" href="${pageContext.request.contextPath}/user/categoryDetail"><strong>White Tee</strong></a><br><span class="text-muted text-sm">Size: Medium</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-2">$55.00</div>
-                        <div class="col-2">3
-                        </div>
-                        <div class="col-2 text-center">$165.00</div>
-                      </div>
-                    </div>
+                  		</c:forEach>
+                  	</div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="mb-5 d-flex justify-content-between flex-column flex-lg-row"><a class="btn btn-link text-muted" href="${pageContext.request.contextPath}/user/checkoutPayment"> <i class="fa fa-angle-left me-2"></i>Quay lại phương thức thanh toán</a><a class="btn btn-dark" href="${pageContext.request.contextPath}/user/checkoutConfirm">Đặt hàng<i class="fa fa-angle-right ms-2"></i></a></div>
+            <div class="mb-5 d-flex justify-content-between flex-column flex-lg-row">
+            	<a class="btn btn-link text-muted" 
+            		href="${pageContext.request.contextPath}/user/checkoutAddress"> 
+            			<i class="fa fa-angle-left me-2"></i>
+            				Quay lại trang địa chỉ
+            	</a>
+            	<a class="btn btn-dark" 
+            		href="${pageContext.request.contextPath}/user/checkoutPayment">
+            			Thanh toán
+            				<i class="fa fa-angle-right ms-2"></i>
+            	</a></div>
           </div>
           <div class="col-lg-4">
             <div class="block mb-5">
@@ -137,10 +126,10 @@
               <div class="block-body bg-light pt-1">
                 <p class="text-sm">Chi phí vận chuyển và chi phí bổ sung sẽ được tính dựa trên các sản phẩm bạn đã chọn.</p>
                 <ul class="order-summary mb-0 list-unstyled">
-                  <li class="order-summary-item"><span>Tổng tiền ước tính</span><span>$390.00</span></li>
-                  <li class="order-summary-item"><span>Phí vận chuyện</span><span>$10.00</span></li>
-                  <li class="order-summary-item"><span>Thuế dịch vụ</span><span>$0.00</span></li>
-                  <li class="order-summary-item border-0"><span>Tổng tiền</span><strong class="order-summary-total">$400.00</strong></li>
+                  <li class="order-summary-item"><span>Tổng tiền ước tính</span><span>${totalAmount }</span></li>
+                  <li class="order-summary-item"><span>Phí vận chuyện</span><span>${shipping}</span></li>
+                  <li class="order-summary-item"><span>Thuế dịch vụ</span><span>${serviceTax }</span></li>
+                  <li class="order-summary-item border-0"><span>Tổng tiền</span><strong class="order-summary-total">${finalTotal }</strong></li>
                 </ul>
               </div>
             </div>
@@ -194,7 +183,7 @@
       // inject local SVG sprite (using only 'icons/orion-svg-sprite.a4dea202.svg' path)
       // while using file:// protocol
       // pls don't forget to change to your domain :)
-      injectSvgSprite('https://demo.bootstrapious.com/sell/1-2-0/icons/orion-svg-sprite.svg'); 
+      injectSvgSprite('${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/1-2-0/icons/orion-svg-sprite.svg'); 
       
     </script>
     <!-- jQuery-->
@@ -212,7 +201,7 @@
     <script src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/glightbox/js/glightbox.min.js"> </script>
     <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
     <script src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/object-fit-images/ofi.min.js"></script>
-    <script>var basePath = ''</script>
+    <script>var basePath = '${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/'</script>
     <script src="js/theme.30e7c8f9.js"></script>
     <script src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/jquery.cookie/jquery.cookie.js"> </script>
     <script src="js/demo.9833433a.js"></script>

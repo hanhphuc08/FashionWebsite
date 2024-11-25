@@ -35,8 +35,9 @@
   </head>
   <body>
      <!--  Begin Header -->
-	<%@ include file="/commons/web/headerUser.jsp" %>;
+	<%@ include file="/commons/user/headerUser.jsp" %>;
 	<!-- End Header -->
+
 
     <!-- Hero Section-->
     <section class="hero">
@@ -55,6 +56,7 @@
         </div>
       </div>
     </section>
+    
     <section>
       <div class="container">
         <div class="row">
@@ -69,36 +71,19 @@
                   <th class="py-4 text-uppercase text-sm">Chi tiết</th>
                 </tr>
               </thead>
+              <c:forEach items = "${orderList }" var = "order">
               <tbody>
+              	
                 <tr>
-                  <th class="py-4 align-middle"># 1735</th>
-                  <td class="py-4 align-middle">22/6/2017</td>
-                  <td class="py-4 align-middle">$150.00</td>
-                  <td class="py-4 align-middle"><span class="badge p-2 text-uppercase badge-info-light">Being prepared</span></td>
-                  <td class="py-4 align-middle"><a class="btn btn-outline-dark btn-sm" href="${pageContext.request.contextPath}/user/order">xem</a></td>
+                  <th class="py-4 align-middle"># ${order.orderID}</th>
+                  <td class="py-4 align-middle">${order.orderDate }</td>
+                  <td class="py-4 align-middle">${order.totalAmount }</td>
+                  <td class="py-4 align-middle"><span class="badge p-2 text-uppercase badge-info-light">${order.status }</span></td>
+                  <td class="py-4 align-middle"><a class="btn btn-outline-dark btn-sm" href="${pageContext.request.contextPath}/user/orderDetail?orderID=${order.orderID}">xem</a></td>
                 </tr>
-                <tr>
-                  <th class="py-4 align-middle"># 1734</th>
-                  <td class="py-4 align-middle">7/5/2017</td>
-                  <td class="py-4 align-middle">$150.00</td>
-                  <td class="py-4 align-middle"><span class="badge p-2 text-uppercase badge-warning-light">Action needed</span></td>
-                  <td class="py-4 align-middle"><a class="btn btn-outline-dark btn-sm" href="${pageContext.request.contextPath}/user/order">xem</a></td>
-                </tr>
-                <tr>
-                  <th class="py-4 align-middle"># 1730</th>
-                  <td class="py-4 align-middle">30/9/2016</td>
-                  <td class="py-4 align-middle">$150.00</td>
-                  <td class="py-4 align-middle"><span class="badge p-2 text-uppercase badge-success-light">Received</span></td>
-                  <td class="py-4 align-middle"><a class="btn btn-outline-dark btn-sm" href="${pageContext.request.contextPath}/user/order">xem</a></td>
-                </tr>
-                <tr>
-                  <th class="py-4 align-middle"># 1705</th>
-                  <td class="py-4 align-middle">22/6/2016</td>
-                  <td class="py-4 align-middle">$150.00</td>
-                  <td class="py-4 align-middle"><span class="badge p-2 text-uppercase badge-danger-light">Cancelled</span></td>
-                  <td class="py-4 align-middle"><a class="btn btn-outline-dark btn-sm" href="${pageContext.request.contextPath}/user/order">xem</a></td>
-                </tr>
+               
               </tbody>
+              </c:forEach>
             </table>
           </div>
           <!-- Customer Sidebar-->

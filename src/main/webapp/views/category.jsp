@@ -61,44 +61,36 @@
 	<%@ include file="/commons/web/header.jsp"%>;
 	<!-- End Header -->
 
-<!-- Hero Section-->
-	<section class="hero">
-		<div class="container">
-			<!-- Breadcrumbs -->
-			<ol class="breadcrumb justify-content-center">
-				<li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
-				<li class="breadcrumb-item active">Cửa hàng</li>
-			</ol>
-			<!-- Hero Content-->
-			<div class="hero-content pb-5 text-center">
-				<h1 class="hero-heading">Toàn bộ sản phẩm</h1>
-				<div class="row">
-					<div class="col-xl-8 offset-xl-2">
-						<p class="lead text-muted">“ Mang sản phẩm đến cho khách hàng
-							bằng cái Tâm"</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 
-	<div class="container-fluid">
-		<div class="px-xl-5">
-			<div class="row">
-				<!-- Grid -->
-				<div class="products-grid col-xl-9 col-lg-8 order-lg-2">
-					<header class="product-grid-header">
-						<div class="me-3 mb-3">
-							Hiển thị <strong>1-12 </strong>trong <strong>158 </strong>sản
-							phẩm
-						</div>
-						<!--  <div class="me-3 mb-3">
-							<span class="me-2">Hiển thị</span><a
-								class="product-grid-header-show active" href="#">12 </a><a
-								class="product-grid-header-show " href="#">24 </a><a
-								class="product-grid-header-show " href="#">Toàn bộ </a>
-						</div>  -->
+ <!-- Hero Section-->
+    <section class="hero">
+      <div class="container">
+        <!-- Breadcrumbs -->
+        <ol class="breadcrumb justify-content-center">
+          <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+          <li class="breadcrumb-item active">Cửa hàng        </li>
+        </ol>
+        <!-- Hero Content-->
+        <div class="hero-content pb-5 text-center">
+          <h1 class="hero-heading">Toàn bộ sản phẩm</h1>
+          <div class="row">   
+            <div class="col-xl-8 offset-xl-2"><p class="lead text-muted">“ Mang sản phẩm đến cho khách hàng bằng cái Tâm"</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container-fluid">
+      <div class="px-xl-5">
+        <div class="row">
+          <!-- Grid -->
+          <div class="products-grid col-xl-9 col-lg-8 order-lg-2">
+            <header class="product-grid-header">
+              <div class="me-3 mb-3">
+                 Hiển thị <strong>1-12 </strong>trong <strong>158 </strong>sản phẩm</div>
+
 						<div class="mb-3 d-flex align-items-center">
+<<<<<<< HEAD
 							<span class="d-inline-block me-2">Sắp xếp theo </span> <select
 								class="form-select w-auto border-0">
 								<option value="orderby_0">Toàn bộ</option>
@@ -545,66 +537,121 @@
 						<!-- /product-->
 					</div>
 					<!-- Pagination-->
+=======
+              	<span class="d-inline-block me-2">Sắp xếp theo </span>
+              	<form action="${pageContext.request.contextPath}/categories" method ="GET">
+              		<input type="hidden" name="typeCategoryCode" value="${not empty typeCategoryCode ? typeCategoryCode : ''}" />
+              		<input type="hidden" name="categoryCode" value="${not empty categoryCode ? categoryCode : ''}" />
+                	<select class="form-select w-auto border-0" name = "orderby" onchange = "this.form.submit()">
+                  		<option value="0" ${orderby == 0 ? 'select' : ''}>Toàn bộ</option>
+                  		<option value="1" ${orderby == 1 ? 'select' : ''}>Hàng mới về</option>
+                  		<option value="2" ${orderby == 2 ? 'select' : ''}>Từ cao đến thấp</option>
+                  		<option value="3" ${orderby == 3 ? 'select' : ''}>Từ thấp đến cao</option>
+                	</select>
+                	<input type = "hidden" name = "page" value="${currentPage }"/>
+                </form>
+              </div>
+            </header>
+            <div class="row">
+            	<c:forEach items="${listP}" var= "o">	
+              <!-- product-->
+              <div class="col-xl-3 col-lg-4 col-sm-6">
+                <div class="product">
+                  <div class="product-image">
+                    <div class="ribbon ribbon-info">${o.status}</div>
+                    <img class="img-fluid" src="${o.image }" alt="${o.productName }"/>
+                    <div class="product-hover-overlay">
+                    	<a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/categoryDetail?productCode=${o.productCode}"></a>
+                      <div class="product-hover-overlay-buttons">
+                      	<a class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block" href="#">
+                      		<i class="fa fa-shopping-cart"></i>
+                      	</a>
+                      	<a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/categoryDetail?productCode=${o.productCode}">
+                      		<i class="fa-search fa"></i></a><a class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-expand-arrows-alt"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="py-2">
+                    <p class="text-muted text-sm mb-1">${o.categoryName}</p>
+                    
+                    <h3 class="h6 text-uppercase mb-1"><a class="text-dark"
+                    	 href="${pageContext.request.contextPath}/categoryDetail?productCode=${o.productCode}">
+                    	 ${o.productName }</a>
+                    </h3>
+                    <span class="text-muted">${o.price }</span>
+                  </div>
+                </div>
+              </div>
+              </c:forEach>
+              <!-- /product-->
+
+            </div>
+            <!-- Pagination-->
+>>>>>>> adf71bb2109bf3df40b69a1139f77aa343f55e98
 					<nav class="d-flex justify-content-center mb-5 mt-3"
 						aria-label="page navigation">
 						<ul class="pagination">
-							<li class="page-item"><a class="page-link" href="#"
-								aria-label="Previous"><span aria-hidden="true">Trước</span><span
-									class="sr-only">Previous</span></a></li>
-							<li class="page-item active"><a class="page-link" href="#">1
-							</a></li>
-							<li class="page-item"><a class="page-link" href="#">2 </a></li>
-							<li class="page-item"><a class="page-link" href="#">3 </a></li>
-							<li class="page-item"><a class="page-link" href="#">4 </a></li>
-							<li class="page-item"><a class="page-link" href="#">5 </a></li>
-							<li class="page-item"><a class="page-link" href="#"
-								aria-label="Next"><span aria-hidden="true">Tiếp</span><span
-									class="sr-only">Next </span></a></li>
+							<!-- Nút "Trước" -->
+							<li class="page-item ${currentPage == 1 ? 'disabled' : ''}">
+								<a class="page-link"
+                              href="?typeCategoryCode=${typeCategoryCode}&categoryCode=${categoryCode}&page=${currentPage - 1}&orderby=${orderby}"
+								aria-label="Previous">Trước</a>
+							</li>
+
+							<!-- Các trang -->
+							<c:forEach begin="1" end="${totalPages}" var="i">
+								<li class="page-item ${i == currentPage ? 'active' : ''}">
+                                  <a class="page-link"
+									 href="?typeCategoryCode=${typeCategoryCode}&categoryCode=${categoryCode}&page=${i}&orderby=${orderby}">${i}</a>
+								</li>
+							</c:forEach>
+
+							<!-- Nút "Tiếp" -->
+							<li
+								class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
+								<a class="page-link"
+                               href="?typeCategoryCode=${typeCategoryCode}&categoryCode=${categoryCode}&page=${currentPage + 1}&orderby=${orderby}"
+                                aria-label="Next">Tiếp</a>
+							</li>
 						</ul>
 					</nav>
 				</div>
-				<!-- / Grid End-->
-				<!-- Sidebar-->
-				<div class="sidebar col-xl-3 col-lg-4 pr-xl-5 order-lg-1">
+          <!-- / Grid End-->
+
+          <!-- Sidebar-->
+          <div class="sidebar col-xl-3 col-lg-4 pr-xl-5 order-lg-1">
 					<div class="sidebar-block px-3 px-lg-0">
 						<a class="d-lg-none block-toggler" data-bs-toggle="collapse"
 							href="#categoriesMenu" aria-expanded="false"
-							aria-controls="categoriesMenu">Product Categories</a>
+							aria-controls="categoriesMenu"> Product Categories </a>
 						<div class="expand-lg collapse" id="categoriesMenu">
 							<div class="nav nav-pills flex-column mt-4 mt-lg-0">
-								<a class="nav-link d-flex justify-content-between mb-2 "
-									href="#"><span>Áo khoác / Jacket</span><span
-									class="sidebar-badge"> 120</span></a>
-								<div class="nav nav-pills flex-column ms-3">
-									<a class="nav-link mb-2" href="#">Áo Hoodie / Sweater</a><a
-										class="nav-link mb-2" href="#">Áo Len / Cardigan</a><a
-										class="nav-link mb-2" href="#">Áo Gió</a><a
-										class="nav-link mb-2" href="#">Áo khoác không tay / Gilê</a>
-								</div>
-								<a class="nav-link d-flex justify-content-between mb-2 active"
-									href="#"><span>Quần</span><span class="sidebar-badge">
-										55</span></a>
-								<div class="nav nav-pills flex-column ms-3">
-									<a class="nav-link mb-2" href="#">Quần Ngắn</a><a
-										class="nav-link mb-2" href="#">Quần Dài</a><a
-										class="nav-link mb-2" href="#">Quần Jogger</a>
-								</div>
-								<a class="nav-link d-flex justify-content-between mb-2 "
-									href="#"><span>Áo</span><span class="sidebar-badge">
-										80</span></a>
-								<div class="nav nav-pills flex-column ms-3">
-									<a class="nav-link mb-2" href="#">Áo thun</a><a
-										class="nav-link mb-2" href="#">Áo dây</a><a
-										class="nav-link mb-2" href="#">Áo Bomber</a><a
-										class="nav-link mb-2" href="#">Áo Blazer</a>
-								</div>
+								<!-- Lặp qua danh sách TypeCategory -->
+								<c:forEach items="${listType}" var="type">
+									<a class="nav-link d-flex justify-content-between mb-2"
+										href="?typeCategoryCode=${type.typeCategoryCode}&page=1&orderby=${orderby}">
+										<span>${type.typeCategoryName}</span> <span
+										class="sidebar-badge">120</span> <!-- Bạn có thể cập nhật số lượng -->
+									</a>
+									<!-- Lặp qua danh sách Category liên quan đến TypeCategory -->
+									<div class="nav nav-pills flex-column ms-3">
+										<c:forEach items="${listC}" var="cate">
+											<c:if
+												test="${cate.typeCategoryCode == type.typeCategoryCode}">
+												<a class="nav-link mb-2"
+													href="?categoryCode=${cate.categoryCode}&page=1&orderby=${orderby}">
+													${cate.categoryName} </a>
+											</c:if>
+										</c:forEach>
+									</div>
+								</c:forEach>
 							</div>
 						</div>
 					</div>
-					<div class="sidebar-block px-3 px-lg-0">
-						<a class="d-lg-none block-toggler" data-bs-toggle="collapse"
-							href="#priceFilterMenu" aria-expanded="false"
-							aria-controls="priceFilterMenu">Filter by price</a>
+					<div class="sidebar-block px-3 px-lg-0"><a class="d-lg-none block-toggler" data-bs-toggle="collapse" href="#priceFilterMenu" aria-expanded="false" aria-controls="priceFilterMenu">Filter by price</a>
+              <div class="expand-lg collapse" id="priceFilterMenu">
+                <h6 class="sidebar-heading d-none d-lg-block">Giá </h6>
+                <div class="mt-4 mt-lg-0" id="slider-snap"> </div>
 						<div class="expand-lg collapse" id="priceFilterMenu">
 							<h6 class="sidebar-heading d-none d-lg-block">Giá</h6>
 							<div class="mt-4 mt-lg-0" id="slider-snap"></div>
@@ -753,6 +800,7 @@
 				<button class="close modal-close" type="button"
 					data-bs-dismiss="modal" aria-label="Close">
 					<svg class="svg-icon w-100 h-100 svg-icon-light align-middle">
+
               <use xlink:href="#close-1"> </use>
             </svg>
 				</button>

@@ -37,7 +37,7 @@
   <body>
     
     <!--  Begin Header -->
-	<%@ include file="/commons/web/headerUser.jsp" %>;
+	<%@ include file="/commons/user/headerUser.jsp" %>;
 	<!-- End Header -->
     
     <!-- Hero Section-->
@@ -64,12 +64,26 @@
             <div class="block mb-5">
               <div class="block-header"><strong class="text-uppercase">Thay đổi mật khẩu</strong></div>
               <div class="block-body">
-                <form>
+                <form action="${pageContext.request.contextPath}/user/UserAccount" method="POST">
+                	<input type="hidden" name="action" value="updatePassword">
+                	<!-- Hiển thị thông báo -->
+				    <div class="container mt-4">
+				        <c:if test="${not empty successMessage}">
+				            <div class="alert alert-success" role="alert">
+				                ${successMessage}
+				            </div>
+				        </c:if>
+				        <c:if test="${not empty errorMessage}">
+				            <div class="alert alert-danger" role="alert">
+				                ${errorMessage}
+				            </div>
+				        </c:if>
+				    </div>
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="mb-4">
                         <label class="form-label" for="password_old">Mật khẩu cũ</label>
-                        <input class="form-control" id="password_old" type="password">
+                        <input class="form-control" id="oldPassword" name = "oldPassword" type="password">
                       </div>
                     </div>
                     <div class="col-sm-6">
@@ -83,37 +97,45 @@
                     <div class="col-sm-6">
                       <div class="mb-4">
                         <label class="form-label" for="password_1">Mật khẩu mới</label>
-                        <input class="form-control" id="password_1" type="password">
+                        <input class="form-control" id="newPassword" name="newPassword" type="password">
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="mb-4">
                         <label class="form-label" for="password_2">Nhập lại mật khẩu mới</label>
-                        <input class="form-control" id="password_2" type="password">
+                       <input class="form-control" id="confirmPassword" name="confirmPassword" type="password">
                       </div>
                     </div>
                     <div class="text-center mt-4">
                       <button class="btn btn-outline-dark" type="submit"><i class="far fa-save me-2"></i>Thay đổi mật khẩu</button>
                     </div>
                   </div>
+<<<<<<< HEAD
                 <form>   
+=======
+                </form>
+                  
+                 
+                      
+>>>>>>> adf71bb2109bf3df40b69a1139f77aa343f55e98
               </div>
             </div>
             <div class="block mb-5">
               <div class="block-header"><strong class="text-uppercase">Thông tin tài khoản</strong></div>
               <div class="block-body">
-                <form>
+                <form action="${pageContext.request.contextPath}/user/UserAccount" method="POST">
+                  <input type="hidden" name="action" value="updateProfile">
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="mb-4">
                         <label class="form-label" for="Fullname">Tên</label>
-                        <input class="form-control" id="Fullname" type="text">
+                        <input class="form-control" id="Fullname" name="Fullname" type="text" value="${user.fullname}">
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="mb-4">
                         <label class="form-label" for="email">Email</label>
-                        <input class="form-control" id="email" type="text">
+                         <input class="form-control" id="Email" name="Email" type="text" value="${user.email}">
                       </div>
                     </div>
                   </div>
@@ -122,15 +144,10 @@
                     <div class="col-sm-6">
                       <div class="mb-4">
                         <label class="form-label" for="phone">Số điện thoại</label>
-                        <input class="form-control" id="phone" type="text">
+                        <input class="form-control" id="Phone" name="Phone" type="text" value = "${user.phone }">
                       </div>
                     </div>
-                    <div class="col-sm-6">
-                      <div class="mb-4">
-                        <label class="form-label" for="DateOfBirth">Ngày sinh</label>
-                        <input class="form-control" id="DateOfBirth" type="date">
-                      </div>
-                    </div>
+                    
                   </div>
                   <!-- /.row-->
                   <div class="text-center mt-4">
@@ -144,7 +161,7 @@
           <div class="col-xl-3 col-lg-4 mb-5">
             <div class="customer-sidebar card border-0"> 
               <div class="customer-profile"><a class="d-inline-block" href="#"><img class="img-fluid rounded-circle customer-image shadow" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-589739-unsplash-avatar.jpg" alt=""></a>
-                <h5>Anhthu</h5>
+                <h5>${user.fullname }</h5>
                 <p class="text-muted text-sm mb-0">ở nhà</p>
               </div>
               <nav class="list-group customer-nav"><a class="list-group-item d-flex justify-content-between align-items-center text-decoration-none" href="${pageContext.request.contextPath}/user/orders"><span>
