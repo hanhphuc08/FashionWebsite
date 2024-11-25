@@ -182,9 +182,9 @@
 									<a class="nav-link d-flex justify-content-between mb-2"
 										href="?typeCategoryCode=${type.typeCategoryCode}&page=1&orderby=${orderby}">
 										<span>${type.typeCategoryName}</span> <span
-										class="sidebar-badge">120</span> <!-- Bạn có thể cập nhật số lượng -->
+										class="sidebar-badge">120</span>
 									</a>
-									<!-- Lặp qua danh sách Category liên quan đến TypeCategory -->
+				
 									<div class="nav nav-pills flex-column ms-3">
 										<c:forEach items="${listC}" var="cate">
 											<c:if
