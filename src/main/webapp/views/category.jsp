@@ -115,7 +115,7 @@
                     <div class="product-hover-overlay">
                     	<a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/categoryDetail?productCode=${o.productCode}"></a>
                       <div class="product-hover-overlay-buttons">
-                      	<a class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block" href="#">
+                      	<a class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block" href="${pageContext.request.contextPath}/login">
                       		<i class="fa fa-shopping-cart"></i>
                       	</a>
                       	<a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/categoryDetail?productCode=${o.productCode}">
@@ -179,8 +179,7 @@
 							<div class="nav nav-pills flex-column mt-4 mt-lg-0">
 								<!-- Lặp qua danh sách TypeCategory -->
 								<c:forEach items="${listType}" var="type">
-									<a class="nav-link d-flex justify-content-between mb-2"
-										href="?typeCategoryCode=${type.typeCategoryCode}&page=1&orderby=${orderby}">
+									<a class="nav-link d-flex justify-content-between mb-2" href="?typeCategoryCode=${type.typeCategoryCode}&page=1&orderby=${orderby}">
 										<span>${type.typeCategoryName}</span> <span
 										class="sidebar-badge">120</span>
 									</a>
@@ -244,8 +243,7 @@
 								</div>
 								<div class="mb-1">
 									<div class="form-check">
-										<input class="form-check-input" id="brand2" type="checkbox"
-											name="clothes-brand"> <label class="form-check-label"
+										<input class="form-check-input" id="brand2" type="checkbox" name="clothes-brand"> <label class="form-check-label"
 											for="brand2">Hugo Boss <small>(120)</small></label>
 									</div>
 								</div>
@@ -317,8 +315,7 @@
 									<li class="list-inline-item"><label class="btn-colour"
 										for="colour_sidebar_Blue" style="background-color: #668cb9"
 										data-allow-multiple> </label> <input class="input-invisible"
-										type="checkbox" name="colour" value="value_sidebar_Blue"
-										id="colour_sidebar_Blue"></li>
+										type="checkbox" name="colour" value="value_sidebar_Blue" id="colour_sidebar_Blue"></li>
 									<li class="list-inline-item"><label class="btn-colour"
 										for="colour_sidebar_White" style="background-color: #fff"
 										data-allow-multiple> </label> <input class="input-invisible"
@@ -375,7 +372,7 @@
 								</div>
 								<div class="detail-full-item-modal"
 									style="background: center center url('https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-594535-unsplash-detail-4.jpg') no-repeat; background-size: cover;">
-								</div>
+									</div>
 							</div>
 						</div>
 						<div class="col-lg-6 d-flex align-items-center">
@@ -524,8 +521,7 @@
 		
 	</script>
 	<!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
-	<script
-		src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/object-fit-images/ofi.min.js"></script>
+	<script src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/object-fit-images/ofi.min.js"></script>
 	<script>
 		var basePath = '${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/'
 	</script>
@@ -568,3 +564,4 @@
 </body>
 
 </html>
+                      	

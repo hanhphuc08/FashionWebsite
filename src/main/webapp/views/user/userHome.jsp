@@ -39,11 +39,12 @@
 	<!-- End Header -->
     
     <!--  Begin Slider -->
-	<%@ include file="/commons/web/sliders.jsp" %>;
+	<%@ include file="/commons/user/slidersUser.jsp" %>;
 	<!-- End Slider -->
+	
     <!--  Begin Brands -->
-	<%@ include file="/commons/web/brands.jsp" %>;
 	<!-- End Brands -->
+	
      <!--  Begin Footer -->
 	<%@ include file="/commons/web/footer.jsp" %>
 	<!-- End Footer -->
