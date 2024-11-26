@@ -31,7 +31,6 @@ public class UserCheckoutPaymentController extends HttpServlet {
 		UserModel user = (session != null) ? (UserModel) session.getAttribute("account") : null;
 
 		if (user == null) {
-            // Redirect to login if user is not logged in
             String currentUrl = req.getRequestURL() +
                     (req.getQueryString() != null ? "?" + req.getQueryString() : "");
             session = req.getSession(true);
@@ -61,8 +60,12 @@ public class UserCheckoutPaymentController extends HttpServlet {
 	    
 		req.getRequestDispatcher("/views/user/userCheckoutPayment.jsp").forward(req, resp);
 	}
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setCharacterEncoding("UTF-8");
+		req.setCharacterEncoding("UTF-8");
+		resp.setContentType("text/html");
 		HttpSession session = req.getSession(false);
         if (session == null) {
             resp.sendRedirect(req.getContextPath() + "/login");
@@ -78,10 +81,14 @@ public class UserCheckoutPaymentController extends HttpServlet {
         }
         
         String paymentMethod = req.getParameter("paymentMethod");
-        if (paymentMethod == null || (!paymentMethod.equals("Tiền mặt") && !paymentMethod.equals("Chuyển khoản"))) {
+        if (paymentMethod == null || (!"Tiền mặt".equals(paymentMethod) && !"Chuyển khoản".equals(paymentMethod))) {
             paymentMethod = "Chuyển khoản";
         }
+
+        System.out.println("Received paymentMethod: " + paymentMethod);
+
         order.setPaymentMethod(paymentMethod);
+        
         
         int orderID = orderDao.addOrder(order);
         if (orderID <= 0) {

@@ -20,8 +20,9 @@ public class HomeController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		 List<ProductModel> latestProducts = productDao.getLatestProductsWithCategory(3);
 	        req.setAttribute("latestProducts", latestProducts);
-	        System.out.println("Latest Products: " + latestProducts);
-	        // Chuyển tiếp tới trang home.jsp
+	        
+	        List<ProductModel> get8products = productDao.getLatestProductsWithCategory(8);
+	        req.setAttribute("get8", get8products);
 	        req.getRequestDispatcher("/views/home.jsp").forward(req, resp);
 	}
 }

@@ -402,9 +402,10 @@ public class ProductDao {
 	    return (int) Math.ceil((double) total / pageSize);
 	}
 	public List<ProductModel> getLatestProductsWithCategory(int limit) {
-	    String sql = "SELECT p.ProductCode, p.ProductName, p.Image, p.Description, p.Price, p.CreateDate, c.CategoryName " +
+	    String sql = "SELECT p.ProductCode, p.ProductName, p.Image, p.Description, p.Price, p.CreateDate, c.CategoryName, ct.TypeCategoryName " +
 	                 "FROM Products p " +
 	                 "INNER JOIN Categories c ON p.CategoryCode = c.CategoryCode " +
+	                 "INNER JOIN CategoryType ct ON ct.TypeCategoryCode = c.TypeCategoryCode " +
 	                 "ORDER BY p.CreateDate DESC " +
 	                 "OFFSET 0 ROWS FETCH NEXT ? ROWS ONLY";
 
@@ -423,6 +424,7 @@ public class ProductDao {
 	                product.setPrice(rs.getDouble("Price"));
 	                product.setCreateDate(rs.getDate("CreateDate"));
 	                product.setCategoryName(rs.getString("CategoryName"));
+	                product.setTypeCategoryCode(rs.getString("TypeCategoryName"));
 	                latestProducts.add(product);
 	            }
 	        }
@@ -438,7 +440,7 @@ public class ProductDao {
 
 	public static void main(String[] args) {
 		 ProductDao dao = new ProductDao();
-		    List<ProductModel> products = dao.getAllProduct();
+		    List<ProductModel> products = dao.getLatestProductsWithCategory(8);
 		    for (ProductModel product : products) {
 		        System.out.println(product);
 		    }

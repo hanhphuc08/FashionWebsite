@@ -20,6 +20,9 @@ public class UserHomeController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		   List<ProductModel> latestProducts = productDao.getLatestProductsWithCategory(3);
 	        req.setAttribute("latestProducts", latestProducts);	
+	        
+	        List<ProductModel> get8products = productDao.getLatestProductsWithCategory(8);
+	        req.setAttribute("get8", get8products);
 		req.getRequestDispatcher("/views/user/userHome.jsp").forward(req, resp);
 	}
 }
