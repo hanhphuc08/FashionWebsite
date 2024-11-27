@@ -70,10 +70,16 @@
               <!-- Cart Dropdown-->
               
               <!-- User Not Logged - link to login page-->
-              <div class="nav-item"><a class="navbar-icon-link" href="login">
+             <div class="nav-item dropdown"><a class="navbar-icon-link" id="userdetails" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <svg class="svg-icon">
                     <use xlink:href="#male-user-1"> </use>
-                  </svg><span class="text-sm ms-2 ms-lg-0 text-uppercase text-sm fw-bold d-none d-sm-inline d-lg-none">Đăng nhập</span></a></div>
+                  </svg></a>
+                <div class="dropdown-menu dropdown-menu-animated dropdown-menu-end" aria-labelledby="userdetails"> <a class="dropdown-item" href="${pageContext.request.contextPath}/admin/orders">Đơn hàng</a>
+                	<a class="dropdown-item" href="${pageContext.request.contextPath}/admin/UserAccount">Hồ sơ của tôi</a>
+                	<a class="dropdown-item" href="${pageContext.request.contextPath}/admin/forgotPassword">Quên mật khẩu</a>
+                  <div class="dropdown-divider my-0"></div><a class="dropdown-item" href="${pageContext.request.contextPath}/home">Đăng xuất</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -81,23 +87,34 @@
       <!-- /Navbar -->
       <!-- Fullscreen search area-->
       <div class="search-area-wrapper">
-        <div class="search-area d-flex align-items-center justify-content-center">
-          <div class="close-btn">
+    <div class="search-area d-flex align-items-center justify-content-center">
+        <div class="close-btn">
             <svg class="svg-icon svg-icon-light w-3rem h-3rem">
-              <use xlink:href="#close-1"> </use>
+                <use xlink:href="#close-1"> </use>
             </svg>
-          </div>
-          <form class="search-area-form" action="#">
-            <div class="mb-4 position-relative">
-              <input class="search-area-input" type="search" name="search" id="search" placeholder="What are you looking for?">
-              <button class="search-area-button" type="submit">
-                <svg class="svg-icon">
-                  <use xlink:href="#search-1"> </use>
-                </svg>
-              </button>
-            </div>
-          </form>
         </div>
-      </div>
+        <form class="search-area-form" action="${pageContext.request.contextPath}/admin/categories" method="GET" onsubmit="return cleanForm();">
+            <div class="mb-4 position-relative">
+                <input class="search-area-input" 
+                       type="search" 
+                       name="searchQuery" 
+                       id="search" 
+                       placeholder="What are you looking for?" 
+                       value="${not empty searchQuery ? searchQuery : ''}">
+                <button class="search-area-button" type="submit">
+                    <svg class="svg-icon">
+                        <use xlink:href="#search-1"> </use>
+                    </svg>
+                </button>
+            </div>
+            <!-- Hidden inputs -->
+            <input type="hidden" name="typeCategoryCode" value="${not empty typeCategoryCode ? typeCategoryCode : ''}" />
+            <input type="hidden" name="categoryCode" value="${not empty categoryCode ? categoryCode : ''}" />
+            <input type="hidden" name="page" value="${currentPage}" />
+            <input type="hidden" name="orderby" value="${orderby}" />
+        </form>
+    </div>
+</div>
       <!-- /Fullscreen search area-->
     </header>
+ </html>

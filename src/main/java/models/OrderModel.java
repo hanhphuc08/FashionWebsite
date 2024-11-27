@@ -10,8 +10,29 @@ public class OrderModel {
 	    private String status; // Đang xác nhận, Xác nhận, Huỷ
 	    private String paymentMethod; // Tiền mặt, Chuyển khoản
 	    private Date updateDate;
+	    
+	    private String fullName;
+	    
+	    private String formattedTotalAmount;
+	    
+	    
+	    public String getFormattedTotalAmount() {
+			return formattedTotalAmount;
+		}
 
-	    // Constructor
+		public void setFormattedTotalAmount(String formattedTotalAmount) {
+			this.formattedTotalAmount = formattedTotalAmount;
+		}
+
+		public String getFullName() {
+			return fullName;
+		}
+
+		public void setFullName(String fullName) {
+			this.fullName = fullName;
+		}
+
+		// Constructor
 	    public OrderModel() {}
 
 	    public OrderModel(int orderID, int userID, Date orderDate, double totalAmount, String status, String paymentMethod, Date updateDate) {

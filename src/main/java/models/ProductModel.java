@@ -25,7 +25,46 @@ public class ProductModel implements Serializable {
     private String categoryName;
     private String typeCategoryName;
     
-    public String getTypeCategoryName() {
+    private int totalQuantity;
+    private double totalAmount;
+   
+    private String priceFormatted;
+    private String totalAmountFormatted;
+
+
+
+    public String getPriceFormatted() {
+        return priceFormatted;
+    }
+
+    public void setPriceFormatted(String priceFormatted) {
+        this.priceFormatted = priceFormatted;
+    }
+
+    public String getTotalAmountFormatted() {
+        return totalAmountFormatted;
+    }
+
+    public void setTotalAmountFormatted(String totalAmountFormatted) {
+        this.totalAmountFormatted = totalAmountFormatted;
+    }
+    public int getTotalQuantity() {
+		return totalQuantity;
+	}
+
+	public void setTotalQuantity(int totalQuantity) {
+		this.totalQuantity = totalQuantity;
+	}
+
+	public double getTotalAmount() {
+		return totalAmount;
+	}
+
+	public void setTotalAmount(double totalAmount) {
+		this.totalAmount = totalAmount;
+	}
+
+	public String getTypeCategoryName() {
 		return typeCategoryName;
 	}
 
@@ -169,6 +208,7 @@ public class ProductModel implements Serializable {
 				+ moreImage + ", status=" + status + ", createDate=" + createDate + ", updateDate=" + updateDate
 				+ ", categoryName=" + categoryName + "]";
 	}
+
 	
 	
 

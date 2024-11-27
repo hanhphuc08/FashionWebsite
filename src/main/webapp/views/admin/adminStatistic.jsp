@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@taglib prefix="fn" uri="jakarta.tags.functions" %>
+<%@taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -186,10 +189,10 @@
 
 								<!-- Title -->
 								<h5 class="text-uppercase text-muted fw-semibold mb-2">
-									Orders</h5>
+									Tổng đơn hàng </h5>
 
 								<!-- Subtitle -->
-								<h2 class="mb-0">15,386</h2>
+								<h2 class="mb-0">${orderTotal }</h2>
 							</div>
 							<div class="col-auto">
 
@@ -219,20 +222,28 @@
 							<div class="col-auto">
 
 								<!-- Label -->
-								<p class="fs-6 text-muted text-uppercase mb-0">Today orders
+								<p class="fs-6 text-muted text-uppercase mb-0">Hôm nay
 								</p>
 
 								<!-- Comment -->
-								<p class="fs-5 fw-bold mb-0">121</p>
+								<p class="fs-5 fw-bold mb-0">${orderTotalToday }</p>
 							</div>
 							<div class="col text-end text-truncate">
 
 								<!-- Label -->
-								<p class="fs-6 text-muted text-uppercase mb-0">Monthly
-									orders</p>
+								<p class="fs-6 text-muted text-uppercase mb-0">Tháng</p>
 
 								<!-- Comment -->
-								<p class="fs-5 fw-bold mb-0">1,944</p>
+								<p class="fs-5 fw-bold mb-0">${orderTotalMonth }</p>
+							</div>
+							
+							<div class="col text-end text-truncate">
+
+								<!-- Label -->
+								<p class="fs-6 text-muted text-uppercase mb-0">Huỷ</p>
+
+								<!-- Comment -->
+								<p class="fs-5 fw-bold mb-0">${orderCancelled }</p>
 							</div>
 						</div>
 						<!-- / .row -->
@@ -249,10 +260,10 @@
 
 								<!-- Title -->
 								<h5 class="text-uppercase text-muted fw-semibold mb-2">
-									Earnings</h5>
+									Tổng tiền</h5>
 
 								<!-- Subtitle -->
-								<h2 class="mb-0">$717,214</h2>
+								<h2 class="mb-0">${totalAmount }</h2>
 							</div>
 							<div class="col-auto">
 
@@ -261,14 +272,14 @@
 									height="30" width="30" class="text-primary">
 									<defs>
 									<style>
-.a {
-	fill: none;
-	stroke: currentColor;
-	stroke-linecap: round;
-	stroke-linejoin: round;
-	stroke-width: 1.5px;
-}
-</style></defs>
+									.a {
+										fill: none;
+										stroke: currentColor;
+										stroke-linecap: round;
+										stroke-linejoin: round;
+										stroke-width: 1.5px;
+									}
+									</style></defs>
 									<title>monitor-graph-line</title><polygon class="a"
 										points="15 23.253 9 23.253 9.75 18.753 14.25 18.753 15 23.253" />
 									<line class="a" x1="6.75" y1="23.253" x2="17.25" y2="23.253" />
@@ -290,20 +301,18 @@
 							<div class="col-auto">
 
 								<!-- Label -->
-								<p class="fs-6 text-muted text-uppercase mb-0">Today
-									earnings</p>
+								<p class="fs-6 text-muted text-uppercase mb-0">Tổng tiền hôm nay</p>
 
 								<!-- Comment -->
-								<p class="fs-5 fw-bold mb-0">£2,230</p>
+								<p class="fs-5 fw-bold mb-0">${totalAmountToday }</p>
 							</div>
 							<div class="col text-end text-truncate">
 
 								<!-- Label -->
-								<p class="fs-6 text-muted text-uppercase mb-0">Monthly
-									earnings</p>
+								<p class="fs-6 text-muted text-uppercase mb-0">Tổng tiền tháng này</p>
 
 								<!-- Comment -->
-								<p class="fs-5 fw-bold mb-0">$158,990</p>
+								<p class="fs-5 fw-bold mb-0">${totalAmountThisMonth }</p>
 							</div>
 						</div>
 						<!-- / .row -->
@@ -317,10 +326,10 @@
 					<div class="card-body">
 
 						<!-- Title -->
-						<h4 class="text-uppercase fw-semibold mb-2">Current balance</h4>
+						<h4 class="text-uppercase fw-semibold mb-2">Lợi nhuận thu được</h4>
 
 						<!-- Subtitle -->
-						<h2 class="mb-0">$981,340</h2>
+						<h2 class="mb-0">${currentBalance }</h2>
 
 						<!-- Chart -->
 						<div class="chart-container h-70px">
@@ -371,103 +380,34 @@
 					<div class="table-responsive">
 						<table class="table align-middle table-edge table-nowrap mb-0">
 							<thead class="thead-light">
+							
 								<tr>
 									<th><a href="javascript: void(0);"
-										class="text-muted list-sort" data-sort="name"> Name </a></th>
+										class="text-muted list-sort" data-sort="name"> Tên sản phẩm </a></th>
+									<th><a href="javascript: void(0);"
+										class="text-muted list-sort" data-sort="name"> Màu </a></th>
 									<th class="text-end"><a href="javascript: void(0);"
-										class="text-muted list-sort" data-sort="price"> Price </a></th>
+										class="text-muted list-sort" data-sort="price"> Giá </a></th>
 									<th class="text-end"><a href="javascript: void(0);"
-										class="text-muted list-sort" data-sort="quantity">
-											Quantity </a></th>
+										class="text-muted list-sort" data-sort="quantity"> Số lượng đã bán </a></th>
 									<th class="text-end"><a href="javascript: void(0);"
-										class="text-muted list-sort" data-sort="amount"> Amount </a></th>
-									<th class="text-end pe-7 min-w-200px"><a
-										href="javascript: void(0);" class="text-muted list-sort"
-										data-sort="sales"> Sales </a></th>
+										class="text-muted list-sort" data-sort="amount"> Tổng thu được </a></th>
+									
 								</tr>
+							
 							</thead>
 
 							<tbody class="list">
+								<c:forEach var="product" items="${topProducts}">
 								<tr>
-									<td class="name fw-bold">iPad Air</td>
-									<td class="price text-end">$599</td>
-									<td class="quantity text-end">135</td>
-									<td class="amount text-end">$80,865</td>
-									<td class="sales" data-sales="81">
-										<div class="d-flex justify-content-between align-items-center">
-											<div class="progress d-flex flex-grow-1">
-												<div class="progress-bar" role="progressbar"
-													style="width: 81%" aria-valuenow="81" aria-valuemin="0"
-													aria-valuemax="100"></div>
-											</div>
-											<span class="ms-3 text-muted">81%</span>
-										</div>
-									</td>
+									<td class="name fw-bold">${product.productName}</td>
+									<td class="price text-end">${product.color}</td>
+									<td class="price text-end">${product.priceFormatted}</td>
+									<td class="quantity text-end">${product.totalQuantity}</td>
+									<td class="amount text-end">${product.totalAmountFormatted}</td>
+									
 								</tr>
-								<tr>
-									<td class="name fw-bold">iPhone SE</td>
-									<td class="price text-end">$499</td>
-									<td class="quantity text-end">127</td>
-									<td class="amount text-end">$63,373</td>
-									<td class="sales" data-sales="25">
-										<div class="d-flex justify-content-between align-items-center">
-											<div class="progress w-100">
-												<div class="progress-bar bg-dark" role="progressbar"
-													style="width: 25%" aria-valuenow="25" aria-valuemin="0"
-													aria-valuemax="100"></div>
-											</div>
-											<span class="ms-3 text-muted">25%</span>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td class="name fw-bold">Nexus 3</td>
-									<td class="price text-end">$349</td>
-									<td class="quantity text-end">98</td>
-									<td class="amount text-end">$34,202</td>
-									<td class="sales" data-sales="41">
-										<div class="d-flex justify-content-between align-items-center">
-											<div class="progress w-100">
-												<div class="progress-bar bg-dark" role="progressbar"
-													style="width: 41%" aria-valuenow="41" aria-valuemin="0"
-													aria-valuemax="100"></div>
-											</div>
-											<span class="ms-3 text-muted">41%</span>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td class="name fw-bold">Apple watch series-6</td>
-									<td class="price text-end">$599</td>
-									<td class="quantity text-end">214</td>
-									<td class="amount text-end">$128,186</td>
-									<td class="sales" data-sales="62">
-										<div class="d-flex justify-content-between align-items-center">
-											<div class="progress w-100">
-												<div class="progress-bar" role="progressbar"
-													style="width: 62%" aria-valuenow="62" aria-valuemin="0"
-													aria-valuemax="100"></div>
-											</div>
-											<span class="ms-3 text-muted">62%</span>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td class="name fw-bold">Apple TV 4K</td>
-									<td class="price text-end">$1200</td>
-									<td class="quantity text-end">51</td>
-									<td class="amount text-end">$61,200</td>
-									<td class="sales" data-sales="36">
-										<div class="d-flex justify-content-between align-items-center">
-											<div class="progress w-100">
-												<div class="progress-bar bg-dark" role="progressbar"
-													style="width: 36%" aria-valuenow="36" aria-valuemin="0"
-													aria-valuemax="100"></div>
-											</div>
-											<span class="ms-3 text-muted">36%</span>
-										</div>
-									</td>
-								</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>
@@ -484,15 +424,13 @@
 						<!-- Title -->
 						<h2 class="card-header-title h4 text-uppercase">Recent orders
 						</h2>
-
-						<!-- Link -->
-						<a href="javascript: void(0);" class="small fw-bold"> View all
-						</a>
 					</div>
 
 					<!-- Table -->
 					<div class="table-responsive">
+					 
 						<table class="table table-sm table-borderless align-middle mb-0">
+						
 							<thead class="thead-light">
 								<tr>
 									<th>Name</th>
@@ -501,6 +439,7 @@
 							</thead>
 
 							<tbody>
+							<c:forEach var="order" items="${recentOrders}">
 								<tr>
 									<td>
 										<div class="d-flex align-items-center">
@@ -511,92 +450,17 @@
 											</div>
 
 											<div class="d-flex flex-column">
-												<span class="fw-bold d-block">Lester William</span> <span
-													class="fs-6 text-muted">24 minutes ago</span>
+												<span class="fw-bold d-block">${order.fullName }</span> 
 											</div>
 										</div>
 									</td>
 									<td class="text-end">
-										<div class="fw-bold">$99</div>
+										<div class="fw-bold">${order.formattedTotalAmount }</div>
 									</td>
 								</tr>
-								<tr>
-									<td>
-										<div class="d-flex align-items-center">
-											<div class="avatar avatar-circle avatar-xs me-2">
-												<img
-													src="https://d33wubrfki0l68.cloudfront.net/5e2b51ec857b6e9866574263391803f159c8081e/29577/assets/images/profiles/profile-02.jpeg"
-													alt="..." class="avatar-img" width="30" height="30">
-											</div>
-
-											<div class="d-flex flex-column">
-												<span class="fw-bold d-block">Gabriella Fletcher</span> <span
-													class="fs-6 text-muted">3 hours ago</span>
-											</div>
-										</div>
-									</td>
-									<td class="text-end">
-										<div class="fw-bold">$59</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="d-flex align-items-center">
-											<div class="avatar avatar-circle avatar-xs me-2">
-												<img
-													src="https://d33wubrfki0l68.cloudfront.net/4b8c918c73e2c72876e4bd4ba8c89401bae69d14/5923c/assets/images/profiles/profile-03.jpeg"
-													alt="..." class="avatar-img" width="30" height="30">
-											</div>
-
-											<div class="d-flex flex-column">
-												<span class="fw-bold d-block">Marcia Banks</span> <span
-													class="fs-6 text-muted">9 hours ago</span>
-											</div>
-										</div>
-									</td>
-									<td class="text-end">
-										<div class="fw-bold">$499</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="d-flex align-items-center">
-											<div class="avatar avatar-circle avatar-xs me-2">
-												<img
-													src="https://d33wubrfki0l68.cloudfront.net/eec1f115f0af81936bbe3a4f4a4d043cd3c0e7e4/34439/assets/images/profiles/profile-09.jpeg"
-													alt="..." class="avatar-img" width="30" height="30">
-											</div>
-
-											<div class="d-flex flex-column">
-												<span class="fw-bold d-block">Irina Garcia</span> <span
-													class="fs-6 text-muted">17 hours ago</span>
-											</div>
-										</div>
-									</td>
-									<td class="text-end">
-										<div class="fw-bold">$149</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="d-flex align-items-center">
-											<div class="avatar avatar-circle avatar-xs me-2">
-												<img
-													src="https://d33wubrfki0l68.cloudfront.net/102e41d9e1988e0849ecfe402b1d46f4efd3574b/8dc2e/assets/images/profiles/profile-12.jpeg"
-													alt="..." class="avatar-img" width="30" height="30">
-											</div>
-
-											<div class="d-flex flex-column">
-												<span class="fw-bold d-block">Javier Griffin</span> <span
-													class="fs-6 text-muted">1 day ago</span>
-											</div>
-										</div>
-									</td>
-									<td class="text-end">
-										<div class="fw-bold">$125</div>
-									</td>
-								</tr>
+								</c:forEach>
 							</tbody>
+							
 						</table>
 					</div>
 					<!-- / .table-responsive -->

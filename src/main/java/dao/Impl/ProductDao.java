@@ -434,6 +434,39 @@ public class ProductDao {
 	    return latestProducts;
 	}
 
+	public List<ProductModel> getTop5BestSellingProducts() {
+	    String sql = "SELECT TOP 5 " +
+                "p.ProductCode, p.ProductName, p.Price, p.Color, " +
+                "SUM(c.Quantity) AS TotalQuantity, " +
+                "SUM(c.Quantity * p.Price) AS TotalAmount " +
+                "FROM OrderDetails od " +
+                "INNER JOIN Cart c ON od.ProductCode = c.ProductCode AND od.UserID = c.UserID " +
+                "INNER JOIN Products p ON c.ProductCode = p.ProductCode " +
+                "GROUP BY p.ProductCode, p.ProductName, p.Price, p.Color " +
+                "ORDER BY TotalQuantity DESC";
+
+	    List<ProductModel> topProducts = new ArrayList<>();
+
+	    try (Connection conn = new DBConnectSQL().getConnection();
+	         PreparedStatement ps = conn.prepareStatement(sql);
+	         ResultSet rs = ps.executeQuery()) {
+	        
+	        while (rs.next()) {
+	            ProductModel product = new ProductModel();
+	            product.setProductCode(rs.getString("ProductCode"));
+	            product.setProductName(rs.getString("ProductName"));
+	            product.setPrice(rs.getDouble("Price"));
+	            product.setColor(rs.getString("Color"));
+	            product.setTotalQuantity(rs.getInt("TotalQuantity"));
+	            product.setTotalAmount(rs.getDouble("TotalAmount"));
+	            topProducts.add(product);
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return topProducts;
+	}
 
 
 
