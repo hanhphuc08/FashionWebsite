@@ -14,9 +14,13 @@ public interface IUserDao {
 	UserModel login(String emailOrPhone, String password);
 	
 	void insert(UserModel user);
-	void update(UserModel user);
+	
 	
 	boolean checkExistEmail(String email);
 	boolean checkExistPhone(String phone);
+
+	void delete(List<Integer> ids);
+
+	void update(UserModel user);
 
 }

@@ -9,7 +9,7 @@
 				class="img-fluid rounded-circle customer-image shadow"
 				src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-589739-unsplash-avatar.jpg"
 				alt=""></a>
-			<h5>${user.fullname}</h5>
+			<h4>${user.fullname}</h4>
 			<p class="text-muted text-sm mb-0">ở nhà</p>
 		</div>
 		<nav class="list-group customer-nav">

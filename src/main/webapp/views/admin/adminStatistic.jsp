@@ -3,12 +3,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>P2TS Shop</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>P2TS Shop</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
 <link rel="stylesheet"
 	href="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/nouislider/nouislider.css">
 <!-- Google fonts - Playfair Display-->
@@ -32,7 +32,7 @@
 <!-- Favicon-->
 <link rel="shortcut icon"
 	href="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/favicon.png">
-	</head>
+</head>
 <body>
 	<!-- JavaScript files-->
 	<script>
@@ -104,24 +104,24 @@
 
 
 		<div class="row">
-			<div class="col-lg-6 col-xxl-3 d-flex">
+			<!-- <div class="col-lg-6 col-xxl-3 d-flex">
 
-				<!-- Card -->
+				Card
 				<div class="card border-0 flex-fill w-100">
 					<div class="card-body">
 						<div class="row">
 							<div class="col">
 
-								<!-- Title -->
+								Title
 								<h5 class="text-uppercase text-muted fw-semibold mb-2">
 									Clients</h5>
 
-								<!-- Subtitle -->
+								Subtitle
 								<h2 class="mb-0">6,328</h2>
 							</div>
 							<div class="col-auto">
 
-								<!-- Icon -->
+								Icon
 								<svg viewBox="0 0 24 24" height="30" width="30"
 									class="text-primary" xmlns="http://www.w3.org/2000/svg">
 									<path
@@ -149,33 +149,33 @@
 										stroke-linejoin="round" stroke-width="1.5" /></svg>
 							</div>
 						</div>
-						<!-- / .row -->
+						/ .row
 					</div>
 					<div class="card-footer">
 						<div class="row justify-content-between">
 							<div class="col-auto">
 
-								<!-- Label -->
+								Label
 								<p class="fs-6 text-muted text-uppercase mb-0">Today clients
 								</p>
 
-								<!-- Comment -->
+								Comment
 								<p class="fs-5 fw-bold mb-0">57</p>
 							</div>
 							<div class="col text-end text-truncate">
 
-								<!-- Label -->
+								Label
 								<p class="fs-6 text-muted text-uppercase mb-0">Monthly
 									clients</p>
 
-								<!-- Comment -->
+								Comment
 								<p class="fs-5 fw-bold mb-0">681</p>
 							</div>
 						</div>
-						<!-- / .row -->
+						/ .row
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<div class="col-lg-6 col-xxl-3 d-flex">
 
 				<!-- Card -->
@@ -606,17 +606,17 @@
 		<!-- / .row -->
 
 		<div class="row">
-			<div class="col-xxl-6 d-flex">
+			<!-- <div class="col-xxl-6 d-flex">
 
-				<!-- Card -->
+				Card
 				<div class="card border-0 flex-fill w-100">
 					<div class="card-header border-0 card-header-space-between">
 
-						<!-- Title -->
+						Title
 						<h2 class="card-header-title h4 text-uppercase">Order status
 						</h2>
 
-						<!-- Dropdown -->
+						Dropdown
 						<div class="dropdown">
 							<a href="javascript: void(0);"
 								class="dropdown-toggle no-arrow text-secondary" role="button"
@@ -642,7 +642,7 @@
 						<div class="row justify-content-around">
 							<div class="col-lg-6 col-xl-4 mb-7 mb-lg-0">
 
-								<!-- Chart -->
+								Chart
 
 								<div class="col-lg-6 col-xl-5">
 									<div class="row h-100 align-items-center">
@@ -650,76 +650,76 @@
 											<div class="row justify-content-between">
 												<div class="col-auto col-lg">
 
-													<!-- Label -->
+													Label
 													<p class="fs-4 d-flex align-items-center fw-semibold mb-0">
 														<span class="legend-circle bg-primary"></span> Delivered
 													</p>
 												</div>
 												<div class="col-auto col-lg">
 
-													<!-- Comment -->
+													Comment
 													<p class="fs-4 text-muted">29%</p>
 												</div>
 											</div>
-											<!-- / .row -->
+											/ .row
 											<div class="row justify-content-between">
 												<div class="col-auto col-lg">
 
-													<!-- Label -->
+													Label
 													<p class="fs-4 d-flex align-items-center fw-semibold mb-0">
 														<span class="legend-circle bg-dark"></span> In progress
 													</p>
 												</div>
 												<div class="col-auto col-lg">
 
-													<!-- Comment -->
+													Comment
 													<p class="fs-4 text-muted">45%</p>
 												</div>
 											</div>
-											<!-- / .row -->
+											/ .row
 											<div class="row justify-content-between">
 												<div class="col-auto col-lg">
 
-													<!-- Label -->
+													Label
 													<p class="fs-4 d-flex align-items-center fw-semibold mb-0">
 														<span class="legend-circle bg-gray-400"></span> To-do
 													</p>
 												</div>
 												<div class="col-auto col-lg">
 
-													<!-- Comment -->
+													Comment
 													<p class="fs-4 text-muted">26%</p>
 												</div>
 											</div>
-											<!-- / .row -->
+											/ .row
 										</div>
 									</div>
-									<!-- / .row -->
+									/ .row
 								</div>
 							</div>
-							<!-- / .row -->
+							/ .row
 						</div>
 					</div>
 				</div>
 				<div class="col-xxl-6 d-flex">
 
-					<!-- Card -->
+					Card
 					<div class="card border-0 flex-fill w-100">
 						<div class="card-header border-0">
 
-							<!-- Title -->
+							Title
 							<h2 class="card-header-title h4 text-uppercase">Revenue by
 								locations</h2>
 						</div>
 
 						<div class="card-body">
 
-							<!-- Map -->
+							Map
 							<div class="map h-280px" id="worldMap"></div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<!-- / .row -->
 
 			<div class="row">
@@ -770,9 +770,13 @@
 
 							<!-- Title -->
 							<h2 class="card-header-title h4 text-uppercase">Users</h2>
+							<button type="button" class="btn btn-danger btn-sm"
+								id="deleteUsersBtn">
+								<i class="fas fa-trash-alt"></i> Delete
+							</button>
 
 							<!-- Dropdown -->
-							<div class="dropdown ms-4">
+							<!-- <div class="dropdown ms-4">
 								<a href="javascript: void(0);"
 									class="dropdown-toggle no-arrow text-secondary" role="button"
 									data-bs-toggle="dropdown" aria-haspopup="true"
@@ -791,7 +795,7 @@
 										href="javascript: void(0);" class="dropdown-item"> Action
 									</a>
 								</div>
-							</div>
+							</div> -->
 						</div>
 
 						<!-- Table -->
@@ -806,6 +810,7 @@
 													id="checkAllCheckboxes">
 											</div>
 										</th>
+
 										<th><a href="javascript: void(0);"
 											class="text-muted list-sort" data-sort="name"> Full name
 										</a></th>
@@ -822,26 +827,27 @@
 									</tr>
 								</thead>
 
-								<tbody class="list">
+								<c:forEach items="${listu}" var="u">
 									<tr>
 										<td>
 											<div class="form-check mb-0">
-												<input class="form-check-input" type="checkbox" value="">
+												<input class="form-check-input user-checkbox"
+													type="checkbox" value="${u.userID}">
 											</div>
 										</td>
 										<td>
-											<div class="avatar avatar-circle avatar-xs me-2">
+											<!-- <div class="avatar avatar-circle avatar-xs me-2">
 												<img
 													src="https://d33wubrfki0l68.cloudfront.net/9e7ac59225f733be5944b3e91271b33adb30cae7/56230/assets/images/profiles/profile-14.jpeg"
 													alt="..." class="avatar-img" width="30" height="30">
-											</div> <span class="name fw-bold">Hakeem Chan</span>
+											</div> --> <span class="name fw-bold">${u.fullname}</span>
 										</td>
-										<td class="email">lobortis.augue@natoquepenatibuset.ca</td>
-										<td class="id">#9265</td>
-										<td class="date" data-signed="1648252800">03.26.2022</td>
-										<td class="status"><span class="legend-circle bg-success"></span>Successful</td>
+										<td class="email">${u.email }</td>
+										<td class="id">${u.userID}</td>
+										<td class="date" data-signed="1648252800">${u.createDate}</td>
+										<td class="status"><span class="legend-circle bg-success"></span>Active</td>
 									</tr>
-									<tr>
+									<!-- <tr>
 										<td>
 											<div class="form-check mb-0">
 												<input class="form-check-input" type="checkbox" value="">
@@ -1176,8 +1182,13 @@
 										<td class="id">#9564</td>
 										<td class="date" data-signed="1593558000">07.01.2021</td>
 										<td class="status"><span class="legend-circle bg-warning"></span>Pending</td>
+									</tr> -->
+								</c:forEach>
+								<c:if test="${empty listu}">
+									<tr>
+										<td colspan="4">No users available.</td>
 									</tr>
-								</tbody>
+								</c:if>
 							</table>
 						</div>
 						<!-- / .table-responsive -->
@@ -1202,7 +1213,58 @@
 		</div>
 		<!-- / .container-fluid -->
 </body>
+<script>
+document.getElementById("checkAllCheckboxes").addEventListener("change", function () {
+    const allCheckboxes = document.querySelectorAll('.user-checkbox');
+    const isChecked = this.checked;
 
+    allCheckboxes.forEach(cb => {
+        cb.checked = isChecked; 
+    });
+});
+
+document.getElementById("deleteUsersBtn").addEventListener("click", function () {
+    const checkAllCheckbox = document.getElementById("checkAllCheckboxes");
+    let userIds;
+
+    if (checkAllCheckbox.checked) {
+        
+        userIds = Array.from(document.querySelectorAll('.user-checkbox')).map(cb => cb.value);
+    } else {
+        
+        userIds = Array.from(document.querySelectorAll('.user-checkbox:checked')).map(cb => cb.value);
+    }
+
+    if (userIds.length === 0) {
+        alert("Please select at least one user to delete.");
+        return;
+    }
+
+    if (confirm("Are you sure you want to delete the selected users?")) {
+        fetch('/FashionWebsite/admin/statistic', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'userIds=' + encodeURIComponent(userIds.join(','))
+        })
+            .then(response => {
+                if (response.ok) {
+                    alert("Selected users deleted successfully.");
+                    location.reload(); 
+                } else {
+                    return response.text().then(text => {
+                        throw new Error(text || "An unexpected error occurred.");
+                    });
+                }
+            })
+            .catch(error => {
+                console.error("Error deleting users:", error);
+                alert("An error occurred while deleting users: " + error.message);
+            });
+    }
+});
+</script>
 <script
 	src="${pageContext.request.contextPath}/Template/assets/js/theme.bundle.js"></script>
 <link rel="stylesheet"

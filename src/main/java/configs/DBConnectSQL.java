@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 
 public class DBConnectSQL {
 
-	private final String serverName = "MSI";
+	private final String serverName = "LAPTOP-7596HE42\\MSSQLSERVER01";
 	private final String dbName = "DoAnCNTT1";
 	private final String portNumber = "1433";
 	private final String instance = "";

@@ -12,6 +12,18 @@ import dao.IUserDao;
 import dao.Impl.UserDao;
 
 public class UserService implements IUserService {
+	@Override
+	public void delete(int id) {
+		userDao.delete(id);
+		
+	}
+
+	@Override
+	public List<UserModel> findAll() {
+		
+		return userDao.findAll();
+	}
+
 	IUserDao userDao = new UserDao();
 
 	@Override
