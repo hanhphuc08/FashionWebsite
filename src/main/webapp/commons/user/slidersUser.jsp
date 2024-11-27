@@ -7,7 +7,9 @@
     <section>
       <!-- Hero Slider-->
       <div class="owl-carousel owl-theme owl-dots-modern home-slider">
-        <div class="item d-flex align-items-center" style="background: #f8d5cf;"><img class="bg-image" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/matheus-ferrero-334418-unsplash.jpg" alt="">
+        <c:forEach items="${latestProducts}" var="product">
+        <div class="item d-flex align-items-center" style="background: #f8d5cf;">
+        <img class="bg-image" src="${product.image}" alt="${product.productName}">
           <div class="container py-6">
             <div class="row">
               <div class="col-lg-8 col-xl-6 mx-auto text-white text-center position-relative">
@@ -23,6 +25,8 @@
             </div>
           </div>
         </div>
+       </c:forEach>
+      </div>
     </section>
     <!-- Our picks section-->
     <section>
@@ -35,7 +39,11 @@
         </div>
         <div class="row align-items-md-stretch">
           <div class="col-lg-4 d-flex align-items-lg-stretch position-relative">
-            <div class="d-flex align-items-center text-white border-0 w-100 py-6 py-lg-4 text-center mb-4 mb-lg-0" style="background: center center url(https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/rahul-anil-214671-unsplash.jpg) no-repeat; background-size: cover;"><a class="tile-link" href="category.html"> </a>
+            <div class="d-flex align-items-center text-white border-0 w-100 py-6 py-lg-4 text-center mb-4 mb-lg-0" 
+            style="background: center center url(https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/rahul-anil-214671-unsplash.jpg) no-repeat;
+             background-size: cover;">
+             <a class="tile-link" href="${pageContext.request.contextPath}/user/categories?categoryCode=QSTM"> </a>
+
               <div class="w-100">
                 <h1 class="text-uppercase">Quần Short thun mát</h1>
                 <p class="lead">Hãy khám phá các sản phẩm phong cách</p>
@@ -43,7 +51,8 @@
             </div>
           </div>
           <div class="col-lg-8">
-            <div class="card light-overlay position-relative text-dark border-0 mb-4"><img class="card-img" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/pete-bellis-189599-unsplash.jpg" alt="Card image"><a class="tile-link" href="category.html"> </a>
+            <div class="card light-overlay position-relative text-dark border-0 mb-4"><img class="card-img" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/pete-bellis-189599-unsplash.jpg" alt="Card image">
+             <a class="tile-link" href="${pageContext.request.contextPath}/user/categories?categoryCode=JKD"> </a>
               <div class="card-img-overlay d-flex align-items-center">
                 <div class="text-center w-100 overlay-content">
                   <h1 class="text-uppercase">Áo khoác Denim</h1>
@@ -53,7 +62,8 @@
             </div>
             <div class="row">
               <div class="col-lg-4">
-                <div class="card text-white position-relative border-0 mb-lg-0 mb-4"><img class="card-img" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/haley-phelps-62815-unsplash.jpg" alt="Card image"><a class="tile-link" href="category.html"> </a>
+                <div class="card text-white position-relative border-0 mb-lg-0 mb-4"><img class="card-img" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/haley-phelps-62815-unsplash.jpg" alt="Card image">
+                 <a class="tile-link" href="${pageContext.request.contextPath}/user/categories?categoryCode=APL"> </a>
                   <div class="card-img-overlay d-flex align-items-center">
                     <div class="text-center w-100">
                       <h2 class="text-uppercase mb-0">Áo Polo</h2>
@@ -62,7 +72,8 @@
                 </div>
               </div>
               <div class="col-lg-4">
-                <div class="card position-relative dark-overlay text-white border-0 mb-lg-0 mb-4"><img class="card-img" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/matese-fields-233175-unsplash.jpg" alt="Card image"><a class="tile-link" href="category.html"> </a>
+                <div class="card position-relative dark-overlay text-white border-0 mb-lg-0 mb-4"><img class="card-img" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/matese-fields-233175-unsplash.jpg" alt="Card image">
+                 <a class="tile-link" href="${pageContext.request.contextPath}/user/categories?categoryCode=ASMTN"> </a>
                   <div class="card-img-overlay d-flex align-items-center">
                     <div class="text-center w-100 overlay-content">
                       <h4 class="text-uppercase mb-0">Áo sơ mi tay ngắn</h4>
@@ -71,7 +82,8 @@
                 </div>
               </div>
               <div class="col-lg-4">
-                <div class="card position-relative text-white border-0"><img class="card-img" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/brooke-cagle-195856-unsplash.jpg" alt="Card image"><a class="tile-link" href="category.html"> </a>
+                <div class="card position-relative text-white border-0"><img class="card-img" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/brooke-cagle-195856-unsplash.jpg" alt="Card image">
+                <a class="tile-link" href="${pageContext.request.contextPath}/user/categories?categoryCode=JKT"> </a>
                   <div class="card-img-overlay d-flex align-items-center">
                     <div class="text-center w-100">
                       <h2 class="text-uppercase mb-0">Áo khoác trơn</h2>
@@ -94,135 +106,30 @@
         </div>
         <!-- Products Slider-->
         <div class="owl-carousel owl-theme product-slider">
+        <c:forEach items = "${get8 }" var = "product8">
           <!-- product-->
           <div class="product-slider-item">
             <div class="product">
-              <div class="product-image"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/serrah-galos-494231-unsplash.jpg" alt="product"/>
-                <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/user/categoryDetail"></a>
-                  <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href=${pageContext.request.contextPath}/user/categoryDetail"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">Xem</span></a>
+              <div class="product-image"><img class="img-fluid" src="${product8.image }" alt="${product8.productName }"/>
+                <div class="product-hover-overlay">
+                <a class="product-hover-overlay-link" 
+                	href="${pageContext.request.contextPath}/user/categoryDetail?productCode=${product8.productCode}"></a>
+                  <div class="product-hover-overlay-buttons">
+                  	<a class="btn btn-dark btn-buy" 
+                  	href="${pageContext.request.contextPath}/user/categoryDetail?productCode=${product8.productCode}"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">Xem</span></a>
                   </div>
                 </div>
               </div>
               <div class="py-2">
-                <p class="text-muted text-sm mb-1">Jackets</p>
-                <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/user/categoryDetail">Striped T-Shirt</a></h3><span class="text-muted">$40.00</span>
+                <p class="text-muted text-sm mb-1">${product8.typeCategoryName }</p>
+                <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/user/categoryDetail">
+                ${product8.categoryName }</a></h3><span class="text-muted">${product8.price }</span>
               </div>
             </div>
           </div>
+          </c:forEach>
           <!-- /product-->
-          <!-- product-->
-          <div class="product-slider-item">
-            <div class="product">
-              <div class="product-image"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/averie-woodard-319832-unsplash.jpg" alt="product"/>
-                <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/user/categoryDetail"></a>
-                  <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/user/categoryDetail"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">xem</span></a>
-                  </div>
-                </div>
-              </div>
-              <div class="py-2">
-                <p class="text-muted text-sm mb-1">Shirts</p>
-                <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/user/categoryDetail">Short top</a></h3><span class="text-muted">$40.00</span>
-              </div>
-            </div>
-          </div>
-          <!-- /product-->
-          <!-- product-->
-          <div class="product-slider-item">
-            <div class="product">
-              <div class="product-image">
-                <div class="ribbon ribbon-danger">hết hàng</div><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/serrah-galos-494279-unsplash.jpg" alt="product"/>
-                <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/user/categoryDetail"></a>
-                  <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/user/categoryDetail"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">Xem</span></a>
-                  </div>
-                </div>
-              </div>
-              <div class="py-2">
-                <p class="text-muted text-sm mb-1">Sweaters</p>
-                <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/user/categoryDetail">Ethnic Sweater</a></h3><span class="text-muted">$40.00</span>
-              </div>
-            </div>
-          </div>
-          <!-- /product-->
-          <!-- product-->
-          <div class="product-slider-item">
-            <div class="product">
-              <div class="product-image"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/dmitriy-ilkevich-437760-unsplash.jpg" alt="product"/>
-                <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/user/categoryDetail"></a>
-                  <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="v"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">Xem</span></a>
-                  </div>
-                </div>
-              </div>
-              <div class="py-2">
-                <p class="text-muted text-sm mb-1">Coats</p>
-                <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/user/categoryDetail">Beige</a></h3><span class="text-muted">$40.00</span>
-              </div>
-            </div>
-          </div>
-          <!-- /product-->
-          <!-- product-->
-          <div class="product-slider-item">
-            <div class="product">
-              <div class="product-image"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/ian-dooley-347968-unsplash.jpg" alt="product"/>
-                <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/user/categoryDetail"></a>
-                  <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/user/categoryDetail"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">Xem</span></a>
-                  </div>
-                </div>
-              </div>
-              <div class="py-2">
-                <p class="text-muted text-sm mb-1">T-Shirts</p>
-                <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/user/categoryDetail">Skull Tee</a></h3><span class="text-muted">$40.00</span>
-              </div>
-            </div>
-          </div>
-          <!-- /product-->
-          <!-- product-->
-          <div class="product-slider-item">
-            <div class="product">
-              <div class="product-image"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/alex-holyoake-571682-unsplash.jpg" alt="product"/>
-                <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/user/categoryDetail"></a>
-                  <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/user/categoryDetail"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">Xem</span></a>
-                  </div>
-                </div>
-              </div>
-              <div class="py-2">
-                <p class="text-muted text-sm mb-1">Denim</p>
-                <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/user/categoryDetail">Trucker jacket</a></h3><span class="text-muted">$40.00</span>
-              </div>
-            </div>
-          </div>
-          <!-- /product-->
-          <!-- product-->
-          <div class="product-slider-item">
-            <div class="product">
-              <div class="product-image"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/ao-456813-unsplash.jpg" alt="product"/>
-                <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/user/categoryDetail"></a>
-                  <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/user/categoryDetail"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">Xem</span></a>
-                  </div>
-                </div>
-              </div>
-              <div class="py-2">
-                <p class="text-muted text-sm mb-1">Denim</p>
-                <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/user/categoryDetail">Blouse</a></h3><span class="text-muted">$40.00</span>
-              </div>
-            </div>
-          </div>
-          <!-- /product-->
-          <!-- product-->
-          <div class="product-slider-item">
-            <div class="product">
-              <div class="product-image"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/kyle-loftus-592041-unsplash.jpg" alt="product"/>
-                <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/user/categoryDetail"></a>
-                  <div class="product-hover-overlay-buttons"><a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/user/categoryDetail"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">Xem</span></a>
-                  </div>
-                </div>
-              </div>
-              <div class="py-2">
-                <p class="text-muted text-sm mb-1">Denim</p>
-                <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/user/categoryDetail">Shirt</a></h3><span class="text-muted">$40.00</span>
-              </div>
-            </div>
-          </div>
-          <!-- /product-->
+         
         </div>
       </div>
     </section>

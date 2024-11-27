@@ -68,48 +68,21 @@
               </div>
               
               <!-- Cart Dropdown-->
-              <div class="nav-item dropdown"><a class="navbar-icon-link d-lg-none" href="cart.html"> 
-                  <svg class="svg-icon">
+              <div class="nav-item dropdown">
+              <a class="navbar-icon-link d-lg-none" href="login">
+                <svg class="svg-icon">
                     <use xlink:href="#cart-1"> </use>
-                  </svg><span class="text-sm ms-2 ms-lg-0 text-uppercase text-sm fw-bold d-none d-sm-inline d-lg-none">giỏ hàng</span></a>
-                <div class="d-none d-lg-block"><a class="navbar-icon-link" id="cartdetails" href="cart" data-bs-target="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                </svg>
+                <span class="text-sm ms-2 ms-lg-0 text-uppercase text-sm fw-bold d-none d-sm-inline d-lg-none">giỏ hàng</span>
+            </a>
+            <div class="d-none d-lg-block">
+                <a class="navbar-icon-link" id="cartdetails" href="login">
                     <svg class="svg-icon">
-                      <use xlink:href="#cart-1"> </use>
+                        <use xlink:href="#cart-1"> </use>
                     </svg>
-                    <div class="navbar-icon-link-badge">3                         </div></a>
-                  <div class="dropdown-menu dropdown-menu-animated dropdown-menu-end p-4" aria-labelledby="cartdetails">
-                    <div class="navbar-cart-product-wrapper">
-                      <!-- cart item-->
-                      <div class="navbar-cart-product"> 
-                        <div class="d-flex align-items-center"><a href="detail.html"><img class="img-fluid navbar-cart-product-image" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/product-square-ian-dooley-347968-unsplash.jpg" alt="..."></a>
-                          <div class="w-100"><a class="navbar-cart-product-close" href="#"><i class="fa fa-times">                                                   </i></a>
-                            <div class="ps-3"> <a class="navbar-cart-product-link" href="detail.html">Skull Tee</a><small class="d-block text-muted">Quantity: 1 </small><strong class="d-block text-sm">$75.00 </strong></div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- cart item-->
-                      <div class="navbar-cart-product"> 
-                        <div class="d-flex align-items-center"><a href="detail.html"><img class="img-fluid navbar-cart-product-image" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/product-square-kyle-loftus-596319-unsplash.jpg" alt="..."></a>
-                          <div class="w-100"><a class="navbar-cart-product-close" href="#"><i class="fa fa-times">                                                   </i></a>
-                            <div class="ps-3"> <a class="navbar-cart-product-link" href="detail.html">Transparent Blouse</a><small class="d-block text-muted">Quantity: 1 </small><strong class="d-block text-sm">$75.00 </strong></div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- cart item-->
-                      <div class="navbar-cart-product"> 
-                        <div class="d-flex align-items-center"><a href="detail.html"><img class="img-fluid navbar-cart-product-image" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/product/product-square-serrah-galos-494312-unsplash.jpg" alt="..."></a>
-                          <div class="w-100"><a class="navbar-cart-product-close" href="#"><i class="fa fa-times">                                                   </i></a>
-                            <div class="ps-3"> <a class="navbar-cart-product-link" href="detail.html">White Tee</a><small class="d-block text-muted">Quantity: 1 </small><strong class="d-block text-sm">$75.00 </strong></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- total price-->
-                    <div class="navbar-cart-total"><span class="text-uppercase text-muted">Tổng tiển</span><strong class="text-uppercase">$75.00</strong></div>
-                    <!-- buttons-->
-                    <div class="d-flex justify-content-between"><a class="btn btn-link text-dark me-3" href="cart">giỏ hàng<i class="fa-arrow-right fa"></i></a><a class="btn btn-outline-dark" href="checkout1.html">Thanh toán</a></div>
-                  </div>
-                </div>
+                    
+                </a>
+            </div>
               </div>
               <!-- User Not Logged - link to login page-->
               <div class="nav-item"><a class="navbar-icon-link" href="login">
@@ -122,7 +95,7 @@
       </nav>
       <!-- /Navbar -->
       <!-- Fullscreen search area-->
-      <div class="search-area-wrapper">
+  <div class="search-area-wrapper">
     <div class="search-area d-flex align-items-center justify-content-center">
         <div class="close-btn">
             <svg class="svg-icon svg-icon-light w-3rem h-3rem">

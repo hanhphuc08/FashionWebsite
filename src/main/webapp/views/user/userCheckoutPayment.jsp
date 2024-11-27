@@ -63,7 +63,7 @@
             <ul class="custom-nav nav nav-pills mb-5">
               <li class="nav-item w-25"><a class="nav-link text-sm disabled" href="${pageContext.request.contextPath}/user/checkoutAddress">Địa chỉ</a></li>
               <li class="nav-item w-25"><a class="nav-link text-sm disabled" href="${pageContext.request.contextPath}/user/checkoutReview">Đơn hàng</a></li>
-              <li class="nav-item w-50"><a class="nav-link text-sm active" href="${pageContext.request.contextPath}/user/checkoutPauyment">Phương thức thanh toán</a></li>
+              <li class="nav-item w-50"><a class="nav-link text-sm active" href="${pageContext.request.contextPath}/user/checkoutPayment">Phương thức thanh toán</a></li>
             </ul>
             <div class="mb-5">
               <div id="accordion" role="tablist">
@@ -71,107 +71,104 @@
                   <div class="block-header" id="headingOne" role="tab"><strong><a class="accordion-link" data-bs-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">TÀI KHOẢN NGÂN HÀNG</a></strong></div>
                   <div class="collapse show" id="collapseOne" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="block-body">
-                     <form action="${pageContext.request.contextPath}/user/checkoutPayment" method ="POST">
-                        <div class="row">
+                     <form action="${pageContext.request.contextPath}/user/checkoutPayment" method="POST">
+    				<div class="row">
+					        <!-- Thông tin chuyển khoản -->
+					        <div class="col-md-6">
+					            <div class="mb-4">
+					                <label class="form-label" for="card-name">Tên Ngân hàng</label>
+					                <input class="form-control" type="text" name="card-name" id="card-name" value="Ngân hàng VCB" readonly>
+					            </div>
+					
+					            <div class="mb-4">
+					                <label class="form-label" for="card-number">Số tài khoản</label>
+					                <input class="form-control" type="text" name="card-number" id="card-number" value="1031454525" readonly>
+					            </div>
+					
+					            <div class="mb-4">
+					                <label class="form-label" for="name-card">Chủ tài khoản</label>
+					                <input class="form-control" type="text" name="name-card" id="name-card" value="HOÀNG MẠNH TƯỜNG" readonly>
+					            </div>
+					
+					            <div class="mb-4">
+					                <label class="form-label" for="card-amount">Số tiền</label>
+					                <input class="form-control" type="text" name="finalTotal" id="card-amount" value="${finalTotal}" readonly>
+					            </div>
+					
+					            <div class="mb-4">
+					                <label class="form-label" for="card-note">Nội dung chuyển khoản</label>
+					                <input class="form-control" type="text" name="noidungck" id="card-note" value="P2TS${userID}" readonly>
+					            </div>
+					        </div>
 
-  <div class="col-md-6">
-    <div class="mb-4">
-        <label class="form-label" for="card-name">Tên Ngân hàng</label>
-        <input class="form-control" type="text" name="card-name" id="card-name" 
-               value="Ngân hàng VCB" readonly>
-    </div>
+        						<!-- Mã QR -->
+						        <div class="col-md-6 d-flex align-items-center">
+						            <div class="text-center w-100">
+						                <label class="form-label d-block" for="qr-code">QR Code</label>
+						                <img src="https://qr.sepay.vn/img?bank=Vietcombank&acc=1031454525&template=compact&amount=${finalTotal}&des=P2TS${userID}"
+						                    alt="QR Code" id="qr-code" class="img-fluid"
+						                    style="max-width: 200px; height: auto; border: 1px solid #ddd;">
+						            </div>
+						        </div>
+    					</div>
 
-    <div class="mb-4">
-        <label class="form-label" for="card-number">Số tài khoản</label>
-        <input class="form-control" type="text" name="card-number" id="card-number" 
-               value="1031454525" readonly>
-    </div>
-    
-    <div class="mb-4">
-        <label class="form-label" for="card-number">Chủ tài khoản</label>
-        <input class="form-control" type="text" name="card-number" id="name-card" 
-               value="HOÀNG MẠNH TƯỜNG	" readonly>
-    </div>
+						    <!-- Phương thức thanh toán -->
+						    <div class="block mb-3">
+						        <div class="block-header" id="headingThree" role="tab">
+						            <strong>Chọn phương thức thanh toán</strong>
+						        </div>
+						        <div class="block-body py-5 d-flex align-items-center">
+						            <!-- Chuyển khoản -->
+						            <div class="form-check me-4">
+						                <input class="form-check-input" type="radio" name="paymentMethod" id="bankTransfer" value="Chuyển khoản" checked>
+						                <label class="form-check-label" for="bankTransfer">
+						                    <strong>Chuyển khoản</strong>
+						                </label>
+						            </div>
+						            <!-- Thanh toán khi nhận hàng -->
+						            <div class="form-check">
+						                <input class="form-check-input" type="radio" name="paymentMethod" id="cashOnDelivery" value="Tiền mặt">
+						                <label class="form-check-label" for="cashOnDelivery">
+						                    <strong>Thanh toán khi nhận hàng</strong>
+						                </label>
+						            </div>
+						        </div>
+						    </div>
 
-    <div class="mb-4">
-        <label class="form-label" for="card-amount">Số tiền</label>
-        <input class="form-control" type="text" name="finalTotal" id="card-amount" 
-               value= ${ finalTotal} readonly>
-    </div>
+						    <!-- Nút xác nhận -->
+						    <div class="d-flex justify-content-between flex-column flex-lg-row">
+						        <!-- Nút quay lại -->
+						        <a class="btn btn-link text-muted" href="${pageContext.request.contextPath}/user/checkoutReview">
+						            <i class="fa fa-angle-left me-2"></i> Quay lại trang đơn hàng
+						        </a>
+						        <!-- Nút đặt hàng -->
+						        <button type="submit" class="btn btn-dark">Đặt hàng</button>
+						    </div>
+					</form>
 
-    <div class="mb-4">
-        <label class="form-label" for="card-note">Nội dung chuyển khoản</label>
-        <input class="form-control" type="text" name="noidungck" id="card-note" 
-       value="P2TS${userID}" readonly>
-    </div>
-</div>
-  
-  
-
-
-  <div class="col-md-6 d-flex align-items-center">
-    <div class="text-center w-100">
-      <label class="form-label d-block" for="qr-code">QR Code</label>
-    <img src="https://qr.sepay.vn/img?bank=Vietcombank&acc=1031454525&template=compact&amount=${finalTotal}&des=P2TS${userID}" 
-     alt="QR Code" id="qr-code" class="img-fluid"
-      style="max-width: 200px; height: auto; border: 1px solid #ddd;">
-
-    </div>
-  </div>
-</div>
-
-                      </form>
-                    </div>
-                  </div>
-                </div>
-                <div class="block mb-3">
-                  <div class="block-header" id="headingThree" role="tab"><strong><a class="accordion-link collapsed" data-bs-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Thanh toán khi nhận hàng</a></strong></div>
-                  <div class="collapse" id="collapseThree" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
-                  
-                  <form action="${pageContext.request.contextPath}/user/checkoutPayment" method="post">
-                    <div class="block-body py-5 d-flex align-items-center">
-                      	 <input class="form-check-input" type="radio" name="paymentMethod" id="cashOnDelivery" value="Tien mat">
-                      	<label class="ms-3" for="cashOnDelivery">
-                      	<strong class="d-block text-uppercase mb-2">Thanh toán khi nhận hàng</strong>
-                      		<span class="text-muted text-sm">Hãy chú ý theo dõi đơn hàng của bạn</span>
-                      </label>
-                    </div>
-            	</form>
-                  </div>
-                </div>
-              </div>
-            </div>
+				</div>
             
-            <div class="mb-5 d-flex justify-content-between flex-column flex-lg-row">
-    			<!-- Nút quay lại -->
-    			<a class="btn btn-link text-muted" 
-      				 href="${pageContext.request.contextPath}/user/checkoutReview"> 
-        			<i class="fa fa-angle-left me-2"></i> Quay lại trang đơn hàng
-   				 </a>
-    
-    					<!-- Form xác nhận đặt hàng -->
-   				 <form action="${pageContext.request.contextPath}/user/checkoutPayment" method="post">
-        			<button type="submit" class="btn btn-dark">Đặt hàng</button>
-    			</form>
-			</div>
-            
-          </div>
-          <div class="col-lg-4">
-            <div class="block mb-5">
-              <div class="block-header">
-                <h6 class="text-uppercase mb-0">Tổng tiền đơn hàng dự kiến</h6>
-              </div>
-              <div class="block-body bg-light pt-1">
-                <p class="text-sm">Chi phí vận chuyển và chi phí bổ sung sẽ được tính dựa trên các sản phẩm bạn đã chọn.</p>
-                <ul class="order-summary mb-0 list-unstyled">
-                  <li class="order-summary-item"><span>Tổng tiền ước tính</span><span>${totalAmount }</span></li>
-                  <li class="order-summary-item"><span>Phí vận chuyện</span><span>${shipping }</span></li>
-                  <li class="order-summary-item"><span>Thuế dịch vụ</span><span>${serviceTax }</span></li>
-                  <li class="order-summary-item border-0"><span>Tổng tiền</span><strong class="order-summary-total">${finalTotal }</strong></li>
-                </ul>
-              </div>
-            </div>
-        </div>
+          	</div>
+			          <div class="col-lg-4">
+			            <div class="block mb-5">
+			              <div class="block-header">
+			                <h6 class="text-uppercase mb-0">Tổng tiền đơn hàng dự kiến</h6>
+			              </div>
+			              <div class="block-body bg-light pt-1">
+			                <p class="text-sm">Chi phí vận chuyển và chi phí bổ sung sẽ được tính dựa trên các sản phẩm bạn đã chọn.</p>
+			                <ul class="order-summary mb-0 list-unstyled">
+			                  <li class="order-summary-item"><span>Tổng tiền ước tính</span><span>${totalAmount }</span></li>
+			                  <li class="order-summary-item"><span>Phí vận chuyện</span><span>${shipping }</span></li>
+			                  <li class="order-summary-item"><span>Thuế dịch vụ</span><span>${serviceTax }</span></li>
+			                  <li class="order-summary-item border-0"><span>Tổng tiền</span><strong class="order-summary-total">${finalTotal }</strong></li>
+			                </ul>
+			              </div>
+			            </div>
+			        </div>
+			        
+			        
+		  </div>  
+		</div>        
       </div>
     </section>
 

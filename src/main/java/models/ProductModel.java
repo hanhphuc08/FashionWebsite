@@ -23,8 +23,17 @@ public class ProductModel implements Serializable {
     private Date updateDate;
     
     private String categoryName;
+    private String typeCategoryName;
     
-    private List<String> sizes;
+    public String getTypeCategoryName() {
+		return typeCategoryName;
+	}
+
+	public void setTypeCategoryName(String typeCategoryName) {
+		this.typeCategoryName = typeCategoryName;
+	}
+
+	private List<String> sizes;
 
     public List<String> getSizes() {
         return sizes;
