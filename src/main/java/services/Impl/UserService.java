@@ -13,12 +13,8 @@ import dao.Impl.UserDao;
 
 public class UserService implements IUserService {
 	@Override
-	public void delete(int id) {
-		userDao.delete(id);
-		
-	}
-
-	@Override
+	
+	
 	public List<UserModel> findAll() {
 		
 		return userDao.findAll();
@@ -110,7 +106,7 @@ public class UserService implements IUserService {
 	}
 	
 	private void sendEmail(String to, String subject, String body) {
-		//Vi du thui nhaaaaaaaaaaa
+		
         System.out.println("Gửi email tới: " + to);
         System.out.println("Subject: " + subject);
         System.out.println("Body: " + body);

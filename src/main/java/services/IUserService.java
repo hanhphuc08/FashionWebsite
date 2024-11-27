@@ -8,7 +8,7 @@ import models.UserModel;
 
 public interface IUserService {
 	void insert(UserModel user);
-	void delete(int id);
+	
 	List<UserModel> findAll();
 	boolean register(String fullname, String email, String phone, String address, String password);
 	
