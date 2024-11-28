@@ -87,52 +87,40 @@
 			</div>
 			<div class="row">
 				<div class="col-lg-12 col-xl-12">
-					<div class="orders">
-						<div class="orders-wrapper">
-							<div class="cart-header text-center">
-								<div class="row">
-									<div class="col-3">Mã đơn hàng</div>
-									<div class="col-2">Khách hàng</div>
-									<div class="col-3">Ngày đặt hàng</div>
-									<div class="col-2">Tình trạng</div>
-									<div class="col-2">Tổng tiền</div>
-								</div>
-							</div>
-							<div class="cart-body">
+			 <div class="orders">
+			    <div class="orders-wrapper">
+			        <div class="cart-header text-center">
+			            <div class="row">
+			                <div class="col-3">Mã đơn hàng</div>
+			                <div class="col-2">Khách hàng</div>
+			                <div class="col-3">Ngày đặt hàng</div>
+			                <div class="col-2">Tình trạng</div>
+			                <div class="col-2">Tổng tiền</div>
+			            </div>
+			        </div>
+			        <div class="cart-body">
+			
+			            <c:forEach items="${orderList}" var="order">
+			                <div class="cart-item">
+			                    <div class="row d-flex align-items-center text-center">
+			                        <!-- Mã đơn hàng -->
+			                        <div class="col-3">#${order.orderID}</div>
+			                        <!-- Khách hàng -->
+			                        <div class="col-2">${order.fullName}</div>
+			                        <!-- Ngày đặt hàng -->
+			                        <div class="col-3">${order.orderDate}</div>
+			                        <!-- Trạng thái -->
+			                        <div class="col-2">${order.status}</div>
+			                        <!-- Tổng tiền -->
+			                        <div class="col-2">${order.totalAmount}</div>
+			                    </div>
+			                </div>
+			            </c:forEach>
+			
+			        </div>
+			    </div>
+			</div>
 
-								<!-- Product-->
-								<div class="cart-item">
-									<c:forEach items="${orderDetails}" var="orderDetail">
-										<div class="row d-flex align-items-center text-center">
-											<div class="col-6">
-
-												<div class="d-flex align-items-center">
-													<a
-														href="${pageContext.request.contextPath}/user/categoryDetail">
-														<img class="cart-item-img" src="${orderDetail.image }"
-														alt="${orderDetail.productName}">
-													</a>
-													<div class="cart-title text-start">
-														<a class="text-uppercase text-dark"> <strong>${orderDetail.productName }</strong>
-														</a> <br> <span class="text-muted text-sm">Size :
-															${orderDetail.size }</span> <br> <span
-															class="text-muted text-sm">Colour:
-															${orderDetail.color }</span>
-													</div>
-												</div>
-											</div>
-											<div class="col-2">${orderDetail.price }</div>
-											<div class="col-2">${orderDetail.quantity }</div>
-											<div class="col-2 text-center">${orderDetail.price * orderDetail.quantity }</div>
-										</div>
-									</c:forEach>
-								</div>
-								<!-- Product-->
-
-
-							</div>
-						</div>
-					</div>
 
 				</div>
 

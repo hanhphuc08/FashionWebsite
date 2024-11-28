@@ -153,15 +153,12 @@
 						</div>
 						<div class="dropdown-footer text-center">
 
-<<<<<<< HEAD
-=======
+
 							<a class="dropdown-item text-muted" href="${pageContext.request.contextPath}/admin/manageOrders">Xem tất cả thông
 								báo</a>
 
->>>>>>> 55e117a0d68896061770e2a6339ee489118d4b9e
-							<a class="dropdown-item text-muted"
-								href="${pageContext.request.contextPath}/admin/manageOrders">Xem
-								tất cả thông báo</a>
+
+							
 
 						</div>
 					</div>
