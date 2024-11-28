@@ -62,48 +62,109 @@
 	<!-- Hero Section-->
 	<section class="hero">
 		<div class="container">
-
+			<!-- Breadcrumbs -->
 
 			<!-- Hero Content-->
 			<div class="hero-content pb-5 text-center">
-				<h1 class="hero-heading">Danh sách đơn hàng</h1>
+				<h1 class="hero-heading">Đơn hàng #1735</h1>
 			</div>
 		</div>
 	</section>
 	<section>
 		<div class="container">
-			<!-- Search Bar -->
-			<div class="search-bar mb-4">
-				<form action="" method="GET">
-					<div class="input-group">
-						<input type="text" class="form-control"
-							placeholder="Tìm kiếm đơn hàng..." name="searchQuery"
-							value="${param.searchQuery}">
-						<button class="btn btn-dark" type="submit">
-							<i class="fa fa-search"></i> Tìm kiếm
-						</button>
-					</div>
-				</form>
-			</div>
-			<div class="row">
-				<div class="col-lg-12 col-xl-12">
-					<div class="orders">
-						<div class="orders-wrapper">
-							<div class="cart-header text-center">
-								<div class="row">
-									<div class="col-3">Mã đơn hàng</div>
-									<div class="col-2">Khách hàng</div>
-									<div class="col-3">Ngày đặt hàng</div>
-									<div class="col-2">Tình trạng</div>
-									<div class="col-2">Tổng tiền</div>
-								</div>
+			<div class="col-lg-12 col-xl-12">
+				<div class="cart">
+					<div class="cart-wrapper">
+						<div class="cart-header text-center">
+							<div class="row">
+								<div class="col-6">Sản phẩm</div>
+								<div class="col-2">Giá</div>
+								<div class="col-2">Số lượng</div>
+								<div class="col-2">Tổng</div>
 							</div>
+						</div>
+						<div class="cart-body">
+
+							<!-- Product-->
+							<div class="cart-item">
+								<c:forEach items="${orderDetails}" var="orderDetail">
+									<div class="row d-flex align-items-center text-center">
+										<div class="col-6">
+
+											<div class="d-flex align-items-center">
+												<a
+													href="${pageContext.request.contextPath}/user/categoryDetail">
+													<img class="cart-item-img" src="${orderDetail.image }"
+													alt="${orderDetail.productName}">
+												</a>
+												<div class="cart-title text-start">
+													<a class="text-uppercase text-dark"> <strong>${orderDetail.productName }</strong>
+													</a> <br>
+													<span class="text-muted text-sm">Size :
+														${orderDetail.size }</span> <br>
+													<span class="text-muted text-sm">Colour:
+														${orderDetail.color }</span>
+												</div>
+											</div>
+										</div>
+										<div class="col-2">${orderDetail.price }</div>
+										<div class="col-2">${orderDetail.quantity }</div>
+										<div class="col-2 text-center">${orderDetail.price * orderDetail.quantity }</div>
+									</div>
+								</c:forEach>
+							</div>
+							<!-- Product-->
+
 
 						</div>
 					</div>
-
 				</div>
+				<div class="row my-5">
+					<div class="col-md-6">
+						<div class="block mb-5">
+							<div class="block-body bg-light pt-1">
+								<ul class="order-summary mb-0 list-unstyled">
+									<li class="order-summary-item"><span>Tổng tiền ước
+											tính</span><span>${totalAmount }</span></li>
+									<li class="order-summary-item"><span>Phí vận chuyện</span><span>${shipping }</span></li>
+									<li class="order-summary-item"><span>Thuế dịch vụ</span><span>${serviceTax }</span></li>
+									<li class="order-summary-item border-0"><span>Tổng
+											tiền</span><strong class="order-summary-total">${finalTotal }</strong></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="block-header">
+							<h6 class="text-uppercase mb-0">Địa chỉ giao hàng</h6>
+						</div>
+						<div class="block-body bg-light pt-1">
+							<p>${userAddress.fullNameUA }<br>${userAddress.phoneUA }<br>${userAddress.provinceName }<br>${userAddress.districtName }<br>${userAddress.specificAddress }<br>
+							</p>
+						</div>
+						<!-- <div class="block-header">
+                  <h6 class="text-uppercase mb-0">Shipping address</h6>
+                </div>
+                <div class="block-body bg-light pt-1">
+                  <p>John Brown<br>13/25 New Avenue<br>New Heaven<br>45Y 73J<br>England<br><strong>Great Britain</strong></p>
+                </div> -->
+					</div>
+				</div>
+			</div>
+			<!-- Customer Sidebar-->
 
+			<!-- /Customer Sidebar-->
+			<div class="row my-5">
+				<div class="col-md-6">
+					<button type="button" class="btn btn-dark btn-lg w-100"
+						id="confirmOrderButton">Xác nhận đơn hàng</button>
+					<!-- Confirm button (green) -->
+				</div>
+				<div class="col-md-6">
+					<button type="button" class="btn btn-dark btn-lg w-100"
+						id="cancelOrderButton">Hủy đơn hàng</button>
+					<!-- Cancel button (red) -->
+				</div>
 			</div>
 		</div>
 	</section>
