@@ -74,9 +74,9 @@
                   <svg class="svg-icon">
                     <use xlink:href="#male-user-1"> </use>
                   </svg></a>
-                <div class="dropdown-menu dropdown-menu-animated dropdown-menu-end" aria-labelledby="userdetails"> <a class="dropdown-item" href="${pageContext.request.contextPath}/admin/orders">Đơn hàng</a>
-                	<a class="dropdown-item" href="${pageContext.request.contextPath}/admin/UserAccount">Hồ sơ của tôi</a>
-                	<a class="dropdown-item" href="${pageContext.request.contextPath}/admin/forgotPassword">Quên mật khẩu</a>
+                <div class="dropdown-menu dropdown-menu-animated dropdown-menu-end" aria-labelledby="userdetails"> 
+                
+                	
                   <div class="dropdown-divider my-0"></div><a class="dropdown-item" href="${pageContext.request.contextPath}/home">Đăng xuất</a>
                 </div>
               </div>

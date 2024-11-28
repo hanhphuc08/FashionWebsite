@@ -115,11 +115,9 @@
                     <div class="product-hover-overlay">
                     	<a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/user/categoryDetail?productCode=${o.productCode}"></a>
                       <div class="product-hover-overlay-buttons">
-                      	<a class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block" href="#">
-                      		<i class="fa fa-shopping-cart"></i>
-                      	</a>
+                      	
                       	<a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/user/categoryDetail?productCode=${o.productCode}">
-                      		<i class="fa-search fa"></i></a><a class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-expand-arrows-alt"></i></a>
+                      		<i class="fa-search fa"></i></a>
                       </div>
                     </div>
                   </div>
@@ -204,14 +202,7 @@
 							href="#priceFilterMenu" aria-expanded="false"
 							aria-controls="priceFilterMenu">Filter by price</a>
 						<div class="expand-lg collapse" id="priceFilterMenu">
-							<h6 class="sidebar-heading d-none d-lg-block">Giá</h6>
-							<div class="mt-4 mt-lg-0" id="slider-snap"></div>
-							<div class="nouislider-values">
-								<div class="min">
-									Từ <span id="slider-snap-value-lower"></span>
-								</div>
-								<div class="max">
-									Đến <span id="slider-snap-value-upper"></span>
+							
 								</div>
 								<input class="slider-snap-input" type="hidden" name="pricefrom"
 									id="slider-snap-input-lower" value="40"> <input

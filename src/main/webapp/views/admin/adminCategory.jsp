@@ -117,8 +117,8 @@
                     <div class="product-hover-overlay">
                     	<a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/admin/categoryDetail?productCode=${o.productCode}"></a>
                       <div class="product-hover-overlay-buttons">
-                      	<a class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block" href="${pageContext.request.contextPath}/login">
-                      		<i class="fa fa-shopping-cart"></i>
+                      	<a class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block" href="${pageContext.request.contextPath}/admin/manageCategory">
+                      		<i class="fas fa-pen"></i>
                       	</a>
                       	<a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/admin/categoryDetail?productCode=${o.productCode}">
                       		<i class="fa-search fa"></i></a><a class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-expand-arrows-alt"></i></a>
