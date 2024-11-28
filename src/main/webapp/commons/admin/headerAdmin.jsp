@@ -152,14 +152,14 @@
 							</a>
 						</div>
 						<div class="dropdown-footer text-center">
-<<<<<<< HEAD
+
 							<a class="dropdown-item text-muted" href="${pageContext.request.contextPath}/admin/manageOrders">Xem tất cả thông
 								báo</a>
-=======
+
 							<a class="dropdown-item text-muted"
 								href="${pageContext.request.contextPath}/admin/manageOrders">Xem
 								tất cả thông báo</a>
->>>>>>> faae390c72d7534598afc7921fba09346b180991
+
 						</div>
 					</div>
 					<!-- User Not Logged - link to login page-->
