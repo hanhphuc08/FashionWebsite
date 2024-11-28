@@ -54,8 +54,34 @@
 	href="https://use.fontawesome.com/releases/v5.1.0/css/fontawesome.css"
 	integrity="sha384-ozJwkrqb90Oa3ZNb+yKFW2lToAWYdTiF1vt8JiH5ptTGHTGcN7qdoR1F95e0kYyG"
 	crossorigin="anonymous">
+	<style>
+    .delete-icon {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 10;
+    }
+
+    .delete-icon:hover {
+        background-color: rgba(255, 0, 0, 0.8);
+    }
+
+    .product-image {
+        position: relative;
+    }
+</style>
 </head>
 <body>
+
 	<!--  Begin Header -->
 	<%@ include file="/commons/admin/headerAdmin.jsp"%>;
 	<!-- End Header -->
@@ -112,6 +138,9 @@
               <div class="col-xl-3 col-lg-4 col-sm-6">
                 <div class="product">
                   <div class="product-image">
+                  <div class="delete-icon" onclick="">
+                <i class="fas fa-times"></i>
+                </div>
                     <div class="ribbon ribbon-info">${o.status}</div>
                     <img class="img-fluid" src="${o.image }" alt="${o.productName }"/>
                     <div class="product-hover-overlay">
@@ -125,6 +154,7 @@
                       </div>
                     </div>
                   </div>
+                  
                   <div class="py-2">
                     <p class="text-muted text-sm mb-1">${o.categoryName}</p>
                     
@@ -470,6 +500,7 @@
 				happen in your production code.</p>
 		</div>
 	</div>
+	
 
 	<!--  Begin Footer -->
 	<%@ include file="/commons/web/footer.jsp"%>
