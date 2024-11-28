@@ -149,7 +149,7 @@
 							</a>
 						</div>
 						<div class="dropdown-footer text-center">
-							<a class="dropdown-item text-muted" href="#">Xem tất cả thông
+							<a class="dropdown-item text-muted" href="${pageContext.request.contextPath}/admin/manageOrders">Xem tất cả thông
 								báo</a>
 						</div>
 					</div>

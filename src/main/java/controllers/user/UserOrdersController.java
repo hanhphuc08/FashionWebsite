@@ -27,14 +27,18 @@ public class UserOrdersController extends HttpServlet {
             resp.sendRedirect(req.getContextPath() + "/login");
             return;
         }
-        System.out.println("User ID: " + user.getUserID());
+        String userName = user.getFullname();
+	    req.setAttribute("userName", userName);
+	    
+
 		List<OrderModel> order = orderDao.getOrdersByUserId(user.getUserID());
 		req.setAttribute("orderList", order);
 		
-		System.out.println("Order List Size: " + order.size());
-		for (OrderModel o : order) {
-		    System.out.println("Order ID: " + o.getOrderID() + ", Total Amount: " + o.getTotalAmount());
-		}
+		
+		int orderCount = orderDao.getTotalOrders();
+		req.setAttribute("orderCount", orderCount);
+		
+		
 		req.getRequestDispatcher("/views/user/userOrders.jsp").forward(req, resp);
 	}
 	

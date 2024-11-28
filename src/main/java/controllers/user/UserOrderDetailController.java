@@ -15,6 +15,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import models.CartModel;
 import models.OrderDetailModel;
+import models.OrderModel;
 import models.UserAddressModel;
 import models.UserModel;
 
@@ -27,52 +28,65 @@ public class UserOrderDetailController extends HttpServlet {
 	OrderDao orderDao = new OrderDao();
 	private UserAddressDao userAddressDao = new UserAddressDao();
 	private OrderDetailDao orderDetailDao = new OrderDetailDao();
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			HttpSession session = req.getSession();
-	        UserModel user = (session != null) ? (UserModel) session.getAttribute("account") : null;
+	    HttpSession session = req.getSession();
+	    UserModel user = (session != null) ? (UserModel) session.getAttribute("account") : null;
 
-	        if (user == null) {
-	            resp.sendRedirect(req.getContextPath() + "/login");
-	            return;
-	        }
-	        
-	        String orderIDStr = req.getParameter("orderID");
-	        if (orderIDStr == null || orderIDStr.isEmpty()) {
-	            resp.sendRedirect(req.getContextPath() + "/user/orders");
-	            return;
-	        }
-	        int orderID = Integer.parseInt(orderIDStr);
-	        
-	        List<OrderDetailModel> orderDetails = orderDetailDao.getOrderDetailsByOrderId(orderID);
-	        req.setAttribute("orderDetails", orderDetails);
+	    if (user == null) {
+	        resp.sendRedirect(req.getContextPath() + "/login");
+	        return;
+	    }
 
-	        
-	        List<CartModel> cartItems = cartDao.getAllCartWithDetail(user.getUserID());
-		    
-		    double totalAmount = 0;
-	        for(CartModel item : cartItems) {
-	        	totalAmount += item.getPrice() * item.getQuantity();
-	        }
-	        double shipping = 0;
-	        double serviceTax = 0;
-	        double finalToTal = totalAmount + shipping + serviceTax;
-	        
-	        req.setAttribute("totalAmount", totalAmount);
-	        req.setAttribute("shipping", shipping);
-	        req.setAttribute("serviceTax", serviceTax);
-	        req.setAttribute("finalTotal", finalToTal);
-	        
-	       UserAddressModel userAddress = userAddressDao.getAddressByUserId(user.getUserID());
-	       if (userAddress != null) {
-               req.setAttribute("userAddress", userAddress);
-           } else {
-               req.setAttribute("addressError", "Không tìm thấy địa chỉ giao hàng.");
-           }
-	        
-	       
-		req.getRequestDispatcher("/views/user/userOrderDetail.jsp").forward(req, resp);
+	    String userName = user.getFullname();
+	    req.setAttribute("userName", userName);
+
+
+	    String orderIDStr = req.getParameter("orderID");
+	    if (orderIDStr == null || orderIDStr.isEmpty()) {
+	        resp.sendRedirect(req.getContextPath() + "/user/orders");
+	        return;
+	    }
+	    int orderID = Integer.parseInt(orderIDStr);
+
+	    // Lấy chi tiết đơn hàng từ OrderDetailDao
+	    List<OrderDetailModel> orderDetails = orderDetailDao.getOrderDetailsByOrderId(orderID);
+	    req.setAttribute("orderDetails", orderDetails);
+	    
+	    OrderModel order = orderDao.getOrderById(orderID); 
+	    int orderCount = orderDao.getTotalOrders();
+	    req.setAttribute("order", order);
+	    req.setAttribute("orderCount", orderCount);
+
+	    // Tính toán tổng tiền đơn hàng từ orderDetails
+	    double totalAmount = 0;
+	    for (OrderDetailModel orderDetail : orderDetails) {
+	        totalAmount += orderDetail.getPrice() * orderDetail.getQuantity();
+	    }
+
+	    // Bạn có thể thêm logic cho phí vận chuyển và thuế nếu cần
+	    double shipping = 0; // Có thể tính phí vận chuyển nếu cần
+	    double serviceTax = 0; // Có thể tính thuế dịch vụ nếu cần
+	    double finalTotal = totalAmount + shipping + serviceTax;
+
+	    req.setAttribute("totalAmount", totalAmount);
+	    req.setAttribute("shipping", shipping);
+	    req.setAttribute("serviceTax", serviceTax);
+	    req.setAttribute("finalTotal", finalTotal);
+
+	    // Lấy địa chỉ giao hàng của người dùng
+	    UserAddressModel userAddress = userAddressDao.getAddressByUserId(user.getUserID());
+	    if (userAddress != null) {
+	        req.setAttribute("userAddress", userAddress);
+	    } else {
+	        req.setAttribute("addressError", "Không tìm thấy địa chỉ giao hàng.");
+	    }
+
+	    req.getRequestDispatcher("/views/user/userOrderDetail.jsp").forward(req, resp);
 	}
+
+
 	
 	
 }

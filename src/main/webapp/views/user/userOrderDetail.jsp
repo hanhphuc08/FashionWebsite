@@ -45,15 +45,17 @@
         <ol class="breadcrumb justify-content-center">
           <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/user/home">Trang chủ</a></li>
           <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/user/orders">Đơn hàng</a></li>
-          <li class="breadcrumb-item active">Đơn hàng #1735</li>
+          <li class="breadcrumb-item active">Đơn hàng #${order.orderID }</li>
         </ol>
         <!-- Hero Content-->
         <div class="hero-content pb-5 text-center">
-          <h1 class="hero-heading">Đơn hàng #1735</h1>
+        
+          <h1 class="hero-heading">Đơn hàng #${order.orderID }</h1>
           <div class="row">   
-            <div class="col-xl-8 offset-xl-2"><p class="lead text-muted">Đơn hàng #1735 đã được đặt vào ngày <strong>11/11/2024</strong> và đang <strong>being prepared</strong>.</p><p class="text-muted">Nếu bạn có bất kỳ thắc mắc nào, vui lòng <a href="contact.html">liên hệ với chúng tôi</a>, trung tâm dịch vụ chăm sóc khách hàng của chúng tôi luôn trực 24/7</p></div>
+            <div class="col-xl-8 offset-xl-2"><p class="lead text-muted">Đơn hàng #${order.orderID} đã được đặt vào ngày <strong>${order.orderDate }</strong> và đang <strong>${order.status }</strong>.</p><p class="text-muted">Nếu bạn có bất kỳ thắc mắc nào, vui lòng <a href="contact.html">liên hệ với chúng tôi</a>, trung tâm dịch vụ chăm sóc khách hàng của chúng tôi luôn trực 24/7</p></div>
           </div>
         </div>
+
       </div>
     </section>
     <section>
@@ -137,29 +139,7 @@
             </div>
           </div>
            <!-- Customer Sidebar-->
-           <div class="col-xl-3 col-lg-4 mb-5">
-            <div class="customer-sidebar card border-0"> 
-              <div class="customer-profile"><a class="d-inline-block" href="#"><img class="img-fluid rounded-circle customer-image shadow" src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-589739-unsplash-avatar.jpg" alt=""></a>
-                <h5>Anhthu</h5>
-                <p class="text-muted text-sm mb-0">ở nhà</p>
-              </div>
-              <nav class="list-group customer-nav"><a class="list-group-item d-flex justify-content-between align-items-center text-decoration-none" href="${pageContext.request.contextPath}/user/orders"><span>
-                    <svg class="svg-icon svg-icon-heavy me-2">
-                      <use xlink:href="#paper-bag-1"> </use>
-                    </svg>Đơn hàng của tôi</span>
-                  <div class="badge rounded-pill bg-dark fw-normal px-3">5</div></a><a class="active list-group-item d-flex justify-content-between align-items-center text-decoration-none" href="customer-account.html"><span>
-                    <svg class="svg-icon svg-icon-heavy me-2">
-                      <use xlink:href="#male-user-1"> </use>
-                    </svg>Hồ sơ của tôi</span></a><a class="list-group-item d-flex justify-content-between align-items-center text-decoration-none" href="${pageContext.request.contextPath}/user/UserAccount"><span>
-                    <svg class="svg-icon svg-icon-heavy me-2">
-                      <use xlink:href="#navigation-map-1"> </use>
-                    </svg>Địa chỉ</span></a><a class="list-group-item d-flex justify-content-between align-items-center text-decoration-none" href="${pageContext.request.contextPath}/user/UserAddress"><span>
-                    <svg class="svg-icon svg-icon-heavy me-2">
-                      <use xlink:href="#exit-1"> </use>
-                    </svg>Đăng xuẩt</span></a>
-              </nav>
-            </div>
-          </div>
+           <%@ include file="/commons/user/customerSidebar.jsp" %>;
           <!-- /Customer Sidebar-->
         </div>
       </div>

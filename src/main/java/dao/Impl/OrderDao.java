@@ -98,7 +98,29 @@ public class OrderDao {
 
 	    return list;
 	}
-	
+	 public OrderModel getOrderById(int orderID) {
+	        OrderModel order = null;
+	        String sql = "SELECT OrderID, OrderDate, Status FROM Orders WHERE OrderID = ?";
+
+	        try (Connection conn = new DBConnectSQL().getConnection();
+	             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+	            ps.setInt(1, orderID);
+	            ResultSet rs = ps.executeQuery();
+
+
+	            if (rs.next()) {
+	                order = new OrderModel();
+	                order.setOrderID(rs.getInt("OrderID"));
+	                order.setOrderDate(rs.getDate("OrderDate")); 
+	                order.setStatus(rs.getString("Status"));  
+	            }
+
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        return order;
+	    }
 	public int getTotalOrders()
 	{
 		String sql = "select count(*) as ToTalOrders From Orders";
@@ -253,6 +275,33 @@ public class OrderDao {
 	}
 
 	
+	public List<OrderModel> getAllOrders() {
+	    List<OrderModel> orders = new ArrayList<>();
+	    String sql = "SELECT o.OrderID, u.FullName, o.OrderDate, o.Status, SUM(od.Quantity * p.Price) AS TotalAmount " +
+	                 "FROM Orders o " +
+	                 "INNER JOIN Users u ON o.UserID = u.UserID " +
+	                 "INNER JOIN OrderDetails od ON o.OrderID = od.OrderID " +
+	                 "INNER JOIN Products p ON od.ProductCode = p.ProductCode " +
+	                 "GROUP BY o.OrderID, u.FullName, o.OrderDate, o.Status";
+
+	    try (Connection conn = new DBConnectSQL().getConnection();
+	         PreparedStatement ps = conn.prepareStatement(sql);
+	         ResultSet rs = ps.executeQuery()) {
+
+	        while (rs.next()) {
+	            OrderModel order = new OrderModel();
+	            order.setOrderID(rs.getInt("OrderID"));
+	            order.setFullName(rs.getString("FullName"));
+	            order.setOrderDate(rs.getDate("OrderDate"));
+	            order.setStatus(rs.getString("Status"));
+	            order.setTotalAmount(rs.getDouble("TotalAmount"));
+	            orders.add(order);
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return orders;
+	}
 
 
 	public static void main(String[] args) {
