@@ -53,6 +53,24 @@
 	href="https://use.fontawesome.com/releases/v5.1.0/css/fontawesome.css"
 	integrity="sha384-ozJwkrqb90Oa3ZNb+yKFW2lToAWYdTiF1vt8JiH5ptTGHTGcN7qdoR1F95e0kYyG"
 	crossorigin="anonymous">
+	<style>
+    .search-bar .input-group .form-control {
+        padding-right: 40px; 
+    }
+
+    .search-bar .input-group .btn {
+        position: absolute;
+        right: 10px; 
+        top: 50%;
+        transform: translateY(-50%);
+        background: transparent; 
+        border: none; 
+    }
+
+    .search-bar .input-group {
+        position: relative;
+    }
+</style>
 </head>
 <body>
 	<!--  Begin Header -->
@@ -74,28 +92,32 @@
 		<div class="container">
 			<!-- Search Bar -->
 			<div class="search-bar mb-4">
-				<form action="" method="GET">
-					<div class="input-group">
-						<input type="text" class="form-control"
-							placeholder="Tìm kiếm đơn hàng..." name="searchQuery"
-							value="${param.searchQuery}">
-						<button class="btn btn-dark" type="submit">
-							<i class="fa fa-search"></i> Tìm kiếm
-						</button>
-					</div>
-				</form>
-			</div>
+    <form action="" method="GET">
+        <div class="input-group">
+            <input type="text" class="form-control rounded-pill pl-4 pr-5" 
+                   placeholder="Tìm kiếm đơn hàng..." name="searchQuery" value="${param.searchQuery}">
+            <div class="input-group-append">
+                <button class="btn btn-transparent" type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
 			<div class="row">
 				<div class="col-lg-12 col-xl-12">
 			 <div class="orders">
 			    <div class="orders-wrapper">
 			        <div class="cart-header text-center">
 			            <div class="row">
-			                <div class="col-3">Mã đơn hàng</div>
+			                <div class="col-2">Mã đơn hàng</div>
 			                <div class="col-2">Khách hàng</div>
-			                <div class="col-3">Ngày đặt hàng</div>
+			                <div class="col-2">Ngày đặt hàng</div>
 			                <div class="col-2">Tình trạng</div>
 			                <div class="col-2">Tổng tiền</div>
+			                <div class="col-2">Xem</div>
 			            </div>
 			        </div>
 			        <div class="cart-body">
@@ -104,15 +126,18 @@
 			                <div class="cart-item">
 			                    <div class="row d-flex align-items-center text-center">
 			                        <!-- Mã đơn hàng -->
-			                        <div class="col-3">#${order.orderID}</div>
+			                        <div class="col-2"><strong>#${order.orderID}</strong></div>
 			                        <!-- Khách hàng -->
 			                        <div class="col-2">${order.fullName}</div>
 			                        <!-- Ngày đặt hàng -->
-			                        <div class="col-3">${order.orderDate}</div>
+			                        <div class="col-2">${order.orderDate}</div>
 			                        <!-- Trạng thái -->
 			                        <div class="col-2">${order.status}</div>
 			                        <!-- Tổng tiền -->
 			                        <div class="col-2">${order.totalAmount}</div>
+			                        <div class="col-2">
+                                    <a href="${pageContext.request.contextPath}/admin/manageOrderDetails" class="btn btn-info">Chi tiết</a>
+                                </div>
 			                    </div>
 			                </div>
 			            </c:forEach>
