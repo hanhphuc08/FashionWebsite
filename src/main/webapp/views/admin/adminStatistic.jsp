@@ -35,6 +35,27 @@
 <!-- Favicon-->
 <link rel="shortcut icon"
 	href="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/favicon.png">
+<!-- Tweaks for older IEs-->
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+<!-- Font Awesome CSS-->
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.1.0/css/solid.css"
+	integrity="sha384-TbilV5Lbhlwdyc4RuIV/JhD8NR+BfMrvz4BL5QFa2we1hQu6wvREr3v6XSRfCTRp"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.1.0/css/regular.css"
+	integrity="sha384-avJt9MoJH2rB4PKRsJRHZv7yiFZn8LrnXuzvmZoD3fh1aL6aM6s0BBcnCvBe6XSD"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.1.0/css/brands.css"
+	integrity="sha384-7xAnn7Zm3QC1jFjVc1A6v/toepoG3JXboQYzbM0jrPzou9OFXm/fY6Z/XiIebl/k"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.1.0/css/fontawesome.css"
+	integrity="sha384-ozJwkrqb90Oa3ZNb+yKFW2lToAWYdTiF1vt8JiH5ptTGHTGcN7qdoR1F95e0kYyG"
+	crossorigin="anonymous">
 </head>
 <body>
 	<!-- JavaScript files-->
@@ -177,8 +198,8 @@
 						</div>
 						/ .row
 					</div>
-				</div>
-			</div> -->
+				</div>-->
+			
 			<div class="col-lg-6 col-xxl-3 d-flex">
 
 				<!-- Card -->
@@ -661,6 +682,7 @@
 								</div>
 							</div> -->
 						</div>
+						
 
 						<!-- Table -->
 						<div class="table-responsive">
@@ -1074,6 +1096,7 @@
 				</div>
 			</div>
 			<!-- / .row -->
+		</div>
 		</div>
 		<!-- / .container-fluid -->
 </body>
