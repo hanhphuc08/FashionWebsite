@@ -98,7 +98,39 @@
 									<div class="col-2">Tổng tiền</div>
 								</div>
 							</div>
+							<div class="cart-body">
 
+								<!-- Product-->
+								<div class="cart-item">
+									<c:forEach items="${orderDetails}" var="orderDetail">
+										<div class="row d-flex align-items-center text-center">
+											<div class="col-6">
+
+												<div class="d-flex align-items-center">
+													<a
+														href="${pageContext.request.contextPath}/user/categoryDetail">
+														<img class="cart-item-img" src="${orderDetail.image }"
+														alt="${orderDetail.productName}">
+													</a>
+													<div class="cart-title text-start">
+														<a class="text-uppercase text-dark"> <strong>${orderDetail.productName }</strong>
+														</a> <br> <span class="text-muted text-sm">Size :
+															${orderDetail.size }</span> <br> <span
+															class="text-muted text-sm">Colour:
+															${orderDetail.color }</span>
+													</div>
+												</div>
+											</div>
+											<div class="col-2">${orderDetail.price }</div>
+											<div class="col-2">${orderDetail.quantity }</div>
+											<div class="col-2 text-center">${orderDetail.price * orderDetail.quantity }</div>
+										</div>
+									</c:forEach>
+								</div>
+								<!-- Product-->
+
+
+							</div>
 						</div>
 					</div>
 
