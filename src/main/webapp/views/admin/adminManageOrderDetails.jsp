@@ -156,12 +156,12 @@
 			<!-- /Customer Sidebar-->
 			<div class="row my-5">
 				<div class="col-md-6">
-					<button type="button" class="btn btn-dark btn-lg w-100"
+					<button type="button" class="btn btn-dark"
 						id="confirmOrderButton">Xác nhận đơn hàng</button>
 					<!-- Confirm button (green) -->
 				</div>
 				<div class="col-md-6">
-					<button type="button" class="btn btn-dark btn-lg w-100"
+					<button type="button" class="btn btn-dark"
 						id="cancelOrderButton">Hủy đơn hàng</button>
 					<!-- Cancel button (red) -->
 				</div>
