@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sell - Bootstrap 5 Ecommerce Template</title>
+    <title>P2TS Shop</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex">
@@ -66,7 +66,150 @@
             <div class="tab-content py-4">
               <div class="tab-content py-4">
                 <!-- Begin Edit products -->
-                <div class="tab-pane active px-3" id="description" role="tabpanel">
+<div class="tab-pane active px-3" id="description" role="tabpanel">
+    <div class="row">
+        <div class="col-md-7 mb-5 mb-md-0">
+            <form class="form" id="add-form" method="post" action="contact.php">
+                <div class="controls">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="mb-4">
+                                <label class="form-label" for="add-category">Danh mục</label>
+                                <select class="form-control" name="category" id="add-category" required>
+                                    <option value="" class="text-muted">Chọn danh mục</option>
+                                    <option value="AKDR">Áo khoác dáng rộng</option>
+                                    <option value="AKDV">Áo khoác dáng vừa</option>
+                                    <option value="AKT">Áo khoác trơn</option>
+                                    <option value="QSJ">Quần Short Jean</option>
+                                    <option value="QSTM">Quần Short thun mát</option>
+                                    <option value="QT">Quần Tây</option>
+                                    <option value="ASMTD">Áo sơ mi tay dài</option>
+                                    <option value="ASMTN">Áo sơ mi tay ngắn</option>
+                                    <option value="APL">Áo Polo</option>
+                                    <option value="AT">Áo thun</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label" for="price">Giá *</label>
+                                <input class="form-control" type="text" name="price" id="price" placeholder="Nhập giá sản phẩm" required>
+                            </div>
+                            <div class="mb-4">
+                                <div class="col-sm-6">
+                                    <label class="form-label">Chọn size *</label><br>
+                                    <div id="size-select" class="btn-group" role="group" aria-label="Size selection">
+                                        <label class="btn btn btn-outline-secondary detail-option-btn-label mx-1" for="size_0">
+                                            S
+                                            <input class="input-invisible" type="radio" name="size" value="S" id="size_0" required onchange="updateQuantity()">
+                                        </label>
+                                        <label class="btn btn btn-outline-secondary detail-option-btn-label mx-1" for="size_1">
+                                            M
+                                            <input class="input-invisible" type="radio" name="size" value="M" id="size_1" required onchange="updateQuantity()">
+                                        </label>
+                                        <label class="btn btn btn-outline-secondary detail-option-btn-label mx-1" for="size_2">
+                                            L
+                                            <input class="input-invisible" type="radio" name="size" value="L" id="size_2" required onchange="updateQuantity()">
+                                        </label>
+                                        <label class="btn btn btn-outline-secondary detail-option-btn-label mx-1" for="size_3">
+                                            XL
+                                            <input class="input-invisible" type="radio" name="size" value="XL" id="size_3" required onchange="updateQuantity()">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-4">
+                                <label class="form-label" for="add-productname">Tên sản phẩm</label>
+                                <input class="form-control" type="text" name="productname" id="add-productname" placeholder="Nhập tên sản phẩm" required>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label" for="color">Màu sắc *</label>
+                                <input class="form-control" type="text" name="color" id="color" placeholder="Nhập màu sắc sản phẩm" required>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label" for="add-quantity">Số lượng *</label>
+                                    <div class="input-group">
+                                        <input class="form-control" type="number" name="quantity" id="add-quantity" placeholder="Nhập số lượng" min="1" required>
+                                        <span id="remaining-message" class="input-group-text"></span>
+                                    </div>
+                                </div>     
+                        </div>
+                    </div>    
+                    <div class="mb-4">
+                        <label class="form-label" for="add-description">Mô tả sản phẩm *</label>
+                        <textarea class="form-control" rows="4" name="description" id="add-description" placeholder="Nhập mô tả sản phẩm" required></textarea>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label" for="add-image">Tải lên tệp hình ảnh sản phẩm *</label>
+                        <input class="form-control" type="file" name="image[]" id="add-image" accept="image/*" multiple required>
+                    </div>
+                    <div class="d-flex justify-content-center my-lg-5">
+                        <button class="btn btn-outline-dark" type="submit">Lưu thay đổi</button>
+                        <button class="btn btn-outline-danger ms-4" type="button" id="delete-button">Xóa sản phẩm</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-5">
+            <div class="py-3 order-2 order-lg-1">
+                <div class="owl-carousel owl-theme owl-dots-modern detail-full" data-slider-id="1">
+                    <div class="detail-full-item" style="background: center center url(https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-596319-detail-1.jpg) no-repeat; background-size: cover;"></div>
+                    <div class="detail-full-item" style="background: center center url(https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-596319-detail-2.jpg) no-repeat; background-size: cover;"></div>
+                    <div class="detail-full-item" style="background: center center url(https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-596319-detail-3.jpg) no-repeat; background-size: cover;"></div>
+                    <div class="detail-full-item" style="background: center center url(https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-594535-unsplash-detail-3.jpg) no-repeat; background-size: cover;"></div>
+                    <div class="detail-full-item" style="background: center center url(https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-594535-unsplash-detail-4.jpg) no-repeat; background-size: cover;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Giả lập số lượng sản phẩm theo size
+    const stockData = {
+        'S': 10,
+        'M': 17,
+        'L': 5,
+        'XL': 0
+    };
+
+    function updateQuantity() {
+        const selectedSize = document.querySelector('input[name="size"]:checked');
+        const quantityRemaining = document.getElementById('quantity-remaining');
+        const remainingMessage = document.getElementById('remaining-message');
+
+        if (selectedSize) {
+            const remaining = stockData[selectedSize.value] || 0;
+            remainingMessage.innerText = `(${remaining} còn lại)`;
+        } else {
+            quantityRemaining.value = '';
+            remainingMessage.innerText = '';
+        }
+    }
+</script>
+
+<style>
+    .input-invisible {
+        display: none; /* Ẩn input radio */
+    }
+    .detail-option-btn-label.active {
+        background-color: #007bff; /* Màu nền cho nút đã chọn */
+        color: white; /* Màu chữ cho nút đã chọn */
+    }
+    .detail-option-btn-label {
+        cursor: pointer; /* Thay đổi con trỏ khi hover */
+    }
+    #quantity-remaining {
+        background-color: #f8f9fa; /* Màu nền cho ô số lượng còn lại */
+        border: 1px solid #ced4da; /* Đường viền cho ô số lượng còn lại */
+        color: #495057; /* Màu chữ cho ô số lượng còn lại */
+        text-align: center; /* Căn giữa nội dung */
+    }
+</style>
+                <!-- End Edit products -->
+                            
+                <!-- Begin Add products -->
+                <div class="tab-pane px-3" id="additional-information" role="tabpanel">
                     <div class="row">
                         <div class="col-md-7 mb-5 mb-md-0">
                             <form class="form" id="edit-form" method="post" action="contact.php">
@@ -89,22 +232,30 @@
                                                     <option value="AT">Áo thun</option>
                                                 </select>
                                             </div>
+                                            <div class="mb-4">
+                                                <label class="form-label" for="price">Giá *</label>
+                                                <input class="form-control" type="text" name="price" id="price" placeholder="Nhập giá sản phẩm" required>
+                                            </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="mb-4">
-                                                <label class="form-label" for="productname">Tên sản phẩm</label>
+                                                <label class="form-label" for="productname">Tên sản phẩm *</label>
                                                 <input class="form-control" type="text" name="productname" id="productname" placeholder="Nhập tên sản phẩm" required>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
                                             <div class="mb-4">
-                                                <label class="form-label" for="quantity">Số lượng trong kho</label>
-                                                <input class="form-control" type="number" name="quantity" id="quantity" placeholder="Nhập số lượng" required>
+                                                <label class="form-label" for="color">Màu sắc *</label>
+                                                <input class="form-control" type="text" name="color" id="color" placeholder="Nhập màu sắc sản phẩm" required>
                                             </div>
                                         </div>
                                     </div>
+                                    <div id="size-quantity-container"></div>
+                                    
+                                    <button type="button" class="btn btn-outline-dark my-3" onclick="addSizeQuantity()">Thêm Size</button>
+                                    
+                                    <div id="notification" class="alert alert-danger d-none" role="alert">
+                                        Bạn chỉ có thể thêm tối đa 4 size.
+                                    </div>
+                
                                     <div class="mb-4">
                                         <label class="form-label" for="description">Mô tả sản phẩm *</label>
                                         <textarea class="form-control" rows="4" name="description" id="description" placeholder="Nhập mô tả sản phẩm" required></textarea>
@@ -112,76 +263,6 @@
                                     <div class="mb-4">
                                         <label class="form-label" for="image">Tải lên tệp hình ảnh sản phẩm *</label>
                                         <input class="form-control" type="file" name="image[]" id="image" accept="image/*" multiple required>
-                                    </div>
-                                    <div class="d-flex justify-content-center my-lg-5">
-                                        <button class="btn btn-outline-dark" type="submit">Lưu thay đổi</button>
-                                        <button class="btn btn-outline-danger ms-4" type="button" id="delete-button">Xóa sản phẩm</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-md-5">
-                            <div class="py-3 order-2 order-lg-1">
-                                <div class="owl-carousel owl-theme owl-dots-modern detail-full" data-slider-id="1">
-                                    <div class="detail-full-item" style="background: center center url(https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-596319-detail-1.jpg) no-repeat; background-size: cover;"></div>
-                                    <div class="detail-full-item" style="background: center center url(https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-596319-detail-2.jpg) no-repeat; background-size: cover;"></div>
-                                    <div class="detail-full-item" style="background: center center url(https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-596319-detail-3.jpg) no-repeat; background-size: cover;"></div>
-                                    <div class="detail-full-item" style="background: center center url(https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-594535-unsplash-detail-3.jpg) no-repeat; background-size: cover;"></div>
-                                    <div class="detail-full-item" style="background: center center url(https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-594535-unsplash-detail-4.jpg) no-repeat; background-size: cover;"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Edit products -->
-            
-                <!-- Begin Add products -->
-                <div class="tab-pane px-3" id="additional-information" role="tabpanel">
-                    <div class="row">
-                        <div class="col-md-7 mb-5 mb-md-0">
-                            <form class="form" id="add-form" method="post" action="contact.php">
-                                <div class="controls">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="mb-4">
-                                                <label class="form-label" for="add-category">Danh mục</label>
-                                                <select class="form-control" name="category" id="add-category" required>
-                                                    <option value="" class="text-muted">Chọn danh mục</option>
-                                                    <option value="AKDR">Áo khoác dáng rộng</option>
-                                                    <option value="AKDV">Áo khoác dáng vừa</option>
-                                                    <option value="AKT">Áo khoác trơn</option>
-                                                    <option value="QSJ">Quần Short Jean</option>
-                                                    <option value="QSTM">Quần Short thun mát</option>
-                                                    <option value="QT">Quần Tây</option>
-                                                    <option value="ASMTD">Áo sơ mi tay dài</option>
-                                                    <option value="ASMTN">Áo sơ mi tay ngắn</option>
-                                                    <option value="APL">Áo Polo</option>
-                                                    <option value="AT">Áo thun</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="mb-4">
-                                                <label class="form-label" for="add-productname">Tên sản phẩm</label>
-                                                <input class="form-control" type="text" name="productname" id="add-productname" placeholder="Nhập tên sản phẩm" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="mb-4">
-                                                <label class="form-label" for="add-quantity">Số lượng trong kho</label>
-                                                <input class="form-control" type="number" name="quantity" id="add-quantity" placeholder="Nhập số lượng" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mb-4">
-                                        <label class="form-label" for="add-description">Mô tả sản phẩm *</label>
-                                        <textarea class="form-control" rows="4" name="description" id="add-description" placeholder="Nhập mô tả sản phẩm" required></textarea>
-                                    </div>
-                                    <div class="mb-4">
-                                        <label class="form-label" for="add-image">Tải lên tệp hình ảnh sản phẩm *</label>
-                                        <input class="form-control" type="file" name="image[]" id="add-image" accept="image/*" multiple required>
                                     </div>
                                     <div class="d-flex justify-content-center my-lg-5">
                                         <button class="btn btn-outline-dark" type="submit">Thêm sản phẩm</button>
@@ -202,6 +283,44 @@
                         </div>
                     </div>
                 </div>
+                
+                <script>
+                    let sizeCount = 0;
+                
+                    function addSizeQuantity() {
+                        const notification = document.getElementById('notification');
+                
+                        if (sizeCount >= 4) {
+                            notification.classList.remove('d-none'); // Hiện thông báo
+                            return;
+                        } else {
+                            notification.classList.add('d-none'); // Ẩn thông báo nếu có
+                        }
+                
+                        sizeCount++;
+                        const container = document.getElementById('size-quantity-container');
+                
+                        const sizeDiv = document.createElement('div');
+                        sizeDiv.classList.add('row', 'mb-4');
+                        sizeDiv.innerHTML = `
+                            <div class="col-sm-6">
+                                <label class="form-label" for="size-${sizeCount}">Chọn size</label>
+                                <select class="form-control" name="size[]" id="size-${sizeCount}" required>
+                                    <option value="">Chọn size</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label" for="quantity-${sizeCount}">Số lượng</label>
+                                <input class="form-control" type="number" name="quantity[]" id="quantity-${sizeCount}" placeholder="Nhập số lượng" required>
+                            </div>
+                        `;
+                        container.appendChild(sizeDiv);
+                    }
+                </script>
                 <!-- End Add products -->
             </div>
       </div>

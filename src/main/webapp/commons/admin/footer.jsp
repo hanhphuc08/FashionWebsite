@@ -70,7 +70,7 @@
             </div>
             <div class="col-lg-4">
               <h6 class="text-uppercase text-dark mb-3">Daily Offers & Discounts</h6>
-              <p class="mb-3"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. At itaque temporibus.</p>
+              <p class="mb-3">Để lại địa chỉ email của bạn để có thể nhận các ưu đãi sớm nhất</p>
               <form action="#" id="newsletter-form">
                 <div class="input-group mb-3">
                   <input class="form-control bg-transparent border-secondary border-end-0" type="email" placeholder="Nhập Email của bạn" aria-label="Your Email Address">
