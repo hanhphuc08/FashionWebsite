@@ -1,14 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@taglib prefix="fn" uri="jakarta.tags.functions" %>
+<%@taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>P2TS Shop</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>P2TS Shop</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
 <link rel="stylesheet"
 	href="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/nouislider/nouislider.css">
 <!-- Google fonts - Playfair Display-->
@@ -32,7 +35,28 @@
 <!-- Favicon-->
 <link rel="shortcut icon"
 	href="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/favicon.png">
-	</head>
+<!-- Tweaks for older IEs-->
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+<!-- Font Awesome CSS-->
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.1.0/css/solid.css"
+	integrity="sha384-TbilV5Lbhlwdyc4RuIV/JhD8NR+BfMrvz4BL5QFa2we1hQu6wvREr3v6XSRfCTRp"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.1.0/css/regular.css"
+	integrity="sha384-avJt9MoJH2rB4PKRsJRHZv7yiFZn8LrnXuzvmZoD3fh1aL6aM6s0BBcnCvBe6XSD"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.1.0/css/brands.css"
+	integrity="sha384-7xAnn7Zm3QC1jFjVc1A6v/toepoG3JXboQYzbM0jrPzou9OFXm/fY6Z/XiIebl/k"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.1.0/css/fontawesome.css"
+	integrity="sha384-ozJwkrqb90Oa3ZNb+yKFW2lToAWYdTiF1vt8JiH5ptTGHTGcN7qdoR1F95e0kYyG"
+	crossorigin="anonymous">
+</head>
 <body>
 	<!-- JavaScript files-->
 	<script>
@@ -96,7 +120,7 @@
 	<script
 		src="${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/js/demo.9833433a.js"></script>
 
-	<%@ include file="/commons/admin/headerAdmin.jsp"%>;
+	<%@include file="/commons/admin/headerAdmin.jsp"%>;
 
 	<div class="container-fluid">
 
@@ -104,24 +128,24 @@
 
 
 		<div class="row">
-			<div class="col-lg-6 col-xxl-3 d-flex">
+			<!-- <div class="col-lg-6 col-xxl-3 d-flex">
 
-				<!-- Card -->
+				Card
 				<div class="card border-0 flex-fill w-100">
 					<div class="card-body">
 						<div class="row">
 							<div class="col">
 
-								<!-- Title -->
+								Title
 								<h5 class="text-uppercase text-muted fw-semibold mb-2">
 									Clients</h5>
 
-								<!-- Subtitle -->
+								Subtitle
 								<h2 class="mb-0">6,328</h2>
 							</div>
 							<div class="col-auto">
 
-								<!-- Icon -->
+								Icon
 								<svg viewBox="0 0 24 24" height="30" width="30"
 									class="text-primary" xmlns="http://www.w3.org/2000/svg">
 									<path
@@ -149,33 +173,33 @@
 										stroke-linejoin="round" stroke-width="1.5" /></svg>
 							</div>
 						</div>
-						<!-- / .row -->
+						/ .row
 					</div>
 					<div class="card-footer">
 						<div class="row justify-content-between">
 							<div class="col-auto">
 
-								<!-- Label -->
+								Label
 								<p class="fs-6 text-muted text-uppercase mb-0">Today clients
 								</p>
 
-								<!-- Comment -->
+								Comment
 								<p class="fs-5 fw-bold mb-0">57</p>
 							</div>
 							<div class="col text-end text-truncate">
 
-								<!-- Label -->
+								Label
 								<p class="fs-6 text-muted text-uppercase mb-0">Monthly
 									clients</p>
 
-								<!-- Comment -->
+								Comment
 								<p class="fs-5 fw-bold mb-0">681</p>
 							</div>
 						</div>
-						<!-- / .row -->
+						/ .row
 					</div>
-				</div>
-			</div>
+				</div>-->
+			
 			<div class="col-lg-6 col-xxl-3 d-flex">
 
 				<!-- Card -->
@@ -186,10 +210,10 @@
 
 								<!-- Title -->
 								<h5 class="text-uppercase text-muted fw-semibold mb-2">
-									Orders</h5>
+									Tổng đơn hàng </h5>
 
 								<!-- Subtitle -->
-								<h2 class="mb-0">15,386</h2>
+								<h2 class="mb-0">${orderTotal }</h2>
 							</div>
 							<div class="col-auto">
 
@@ -219,20 +243,28 @@
 							<div class="col-auto">
 
 								<!-- Label -->
-								<p class="fs-6 text-muted text-uppercase mb-0">Today orders
+								<p class="fs-6 text-muted text-uppercase mb-0">Hôm nay
 								</p>
 
 								<!-- Comment -->
-								<p class="fs-5 fw-bold mb-0">121</p>
+								<p class="fs-5 fw-bold mb-0">${orderTotalToday }</p>
 							</div>
 							<div class="col text-end text-truncate">
 
 								<!-- Label -->
-								<p class="fs-6 text-muted text-uppercase mb-0">Monthly
-									orders</p>
+								<p class="fs-6 text-muted text-uppercase mb-0">Tháng</p>
 
 								<!-- Comment -->
-								<p class="fs-5 fw-bold mb-0">1,944</p>
+								<p class="fs-5 fw-bold mb-0">${orderTotalMonth }</p>
+							</div>
+							
+							<div class="col text-end text-truncate">
+
+								<!-- Label -->
+								<p class="fs-6 text-muted text-uppercase mb-0">Huỷ</p>
+
+								<!-- Comment -->
+								<p class="fs-5 fw-bold mb-0">${orderCancelled }</p>
 							</div>
 						</div>
 						<!-- / .row -->
@@ -249,10 +281,10 @@
 
 								<!-- Title -->
 								<h5 class="text-uppercase text-muted fw-semibold mb-2">
-									Earnings</h5>
+									Tổng tiền</h5>
 
 								<!-- Subtitle -->
-								<h2 class="mb-0">$717,214</h2>
+								<h2 class="mb-0">${totalAmount }</h2>
 							</div>
 							<div class="col-auto">
 
@@ -261,14 +293,14 @@
 									height="30" width="30" class="text-primary">
 									<defs>
 									<style>
-.a {
-	fill: none;
-	stroke: currentColor;
-	stroke-linecap: round;
-	stroke-linejoin: round;
-	stroke-width: 1.5px;
-}
-</style></defs>
+									.a {
+										fill: none;
+										stroke: currentColor;
+										stroke-linecap: round;
+										stroke-linejoin: round;
+										stroke-width: 1.5px;
+									}
+									</style></defs>
 									<title>monitor-graph-line</title><polygon class="a"
 										points="15 23.253 9 23.253 9.75 18.753 14.25 18.753 15 23.253" />
 									<line class="a" x1="6.75" y1="23.253" x2="17.25" y2="23.253" />
@@ -290,20 +322,18 @@
 							<div class="col-auto">
 
 								<!-- Label -->
-								<p class="fs-6 text-muted text-uppercase mb-0">Today
-									earnings</p>
+								<p class="fs-6 text-muted text-uppercase mb-0">Tổng tiền hôm nay</p>
 
 								<!-- Comment -->
-								<p class="fs-5 fw-bold mb-0">£2,230</p>
+								<p class="fs-5 fw-bold mb-0">${totalAmountToday }</p>
 							</div>
 							<div class="col text-end text-truncate">
 
 								<!-- Label -->
-								<p class="fs-6 text-muted text-uppercase mb-0">Monthly
-									earnings</p>
+								<p class="fs-6 text-muted text-uppercase mb-0">Tổng tiền tháng này</p>
 
 								<!-- Comment -->
-								<p class="fs-5 fw-bold mb-0">$158,990</p>
+								<p class="fs-5 fw-bold mb-0">${totalAmountThisMonth }</p>
 							</div>
 						</div>
 						<!-- / .row -->
@@ -317,10 +347,10 @@
 					<div class="card-body">
 
 						<!-- Title -->
-						<h4 class="text-uppercase fw-semibold mb-2">Current balance</h4>
+						<h4 class="text-uppercase fw-semibold mb-2">Lợi nhuận thu được</h4>
 
 						<!-- Subtitle -->
-						<h2 class="mb-0">$981,340</h2>
+						<h2 class="mb-0">${currentBalance }</h2>
 
 						<!-- Chart -->
 						<div class="chart-container h-70px">
@@ -371,103 +401,34 @@
 					<div class="table-responsive">
 						<table class="table align-middle table-edge table-nowrap mb-0">
 							<thead class="thead-light">
+							
 								<tr>
 									<th><a href="javascript: void(0);"
-										class="text-muted list-sort" data-sort="name"> Name </a></th>
+										class="text-muted list-sort" data-sort="name"> Tên sản phẩm </a></th>
+									<th><a href="javascript: void(0);"
+										class="text-muted list-sort" data-sort="name"> Màu </a></th>
 									<th class="text-end"><a href="javascript: void(0);"
-										class="text-muted list-sort" data-sort="price"> Price </a></th>
+										class="text-muted list-sort" data-sort="price"> Giá </a></th>
 									<th class="text-end"><a href="javascript: void(0);"
-										class="text-muted list-sort" data-sort="quantity">
-											Quantity </a></th>
+										class="text-muted list-sort" data-sort="quantity"> Số lượng đã bán </a></th>
 									<th class="text-end"><a href="javascript: void(0);"
-										class="text-muted list-sort" data-sort="amount"> Amount </a></th>
-									<th class="text-end pe-7 min-w-200px"><a
-										href="javascript: void(0);" class="text-muted list-sort"
-										data-sort="sales"> Sales </a></th>
+										class="text-muted list-sort" data-sort="amount"> Tổng thu được </a></th>
+									
 								</tr>
+							
 							</thead>
 
 							<tbody class="list">
+								<c:forEach var="product" items="${topProducts}">
 								<tr>
-									<td class="name fw-bold">iPad Air</td>
-									<td class="price text-end">$599</td>
-									<td class="quantity text-end">135</td>
-									<td class="amount text-end">$80,865</td>
-									<td class="sales" data-sales="81">
-										<div class="d-flex justify-content-between align-items-center">
-											<div class="progress d-flex flex-grow-1">
-												<div class="progress-bar" role="progressbar"
-													style="width: 81%" aria-valuenow="81" aria-valuemin="0"
-													aria-valuemax="100"></div>
-											</div>
-											<span class="ms-3 text-muted">81%</span>
-										</div>
-									</td>
+									<td class="name fw-bold">${product.productName}</td>
+									<td class="price text-end">${product.color}</td>
+									<td class="price text-end">${product.priceFormatted}</td>
+									<td class="quantity text-end">${product.totalQuantity}</td>
+									<td class="amount text-end">${product.totalAmountFormatted}</td>
+									
 								</tr>
-								<tr>
-									<td class="name fw-bold">iPhone SE</td>
-									<td class="price text-end">$499</td>
-									<td class="quantity text-end">127</td>
-									<td class="amount text-end">$63,373</td>
-									<td class="sales" data-sales="25">
-										<div class="d-flex justify-content-between align-items-center">
-											<div class="progress w-100">
-												<div class="progress-bar bg-dark" role="progressbar"
-													style="width: 25%" aria-valuenow="25" aria-valuemin="0"
-													aria-valuemax="100"></div>
-											</div>
-											<span class="ms-3 text-muted">25%</span>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td class="name fw-bold">Nexus 3</td>
-									<td class="price text-end">$349</td>
-									<td class="quantity text-end">98</td>
-									<td class="amount text-end">$34,202</td>
-									<td class="sales" data-sales="41">
-										<div class="d-flex justify-content-between align-items-center">
-											<div class="progress w-100">
-												<div class="progress-bar bg-dark" role="progressbar"
-													style="width: 41%" aria-valuenow="41" aria-valuemin="0"
-													aria-valuemax="100"></div>
-											</div>
-											<span class="ms-3 text-muted">41%</span>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td class="name fw-bold">Apple watch series-6</td>
-									<td class="price text-end">$599</td>
-									<td class="quantity text-end">214</td>
-									<td class="amount text-end">$128,186</td>
-									<td class="sales" data-sales="62">
-										<div class="d-flex justify-content-between align-items-center">
-											<div class="progress w-100">
-												<div class="progress-bar" role="progressbar"
-													style="width: 62%" aria-valuenow="62" aria-valuemin="0"
-													aria-valuemax="100"></div>
-											</div>
-											<span class="ms-3 text-muted">62%</span>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td class="name fw-bold">Apple TV 4K</td>
-									<td class="price text-end">$1200</td>
-									<td class="quantity text-end">51</td>
-									<td class="amount text-end">$61,200</td>
-									<td class="sales" data-sales="36">
-										<div class="d-flex justify-content-between align-items-center">
-											<div class="progress w-100">
-												<div class="progress-bar bg-dark" role="progressbar"
-													style="width: 36%" aria-valuenow="36" aria-valuemin="0"
-													aria-valuemax="100"></div>
-											</div>
-											<span class="ms-3 text-muted">36%</span>
-										</div>
-									</td>
-								</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>
@@ -484,15 +445,13 @@
 						<!-- Title -->
 						<h2 class="card-header-title h4 text-uppercase">Recent orders
 						</h2>
-
-						<!-- Link -->
-						<a href="javascript: void(0);" class="small fw-bold"> View all
-						</a>
 					</div>
 
 					<!-- Table -->
 					<div class="table-responsive">
+					 
 						<table class="table table-sm table-borderless align-middle mb-0">
+						
 							<thead class="thead-light">
 								<tr>
 									<th>Name</th>
@@ -501,6 +460,7 @@
 							</thead>
 
 							<tbody>
+							<c:forEach var="order" items="${recentOrders}">
 								<tr>
 									<td>
 										<div class="d-flex align-items-center">
@@ -511,92 +471,17 @@
 											</div>
 
 											<div class="d-flex flex-column">
-												<span class="fw-bold d-block">Lester William</span> <span
-													class="fs-6 text-muted">24 minutes ago</span>
+												<span class="fw-bold d-block">${order.fullName }</span> 
 											</div>
 										</div>
 									</td>
 									<td class="text-end">
-										<div class="fw-bold">$99</div>
+										<div class="fw-bold">${order.formattedTotalAmount }</div>
 									</td>
 								</tr>
-								<tr>
-									<td>
-										<div class="d-flex align-items-center">
-											<div class="avatar avatar-circle avatar-xs me-2">
-												<img
-													src="https://d33wubrfki0l68.cloudfront.net/5e2b51ec857b6e9866574263391803f159c8081e/29577/assets/images/profiles/profile-02.jpeg"
-													alt="..." class="avatar-img" width="30" height="30">
-											</div>
-
-											<div class="d-flex flex-column">
-												<span class="fw-bold d-block">Gabriella Fletcher</span> <span
-													class="fs-6 text-muted">3 hours ago</span>
-											</div>
-										</div>
-									</td>
-									<td class="text-end">
-										<div class="fw-bold">$59</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="d-flex align-items-center">
-											<div class="avatar avatar-circle avatar-xs me-2">
-												<img
-													src="https://d33wubrfki0l68.cloudfront.net/4b8c918c73e2c72876e4bd4ba8c89401bae69d14/5923c/assets/images/profiles/profile-03.jpeg"
-													alt="..." class="avatar-img" width="30" height="30">
-											</div>
-
-											<div class="d-flex flex-column">
-												<span class="fw-bold d-block">Marcia Banks</span> <span
-													class="fs-6 text-muted">9 hours ago</span>
-											</div>
-										</div>
-									</td>
-									<td class="text-end">
-										<div class="fw-bold">$499</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="d-flex align-items-center">
-											<div class="avatar avatar-circle avatar-xs me-2">
-												<img
-													src="https://d33wubrfki0l68.cloudfront.net/eec1f115f0af81936bbe3a4f4a4d043cd3c0e7e4/34439/assets/images/profiles/profile-09.jpeg"
-													alt="..." class="avatar-img" width="30" height="30">
-											</div>
-
-											<div class="d-flex flex-column">
-												<span class="fw-bold d-block">Irina Garcia</span> <span
-													class="fs-6 text-muted">17 hours ago</span>
-											</div>
-										</div>
-									</td>
-									<td class="text-end">
-										<div class="fw-bold">$149</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="d-flex align-items-center">
-											<div class="avatar avatar-circle avatar-xs me-2">
-												<img
-													src="https://d33wubrfki0l68.cloudfront.net/102e41d9e1988e0849ecfe402b1d46f4efd3574b/8dc2e/assets/images/profiles/profile-12.jpeg"
-													alt="..." class="avatar-img" width="30" height="30">
-											</div>
-
-											<div class="d-flex flex-column">
-												<span class="fw-bold d-block">Javier Griffin</span> <span
-													class="fs-6 text-muted">1 day ago</span>
-											</div>
-										</div>
-									</td>
-									<td class="text-end">
-										<div class="fw-bold">$125</div>
-									</td>
-								</tr>
+								</c:forEach>
 							</tbody>
+							
 						</table>
 					</div>
 					<!-- / .table-responsive -->
@@ -606,17 +491,17 @@
 		<!-- / .row -->
 
 		<div class="row">
-			<div class="col-xxl-6 d-flex">
+			<!-- <div class="col-xxl-6 d-flex">
 
-				<!-- Card -->
+				Card
 				<div class="card border-0 flex-fill w-100">
 					<div class="card-header border-0 card-header-space-between">
 
-						<!-- Title -->
+						Title
 						<h2 class="card-header-title h4 text-uppercase">Order status
 						</h2>
 
-						<!-- Dropdown -->
+						Dropdown
 						<div class="dropdown">
 							<a href="javascript: void(0);"
 								class="dropdown-toggle no-arrow text-secondary" role="button"
@@ -642,7 +527,7 @@
 						<div class="row justify-content-around">
 							<div class="col-lg-6 col-xl-4 mb-7 mb-lg-0">
 
-								<!-- Chart -->
+								Chart
 
 								<div class="col-lg-6 col-xl-5">
 									<div class="row h-100 align-items-center">
@@ -650,76 +535,76 @@
 											<div class="row justify-content-between">
 												<div class="col-auto col-lg">
 
-													<!-- Label -->
+													Label
 													<p class="fs-4 d-flex align-items-center fw-semibold mb-0">
 														<span class="legend-circle bg-primary"></span> Delivered
 													</p>
 												</div>
 												<div class="col-auto col-lg">
 
-													<!-- Comment -->
+													Comment
 													<p class="fs-4 text-muted">29%</p>
 												</div>
 											</div>
-											<!-- / .row -->
+											/ .row
 											<div class="row justify-content-between">
 												<div class="col-auto col-lg">
 
-													<!-- Label -->
+													Label
 													<p class="fs-4 d-flex align-items-center fw-semibold mb-0">
 														<span class="legend-circle bg-dark"></span> In progress
 													</p>
 												</div>
 												<div class="col-auto col-lg">
 
-													<!-- Comment -->
+													Comment
 													<p class="fs-4 text-muted">45%</p>
 												</div>
 											</div>
-											<!-- / .row -->
+											/ .row
 											<div class="row justify-content-between">
 												<div class="col-auto col-lg">
 
-													<!-- Label -->
+													Label
 													<p class="fs-4 d-flex align-items-center fw-semibold mb-0">
 														<span class="legend-circle bg-gray-400"></span> To-do
 													</p>
 												</div>
 												<div class="col-auto col-lg">
 
-													<!-- Comment -->
+													Comment
 													<p class="fs-4 text-muted">26%</p>
 												</div>
 											</div>
-											<!-- / .row -->
+											/ .row
 										</div>
 									</div>
-									<!-- / .row -->
+									/ .row
 								</div>
 							</div>
-							<!-- / .row -->
+							/ .row
 						</div>
 					</div>
 				</div>
 				<div class="col-xxl-6 d-flex">
 
-					<!-- Card -->
+					Card
 					<div class="card border-0 flex-fill w-100">
 						<div class="card-header border-0">
 
-							<!-- Title -->
+							Title
 							<h2 class="card-header-title h4 text-uppercase">Revenue by
 								locations</h2>
 						</div>
 
 						<div class="card-body">
 
-							<!-- Map -->
+							Map
 							<div class="map h-280px" id="worldMap"></div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<!-- / .row -->
 
 			<div class="row">
@@ -770,9 +655,13 @@
 
 							<!-- Title -->
 							<h2 class="card-header-title h4 text-uppercase">Users</h2>
+							<button type="button" class="btn btn-danger btn-sm"
+								id="deleteUsersBtn">
+								<i class="fas fa-trash-alt"></i> Delete
+							</button>
 
 							<!-- Dropdown -->
-							<div class="dropdown ms-4">
+							<!-- <div class="dropdown ms-4">
 								<a href="javascript: void(0);"
 									class="dropdown-toggle no-arrow text-secondary" role="button"
 									data-bs-toggle="dropdown" aria-haspopup="true"
@@ -791,8 +680,9 @@
 										href="javascript: void(0);" class="dropdown-item"> Action
 									</a>
 								</div>
-							</div>
+							</div> -->
 						</div>
+						
 
 						<!-- Table -->
 						<div class="table-responsive">
@@ -806,6 +696,7 @@
 													id="checkAllCheckboxes">
 											</div>
 										</th>
+
 										<th><a href="javascript: void(0);"
 											class="text-muted list-sort" data-sort="name"> Full name
 										</a></th>
@@ -822,26 +713,27 @@
 									</tr>
 								</thead>
 
-								<tbody class="list">
+								<c:forEach items="${listu}" var="u">
 									<tr>
 										<td>
 											<div class="form-check mb-0">
-												<input class="form-check-input" type="checkbox" value="">
+												<input class="form-check-input user-checkbox"
+													type="checkbox" value="${u.userID}">
 											</div>
 										</td>
 										<td>
-											<div class="avatar avatar-circle avatar-xs me-2">
+											<!-- <div class="avatar avatar-circle avatar-xs me-2">
 												<img
 													src="https://d33wubrfki0l68.cloudfront.net/9e7ac59225f733be5944b3e91271b33adb30cae7/56230/assets/images/profiles/profile-14.jpeg"
 													alt="..." class="avatar-img" width="30" height="30">
-											</div> <span class="name fw-bold">Hakeem Chan</span>
+											</div> --> <span class="name fw-bold">${u.fullname}</span>
 										</td>
-										<td class="email">lobortis.augue@natoquepenatibuset.ca</td>
-										<td class="id">#9265</td>
-										<td class="date" data-signed="1648252800">03.26.2022</td>
-										<td class="status"><span class="legend-circle bg-success"></span>Successful</td>
+										<td class="email">${u.email }</td>
+										<td class="id">${u.userID}</td>
+										<td class="date" data-signed="1648252800">${u.createDate}</td>
+										<td class="status"><span class="legend-circle bg-success"></span>Active</td>
 									</tr>
-									<tr>
+									<!-- <tr>
 										<td>
 											<div class="form-check mb-0">
 												<input class="form-check-input" type="checkbox" value="">
@@ -1176,8 +1068,13 @@
 										<td class="id">#9564</td>
 										<td class="date" data-signed="1593558000">07.01.2021</td>
 										<td class="status"><span class="legend-circle bg-warning"></span>Pending</td>
+									</tr> -->
+								</c:forEach>
+								<c:if test="${empty listu}">
+									<tr>
+										<td colspan="4">No users available.</td>
 									</tr>
-								</tbody>
+								</c:if>
 							</table>
 						</div>
 						<!-- / .table-responsive -->
@@ -1200,9 +1097,61 @@
 			</div>
 			<!-- / .row -->
 		</div>
+		</div>
 		<!-- / .container-fluid -->
 </body>
+<script>
+document.getElementById("checkAllCheckboxes").addEventListener("change", function () {
+    const allCheckboxes = document.querySelectorAll('.user-checkbox');
+    const isChecked = this.checked;
 
+    allCheckboxes.forEach(cb => {
+        cb.checked = isChecked; 
+    });
+});
+
+document.getElementById("deleteUsersBtn").addEventListener("click", function () {
+    const checkAllCheckbox = document.getElementById("checkAllCheckboxes");
+    let userIds;
+
+    if (checkAllCheckbox.checked) {
+        
+        userIds = Array.from(document.querySelectorAll('.user-checkbox')).map(cb => cb.value);
+    } else {
+        
+        userIds = Array.from(document.querySelectorAll('.user-checkbox:checked')).map(cb => cb.value);
+    }
+
+    if (userIds.length === 0) {
+        alert("Please select at least one user to delete.");
+        return;
+    }
+
+    if (confirm("Are you sure you want to delete the selected users?")) {
+        fetch('/FashionWebsite/admin/statistic', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'userIds=' + encodeURIComponent(userIds.join(','))
+        })
+            .then(response => {
+                if (response.ok) {
+                    alert("Selected users deleted successfully.");
+                    location.reload(); 
+                } else {
+                    return response.text().then(text => {
+                        throw new Error(text || "An unexpected error occurred.");
+                    });
+                }
+            })
+            .catch(error => {
+                console.error("Error deleting users:", error);
+                alert("An error occurred while deleting users: " + error.message);
+            });
+    }
+});
+</script>
 <script
 	src="${pageContext.request.contextPath}/Template/assets/js/theme.bundle.js"></script>
 <link rel="stylesheet"

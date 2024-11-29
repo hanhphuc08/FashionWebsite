@@ -13,10 +13,6 @@ public class OrderDetailModel {
     private int quantity;
     private String image;
     
-    
-    
-    
-    
 
 	public String getImage() {
 		return image;

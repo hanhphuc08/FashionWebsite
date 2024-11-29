@@ -1,4 +1,4 @@
-package controllers.user;
+package controllers.admin;
 
 import java.io.IOException;
 
@@ -8,17 +8,20 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns={"/user/order"})
-public class UserOrderController extends HttpServlet {
+@WebServlet(urlPatterns= {"/admin/manageOrderDetails"})
+public class AdminManageOrderDetailsController extends HttpServlet {
 
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		req.getRequestDispatcher("/views/user/userOrder.jsp").forward(req, resp);
+		req.getRequestDispatcher("/views/admin/adminManageOrderDetails.jsp").forward(req, resp);
 	}
-	
+
 	
 
 }

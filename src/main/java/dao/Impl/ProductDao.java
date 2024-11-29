@@ -402,9 +402,10 @@ public class ProductDao {
 	    return (int) Math.ceil((double) total / pageSize);
 	}
 	public List<ProductModel> getLatestProductsWithCategory(int limit) {
-	    String sql = "SELECT p.ProductCode, p.ProductName, p.Image, p.Description, p.Price, p.CreateDate, c.CategoryName " +
+	    String sql = "SELECT p.ProductCode, p.ProductName, p.Image, p.Description, p.Price, p.CreateDate, c.CategoryName, ct.TypeCategoryName " +
 	                 "FROM Products p " +
 	                 "INNER JOIN Categories c ON p.CategoryCode = c.CategoryCode " +
+	                 "INNER JOIN CategoryType ct ON ct.TypeCategoryCode = c.TypeCategoryCode " +
 	                 "ORDER BY p.CreateDate DESC " +
 	                 "OFFSET 0 ROWS FETCH NEXT ? ROWS ONLY";
 
@@ -423,6 +424,7 @@ public class ProductDao {
 	                product.setPrice(rs.getDouble("Price"));
 	                product.setCreateDate(rs.getDate("CreateDate"));
 	                product.setCategoryName(rs.getString("CategoryName"));
+	                product.setTypeCategoryCode(rs.getString("TypeCategoryName"));
 	                latestProducts.add(product);
 	            }
 	        }
@@ -432,13 +434,46 @@ public class ProductDao {
 	    return latestProducts;
 	}
 
+	public List<ProductModel> getTop5BestSellingProducts() {
+	    String sql = "SELECT TOP 5 " +
+	                 "p.ProductCode, p.ProductName, p.Price, p.Color, " +
+	                 "SUM(od.Quantity) AS TotalQuantity, " +
+	                 "SUM(od.Quantity * p.Price) AS TotalAmount " +
+	                 "FROM OrderDetails od " +
+	                 "INNER JOIN Products p ON od.ProductCode = p.ProductCode " +
+	                 "GROUP BY p.ProductCode, p.ProductName, p.Price, p.Color " +
+	                 "ORDER BY TotalQuantity DESC";
+
+	    List<ProductModel> topProducts = new ArrayList<>();
+
+	    try (Connection conn = new DBConnectSQL().getConnection();
+	         PreparedStatement ps = conn.prepareStatement(sql);
+	         ResultSet rs = ps.executeQuery()) {
+
+	        while (rs.next()) {
+	            ProductModel product = new ProductModel();
+	            product.setProductCode(rs.getString("ProductCode"));
+	            product.setProductName(rs.getString("ProductName"));
+	            product.setPrice(rs.getDouble("Price"));
+	            product.setColor(rs.getString("Color"));
+	            product.setTotalQuantity(rs.getInt("TotalQuantity"));
+	            product.setTotalAmount(rs.getDouble("TotalAmount"));
+	            topProducts.add(product);
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return topProducts;
+	}
+
 
 
 
 
 	public static void main(String[] args) {
 		 ProductDao dao = new ProductDao();
-		    List<ProductModel> products = dao.getAllProduct();
+		    List<ProductModel> products = dao.getLatestProductsWithCategory(8);
 		    for (ProductModel product : products) {
 		        System.out.println(product);
 		    }
