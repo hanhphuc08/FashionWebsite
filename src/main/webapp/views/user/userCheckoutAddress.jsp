@@ -63,7 +63,7 @@
             <ul class="custom-nav nav nav-pills mb-5">
               <li class="nav-item w-25"><a class="nav-link text-sm active" href="${pageContext.request.contextPath}/user/checkoutAddress">Địa chỉ</a></li>
               <li class="nav-item w-25"><a class="nav-link text-sm disabled" href="${pageContext.request.contextPath}/user/checkoutReview">Đơn hàng</a></li>
-              <li class="nav-item w-50"><a class="nav-link text-sm disabled" href="${pageContext.request.contextPath}/user/checkoutPauyment">Phương thức thanh toán</a></li>
+              <li class="nav-item w-50"><a class="nav-link text-sm disabled" href="${pageContext.request.contextPath}/user/checkoutPayment">Phương thức thanh toán</a></li>
             </ul>
             <form action="${pageContext.request.contextPath}/user/checkoutAddress" method ="POST">
               <div class="block">

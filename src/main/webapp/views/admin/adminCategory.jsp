@@ -114,10 +114,9 @@
 				<!-- Grid -->
 				<div class="products-grid col-xl-9 col-lg-8 order-lg-2">
 					<header class="product-grid-header">
-              <div class="me-3 mb-3">
-                 Hiển thị <strong>1-12 </strong>trong <strong>158 </strong>sản phẩm</div>
-
-						<div class="mb-3 d-flex align-items-center">
+                        <a class="btn btn-outline-dark" href="${pageContext.request.contextPath}/admin/addProducts">Thêm sản phẩm</a>
+                   
+				<div class="mb-3 d-flex align-items-center">
               	<span class="d-inline-block me-2">Sắp xếp theo </span>
               	<form action="${pageContext.request.contextPath}/admin/categories" method ="GET">
               		<input type="hidden" name="typeCategoryCode" value="${not empty typeCategoryCode ? typeCategoryCode : ''}" />
