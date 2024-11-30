@@ -8,6 +8,7 @@ import java.util.List;
 
 import configs.DBConnectSQL;
 import models.ProductModel;
+import models.ProductSizeModel;
 
 public class ProductDao {
 	public Connection conn = null;
@@ -467,8 +468,68 @@ public class ProductDao {
 	    return topProducts;
 	}
 
+	public boolean updateProduct(ProductModel product) {
+	    String sql = "UPDATE Products SET ProductName = ?, Price = ?, CategoryCode = ?, Color = ?, Description = ?, Image = ?, UpdateDate = GETDATE() WHERE ProductCode = ?";
+	    try (Connection conn = new DBConnectSQL().getConnection();
+	         PreparedStatement ps = conn.prepareStatement(sql)) {
 
+	        ps.setString(1, product.getProductName());
+	        ps.setDouble(2, product.getPrice());
+	        ps.setString(3, product.getCategoryCode());
+	        ps.setString(4, product.getColor());
+	        ps.setString(5, product.getDescription());
+	        ps.setString(6, product.getImage());
+	        ps.setString(7, product.getProductCode());
 
+	        int result = ps.executeUpdate();
+	        return result > 0;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return false;
+	}
+
+	
+	public boolean updateProductSizes(List<ProductSizeModel> productSizes) {
+	    String sql = "MERGE INTO ProductSizes AS target " +
+	                 "USING (SELECT ? AS ProductCode, ? AS Size, ? AS StockQuantity) AS source " +
+	                 "ON target.ProductCode = source.ProductCode AND target.Size = source.Size " +
+	                 "WHEN MATCHED THEN UPDATE SET StockQuantity = source.StockQuantity " +
+	                 "WHEN NOT MATCHED THEN INSERT (ProductCode, Size, StockQuantity) VALUES (source.ProductCode, source.Size, source.StockQuantity);";
+
+	    try (Connection conn = new DBConnectSQL().getConnection();
+	         PreparedStatement ps = conn.prepareStatement(sql)) {
+
+	        for (ProductSizeModel sizeModel : productSizes) {
+	            ps.setString(1, sizeModel.getProductCode());
+	            ps.setString(2, sizeModel.getSize());
+	            ps.setInt(3, sizeModel.getStockQuantity());
+	            ps.addBatch();
+	        }
+
+	        int[] results = ps.executeBatch();
+	        return results.length > 0;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return false;
+	}
+	
+	public boolean updateProductImage(String productCode, String imagePath) {
+	    String sql = "UPDATE Products SET Image = ?, UpdateDate = GETDATE() WHERE ProductCode = ?";
+	    try (Connection conn = new DBConnectSQL().getConnection();
+	         PreparedStatement ps = conn.prepareStatement(sql)) {
+
+	        ps.setString(1, imagePath);
+	        ps.setString(2, productCode);
+
+	        int rowsUpdated = ps.executeUpdate();
+	        return rowsUpdated > 0;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return false;
+	}
 
 
 	public static void main(String[] args) {

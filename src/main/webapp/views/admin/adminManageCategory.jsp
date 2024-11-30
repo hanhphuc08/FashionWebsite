@@ -69,80 +69,85 @@
 <div class="tab-pane active px-3" id="description" role="tabpanel">
     <div class="row">
         <div class="col-md-7 mb-5 mb-md-0">
-            <form class="form" id="add-form" method="post" action="contact.php">
+            <form class="form" id="add-form" method="post" action="${pageContext.request.contextPath}/admin/manageCategory"  enctype="multipart/form-data">
+            <input type="hidden" name="productCode" value="${product.productCode}" />
                 <div class="controls">
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="mb-4">
-                                <label class="form-label" for="add-category">Danh mục</label>
-                                <select class="form-control" name="category" id="add-category" required>
-                                    <option value="" class="text-muted">Chọn danh mục</option>
-                                    <option value="AKDR">Áo khoác dáng rộng</option>
-                                    <option value="AKDV">Áo khoác dáng vừa</option>
-                                    <option value="AKT">Áo khoác trơn</option>
-                                    <option value="QSJ">Quần Short Jean</option>
-                                    <option value="QSTM">Quần Short thun mát</option>
-                                    <option value="QT">Quần Tây</option>
-                                    <option value="ASMTD">Áo sơ mi tay dài</option>
-                                    <option value="ASMTN">Áo sơ mi tay ngắn</option>
-                                    <option value="APL">Áo Polo</option>
-                                    <option value="AT">Áo thun</option>
+                                <label class="form-label" for="categoryCode">Danh mục</label>
+                                <select class="form-control" name="categoryCode" id="categoryCode" required>
+                                    <c:forEach items="${categories}" var="category">
+                    					<option value="${category.categoryCode}" ${category.categoryCode == product.categoryCode ? 'selected' : ''}>${category.categoryName}</option>
+                					</c:forEach>
                                 </select>
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="price">Giá *</label>
-                                <input class="form-control" type="text" name="price" id="price" placeholder="Nhập giá sản phẩm" required>
+                                <input class="form-control" type="text" name="price" value="${product.price}" id="price" placeholder="Nhập giá sản phẩm" required>
                             </div>
-                            <div class="mb-4">
-                                <div class="col-sm-6">
-                                    <label class="form-label">Chọn size *</label><br>
-                                    <div id="size-select" class="btn-group" role="group" aria-label="Size selection">
-                                        <label class="btn btn btn-outline-secondary detail-option-btn-label mx-1" for="size_0">
-                                            S
-                                            <input class="input-invisible" type="radio" name="size" value="S" id="size_0" required onchange="updateQuantity()">
-                                        </label>
-                                        <label class="btn btn btn-outline-secondary detail-option-btn-label mx-1" for="size_1">
-                                            M
-                                            <input class="input-invisible" type="radio" name="size" value="M" id="size_1" required onchange="updateQuantity()">
-                                        </label>
-                                        <label class="btn btn btn-outline-secondary detail-option-btn-label mx-1" for="size_2">
-                                            L
-                                            <input class="input-invisible" type="radio" name="size" value="L" id="size_2" required onchange="updateQuantity()">
-                                        </label>
-                                        <label class="btn btn btn-outline-secondary detail-option-btn-label mx-1" for="size_3">
-                                            XL
-                                            <input class="input-invisible" type="radio" name="size" value="XL" id="size_3" required onchange="updateQuantity()">
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
+                            <!-- Chọn kích cỡ và số lượng -->
+					        <div>
+					            <label for="size">Chọn size và nhập số lượng:</label>
+					            <c:choose>
+					            	<c:when test="${product.categoryCode.startsWith('A') || product.categoryCode.startsWith('JK')}">
+							            <c:forEach items="${product.productSizes}" var="size">
+							                <c:if test="${size.size == 'S' || size.size == 'M' || size.size == 'L' || size.size == 'XL'}">
+							                    <div>
+							                        <label>${size.size}</label>
+							                        <input type="number" name="quantity_${size.size}" value="${size.stockQuantity}" min="0" onchange="updateQuantity('${size.size}')" />
+							                        <span>Số lượng hiện tại: ${size.stockQuantity}</span>
+							                    </div>
+							                </c:if>
+							            </c:forEach>
+							        </c:when>
+					            	<c:when test="${product.categoryCode.startsWith('Q')}">
+							            <c:forEach items="${product.productSizes}" var="size">
+							                <c:if test="${size.size == '29' || size.size == '30' || size.size == '31' || size.size == '32' || size.size == '33' }">
+							                    <div>
+							                        <label>Size: ${size.size}</label>
+							                        <input type="number" name="quantity_${size.size}" value="${size.stockQuantity}" min="0" onchange="updateQuantity('${size.size}')" />
+							                        <span>Số lượng hiện tại: ${size.stockQuantity}</span>
+							                    </div>
+							                </c:if>
+							            </c:forEach>
+							        </c:when>
+					            </c:choose>
+					            
+					        </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-4">
                                 <label class="form-label" for="add-productname">Tên sản phẩm</label>
-                                <input class="form-control" type="text" name="productname" id="add-productname" placeholder="Nhập tên sản phẩm" required>
+                                <input class="form-control" type="text" name="productName" value= "${product.productName}" id="add-productname" placeholder="Nhập tên sản phẩm" required>
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="color">Màu sắc *</label>
-                                <input class="form-control" type="text" name="color" id="color" placeholder="Nhập màu sắc sản phẩm" required>
+                                <input class="form-control" type="text" name="color" value = "${product.color }" id="color" placeholder="Nhập màu sắc sản phẩm" required>
                             </div>
-                            <div class="mb-4">
+                            <!-- <div class="mb-4">
                                 <label class="form-label" for="add-quantity">Số lượng *</label>
                                     <div class="input-group">
                                         <input class="form-control" type="number" name="quantity" id="add-quantity" placeholder="Nhập số lượng" min="1" required>
                                         <span id="remaining-message" class="input-group-text"></span>
                                     </div>
-                                </div>     
+                            </div> -->     
                         </div>
                     </div>    
                     <div class="mb-4">
                         <label class="form-label" for="add-description">Mô tả sản phẩm *</label>
-                        <textarea class="form-control" rows="4" name="description" id="add-description" placeholder="Nhập mô tả sản phẩm" required></textarea>
+                        <textarea class="form-control" rows="4" name="description" id="add-description" placeholder="Nhập mô tả sản phẩm" required>${product.description}</textarea>
+
                     </div>
                     <div class="mb-4">
                         <label class="form-label" for="add-image">Tải lên tệp hình ảnh sản phẩm *</label>
-                        <input class="form-control" type="file" name="image[]" id="add-image" accept="image/*" multiple required>
+                        <input class="form-control" type="file" name="image" id="image" accept="image/*" multiple >
+                    	
+                    	 <div id="preview-images" class="mt-3">
+					        <!-- Ảnh hiển thị ở đây -->
+					    </div>
                     </div>
+                    
                     <div class="d-flex justify-content-center my-lg-5">
                         <button class="btn btn-outline-dark" type="submit">Lưu thay đổi</button>
                         <button class="btn btn-outline-danger ms-4" type="button" id="delete-button">Xóa sản phẩm</button>
@@ -186,6 +191,28 @@
             remainingMessage.innerText = '';
         }
     }
+    function updateQuantity(size) {
+        const quantityInput = document.querySelector(`[name='quantity_${size}']`);
+        const quantity = quantityInput.value;
+        console.log(`Cập nhật số lượng cho size ${size}: ${quantity}`);
+    }
+    document.getElementById('add-image').addEventListener('change', function(event) {
+        const previewContainer = document.getElementById('preview-images');
+        previewContainer.innerHTML = ""; // Xóa nội dung cũ
+        const files = event.target.files;
+
+        Array.from(files).forEach(file => {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.alt = file.name;
+                img.style = "max-width: 100px; margin: 5px; border: 1px solid #ddd; padding: 5px;";
+                previewContainer.appendChild(img);
+            };
+            reader.readAsDataURL(file);
+        });
+    });
 </script>
 
 <style>
