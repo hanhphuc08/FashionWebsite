@@ -80,28 +80,8 @@ public class AdminManageCategoryController extends HttpServlet {
 	            String color = req.getParameter("color");
 	            String description = req.getParameter("description");
 	            double price = Double.parseDouble(req.getParameter("price"));
-	            
-	            String uploadDir = "D:/Đồ án Web/Picture/";
-	            String imagePath = null;
-
-	            // Xử lý ảnh tải lên
-	            Part filePart = req.getPart("image");
-	            if (filePart != null && filePart.getSize() > 0) {
-	                String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-	                File uploadDirFile = new File(uploadDir);
-
-	                // Tạo thư mục nếu chưa tồn tại
-	                if (!uploadDirFile.exists()) {
-	                    uploadDirFile.mkdirs();
-	                }
-
-	                // Lưu file vào thư mục
-	                filePart.write(uploadDir + fileName);
-
-	                // Lưu đường dẫn ảnh tương đối vào database
-	                imagePath = "uploads/" + fileName;
-	            }
-
+	            String image = req.getParameter("image");
+	           
 	            // Cập nhật thông tin sản phẩm
 	            ProductModel updatedProduct = new ProductModel();
 	            updatedProduct.setProductCode(productCode);
@@ -110,14 +90,10 @@ public class AdminManageCategoryController extends HttpServlet {
 	            updatedProduct.setColor(color);
 	            updatedProduct.setDescription(description);
 	            updatedProduct.setPrice(price);
-	            updatedProduct.setImage(imagePath);
+	            updatedProduct.setImage(image);
 	            
-	            if (imagePath != null) {
-	                updatedProduct.setImage(imagePath); // Cập nhật đường dẫn ảnh
-	            }
 	            boolean isProductUpdated = productDao.updateProduct(updatedProduct);
 	            
-	            System.out.println("Image Path: " + imagePath);
 
 	            if (isProductUpdated) {
 	                List<ProductSizeModel> productSizes = new ArrayList<>();

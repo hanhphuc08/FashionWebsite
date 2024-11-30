@@ -111,9 +111,10 @@
                                         <textarea class="form-control" rows="4" name="description" id="description" placeholder="Nhập mô tả sản phẩm" required></textarea>
                                     </div>
                                     <div class="mb-4">
-                                        <label class="form-label" for="image">Tải lên tệp hình ảnh sản phẩm *</label>
-                                        <input class="form-control" type="file" name="image[]" id="image" accept="image/*" multiple required>
-                                    </div>
+				                        <label class="form-label" for="add-image">Hình ảnh sản phẩm *</label>
+				                        <input class="form-control" type="text" name="image" id="image" placeholder="Nhập URL hình ảnh sản phẩm" value="${product.image}" >
+				                    	
+				                    </div>
                                     <div class="d-flex justify-content-center my-lg-5">
                                         <button class="btn btn-outline-dark" type="submit">Lưu thay đổi</button>
                                     </div>

@@ -137,13 +137,7 @@
                                 <label class="form-label" for="color">Màu sắc *</label>
                                 <input class="form-control" type="text" name="color" value = "${product.color }" id="color" placeholder="Nhập màu sắc sản phẩm" required>
                             </div>
-                            <!-- <div class="mb-4">
-                                <label class="form-label" for="add-quantity">Số lượng *</label>
-                                    <div class="input-group">
-                                        <input class="form-control" type="number" name="quantity" id="add-quantity" placeholder="Nhập số lượng" min="1" required>
-                                        <span id="remaining-message" class="input-group-text"></span>
-                                    </div>
-                            </div> -->     
+                            
                         </div>
                     </div>    
                     <div class="mb-4">
@@ -152,12 +146,10 @@
 
                     </div>
                     <div class="mb-4">
-                        <label class="form-label" for="add-image">Tải lên tệp hình ảnh sản phẩm *</label>
-                        <input class="form-control" type="file" name="image" id="image" accept="image/*" multiple >
+                        <label class="form-label" for="add-image">Hình ảnh sản phẩm *</label>
+                        <input class="form-control" type="text" name="image" id="image" placeholder="Nhập URL hình ảnh sản phẩm" value="${product.image}" >
+                    	<img src="${product.image}" alt="Product Image" style="max-width: 100px; max-height: 100px;" />
                     	
-                    	 <div id="preview-images" class="mt-3">
-					        <!-- Ảnh hiển thị ở đây -->
-					    </div>
                     </div>
                     
                     <div class="d-flex justify-content-center my-lg-5">
