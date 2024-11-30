@@ -73,9 +73,6 @@
                                                     <option value="AKDR">Áo khoác dáng rộng</option>
                                                     <option value="AKDV">Áo khoác dáng vừa</option>
                                                     <option value="AKT">Áo khoác trơn</option>
-                                                    <option value="QSJ">Quần Short Jean</option>
-                                                    <option value="QSTM">Quần Short thun mát</option>
-                                                    <option value="QT">Quần Tây</option>
                                                     <option value="ASMTD">Áo sơ mi tay dài</option>
                                                     <option value="ASMTN">Áo sơ mi tay ngắn</option>
                                                     <option value="APL">Áo Polo</option>
@@ -85,6 +82,36 @@
                                             <div class="mb-4">
                                                 <label class="form-label" for="price">Giá *</label>
                                                 <input class="form-control" type="text" name="price" id="price" placeholder="Nhập giá sản phẩm" required>
+                                            </div>
+
+                                            <div class="mb-4">
+                                                <label for="size" class="form-label">Chọn size và nhập số lượng:</label>
+                                                <c:choose>
+                                                    <c:when test="${product.categoryCode.startsWith('A') || product.categoryCode.startsWith('JK')}">
+                                                        <c:forEach items="${product.productSizes}" var="size">
+                                                            <c:if test="${size.size == 'S' || size.size == 'M' || size.size == 'L' || size.size == 'XL'}">
+                                                                <div>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <label class="form-label me-sm-2">${size.size}</label>
+                                                                        <input class="form-control mb-3" type="number" name="quantity_${size.size}" value="${size.stockQuantity}" min="0" onchange="updateQuantity('${size.size}')" />                         
+                                                                    </div>
+                                                                </div>
+                                                            </c:if>
+                                                        </c:forEach>
+                                                    </c:when>
+                                                    <c:when test="${product.categoryCode.startsWith('Q')}">
+                                                        <c:forEach items="${product.productSizes}" var="size">
+                                                            <c:if test="${size.size == '29' || size.size == '30' || size.size == '31' || size.size == '32' || size.size == '33' }">
+                                                                <div>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <label class="form-label me-sm-2">${size.size}</label>
+                                                                        <input class="form-control mb-3" type="number" name="quantity_${size.size}" value="${size.stockQuantity}" min="0" onchange="updateQuantity('${size.size}')" />                         
+                                                                    </div>
+                                                                </div>
+                                                            </c:if>
+                                                        </c:forEach>
+                                                    </c:when>
+                                                </c:choose>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
@@ -98,13 +125,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="size-quantity-container"></div>
-                                    
-                                    <button type="button" class="btn btn-outline-dark my-3" onclick="addSizeQuantity()">Thêm Size</button>
-                                    
-                                    <div id="notification" class="alert alert-danger d-none" role="alert">
-                                        Bạn chỉ có thể thêm tối đa 4 size.
-                                    </div>
                 
                                     <div class="mb-4">
                                         <label class="form-label" for="description">Mô tả sản phẩm *</label>
@@ -116,7 +136,7 @@
 				                    	
 				                    </div>
                                     <div class="d-flex justify-content-center my-lg-5">
-                                        <button class="btn btn-outline-dark" type="submit">Lưu thay đổi</button>
+                                        <button class="btn btn-outline-dark" type="submit">Thêm sản phẩm</button>
                                     </div>
                                 </div>
                             </form>
@@ -134,44 +154,6 @@
                         </div>
                     </div>
                 </div>
-                
-                <script>
-                    let sizeCount = 0;
-                
-                    function addSizeQuantity() {
-                        const notification = document.getElementById('notification');
-                
-                        if (sizeCount >= 4) {
-                            notification.classList.remove('d-none'); // Hiện thông báo
-                            return;
-                        } else {
-                            notification.classList.add('d-none'); // Ẩn thông báo nếu có
-                        }
-                
-                        sizeCount++;
-                        const container = document.getElementById('size-quantity-container');
-                
-                        const sizeDiv = document.createElement('div');
-                        sizeDiv.classList.add('row', 'mb-4');
-                        sizeDiv.innerHTML = `
-                            <div class="col-sm-6">
-                                <label class="form-label" for="size-${sizeCount}">Chọn size</label>
-                                <select class="form-control" name="size[]" id="size-${sizeCount}" required>
-                                    <option value="">Chọn size</option>
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                </select>
-                            </div>
-                            <div class="col-sm-6">
-                                <label class="form-label" for="quantity-${sizeCount}">Số lượng</label>
-                                <input class="form-control" type="number" name="quantity[]" id="quantity-${sizeCount}" placeholder="Nhập số lượng" required>
-                            </div>
-                        `;
-                        container.appendChild(sizeDiv);
-                    }
-                </script>
                 <!-- End Add products -->
             </div>
   </section>

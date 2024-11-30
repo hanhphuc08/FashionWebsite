@@ -100,15 +100,17 @@
                             </div>
                             <!-- Chọn kích cỡ và số lượng -->
 					        <div>
-					            <label for="size">Chọn size và nhập số lượng:</label>
+					            <label for="size" class="form-label">Chọn size và nhập số lượng:</label>
 					            <c:choose>
 					            	<c:when test="${product.categoryCode.startsWith('A') || product.categoryCode.startsWith('JK')}">
 							            <c:forEach items="${product.productSizes}" var="size">
 							                <c:if test="${size.size == 'S' || size.size == 'M' || size.size == 'L' || size.size == 'XL'}">
 							                    <div>
-							                        <label>${size.size}</label>
-							                        <input type="number" name="quantity_${size.size}" value="${size.stockQuantity}" min="0" onchange="updateQuantity('${size.size}')" />
-							                        <span>Số lượng hiện tại: ${size.stockQuantity}</span>
+                                                    <div class="d-flex align-items-center">
+                                                        <label class="form-label me-sm-2">${size.size}</label>
+                                                        <input class="form-control" type="number" name="quantity_${size.size}" value="${size.stockQuantity}" min="0" onchange="updateQuantity('${size.size}')" />                         
+                                                    </div>
+							                       <span class="text-muted d-flex justify-content-end mt-sm-1 mb-3">Số lượng hiện tại: ${size.stockQuantity}</span>
 							                    </div>
 							                </c:if>
 							            </c:forEach>
@@ -117,15 +119,16 @@
 							            <c:forEach items="${product.productSizes}" var="size">
 							                <c:if test="${size.size == '29' || size.size == '30' || size.size == '31' || size.size == '32' || size.size == '33' }">
 							                    <div>
-							                        <label>Size: ${size.size}</label>
-							                        <input type="number" name="quantity_${size.size}" value="${size.stockQuantity}" min="0" onchange="updateQuantity('${size.size}')" />
-							                        <span>Số lượng hiện tại: ${size.stockQuantity}</span>
+                                                    <div class="d-flex align-items-center">
+                                                        <label class="form-label me-sm-2">${size.size}</label>
+                                                        <input class="form-control" type="number" name="quantity_${size.size}" value="${size.stockQuantity}" min="0" onchange="updateQuantity('${size.size}')" />                         
+                                                    </div>
+                                                    <span class="text-muted d-flex justify-content-end mt-sm-1 mb-3">Số lượng hiện tại: ${size.stockQuantity}</span>
 							                    </div>
 							                </c:if>
 							            </c:forEach>
 							        </c:when>
 					            </c:choose>
-					            
 					        </div>
                         </div>
                         <div class="col-sm-6">
