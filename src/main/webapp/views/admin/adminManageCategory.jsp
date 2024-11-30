@@ -35,6 +35,24 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/brands.css" integrity="sha384-7xAnn7Zm3QC1jFjVc1A6v/toepoG3JXboQYzbM0jrPzou9OFXm/fY6Z/XiIebl/k" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/fontawesome.css" integrity="sha384-ozJwkrqb90Oa3ZNb+yKFW2lToAWYdTiF1vt8JiH5ptTGHTGcN7qdoR1F95e0kYyG" crossorigin="anonymous">
   </head>
+<style>
+    .input-invisible {
+        display: none; /* Ẩn input radio */
+    }
+    .detail-option-btn-label.active {
+        background-color: #007bff; /* Màu nền cho nút đã chọn */
+        color: white; /* Màu chữ cho nút đã chọn */
+    }
+    .detail-option-btn-label {
+        cursor: pointer; /* Thay đổi con trỏ khi hover */
+    }
+    #quantity-remaining {
+        background-color: #f8f9fa; /* Màu nền cho ô số lượng còn lại */
+        border: 1px solid #ced4da; /* Đường viền cho ô số lượng còn lại */
+        color: #495057; /* Màu chữ cho ô số lượng còn lại */
+        text-align: center; /* Căn giữa nội dung */
+    }
+</style>
   <body>
    <!-- Begin Header-->
    <%@ include file="/commons/admin/headerAdmin.jsp" %>;
@@ -44,7 +62,7 @@
       <div class="container">
         <!-- Breadcrumbs -->
         <ol class="breadcrumb justify-content-center">
-          <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+          <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/admin/home">Trang chủ</a></li>
           <li class="breadcrumb-item active">Chỉnh sửa sản phẩm</li>
         </ol>
         <!-- Hero Content-->
@@ -59,12 +77,6 @@
     <section class="py-5">
       <div class="container">
           <header class="mb-5">
-            <ul class="nav nav-tabs flex-column flex-sm-row" role="tablist">
-              <li class="nav-item"><a class="nav-link detail-nav-link active" data-bs-toggle="tab" href="#description" role="tab">Chỉnh sửa sản phẩm</a></li>
-              <li class="nav-item"><a class="nav-link detail-nav-link" data-bs-toggle="tab" href="#additional-information" role="tab">Thêm sản phẩm mới</a></li>
-            </ul>
-            <div class="tab-content py-4">
-              <div class="tab-content py-4">
                 <!-- Begin Edit products -->
 <div class="tab-pane active px-3" id="description" role="tabpanel">
     <div class="row">
@@ -188,139 +200,9 @@
     }
 </script>
 
-<style>
-    .input-invisible {
-        display: none; /* Ẩn input radio */
-    }
-    .detail-option-btn-label.active {
-        background-color: #007bff; /* Màu nền cho nút đã chọn */
-        color: white; /* Màu chữ cho nút đã chọn */
-    }
-    .detail-option-btn-label {
-        cursor: pointer; /* Thay đổi con trỏ khi hover */
-    }
-    #quantity-remaining {
-        background-color: #f8f9fa; /* Màu nền cho ô số lượng còn lại */
-        border: 1px solid #ced4da; /* Đường viền cho ô số lượng còn lại */
-        color: #495057; /* Màu chữ cho ô số lượng còn lại */
-        text-align: center; /* Căn giữa nội dung */
-    }
-</style>
                 <!-- End Edit products -->
                             
                 <!-- Begin Add products -->
-                <div class="tab-pane px-3" id="additional-information" role="tabpanel">
-                    <div class="row">
-                        <div class="col-md-7 mb-5 mb-md-0">
-                            <form class="form" id="edit-form" method="post" action="contact.php">
-                                <div class="controls">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="mb-4">
-                                                <label class="form-label" for="category">Danh mục</label>
-                                                <select class="form-control" name="category" id="category" required>
-                                                    <option value="" class="text-muted">Chọn danh mục</option>
-                                                    <option value="AKDR">Áo khoác dáng rộng</option>
-                                                    <option value="AKDV">Áo khoác dáng vừa</option>
-                                                    <option value="AKT">Áo khoác trơn</option>
-                                                    <option value="QSJ">Quần Short Jean</option>
-                                                    <option value="QSTM">Quần Short thun mát</option>
-                                                    <option value="QT">Quần Tây</option>
-                                                    <option value="ASMTD">Áo sơ mi tay dài</option>
-                                                    <option value="ASMTN">Áo sơ mi tay ngắn</option>
-                                                    <option value="APL">Áo Polo</option>
-                                                    <option value="AT">Áo thun</option>
-                                                </select>
-                                            </div>
-                                            <div class="mb-4">
-                                                <label class="form-label" for="price">Giá *</label>
-                                                <input class="form-control" type="text" name="price" id="price" placeholder="Nhập giá sản phẩm" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="mb-4">
-                                                <label class="form-label" for="productname">Tên sản phẩm *</label>
-                                                <input class="form-control" type="text" name="productname" id="productname" placeholder="Nhập tên sản phẩm" required>
-                                            </div>
-                                            <div class="mb-4">
-                                                <label class="form-label" for="color">Màu sắc *</label>
-                                                <input class="form-control" type="text" name="color" id="color" placeholder="Nhập màu sắc sản phẩm" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="size-quantity-container"></div>
-                                    
-                                    <button type="button" class="btn btn-outline-dark my-3" onclick="addSizeQuantity()">Thêm Size</button>
-                                    
-                                    <div id="notification" class="alert alert-danger d-none" role="alert">
-                                        Bạn chỉ có thể thêm tối đa 4 size.
-                                    </div>
-                
-                                    <div class="mb-4">
-                                        <label class="form-label" for="description">Mô tả sản phẩm *</label>
-                                        <textarea class="form-control" rows="4" name="description" id="description" placeholder="Nhập mô tả sản phẩm" required></textarea>
-                                    </div>
-                                    <div class="mb-4">
-                                        <label class="form-label" for="image">Tải lên tệp hình ảnh sản phẩm *</label>
-                                        <input class="form-control" type="file" name="image[]" id="image" accept="image/*" multiple required>
-                                    </div>
-                                    <div class="d-flex justify-content-center my-lg-5">
-                                        <button class="btn btn-outline-dark" type="submit">Thêm sản phẩm</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-md-5">
-                            <div class="py-3 order-2 order-lg-1">
-                                <div class="owl-carousel owl-theme owl-dots-modern detail-full" data-slider-id="1">
-                                    <div class="detail-full-item" style="background: center center url(https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-596319-detail-1.jpg) no-repeat; background-size: cover;"></div>
-                                    <div class="detail-full-item" style="background: center center url(https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-596319-detail-2.jpg) no-repeat; background-size: cover;"></div>
-                                    <div class="detail-full-item" style="background: center center url(https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-596319-detail-3.jpg) no-repeat; background-size: cover;"></div>
-                                    <div class="detail-full-item" style="background: center center url(https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-594535-unsplash-detail-3.jpg) no-repeat; background-size: cover;"></div>
-                                    <div class="detail-full-item" style="background: center center url(https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-594535-unsplash-detail-4.jpg) no-repeat; background-size: cover;"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <script>
-                    let sizeCount = 0;
-                
-                    function addSizeQuantity() {
-                        const notification = document.getElementById('notification');
-                
-                        if (sizeCount >= 4) {
-                            notification.classList.remove('d-none'); // Hiện thông báo
-                            return;
-                        } else {
-                            notification.classList.add('d-none'); // Ẩn thông báo nếu có
-                        }
-                
-                        sizeCount++;
-                        const container = document.getElementById('size-quantity-container');
-                
-                        const sizeDiv = document.createElement('div');
-                        sizeDiv.classList.add('row', 'mb-4');
-                        sizeDiv.innerHTML = `
-                            <div class="col-sm-6">
-                                <label class="form-label" for="size-${sizeCount}">Chọn size</label>
-                                <select class="form-control" name="size[]" id="size-${sizeCount}" required>
-                                    <option value="">Chọn size</option>
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                </select>
-                            </div>
-                            <div class="col-sm-6">
-                                <label class="form-label" for="quantity-${sizeCount}">Số lượng</label>
-                                <input class="form-control" type="number" name="quantity[]" id="quantity-${sizeCount}" placeholder="Nhập số lượng" required>
-                            </div>
-                        `;
-                        container.appendChild(sizeDiv);
-                    }
-                </script>
                 <!-- End Add products -->
             </div>
       </div>

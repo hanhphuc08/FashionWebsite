@@ -152,16 +152,15 @@
 				</div>
 			</div>
 			<!-- Customer Sidebar-->
-
 			<!-- /Customer Sidebar-->
-			<div class="row my-5">
-				<div class="col-md-6">
-					<button type="button" class="btn btn-dark"
+			<div class="row my-5 mx-1">
+				<div class="col-md-6 d-flex justify-content-center">
+					<button type="button" class="btn btn-lg btn-dark"
 						id="confirmOrderButton">Xác nhận đơn hàng</button>
 					<!-- Confirm button (green) -->
 				</div>
-				<div class="col-md-6">
-					<button type="button" class="btn btn-dark"
+				<div class="col-md-6 d-flex justify-content-center">
+					<button type="button" class="btn btn-lg btn-dark"
 						id="cancelOrderButton">Hủy đơn hàng</button>
 					<!-- Cancel button (red) -->
 				</div>
