@@ -62,21 +62,26 @@
                 <div class="tab-pane px-3" id="additional-information" role="tabpanel">
                     <div class="row">
                         <div class="col-md-7 mb-5 mb-md-0">
-                            <form class="form" id="edit-form" method="post" action="contact.php">
+                            <form class="form" id="edit-form" method="post" action="${pageContext.request.contextPath}/admin/addProducts">
+                               <c:if test="${not empty error}">
+								    <div class="alert alert-danger">
+								        ${error}
+								    </div>
+								</c:if>
                                 <div class="controls">
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="mb-4">
                                                 <label class="form-label" for="category">Danh mục</label>
-                                                <select class="form-control" name="category" id="category" required>
-                                                    <option value="" class="text-muted">Chọn danh mục</option>
-                                                    <option value="AKDR">Áo khoác dáng rộng</option>
-                                                    <option value="AKDV">Áo khoác dáng vừa</option>
-                                                    <option value="AKT">Áo khoác trơn</option>
-                                                    <option value="ASMTD">Áo sơ mi tay dài</option>
-                                                    <option value="ASMTN">Áo sơ mi tay ngắn</option>
-                                                    <option value="APL">Áo Polo</option>
-                                                    <option value="AT">Áo thun</option>
+                                                <select class="form-control" name="categoryCode" id="category" required>
+                                                   <option value="AKDR" ${categoryCode == 'AKDR' ? 'selected' : ''}>Áo khoác dáng rộng</option>
+													<option value="AKDV" ${categoryCode == 'AKDV' ? 'selected' : ''}>Áo khoác dáng vừa</option>
+													<option value="AKT" ${categoryCode == 'AKT' ? 'selected' : ''}>Áo khoác trơn</option>
+													<option value="ASMTD" ${categoryCode == 'ASMTD' ? 'selected' : ''}>Áo sơ mi tay dài</option>
+													<option value="ASMTN" ${categoryCode == 'ASMTN' ? 'selected' : ''}>Áo sơ mi tay ngắn</option>
+													<option value="APL" ${categoryCode == 'APL' ? 'selected' : ''}>Áo Polo</option>
+													<option value="AT" ${categoryCode == 'AT' ? 'selected' : ''}>Áo thun</option>
+
                                                 </select>
                                             </div>
                                             <div class="mb-4">
@@ -86,38 +91,35 @@
 
                                             <div class="mb-4">
                                                 <label for="size" class="form-label">Chọn size và nhập số lượng:</label>
-                                                <c:choose>
-                                                    <c:when test="${product.categoryCode.startsWith('A') || product.categoryCode.startsWith('JK')}">
-                                                        <c:forEach items="${product.productSizes}" var="size">
-                                                            <c:if test="${size.size == 'S' || size.size == 'M' || size.size == 'L' || size.size == 'XL'}">
-                                                                <div>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <label class="form-label me-sm-2">${size.size}</label>
-                                                                        <input class="form-control mb-3" type="number" name="quantity_${size.size}" value="${size.stockQuantity}" min="0" onchange="updateQuantity('${size.size}')" />                         
-                                                                    </div>
-                                                                </div>
-                                                            </c:if>
-                                                        </c:forEach>
-                                                    </c:when>
-                                                    <c:when test="${product.categoryCode.startsWith('Q')}">
-                                                        <c:forEach items="${product.productSizes}" var="size">
-                                                            <c:if test="${size.size == '29' || size.size == '30' || size.size == '31' || size.size == '32' || size.size == '33' }">
-                                                                <div>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <label class="form-label me-sm-2">${size.size}</label>
-                                                                        <input class="form-control mb-3" type="number" name="quantity_${size.size}" value="${size.stockQuantity}" min="0" onchange="updateQuantity('${size.size}')" />                         
-                                                                    </div>
-                                                                </div>
-                                                            </c:if>
-                                                        </c:forEach>
-                                                    </c:when>
-                                                </c:choose>
+                                                <div>
+											            <label>Size S:</label>
+											            <input type="number" name="quantity_S" min="0" placeholder="Số lượng size S" required/>
+											    </div>
+											    
+											    <div>
+											            <label>Size M:</label>
+											            <input type="number" name="quantity_M" min="0" placeholder="Số lượng size M" required/>
+											    </div>
+											    
+											    <div>
+											            <label>Size L:</label>
+											            <input type="number" name="quantity_L" min="0" placeholder="Số lượng size L"required/>
+											     </div>
+											     
+											     <div>
+											            <label>Size XL:</label>
+											            <input type="number" name="quantity_XL" min="0" placeholder="Số lượng size XL" required/>
+											      </div>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="mb-4">
                                                 <label class="form-label" for="productname">Tên sản phẩm *</label>
-                                                <input class="form-control" type="text" name="productname" id="productname" placeholder="Nhập tên sản phẩm" required>
+                                                <input class="form-control" type="text" name="productName" id="productName" placeholder="Nhập tên sản phẩm" required>
+                                            </div>
+                                             <div class="mb-4">
+                                                <label class="form-label" for="productname">Mã sản phẩm *</label>
+                                                <input class="form-control" type="text" name="productCode" id="productCode" placeholder="Nhập mã sản phẩm" required>
                                             </div>
                                             <div class="mb-4">
                                                 <label class="form-label" for="color">Màu sắc *</label>
@@ -132,7 +134,7 @@
                                     </div>
                                     <div class="mb-4">
 				                        <label class="form-label" for="add-image">Hình ảnh sản phẩm *</label>
-				                        <input class="form-control" type="text" name="image" id="image" placeholder="Nhập URL hình ảnh sản phẩm" value="${product.image}" >
+				                        <input class="form-control" type="text" name="image" id="image" placeholder="Nhập URL hình ảnh sản phẩm" >
 				                    	
 				                    </div>
                                     <div class="d-flex justify-content-center my-lg-5">

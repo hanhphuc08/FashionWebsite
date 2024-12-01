@@ -18,8 +18,15 @@ public class UserAddressModel implements Serializable {
 	private String emailUA;
 	private String provinceName;
 	private String districtName;
+	private Integer orderID;
 	
 	
+	public Integer getOrderID() {
+		return orderID;
+	}
+	public void setOrderID(Integer orderID) {
+		this.orderID = orderID;
+	}
 	public String getFullNameUA() {
 		return fullNameUA;
 	}
@@ -101,7 +108,7 @@ public class UserAddressModel implements Serializable {
 	@Override
 	public String toString() {
 		return "UserAddressModel [addressID=" + addressID + ", userID=" + userID + ", provinceID=" + provinceID
-				+ ", districtID=" + districtID + ", specificAddress=" + specificAddress + "]";
+				+ ", districtID=" + districtID + ", specificAddress=" + specificAddress + ", orderID="+ orderID + "]";
 	}
 	
 	

@@ -95,20 +95,23 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="loadContent('all')">Tất cả đơn hàng</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="loadContent('pending')">Chưa thanh toán</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="loadContent('paid')">Đã thanh toán</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="loadContent('transfer')">Chuyển khoản</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="loadContent('cash')">Tiền mặt</a>
-                            </li>
+			                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/manageOrders?status=">Tất cả đơn hàng</a>
+			                </li>
+			                <li class="nav-item">
+			                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/manageOrders?status=Đang xác nhận">Chưa xác nhận</a>
+			                </li>
+			                <li class="nav-item">
+			                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/manageOrders?status=Xác nhận">Đã xác nhận</a>
+			                </li>
+			                <li class="nav-item">
+			                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/manageOrders?status=Huỷ">Đã hủy</a>
+			                </li>
+			                <li class="nav-item">
+			                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/manageOrders?paymentMethod=Chuyển khoản">Chuyển khoản</a>
+			                </li>
+			                <li class="nav-item">
+			                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/manageOrders?paymentMethod=Tiền mặt">Tiền mặt</a>
+			                </li>
                         </ul>
                     </div>
                 </div>
@@ -118,10 +121,11 @@
             <!-- Begin Search Bar -->
             <div class="container">
             <div class="nav-bar search-bar mb-4">
-                <form action="" method="GET">
+                <form action="${pageContext.request.contextPath}/admin/manageOrders" method="GET">
                     <div class="input-group">
                         <input type="text" class="form-control rounded-pill pl-4 pr-5" 
                                placeholder="Tìm kiếm đơn hàng..." name="searchQuery" value="${param.searchQuery}">
+                        <input type="hidden" name="searchType" value="orderID">
                         <div class="input-group-append">
                             <button class="btn btn-transparent" type="submit">
                                 <i class="fa fa-search"></i>
@@ -163,7 +167,7 @@
                                             <!-- Tổng tiền -->
                                             <div class="col-2">${order.totalAmount}</div>
                                             <div class="col-2">
-                                                <a href="${pageContext.request.contextPath}/admin/manageOrderDetails" class="btn btn-info">Chi tiết</a>
+                                                <a href="${pageContext.request.contextPath}/admin/manageOrderDetails?orderID=${order.orderID}" class="btn btn-info">Chi tiết</a>
                                             </div>
                                         </div>
                                     </div>

@@ -530,6 +530,111 @@ public class ProductDao {
 	    }
 	    return false;
 	}
+	
+	public boolean insertProductWithSizes(ProductModel product, List<ProductSizeModel> sizes) {
+	    String productSql = "INSERT INTO Products (ProductCode, ProductName, Description, Price, CategoryCode, Brand, Color, Image, MoreImages, Status, CreateDate, UpdateDate) " +
+	                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, GETDATE(), GETDATE())";
+	    String sizeSql = "INSERT INTO ProductSizes (ProductCode, Size, StockQuantity, Status, CreateDate, UpdateDate) " +
+	                     "VALUES (?, ?, ?, ?, GETDATE(), GETDATE())";
+
+	    Connection conn = null;
+	    PreparedStatement productStmt = null;
+	    PreparedStatement sizeStmt = null;
+
+	    try {
+	        // Mở kết nối và bắt đầu giao dịch
+	        conn = new DBConnectSQL().getConnection();
+	        conn.setAutoCommit(false); // Tắt chế độ auto-commit
+
+	        // Chèn sản phẩm
+	        productStmt = conn.prepareStatement(productSql);
+	        productStmt.setString(1, product.getProductCode());
+	        productStmt.setString(2, product.getProductName());
+	        productStmt.setString(3, product.getDescription());
+	        productStmt.setDouble(4, product.getPrice());
+	        productStmt.setString(5, product.getCategoryCode());
+	        productStmt.setString(6, product.getBrand());
+	        productStmt.setString(7, product.getColor());
+	        productStmt.setString(8, product.getImage());
+	        productStmt.setString(9, product.getMoreImage());
+	        productStmt.setString(10, product.getStatus());
+	        productStmt.executeUpdate();
+
+	        // Chèn kích thước sản phẩm
+	        sizeStmt = conn.prepareStatement(sizeSql);
+	        for (ProductSizeModel size : sizes) {
+	            sizeStmt.setString(1, size.getProductCode());
+	            sizeStmt.setString(2, size.getSize());
+	            sizeStmt.setInt(3, size.getStockQuantity());
+	            sizeStmt.setString(4, size.getStatus());
+	            sizeStmt.addBatch();
+	        }
+	        sizeStmt.executeBatch();
+
+	        // Commit giao dịch
+	        conn.commit();
+	        return true;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        try {
+	            if (conn != null) {
+	                conn.rollback(); // Rollback nếu có lỗi xảy ra
+	            }
+	        } catch (Exception rollbackEx) {
+	            rollbackEx.printStackTrace();
+	        }
+	        return false;
+	    } finally {
+	        // Đóng tài nguyên
+	        try {
+	            if (sizeStmt != null) sizeStmt.close();
+	            if (productStmt != null) productStmt.close();
+	            if (conn != null) conn.setAutoCommit(true); // Bật lại auto-commit
+	            if (conn != null) conn.close();
+	        } catch (Exception closeEx) {
+	            closeEx.printStackTrace();
+	        }
+	    }
+	}
+	
+	public boolean isProductCodeExists(String productCode) {
+	    String sql = "SELECT COUNT(*) FROM Products WHERE ProductCode = ?";
+	    try (Connection conn = new DBConnectSQL().getConnection();
+	         PreparedStatement ps = conn.prepareStatement(sql)) {
+	        ps.setString(1, productCode);
+	        try (ResultSet rs = ps.executeQuery()) {
+	            if (rs.next()) {
+	                return rs.getInt(1) > 0; // Trả về true nếu tồn tại
+	            }
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return false;
+	}
+	
+	public boolean deleteProductByCode(String productCode) {
+	    String deleteProductSql = "DELETE FROM Products WHERE ProductCode = ?";
+	    String deleteProductSizeSql = "DELETE FROM ProductSizes WHERE ProductCode = ?";
+
+	    try (Connection conn = new DBConnectSQL().getConnection();
+	         PreparedStatement deleteSizeStmt = conn.prepareStatement(deleteProductSizeSql);
+	         PreparedStatement deleteProductStmt = conn.prepareStatement(deleteProductSql)) {
+
+
+	        deleteSizeStmt.setString(1, productCode);
+	        deleteSizeStmt.executeUpdate();
+
+
+	        deleteProductStmt.setString(1, productCode);
+	        int rowsAffected = deleteProductStmt.executeUpdate();
+
+	        return rowsAffected > 0;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return false;
+	}
 
 
 	public static void main(String[] args) {

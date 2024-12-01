@@ -37,6 +37,14 @@ public class ProductSizeModel implements Serializable{
 		this.createDate = createDate;
 		this.updateDate = updateDate;
 	}
+	
+	public ProductSizeModel(String productCode, String size, int stockQuantity, String status) {
+		super();
+		this.productCode = productCode;
+		this.size = size;
+		this.stockQuantity = stockQuantity;
+		this.status = status;
+	}
 	public ProductSizeModel() {
 		super();
 	}

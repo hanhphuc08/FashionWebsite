@@ -137,10 +137,17 @@
               <div class="col-xl-3 col-lg-4 col-sm-6">
                 <div class="product">
                   <div class="product-image">
-                  <div class="delete-icon" onclick="">
-                <i class="fas fa-times"></i>
-                </div>
-                    <div class="ribbon ribbon-info">${o.status}</div>
+                 <div class="delete-icon">
+				    <form action="${pageContext.request.contextPath}/admin/deleteProduct" method="GET" onsubmit="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?');">
+				        <input type="hidden" name="productCode" value="${o.productCode}" />
+				        <button type="submit" class="btn btn-danger" style="border: none; background: none; color: white;">
+				            <i class="fas fa-times"></i>
+				        </button>
+				    </form>
+				</div>
+
+
+                    
                     <img class="img-fluid" src="${o.image }" alt="${o.productName }"/>
                     <div class="product-hover-overlay">
                     	<a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/admin/categoryDetail?productCode=${o.productCode}"></a>
@@ -149,7 +156,8 @@
                       		<i class="fas fa-pen"></i>
                       	</a>
                       	<a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/admin/categoryDetail?productCode=${o.productCode}">
-                      		<i class="fa-search fa"></i></a><a class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-expand-arrows-alt"></i></a>
+                      		<i class="fa-search fa"></i></a>
+                      		
                       </div>
                     </div>
                   </div>
@@ -210,8 +218,7 @@
 								<!-- Lặp qua danh sách TypeCategory -->
 								<c:forEach items="${listType}" var="type">
 									<a class="nav-link d-flex justify-content-between mb-2" href="?typeCategoryCode=${type.typeCategoryCode}&page=1&orderby=${orderby}">
-										<span>${type.typeCategoryName}</span> <span
-										class="sidebar-badge">120</span>
+										<span>${type.typeCategoryName}</span> 
 									</a>
 				
 									<div class="nav nav-pills flex-column ms-3">
@@ -232,22 +239,7 @@
 						<a class="d-lg-none block-toggler" data-bs-toggle="collapse"
 							href="#priceFilterMenu" aria-expanded="false"
 							aria-controls="priceFilterMenu">Filter by price</a>
-						<div class="expand-lg collapse" id="priceFilterMenu">
-							<h6 class="sidebar-heading d-none d-lg-block">Giá</h6>
-							<div class="mt-4 mt-lg-0" id="slider-snap"></div>
-							<div class="nouislider-values">
-								<div class="min">
-									Từ <span id="slider-snap-value-lower"></span>
-								</div>
-								<div class="max">
-									Đến <span id="slider-snap-value-upper"></span>
-								</div>
-								<input class="slider-snap-input" type="hidden" name="pricefrom"
-									id="slider-snap-input-lower" value="40"> <input
-									class="slider-snap-input" type="hidden" name="priceto"
-									id="slider-snap-input-upper" value="110">
-							</div>
-						</div>
+						
 					</div>
 					
 					
@@ -408,6 +400,9 @@
 				document.body.insertBefore(div, document.body.childNodes[0]);
 			}
 		}
+		
+		
+
 		// this is set to Bootstrapious website as you cannot 
 		// inject local SVG sprite (using only 'icons/orion-svg-sprite.a4dea202.svg' path)
 		// while using file:// protocol
@@ -415,6 +410,9 @@
 
 		injectSvgSprite('${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/1-2-0/icons/orion-svg-sprite.svg');
 	</script>
+	
+
+
 	<!-- jQuery-->
 	<script
 		src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/jquery/jquery.min.js"></script>
@@ -478,7 +476,9 @@
 	</script>
 	<script
 		src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/jquery.cookie/jquery.cookie.js"></script>
+	
 
+	
 </body>
 
 </html>

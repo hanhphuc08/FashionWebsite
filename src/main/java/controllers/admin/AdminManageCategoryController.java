@@ -74,6 +74,24 @@ public class AdminManageCategoryController extends HttpServlet {
 	        }
 
 	        try {
+	        	 String action = req.getParameter("action");
+	             if ("delete".equals(action)) {
+	                 String productCode = req.getParameter("productCode");
+	                 if (productCode != null && !productCode.isEmpty()) {
+	                     boolean isDeleted = productDao.deleteProductByCode(productCode);
+	                     if (isDeleted) {
+	                         req.setAttribute("success", "Xóa sản phẩm thành công.");
+	                         resp.sendRedirect(req.getContextPath() + "/admin/categories");
+	                         return;
+	                     } else {
+	                         req.setAttribute("error", "Xóa sản phẩm thất bại.");
+	                     }
+	                 } else {
+	                     req.setAttribute("error", "Mã sản phẩm không hợp lệ.");
+	                 }
+	                 req.getRequestDispatcher("/views/admin/adminManageCategory.jsp").forward(req, resp);
+	                 return;
+	             }
 	            String productCode = req.getParameter("productCode");
 	            String productName = req.getParameter("productName");
 	            String categoryCode = req.getParameter("categoryCode");

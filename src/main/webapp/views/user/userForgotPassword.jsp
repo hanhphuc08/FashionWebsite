@@ -129,7 +129,7 @@
 					</div>
 				</div>
 				<!-- Begin Customer Sidebar-->
-          <%@ include file="/commons/user/customerSidebar.jsp" %>;
+          <%@include file="/commons/user/customerSidebar.jsp" %>;
           <!-- End Customer Sidebar-->
 			</div>
 		</div>

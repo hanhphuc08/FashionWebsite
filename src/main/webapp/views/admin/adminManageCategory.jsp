@@ -157,7 +157,13 @@
                     
                     <div class="d-flex justify-content-center my-lg-5">
                         <button class="btn btn-outline-dark" type="submit">Lưu thay đổi</button>
-                        <button class="btn btn-outline-danger ms-4" type="button" id="delete-button">Xóa sản phẩm</button>
+                        
+						    <input type="hidden" name="action" value="delete" />
+						    <button class="btn btn-outline-danger ms-4" type="submit" 
+						        onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?');">
+						        Xóa sản phẩm
+						    </button>
+                        
                     </div>
                 </div>
             </form>

@@ -123,43 +123,9 @@
 					<!-- Notification Dropdown (when clicked on bell icon) -->
 					<div class="dropdown-menu dropdown-menu-end dropdown-menu-animated"
 						aria-labelledby="notificationButton">
-						<div class="notification-header">
-							<h6 class="dropdown-header">Thông báo</h6>
-						</div>
-						<div class="notification-list">
-							<!-- Example notifications -->
-							<a class="dropdown-item d-flex align-items-center"
-								href="${pageContext.request.contextPath}/admin/manageOrders">
-								<i class="fas fa-comment-alt text-primary"></i>
-								<div class="ms-2">
-									<p class="mb-0">Bạn có một tin nhắn mới.</p>
-									<small class="text-muted">5 phút trước</small>
-								</div>
-							</a> <a class="dropdown-item d-flex align-items-center"
-								href="${pageContext.request.contextPath}/admin/manageOrders">
-								<i class="fas fa-cart-plus text-success"></i>
-								<div class="ms-2">
-									<p class="mb-0">Đơn hàng của bạn đã được xác nhận.</p>
-									<small class="text-muted">10 phút trước</small>
-								</div>
-							</a> <a class="dropdown-item d-flex align-items-center"
-								href="${pageContext.request.contextPath}/admin/manageOrders">
-								<i class="fas fa-gift text-warning"></i>
-								<div class="ms-2">
-									<p class="mb-0">Bạn nhận được một món quà!</p>
-									<small class="text-muted">1 giờ trước</small>
-								</div>
-							</a>
-						</div>
 						<div class="dropdown-footer text-center">
-
-
 							<a class="dropdown-item text-muted" href="${pageContext.request.contextPath}/admin/manageOrders">Xem tất cả thông
 								báo</a>
-
-
-							
-
 						</div>
 					</div>
 					<!-- User Not Logged - link to login page-->

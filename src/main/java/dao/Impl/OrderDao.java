@@ -98,29 +98,30 @@ public class OrderDao {
 
 	    return list;
 	}
-	 public OrderModel getOrderById(int orderID) {
-	        OrderModel order = null;
-	        String sql = "SELECT OrderID, OrderDate, Status FROM Orders WHERE OrderID = ?";
+	public OrderModel getOrderById(int orderID) {
+	    OrderModel order = null;
+	    String sql = "SELECT OrderID, OrderDate, Status, UserID FROM Orders WHERE OrderID = ?";
 
-	        try (Connection conn = new DBConnectSQL().getConnection();
-	             PreparedStatement ps = conn.prepareStatement(sql)) {
+	    try (Connection conn = new DBConnectSQL().getConnection();
+	         PreparedStatement ps = conn.prepareStatement(sql)) {
 
-	            ps.setInt(1, orderID);
-	            ResultSet rs = ps.executeQuery();
+	        ps.setInt(1, orderID);
+	        ResultSet rs = ps.executeQuery();
 
-
-	            if (rs.next()) {
-	                order = new OrderModel();
-	                order.setOrderID(rs.getInt("OrderID"));
-	                order.setOrderDate(rs.getDate("OrderDate")); 
-	                order.setStatus(rs.getString("Status"));  
-	            }
-
-	        } catch (Exception e) {
-	            e.printStackTrace();
+	        if (rs.next()) {
+	            order = new OrderModel();
+	            order.setOrderID(rs.getInt("OrderID"));
+	            order.setOrderDate(rs.getDate("OrderDate"));
+	            order.setStatus(rs.getString("Status"));
+	            order.setUserID(rs.getInt("UserID"));  // Thêm dòng này để lấy UserID
 	        }
-	        return order;
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
 	    }
+	    return order;
+	}
+
 	public int getTotalOrders()
 	{
 		String sql = "select count(*) as ToTalOrders From Orders";
@@ -273,7 +274,28 @@ public class OrderDao {
 
 	    return recentOrders;
 	}
+	
+	public boolean updateOrderStatus(int orderID, String status) {
+	    boolean success = false;
+	    String sql = "UPDATE Orders SET Status = ? WHERE OrderID = ?";
+	    
+	    try (Connection conn = new DBConnectSQL().getConnection();
+	         PreparedStatement ps = conn.prepareStatement(sql)) {
 
+	        ps.setString(1, status);
+	        ps.setInt(2, orderID);
+	        
+	        int rowsUpdated = ps.executeUpdate();
+	        if (rowsUpdated > 0) {
+	            success = true; // Trạng thái đã được cập nhật thành công
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    
+	    return success;
+	}
 	
 	public List<OrderModel> getAllOrders() {
 	    List<OrderModel> orders = new ArrayList<>();
@@ -302,7 +324,168 @@ public class OrderDao {
 	    }
 	    return orders;
 	}
+	
+	public List<OrderModel> getOrdersByStatus(String status) {
+	    List<OrderModel> orders = new ArrayList<>();
+	    String sql = "SELECT o.OrderID, u.FullName, o.OrderDate, o.Status, SUM(od.Quantity * p.Price) AS TotalAmount " +
+	                 "FROM Orders o " +
+	                 "INNER JOIN Users u ON o.UserID = u.UserID " +
+	                 "INNER JOIN OrderDetails od ON o.OrderID = od.OrderID " +
+	                 "INNER JOIN Products p ON od.ProductCode = p.ProductCode " +
+	                 "WHERE o.Status = ? " +
+	                 "GROUP BY o.OrderID, u.FullName, o.OrderDate, o.Status";
 
+	    try (Connection conn = new DBConnectSQL().getConnection();
+	         PreparedStatement ps = conn.prepareStatement(sql)) {
+
+	        ps.setString(1, status);
+	        
+	        try (ResultSet rs = ps.executeQuery()) {
+	            while (rs.next()) {
+	                OrderModel order = new OrderModel();
+	                order.setOrderID(rs.getInt("OrderID"));
+	                order.setFullName(rs.getString("FullName"));
+	                order.setOrderDate(rs.getDate("OrderDate"));
+	                order.setStatus(rs.getString("Status"));
+	                order.setTotalAmount(rs.getDouble("TotalAmount"));
+	                orders.add(order);
+	            }
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return orders;
+	}
+	
+	public List<OrderModel> getOrdersByPaymentMethod(String paymentMethod) {
+	    List<OrderModel> orders = new ArrayList<>();
+	    String sql = "SELECT o.OrderID, u.FullName, o.OrderDate, o.Status, SUM(od.Quantity * p.Price) AS TotalAmount " +
+	                 "FROM Orders o " +
+	                 "INNER JOIN Users u ON o.UserID = u.UserID " +
+	                 "INNER JOIN OrderDetails od ON o.OrderID = od.OrderID " +
+	                 "INNER JOIN Products p ON od.ProductCode = p.ProductCode " +
+	                 "WHERE o.PaymentMethod = ? " +
+	                 "GROUP BY o.OrderID, u.FullName, o.OrderDate, o.Status";
+
+	    try (Connection conn = new DBConnectSQL().getConnection();
+	         PreparedStatement ps = conn.prepareStatement(sql)) {
+
+	        ps.setString(1, paymentMethod);
+	        
+	        try (ResultSet rs = ps.executeQuery()) {
+	            while (rs.next()) {
+	                OrderModel order = new OrderModel();
+	                order.setOrderID(rs.getInt("OrderID"));
+	                order.setFullName(rs.getString("FullName"));
+	                order.setOrderDate(rs.getDate("OrderDate"));
+	                order.setStatus(rs.getString("Status"));
+	                order.setTotalAmount(rs.getDouble("TotalAmount"));
+	                orders.add(order);
+	            }
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return orders;
+	}
+	
+	public List<OrderModel> getOrdersByStatusAndPayment(String status, String paymentMethod) {
+	    List<OrderModel> orders = new ArrayList<>();
+	    String sql = "SELECT o.OrderID, u.FullName, o.OrderDate, o.Status, SUM(od.Quantity * p.Price) AS TotalAmount " +
+	                 "FROM Orders o " +
+	                 "INNER JOIN Users u ON o.UserID = u.UserID " +
+	                 "INNER JOIN OrderDetails od ON o.OrderID = od.OrderID " +
+	                 "INNER JOIN Products p ON od.ProductCode = p.ProductCode " +
+	                 "WHERE o.Status = ? AND o.PaymentMethod = ? " +
+	                 "GROUP BY o.OrderID, u.FullName, o.OrderDate, o.Status";
+
+	    try (Connection conn = new DBConnectSQL().getConnection();
+	         PreparedStatement ps = conn.prepareStatement(sql)) {
+
+	        ps.setString(1, status);
+	        ps.setString(2, paymentMethod);
+	        
+	        try (ResultSet rs = ps.executeQuery()) {
+	            while (rs.next()) {
+	                OrderModel order = new OrderModel();
+	                order.setOrderID(rs.getInt("OrderID"));
+	                order.setFullName(rs.getString("FullName"));
+	                order.setOrderDate(rs.getDate("OrderDate"));
+	                order.setStatus(rs.getString("Status"));
+	                order.setTotalAmount(rs.getDouble("TotalAmount"));
+	                orders.add(order);
+	            }
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return orders;
+	}
+	
+	public List<OrderModel> getOrdersByOrderID(String orderID) {
+        List<OrderModel> orders = new ArrayList<>();
+        String sql = "SELECT o.OrderID, u.FullName, o.OrderDate, o.Status, SUM(od.Quantity * p.Price) AS TotalAmount " +
+                     "FROM Orders o " +
+                     "INNER JOIN Users u ON o.UserID = u.UserID " +
+                     "INNER JOIN OrderDetails od ON o.OrderID = od.OrderID " +
+                     "INNER JOIN Products p ON od.ProductCode = p.ProductCode " +
+                     "WHERE o.OrderID = ? " +
+                     "GROUP BY o.OrderID, u.FullName, o.OrderDate, o.Status";
+        
+        try (Connection conn = new DBConnectSQL().getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            
+            ps.setString(1, orderID);
+            
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    OrderModel order = new OrderModel();
+                    order.setOrderID(rs.getInt("OrderID"));
+                    order.setFullName(rs.getString("FullName"));
+                    order.setOrderDate(rs.getDate("OrderDate"));
+                    order.setStatus(rs.getString("Status"));
+                    order.setTotalAmount(rs.getDouble("TotalAmount"));
+                    orders.add(order);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return orders;
+    }
+	public List<OrderModel> getOrdersByCustomerName(String searchQuery) {
+        List<OrderModel> orders = new ArrayList<>();
+        String sql = "SELECT o.OrderID, u.FullName, o.OrderDate, o.Status, SUM(od.Quantity * p.Price) AS TotalAmount " +
+                     "FROM Orders o " +
+                     "INNER JOIN Users u ON o.UserID = u.UserID " +
+                     "INNER JOIN OrderDetails od ON o.OrderID = od.OrderID " +
+                     "INNER JOIN Products p ON od.ProductCode = p.ProductCode " +
+                     "WHERE u.FullName LIKE ? " +
+                     "GROUP BY o.OrderID, u.FullName, o.OrderDate, o.Status";
+        
+        try (Connection conn = new DBConnectSQL().getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            
+            ps.setString(1, "%" + searchQuery + "%");
+            
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    OrderModel order = new OrderModel();
+                    order.setOrderID(rs.getInt("OrderID"));
+                    order.setFullName(rs.getString("FullName"));
+                    order.setOrderDate(rs.getDate("OrderDate"));
+                    order.setStatus(rs.getString("Status"));
+                    order.setTotalAmount(rs.getDouble("TotalAmount"));
+                    orders.add(order);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return orders;
+    }
+
+	
 
 	public static void main(String[] args) {
 		OrderDao orderDao = new OrderDao();
