@@ -120,7 +120,7 @@
 	<script
 		src="${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/js/demo.9833433a.js"></script>
 
-	<%@include file="/commons/admin/headerAdmin.jsp"%>;
+	<%@include file="/commons/admin/headerAdmin.jsp"%>
 
 	<div class="container-fluid">
 
@@ -372,8 +372,7 @@
 					<div class="card-header border-0 card-header-space-between">
 
 						<!-- Title -->
-						<h2 class="card-header-title h4 text-uppercase">Top selling
-							products</h2>
+						<h2 class="card-header-title h4 text-uppercase">Sản phẩm bán chạy</h2>
 
 						<!-- Dropdown -->
 						<div class="dropdown">
@@ -443,7 +442,7 @@
 						class="card-header border-0 border-0 card-header-space-between">
 
 						<!-- Title -->
-						<h2 class="card-header-title h4 text-uppercase">Recent orders
+						<h2 class="card-header-title h4 text-uppercase">Các đơn hàng gần đây
 						</h2>
 					</div>
 
@@ -615,7 +614,7 @@
 						<div class="card-header border-0 card-header-space-between">
 
 							<!-- Title -->
-							<h2 class="card-header-title h4 text-uppercase">Sales report
+							<h2 class="card-header-title h4 text-uppercase">Báo cáo doanh số
 							</h2>
 
 							<ul class="nav">
@@ -654,10 +653,10 @@
 						<div class="card-header border-0 card-header-space-between">
 
 							<!-- Title -->
-							<h2 class="card-header-title h4 text-uppercase">Users</h2>
+							<h2 class="card-header-title h4 text-uppercase">Người dùng</h2>
 							<button type="button" class="btn btn-danger btn-sm"
 								id="deleteUsersBtn">
-								<i class="fas fa-trash-alt"></i> Delete
+								<i class="fas fa-trash-alt"></i> Xoá
 							</button>
 
 							<!-- Dropdown -->
@@ -698,18 +697,18 @@
 										</th>
 
 										<th><a href="javascript: void(0);"
-											class="text-muted list-sort" data-sort="name"> Full name
+											class="text-muted list-sort" data-sort="name">Họ và tên
 										</a></th>
 										<th><a href="javascript: void(0);"
 											class="text-muted list-sort" data-sort="email"> Email </a></th>
 										<th><a href="javascript: void(0);"
 											class="text-muted list-sort" data-sort="id"> User ID </a></th>
 										<th><a href="javascript: void(0);"
-											class="text-muted list-sort" data-sort="date"> Signed up
+											class="text-muted list-sort" data-sort="date">Ngày đăng ký
 										</a></th>
 										<th class="w-150px min-w-150px"><a
 											href="javascript: void(0);" class="text-muted list-sort"
-											data-sort="status"> Status </a></th>
+											data-sort="status"> Trạng thái</a></th>
 									</tr>
 								</thead>
 

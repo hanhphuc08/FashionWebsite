@@ -81,34 +81,32 @@
 													<option value="ASMTN" ${categoryCode == 'ASMTN' ? 'selected' : ''}>Áo sơ mi tay ngắn</option>
 													<option value="APL" ${categoryCode == 'APL' ? 'selected' : ''}>Áo Polo</option>
 													<option value="AT" ${categoryCode == 'AT' ? 'selected' : ''}>Áo thun</option>
-
                                                 </select>
                                             </div>
                                             <div class="mb-4">
                                                 <label class="form-label" for="price">Giá *</label>
                                                 <input class="form-control" type="text" name="price" id="price" placeholder="Nhập giá sản phẩm" required>
                                             </div>
-
                                             <div class="mb-4">
                                                 <label for="size" class="form-label">Chọn size và nhập số lượng:</label>
-                                                <div>
-											            <label>Size S:</label>
-											            <input type="number" name="quantity_S" min="0" placeholder="Số lượng size S" required/>
+                                                <div class="d-flex align-items-center mb-3">
+											            <label class="form-label me-sm-3">S</label>
+											            <input class="form-control" type="number" name="quantity_S" min="0" placeholder="Số lượng size S" required/>
 											    </div>
 											    
-											    <div>
-											            <label>Size M:</label>
-											            <input type="number" name="quantity_M" min="0" placeholder="Số lượng size M" required/>
+											    <div class="d-flex align-items-center mb-3">
+											            <label class="form-label me-sm-3">M</label>
+											            <input class="form-control" type="number" name="quantity_M" min="0" placeholder="Số lượng size M" required/>
 											    </div>
 											    
-											    <div>
-											            <label>Size L:</label>
-											            <input type="number" name="quantity_L" min="0" placeholder="Số lượng size L"required/>
+											    <div class="d-flex align-items-center mb-3">
+											            <label class="form-label me-sm-3">L</label>
+											            <input class="form-control" type="number" name="quantity_L" min="0" placeholder="Số lượng size L"required/>
 											     </div>
 											     
-											     <div>
-											            <label>Size XL:</label>
-											            <input type="number" name="quantity_XL" min="0" placeholder="Số lượng size XL" required/>
+											     <div class="d-flex align-items-center mb-3">
+											            <label class="form-label me-sm-2">XL</label>
+											            <input class="form-control" type="number" name="quantity_XL" min="0" placeholder="Số lượng size XL" required/>
 											      </div>
                                             </div>
                                         </div>

@@ -75,7 +75,7 @@
 	<div id="step1">
 	<form id="emailForm">
 		<div class="card text-center" style="width: 400px;height:350px">
-			<div class="card-header h5 text-white bg-primary">Password
+			<div class="card-header h5 text-bg-dark ">Password
 				Reset</div>
 			<div class="card-body px-5">
 				<p class="card-text py-2">Nhập email để xác thực.</p>
@@ -86,9 +86,9 @@
 						<span class="icon-warning" style="color: orange;">⚠️</span> Vui
 						lòng nhập địa chỉ email hợp lệ
 					</div>
-					<button type="button" class="btn btn-primary w-100" onclick="sendEmail()">Gửi mã xác nhận</button>
+					<button type="button" class="btn text-bg-dark w-100" onclick="sendEmail()">Gửi mã xác nhận</button>
 					<div class="d-flex justify-content-between mt-4">
-						<a class="" href="${pageContext.request.contextPath}/login">Login</a> <a class="" href="${pageContext.request.contextPath}/register">Register</a>
+						<a class="text-dark" href="${pageContext.request.contextPath}/login">Login</a> <a class="text-dark" href="${pageContext.request.contextPath}/register">Register</a>
 					</div>
 				</div>
 			</div>
@@ -98,14 +98,14 @@
 		<div id="step2" style="display: none;">
 		<form id="codeForm">
 			<div class="card text-center" style="width: 400px;height:350px">
-				<div class="card-header h5 text-white bg-primary">Password
+				<div class="card-header h5 text-bg-dark">Password
 					Reset</div>
 				<div class="card-body px-5">
 				<p class="card-text py-2">Nhập mã xác nhận</p>
 					<div data-mdb-input-init class="form-outline">
 						<input type="text" id="code" class="form-control my-3" /> 
 					</div>
-					<button type="button" class="btn btn-primary w-100"
+					<button type="button" class="btn text-bg-dark w-100"
 						onclick="verifyCode()">Xác nhận mã</button>
 				</div>
 			</div>
@@ -114,7 +114,7 @@
 		<div id="step3" style="display: none;">
 		<form id="resetPasswordForm"></form>
 		<div class="card text-center" style="width: 400px; height:350px">
-				<div class="card-header h5 text-white bg-primary">Password
+				<div class="card-header h5 text-bg-dark">Password
 					Reset</div>
 				<div class="card-body px-5">
 					<label class="form-label" for="newPassword">Mật khẩu mới</label>
@@ -124,7 +124,7 @@
 					<div data-mdb-input-init class="form-outline">
 						<input type="password" id="confirmPassword" class="form-control my-3" required>  
 					</div>
-					<button type="submit" class="btn btn-primary w-100"
+					<button type="submit" class="btn text-bg-dark w-100"
 						onclick="verifyCode()">Đặt lại mật khẩu</button>
 				</div>
 			</div>

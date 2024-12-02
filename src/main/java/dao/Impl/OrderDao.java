@@ -184,6 +184,7 @@ public class OrderDao {
 
 	        if (rs.next()) {
 	            totalCancelledOrders = rs.getInt("TotalCancelledOrders");
+	            System.out.println("Total cancelled orders: " + totalCancelledOrders);
 	        }
 	    } catch (Exception e) {
 	        e.printStackTrace();

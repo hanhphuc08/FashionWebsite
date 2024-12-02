@@ -6,60 +6,7 @@
 <header class="header">
 	<!-- Top Bar-->
 	<div class="top-bar">
-		<div class="container-fluid">
-			<div class="row d-flex align-items-center">
-				<div class="col-sm-7 d-none d-sm-block">
-					<ul class="list-inline topbar-text mb-0">
-						<li class="list-inline-item pe-3 me-0"><svg
-								class="svg-icon me-2">
-                    <use xlink:href="#calls-1"> </use>
-                  </svg>0362 980 918</li>
-						<li
-							class="list-inline-item px-3 border-start d-none d-lg-inline-block">Miễn
-							phí vận chuyển cho đơn hàng từ $300</li>
-					</ul>
-				</div>
-				<div class="col-sm-5 d-flex justify-content-end">
-					<!-- Language Dropdown-->
-					<div class="dropdown border-end px-3">
-						<a class="dropdown-toggle topbar-link" id="langsDropdown" href="#"
-							data-bs-toggle="dropdown" data-bs-display="static"
-							aria-haspopup="true" aria-expanded="false"><img
-							class="topbar-flag"
-							src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/flag/gb.svg"
-							alt="english">English</a>
-						<div
-							class="dropdown-menu dropdown-menu-end dropdown-menu-animated"
-							aria-labelledby="langsDropdown">
-							<a class="dropdown-item text-sm" href="#"><img
-								class="topbar-flag"
-								src="https://st.quantrimang.com/photos/image/2021/09/05/Co-Vietnam.png"
-								alt="vietnam">VietNam</a><a class="dropdown-item text-sm"
-								href="#"> <img class="topbar-flag"
-								src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/flag/fr.svg"
-								alt="french">French
-							</a>
-						</div>
-					</div>
-					<!-- Currency Dropdown-->
-					<div class="dropdown ps-3 ms-0">
-						<a class="dropdown-toggle topbar-link" id="currencyDropdown"
-							href="#" data-bs-toggle="dropdown" data-bs-display="static"
-							aria-haspopup="true" aria-expanded="false"> <i
-							class="fas fa-dollar-sign text-xs align-middle mt-n1 me-2"> </i>USD
-						</a>
-						<div
-							class="dropdown-menu dropdown-menu-end dropdown-menu-animated"
-							aria-labelledby="currencyDropdown">
-							<a class="dropdown-item text-sm" href="#"> <i
-								class="fas fa-euro-sign text-xs align-middle mt-n1 me-2"> </i>EUR
-							</a><a class="dropdown-item text-sm" href="#"><i> <span>₫</span>
-							</i> VND</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+		<div class="container-fluid"></div>
 	</div>
 	<!-- Top Bar End-->
 	<!-- Navbar-->
@@ -114,20 +61,14 @@
 
 					<!-- Notification-->
 					<!-- Notification Bell Button -->
-					<div class="nav-item navbar-icon-link mx-3" id="notificationButton"
-						data-bs-toggle="dropdown" aria-haspopup="true"
+					<div class="nav-item navbar-icon-link mx-3" id="notificationButton" aria-haspopup="true"
 						aria-expanded="false">
-						<i class="fas fa-bell"></i>
+						<a href="${pageContext.request.contextPath}/admin/manageOrders">
+							<i class="fas fa-bell text-dark"></i>
+						</a>
 					</div>
+					
 
-					<!-- Notification Dropdown (when clicked on bell icon) -->
-					<div class="dropdown-menu dropdown-menu-end dropdown-menu-animated"
-						aria-labelledby="notificationButton">
-						<div class="dropdown-footer text-center">
-							<a class="dropdown-item text-muted" href="${pageContext.request.contextPath}/admin/manageOrders">Xem tất cả thông
-								báo</a>
-						</div>
-					</div>
 					<!-- User Not Logged - link to login page-->
 					<div class="nav-item dropdown">
 						<a class="navbar-icon-link" id="userdetails" href="#"

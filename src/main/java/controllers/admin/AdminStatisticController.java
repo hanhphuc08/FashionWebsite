@@ -44,6 +44,7 @@ public class AdminStatisticController extends HttpServlet {
 		int orderTotalToday = orderDao.getTotalOrdersToday();
 		int orderTotalMonth = orderDao.getTotalOrdersThisMonth();
 		int orderCancelled = orderDao.getTotalCancelledOrders();
+		System.out.println("Order Cancelled: " + orderCancelled); 
 		
 		req.setAttribute("orderTotal", orderTotal);
 		req.setAttribute("orderTotalToday", orderTotalToday);
@@ -55,7 +56,7 @@ public class AdminStatisticController extends HttpServlet {
 		double totalAmount = orderDao.getTotalAmount();
 	    double totalAmountToday = orderDao.getTotalAmountToday();
 	    double totalAmountThisMonth = orderDao.getTotalAmountThisMonth();
-	    double currentBalance = (20 * totalAmount) / 100;
+	    double currentBalance = (35 * totalAmount) / 100;
 	    
 	    String formattedTotalAmount = formatCurrency(totalAmount);
         String formattedTotalAmountToday = formatCurrency(totalAmountToday);
