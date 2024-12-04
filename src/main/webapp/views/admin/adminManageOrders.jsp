@@ -87,35 +87,7 @@
     <section>
         <div class="container">
             <!-- Begin Nav-Bar -->
-            <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
-                <div class="container-fluid">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-			                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/manageOrders?status=">Tất cả đơn hàng</a>
-			                </li>
-			                <li class="nav-item">
-			                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/manageOrders?status=Đang xác nhận">Chưa xác nhận</a>
-			                </li>
-			                <li class="nav-item">
-			                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/manageOrders?status=Xác nhận">Đã xác nhận</a>
-			                </li>
-			                <li class="nav-item">
-			                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/manageOrders?status=Huỷ">Đã hủy</a>
-			                </li>
-			                <li class="nav-item">
-			                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/manageOrders?paymentMethod=Chuyển khoản">Chuyển khoản</a>
-			                </li>
-			                <li class="nav-item">
-			                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/manageOrders?paymentMethod=Tiền mặt">Tiền mặt</a>
-			                </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+            
             <!-- End Nav-Bar -->
     
             <!-- Begin Search Bar -->
@@ -165,7 +137,7 @@
                                             <!-- Trạng thái -->
                                             <div class="col-2">${order.status}</div>
                                             <!-- Tổng tiền -->
-                                            <div class="col-2">${order.totalAmount}</div>
+                                            <div class="col-2">${order.totalAmountFormatted}</div>
                                             <div class="col-2">
                                                 <a href="${pageContext.request.contextPath}/admin/manageOrderDetails?orderID=${order.orderID}" class="btn btn-info">Chi tiết</a>
                                             </div>

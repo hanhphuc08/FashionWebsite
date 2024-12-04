@@ -1,6 +1,7 @@
 package controllers.user;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import dao.Impl.CartDao;
@@ -18,6 +19,10 @@ public class UserCartController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private CartDao cartDao = new CartDao();
+	 private String formatCurrency(double amount) {
+	        DecimalFormat formatter = new DecimalFormat("###,###,###");
+	        return formatter.format(amount) + " VND";
+	    }
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		  	HttpSession session = req.getSession(false);
@@ -39,15 +44,17 @@ public class UserCartController extends HttpServlet {
 		    double totalAmount = 0;
 	        for(CartModel item : cartItems) {
 	        	totalAmount += item.getPrice() * item.getQuantity();
+	        	item.setPriceFormatted(formatCurrency(item.getPrice())); // Định dạng giá từng sản phẩm
+	            item.setTotalPriceFormatted(formatCurrency(item.getPrice() * item.getQuantity()));
 	        }
 	        double shipping = 0;
 	        double serviceTax = 0;
 	        double finalToTal = totalAmount + shipping + serviceTax;
 	        
-	        req.setAttribute("totalAmount", totalAmount);
-	        req.setAttribute("shipping", shipping);
-	        req.setAttribute("serviceTax", serviceTax);
-	        req.setAttribute("finalTotal", finalToTal);
+	        req.setAttribute("totalAmountFormatted", formatCurrency(totalAmount));
+	        req.setAttribute("shippingFormatted", formatCurrency(shipping));
+	        req.setAttribute("serviceTaxFormatted", formatCurrency(serviceTax));
+	        req.setAttribute("finalTotalFormatted", formatCurrency(finalToTal));
 		    
 		    req.setAttribute("cartItems", cartItems);
 		    

@@ -23,7 +23,15 @@ public class LoginController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		 req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
+		HttpSession session = req.getSession(false);
+	    if (session != null) {
+	        String successMessage = (String) session.getAttribute("successMessage");
+	        if (successMessage != null) {
+	            req.setAttribute("successMessage", successMessage);
+	            session.removeAttribute("successMessage"); // Xóa thông báo sau khi hiển thị
+	        }
+	    }
+	    req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
 		
 		
 	}

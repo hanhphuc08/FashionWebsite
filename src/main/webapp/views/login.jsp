@@ -56,13 +56,17 @@
 
                   <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Đăng nhập vào tài khoản của bạn</h5>
                   
-                  <c:if test = "${not empty alert}">
-                  		<div class="alert alert-danger">${alert}</div>
-                  </c:if>
-					
-				   <c:if test="${not empty successMessage}">
-    					<div class="alert alert-success">${successMessage}</div>
-  				   </c:if>
+                  <!-- Thông báo -->
+                                    <c:if test="${not empty alert}">
+                                        <div class="alert alert-danger">
+                                            ${alert}
+                                        </div>
+                                    </c:if>
+                                    <c:if test="${not empty successMessage}">
+                                        <div class="alert alert-success">
+                                            ${successMessage}
+                                        </div>
+                                    </c:if>
                   <div data-mdb-input-init class="form-outline mb-4">
                     <input type="username" id="form2Example17" name = "username" class="form-control form-control-lg" />
                     <label class="form-label" for="form2Example17">Email hoặc Số điện thoại</label>

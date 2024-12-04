@@ -258,14 +258,14 @@
 								<p class="fs-5 fw-bold mb-0">${orderTotalMonth }</p>
 							</div>
 							
-							<div class="col text-end text-truncate">
+							<%-- <div class="col text-end text-truncate">
 
 								<!-- Label -->
 								<p class="fs-6 text-muted text-uppercase mb-0">Huỷ</p>
 
 								<!-- Comment -->
 								<p class="fs-5 fw-bold mb-0">${orderCancelled }</p>
-							</div>
+							</div> --%>
 						</div>
 						<!-- / .row -->
 					</div>

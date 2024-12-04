@@ -77,7 +77,7 @@
                 <tr>
                   <th class="py-4 align-middle"># ${order.orderID}</th>
                   <td class="py-4 align-middle">${order.orderDate }</td>
-                  <td class="py-4 align-middle">${order.totalAmount }</td>
+                  <td class="py-4 align-middle">${order.totalAmountFormatted }</td>
                   <td class="py-4 align-middle"><span class="badge p-2 text-uppercase badge-info-light">${order.status }</span></td>
                   <td class="py-4 align-middle"><a class="btn btn-outline-dark btn-sm" href="${pageContext.request.contextPath}/user/orderDetail?orderID=${order.orderID}">xem</a></td>
                 </tr>

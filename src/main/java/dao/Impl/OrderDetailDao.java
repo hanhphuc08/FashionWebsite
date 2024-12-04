@@ -39,10 +39,12 @@ public class OrderDetailDao {
 	 public List<OrderDetailModel> getOrderDetailsByOrderId(int orderID) {
 		    List<OrderDetailModel> details = new ArrayList<>();
 
-		    String sql = "SELECT DISTINCT od.OrderID, od.ProductCode, p.ProductName, p.Price, od.Quantity, p.Color, p.Image, od.Size " +
+		    String sql = "SELECT DISTINCT od.OrderID, od.ProductCode, p.ProductName, p.Price, od.Quantity, p.Color, p.Image, od.Size, o.PaymentMethod " +
 		             "FROM OrderDetails od " +
-		             "INNER JOIN Products p ON od.ProductCode = p.ProductCode " +  // Chỉ join với Products để lấy thông tin sản phẩm
+		             "INNER JOIN Products p ON od.ProductCode = p.ProductCode " +
+		             "INNER JOIN Orders o ON od.OrderID = o.OrderID " +
 		             "WHERE od.OrderID = ?";
+
 
 		    
 		    try (Connection conn = new DBConnectSQL().getConnection();
@@ -65,6 +67,8 @@ public class OrderDetailDao {
 		            detail.setColor(rs.getString("Color"));
 		            detail.setSize(rs.getString("Size"));  
 		            detail.setImage(rs.getString("Image"));
+		            detail.setPaymentMethod(rs.getString("PaymentMethod"));
+
 		            
 		            details.add(detail); 
 		        }

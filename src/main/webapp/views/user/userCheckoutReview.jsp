@@ -96,9 +96,9 @@
                             </div>
                           </div>
                         </div>
-                        <div class="col-2">${item.price }</div>
+                        <div class="col-2">${item.priceFormatted }</div>
                         <div class="col-2">${item.quantity } </div>
-                        <div class="col-2 text-center">${item.price * item.quantity}</div>
+                        <div class="col-2 text-center">${item.totalPriceFormatted}</div>
                       </div>
                   		</c:forEach>
                   	</div>
@@ -126,10 +126,10 @@
               <div class="block-body bg-light pt-1">
                 <p class="text-sm">Chi phí vận chuyển và chi phí bổ sung sẽ được tính dựa trên các sản phẩm bạn đã chọn.</p>
                 <ul class="order-summary mb-0 list-unstyled">
-                  <li class="order-summary-item"><span>Tổng tiền ước tính</span><span>${totalAmount }</span></li>
-                  <li class="order-summary-item"><span>Phí vận chuyện</span><span>${shipping}</span></li>
-                  <li class="order-summary-item"><span>Thuế dịch vụ</span><span>${serviceTax }</span></li>
-                  <li class="order-summary-item border-0"><span>Tổng tiền</span><strong class="order-summary-total">${finalTotal }</strong></li>
+                  <li class="order-summary-item"><span>Tổng tiền ước tính</span><span>${totalAmountFormatted }</span></li>
+                  <li class="order-summary-item"><span>Phí vận chuyện</span><span>${shippingFormatted}</span></li>
+                  <li class="order-summary-item"><span>Thuế dịch vụ</span><span>${serviceTaxFormatted }</span></li>
+                  <li class="order-summary-item border-0"><span>Tổng tiền</span><strong class="order-summary-total">${finalTotalFormatted }</strong></li>
                 </ul>
               </div>
             </div>

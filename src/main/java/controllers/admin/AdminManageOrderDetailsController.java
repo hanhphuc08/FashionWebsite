@@ -1,6 +1,7 @@
 package controllers.admin;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import dao.Impl.CartDao;
@@ -29,6 +30,10 @@ public class AdminManageOrderDetailsController extends HttpServlet {
 	OrderDao orderDao = new OrderDao();
 	private UserAddressDao userAddressDao = new UserAddressDao();
 	private OrderDetailDao orderDetailDao = new OrderDetailDao();
+	private String formatCurrency(double amount) {
+        DecimalFormat formatter = new DecimalFormat("###,###,###");
+        return formatter.format(amount) + " VND";
+    }
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			HttpSession session = req.getSession();
@@ -60,16 +65,18 @@ public class AdminManageOrderDetailsController extends HttpServlet {
 		    double totalAmount = 0;
 		    for (OrderDetailModel orderDetail : orderDetails) {
 		        totalAmount += orderDetail.getPrice() * orderDetail.getQuantity();
+		        orderDetail.setPriceFormatted(formatCurrency(orderDetail.getPrice()));
+		        orderDetail.setTotalPriceFormatted(formatCurrency(orderDetail.getPrice() * orderDetail.getQuantity()));
 		    }
 
 		    double shipping = 0; 
 		    double serviceTax = 0; 
 		    double finalTotal = totalAmount + shipping + serviceTax;
 
-		    req.setAttribute("totalAmount", totalAmount);
-		    req.setAttribute("shipping", shipping);
-		    req.setAttribute("serviceTax", serviceTax);
-		    req.setAttribute("finalTotal", finalTotal);
+		    req.setAttribute("totalAmountFormatted", formatCurrency(totalAmount));
+	        req.setAttribute("shippingFormatted", formatCurrency(shipping));
+	        req.setAttribute("serviceTaxFormatted", formatCurrency(serviceTax));
+	        req.setAttribute("finalTotalFormatted", formatCurrency(finalTotal));
 
 		    int customerUserId = order.getUserID();
 		    System.out.println("Order UserID: " + customerUserId);
@@ -108,7 +115,6 @@ public class AdminManageOrderDetailsController extends HttpServlet {
 
 	        int orderID = Integer.parseInt(orderIDStr);
 	        
-	        // Cập nhật trạng thái đơn hàng
 	        boolean updateSuccess = orderDao.updateOrderStatus(orderID, status);
 	        
 	        if (updateSuccess) {

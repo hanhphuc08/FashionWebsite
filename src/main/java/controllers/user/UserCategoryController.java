@@ -1,6 +1,7 @@
 package controllers.user;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import dao.Impl.CategoryDao;
@@ -24,6 +25,10 @@ import models.ProductModel;
 public class UserCategoryController extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
+	private String formatCurrency(double amount) {
+        DecimalFormat formatter = new DecimalFormat("###,###,###");
+        return formatter.format(amount) + " VND";
+    }
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -79,6 +84,9 @@ public class UserCategoryController extends HttpServlet{
 			 totalPages = dao.getTotalPages(pageSize);
 		     products = dao.getAllProductsByPageAndOrder(page, pageSize, orderby);
 		 }
+		 for (ProductModel product : products) {
+		        product.setPriceFormatted(formatCurrency(product.getPrice()));
+		    }
 		 req.setAttribute("listP", products);
 		 req.setAttribute("currentPage", page);
 		 req.setAttribute("totalPages", totalPages); 

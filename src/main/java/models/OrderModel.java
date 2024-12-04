@@ -13,6 +13,15 @@ public class OrderModel {
 	    
 	    private String fullName;
 	    
+	    private String totalAmountFormatted;
+
+	    public String getTotalAmountFormatted() {
+	        return totalAmountFormatted;
+	    }
+
+	    public void setTotalAmountFormatted(String totalAmountFormatted) {
+	        this.totalAmountFormatted = totalAmountFormatted;
+	    }
 	    private String formattedTotalAmount;
 	    
 	    

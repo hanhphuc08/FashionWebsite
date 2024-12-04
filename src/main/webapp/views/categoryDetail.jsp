@@ -69,7 +69,7 @@
                         <h3 class="mb-4">${product.productName}</h3>
                         <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-sm-between mb-4">
                             <ul class="list-inline mb-2 mb-sm-0">
-                                <li class="list-inline-item h4 fw-light mb-0">${product.price }</li>
+                                <li class="list-inline-item h4 fw-light mb-0">${product.priceFormatted }</li>
                             </ul>
                         </div>
                         <p class="text-muted">${product.categoryName }</p>
@@ -181,7 +181,7 @@
                                     ${similarProduct.productName}
                                 </a>
                             </h3>
-                  <span class="text-muted">${similarProduct.price}</span>
+                  <span class="text-muted">${similarProduct.priceFormatted}</span>
                 </div>
               </div>
             </div>

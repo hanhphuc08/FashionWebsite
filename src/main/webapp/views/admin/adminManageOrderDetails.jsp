@@ -107,9 +107,9 @@
 												</div>
 											</div>
 										</div>
-										<div class="col-2">${orderDetail.price }</div>
+										<div class="col-2">${orderDetail.priceFormatted }</div>
 										<div class="col-2">${orderDetail.quantity }</div>
-										<div class="col-2 text-center">${orderDetail.price * orderDetail.quantity }</div>
+										<div class="col-2 text-center">${orderDetail.totalPriceFormatted }</div>
 									</div>
 								</c:forEach>
 							</div>
@@ -125,11 +125,11 @@
 							<div class="block-body bg-light pt-1">
 								<ul class="order-summary mb-0 list-unstyled">
 									<li class="order-summary-item"><span>Tổng tiền ước
-											tính</span><span>${totalAmount }</span></li>
-									<li class="order-summary-item"><span>Phí vận chuyện</span><span>${shipping }</span></li>
-									<li class="order-summary-item"><span>Thuế dịch vụ</span><span>${serviceTax }</span></li>
+											tính</span><span>${totalAmountFormatted }</span></li>
+									<li class="order-summary-item"><span>Phí vận chuyện</span><span>${shippingFormatted }</span></li>
+									<li class="order-summary-item"><span>Thuế dịch vụ</span><span>${serviceTaxFormatted }</span></li>
 									<li class="order-summary-item border-0"><span>Tổng
-											tiền</span><strong class="order-summary-total">${finalTotal }</strong></li>
+											tiền</span><strong class="order-summary-total">${finalTotalFormatted }</strong></li>
 								</ul>
 							</div>
 						</div>

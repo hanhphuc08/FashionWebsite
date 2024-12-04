@@ -128,7 +128,7 @@
                     	 href="${pageContext.request.contextPath}/categoryDetail?productCode=${o.productCode}">
                     	 ${o.productName }</a>
                     </h3>
-                    <span class="text-muted">${o.price }</span>
+                    <span class="text-muted">${o.priceFormatted }</span>
                   </div>
                 </div>
               </div>

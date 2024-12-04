@@ -1,6 +1,7 @@
 package controllers.user;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import dao.Impl.CartDao;
@@ -24,6 +25,10 @@ public class UserCategoryDetailController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	 private CategoryDetailDao categoryDetailDao = new CategoryDetailDao();
 	 private CartDao cartDao = new CartDao();
+	 private String formatCurrency(double amount) {
+	        DecimalFormat formatter = new DecimalFormat("###,###,###");
+	        return formatter.format(amount) + " VND";
+	    }
 	 @Override
 	    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -39,8 +44,12 @@ public class UserCategoryDetailController extends HttpServlet {
 	            resp.sendRedirect(req.getContextPath() + "/404");
 	            return;
 	        }
+	        product.setPriceFormatted(formatCurrency(product.getPrice()));
 	        
 	        List<ProductModel> similarProduct = categoryDetailDao.getSimilarProduct(product.getCategoryCode(), productCode, 6);
+	        for (ProductModel sp : similarProduct) {
+	            sp.setPriceFormatted(formatCurrency(sp.getPrice()));
+	        }
 	        req.setAttribute("product", product);
 	        req.setAttribute("similarProduct", similarProduct);
 	        req.getRequestDispatcher("/views/user/userCategoryDetail.jsp").forward(req, resp);

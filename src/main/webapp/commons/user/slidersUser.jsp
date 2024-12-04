@@ -123,7 +123,7 @@
               <div class="py-2">
                 <p class="text-muted text-sm mb-1">${product8.typeCategoryName }</p>
                 <h3 class="h6 text-uppercase mb-1"><a class="text-dark" href="${pageContext.request.contextPath}/user/categoryDetail">
-                ${product8.categoryName }</a></h3><span class="text-muted">${product8.price }</span>
+                ${product8.categoryName }</a></h3><span class="text-muted">${product8.priceFormatted }</span>
               </div>
             </div>
           </div>

@@ -73,7 +73,7 @@
         
           <h1 class="hero-heading">Đơn hàng #${order.orderID }</h1>
           <div class="row">   
-            <div class="col-xl-8 offset-xl-2"><p class="lead text-muted">Đơn hàng #${order.orderID} đã được đặt vào ngày <strong>${order.orderDate }</strong> và đang <strong>${order.status }</strong>.</p><p class="text-muted">Nếu bạn có bất kỳ thắc mắc nào, vui lòng <a href="contact.html">liên hệ với chúng tôi</a>, trung tâm dịch vụ chăm sóc khách hàng của chúng tôi luôn trực 24/7</p></div>
+            <div class="col-xl-8 offset-xl-2"><p class="lead text-muted">Đơn hàng #${order.orderID} đã được đặt vào ngày <strong>${order.orderDate }</strong> và <strong>${order.status }</strong>.</p><p class="text-muted">Nếu bạn có bất kỳ thắc mắc nào, vui lòng <a href="contact.html">liên hệ với chúng tôi</a>, trung tâm dịch vụ chăm sóc khách hàng của chúng tôi luôn trực 24/7</p></div>
           </div>
         </div>
 
@@ -109,13 +109,13 @@
                             <strong>${orderDetail.productName}</strong>
                           </a>
                           <br><span class="text-muted text-sm">Size: ${orderDetail.size}</span>
-                          <br><span class="text-muted text-sm">Colour: ${orderDetail.color}</span>
+                          <br><span class="text-muted text-sm">Màu: ${orderDetail.color}</span>
                         </div>
                       </div>
                     </div>
-                    <div class="col-2">${orderDetail.price}</div>
+                    <div class="col-2">${orderDetail.priceFormatted}</div>
                     <div class="col-2">${orderDetail.quantity}</div>
-                    <div class="col-2 text-center">${orderDetail.price * orderDetail.quantity}</div>
+                    <div class="col-2 text-center">${orderDetail.totalPriceFormatted}</div>
                   </div>
                 </c:forEach>
               </div>
@@ -137,10 +137,10 @@
           <div class="block-body bg-light pt-1">
             <p class="text-sm">Chi phí vận chuyển và chi phí bổ sung sẽ được tính dựa trên các sản phẩm bạn đã chọn.</p>
             <ul class="order-summary mb-0 list-unstyled">
-              <li class="order-summary-item"><span>Tổng tiền ước tính</span><span>${totalAmount}</span></li>
-              <li class="order-summary-item"><span>Phí vận chuyển</span><span>${shipping}</span></li>
-              <li class="order-summary-item"><span>Thuế dịch vụ</span><span>${serviceTax}</span></li>
-              <li class="order-summary-item border-0"><span>Tổng tiền</span><strong class="order-summary-total">${finalTotal}</strong></li>
+              <li class="order-summary-item"><span>Tổng tiền ước tính</span><span>${totalAmountFormatted}</span></li>
+              <li class="order-summary-item"><span>Phí vận chuyển</span><span>${shippingFormatted}</span></li>
+              <li class="order-summary-item"><span>Thuế dịch vụ</span><span>${serviceTaxFormatted}</span></li>
+              <li class="order-summary-item border-0"><span>Tổng tiền</span><strong class="order-summary-total">${finalTotalFormatted}</strong></li>
             </ul>
           </div>
         </div>
