@@ -44,11 +44,11 @@ public class LoginController extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html");
 
-		// lấy tham số từ view
+
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
+		
 
-		// Xử lý bài toán
 		String alertMsg = "";
 		if (username.isEmpty() || password.isEmpty()) {
 			alertMsg = "Tài khoản hoặc mật khẩu không được rỗng";
@@ -56,7 +56,11 @@ public class LoginController extends HttpServlet {
 			req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
 			return;
 		}
+		System.out.println(username);
+		System.out.println(password);
 		UserModel user = service.login(username, password);
+		
+		System.out.println(user.toString());
 		if (user != null) {
 
 			HttpSession session = req.getSession(true);
@@ -72,7 +76,7 @@ public class LoginController extends HttpServlet {
 				resp.sendRedirect(req.getContextPath() + "/admin/home");
 			} else {
 				String productCode = (String) session.getAttribute("productCode");
-                session.removeAttribute("productCode"); // Xóa productCode sau khi sử dụng
+                session.removeAttribute("productCode");
 
                 if (productCode != null) {
                     resp.sendRedirect(req.getContextPath() + "/user/categoryDetail?productCode=" + productCode);

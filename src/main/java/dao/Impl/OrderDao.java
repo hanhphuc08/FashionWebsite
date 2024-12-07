@@ -175,7 +175,7 @@ public class OrderDao {
 	    return totalOrders;
 	}
 	public int getTotalCancelledOrders() {
-	    String sql = "SELECT COUNT(*) AS TotalCancelledOrders FROM Orders WHERE Status = 'Huỷ'";
+	    String sql = "SELECT COUNT(*) AS TotalCancelledOrders FROM Orders WHERE Status = N'Huỷ'";
 	    int totalCancelledOrders = 0;
 
 	    try (Connection conn = new DBConnectSQL().getConnection();
@@ -305,7 +305,8 @@ public class OrderDao {
 	                 "INNER JOIN Users u ON o.UserID = u.UserID " +
 	                 "INNER JOIN OrderDetails od ON o.OrderID = od.OrderID " +
 	                 "INNER JOIN Products p ON od.ProductCode = p.ProductCode " +
-	                 "GROUP BY o.OrderID, u.FullName, o.OrderDate, o.Status";
+	                 "GROUP BY o.OrderID, u.FullName, o.OrderDate, o.Status " +
+	                 "ORDER BY o.OrderDate DESC ";
 
 	    try (Connection conn = new DBConnectSQL().getConnection();
 	         PreparedStatement ps = conn.prepareStatement(sql);
@@ -485,21 +486,39 @@ public class OrderDao {
         }
         return orders;
     }
+	public int getPendingOrderCountToday() {
+
+	    String sql = "SELECT COUNT(*) AS TotalAmount " +
+	                 "FROM Orders " +
+	                 "WHERE Status = N'Đang xác nhận' " +
+	                 "AND CAST(OrderDate AS DATE) = CAST(GETDATE() AS DATE)";
+	    int totalAmount = 0;
+
+	    try (Connection conn = new DBConnectSQL().getConnection();
+	         PreparedStatement ps = conn.prepareStatement(sql);
+	         ResultSet rs = ps.executeQuery()) {
+
+	        if (rs.next()) {
+	            totalAmount = rs.getInt("TotalAmount");
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return totalAmount;
+	}
+
+
 
 	
 
 	public static void main(String[] args) {
 		OrderDao orderDao = new OrderDao();
 		
-		double totalAmount = orderDao.getTotalAmount();
-		System.out.println("Tổng tiền đơn hàng hôm nay: " + totalAmount);
+		int totalAmount = orderDao.getPendingOrderCountToday();
+		System.out.println("Tổng đơn hàng hôm nay: " + totalAmount);
 
-		double totalAmountToday = orderDao.getTotalAmountToday();
-		System.out.println("Tổng tiền đơn hàng (không huỷ) hôm nay: " + totalAmountToday);
-
-		// Tổng tiền các đơn hàng không bị huỷ trong tháng này
-		double totalAmountThisMonth = orderDao.getTotalAmountThisMonth();
-		System.out.println("Tổng tiền đơn hàng (không huỷ) trong tháng này: " + totalAmountThisMonth);
+		
 
 
 	}

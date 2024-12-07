@@ -117,13 +117,13 @@ public class CartDao {
             ps.setInt(1, userId);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
-                    return rs.getInt("TotalItems"); // Trả về số dòng
+                    return rs.getInt("TotalItems");
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return 0; // Trả về 0 nếu có lỗi hoặc không có dòng nào
+        return 0;
     }
 
     public boolean updateQuantity(int userId, String productCode, String size, int quantityChange) {

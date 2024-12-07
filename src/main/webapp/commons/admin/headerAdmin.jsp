@@ -66,6 +66,9 @@
 						<a href="${pageContext.request.contextPath}/admin/manageOrders">
 							<i class="fas fa-bell text-dark"></i>
 						</a>
+						<div class="navbar-icon-link-badge">
+            		<c:out value="${sessionScope.pendingOrder}" default="0" />
+       			 </div>
 					</div>
 					
 

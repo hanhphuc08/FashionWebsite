@@ -67,15 +67,23 @@ import models.UserModel;
 	            }
 	        } else {
 	            
-	            orders = getAllOrders();
+	            orders = orderDao.getAllOrders();
 	        }
 	        for (OrderModel order : orders) {
 	            order.setTotalAmountFormatted(formatCurrency(order.getTotalAmount()));
 	        }
 			req.setAttribute("orderList", orders);
 			
+			int pendingOrder = orderDao.getPendingOrderCountToday();
+			System.out.println("Pending orders count: " + pendingOrder);
+			session.setAttribute("pendingOrder", pendingOrder);
+			
+			
 			req.getRequestDispatcher("/views/admin/adminManageOrders.jsp").forward(req, resp);
 		}
+		
+		
+		
 		private List<OrderModel> getAllOrders() {
 	        List<OrderModel> orders = new ArrayList<>();
 	        String sql = "SELECT o.OrderID, u.FullName, o.OrderDate, o.Status, SUM(od.Quantity * p.Price) AS TotalAmount " +
@@ -83,7 +91,8 @@ import models.UserModel;
 	                     "INNER JOIN Users u ON o.UserID = u.UserID " +
 	                     "INNER JOIN OrderDetails od ON o.OrderID = od.OrderID " +
 	                     "INNER JOIN Products p ON od.ProductCode = p.ProductCode " +
-	                     "GROUP BY o.OrderID, u.FullName, o.OrderDate, o.Status";
+	                     "GROUP BY o.OrderID, u.FullName, o.OrderDate, o.Status " +
+	                     "ORDER BY o.OrderDate DESC ";
 	        
 	        try (Connection conn = new DBConnectSQL().getConnection();
 	             PreparedStatement ps = conn.prepareStatement(sql);

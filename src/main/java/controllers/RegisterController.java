@@ -2,6 +2,8 @@ package controllers;
 
 import java.io.IOException;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.Cookie;
@@ -11,12 +13,12 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import services.Impl.UserService;
 
+
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns = "/register")
 public class RegisterController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
 		req.getRequestDispatcher("/views/register.jsp").forward(req, resp);
 	}
 
@@ -61,6 +63,8 @@ public class RegisterController extends HttpServlet {
 			req.getRequestDispatcher("/views/register.jsp").forward(req, resp);
 			return;
 		}
+		//String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+		
 		boolean isSuccess = service.register(fullname, email, phone, address, password);
 		if (isSuccess) {
 		//SendMail sm = new SendMail();

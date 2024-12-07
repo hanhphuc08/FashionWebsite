@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import configs.DBConnectSQL;
 import dao.IUserDao;
 import models.UserModel;
@@ -61,7 +63,7 @@ public class UserDao implements IUserDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return list; // Return the list (empty if no data found)
+		return list; 
 	}
 
 	@Override
@@ -239,6 +241,14 @@ public class UserDao implements IUserDao {
 				user.setCreateDate(rs.getDate("createDate"));
 				user.setUpdateDate(rs.getDate("updateDate"));
 				return user;
+				/*
+				 * if ("Admin".equals(user.getRoleID())) { if
+				 * (user.getPassword().equals(password)) { return user; } else { return null; }
+				 * } else {
+				 * 
+				 * if (BCrypt.checkpw(password, user.getPassword())) { return user; } else {
+				 * return null; } }
+				 */
 			}
 
 		} catch (Exception e) {
@@ -324,40 +334,6 @@ public class UserDao implements IUserDao {
 	public static void main(String[] args) {
 		UserDao userDao = new UserDao();
 
-		/*
-		 * UserModel newUser = new UserModel(); newUser.setFullname("Nguyen Van A");
-		 * newUser.setEmail("nguyenvana@example.com"); newUser.setPhone("0123456789");
-		 * newUser.setAddress("123 Đường ABC"); newUser.setPassword("password123");
-		 * newUser.setEmailCode("abc123");
-		 * 
-		 * userDao.insert(newUser);
-		 * System.out.println("Người dùng đã được thêm thành công.");
-		 */
-
-		boolean emailExists = userDao.checkExistEmail("nguyenvana@example.com");
-		System.out.println("Email tồn tại: " + emailExists);
-
-		boolean phoneExists = userDao.checkExistPhone("0123456789");
-		System.out.println("Điện thoại tồn tại: " + phoneExists);
-
-		UserModel user = userDao.findByID(1);
-		if (user != null) {
-			System.out.println("Thông tin người dùng:");
-			System.out.println("Họ tên: " + user.getFullname());
-			System.out.println("Email: " + user.getEmail());
-			System.out.println("Điện thoại: " + user.getPhone());
-		} else {
-			System.out.println("Không tìm thấy người dùng.");
-		}
-
-		/*
-		 * if (user != null) { user.setFullname("Nguyen Van C"); userDao.update(user);
-		 * System.out.println("Thông tin người dùng đã được cập nhật."); }
-		 */
-		/*
-		 * List<UserModel> users = userDao.findAll(); for (UserModel user1 : users) {
-		 * System.out.println(user1.getFullname() + " - " + user1.getEmail()); }
-		 */
 		UserModel user1 = userDao.login("nguyenvana@example.com", "password123");
 		if (user1 != null) {
 			System.out.println("Login thanh cong");
