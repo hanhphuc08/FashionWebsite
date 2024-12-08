@@ -18,6 +18,7 @@ import models.CartModel;
 import models.OrderModel;
 import models.UserAddressModel;
 import models.UserModel;
+import utils.Email;
 
 @WebServlet(urlPatterns={"/user/checkoutPayment"})
 public class UserCheckoutPaymentController extends HttpServlet {
@@ -103,6 +104,26 @@ public class UserCheckoutPaymentController extends HttpServlet {
         }
         
         orderDetailDao.addOrderDetails(orderDetails, orderID);
+        
+        UserModel user = (UserModel) session.getAttribute("account");
+        if (user != null && user.getEmail() != null) {
+            String recipient = user.getEmail();
+            String subject = "Đơn hàng #" + orderID + " đã được đặt thành công!";
+            String content = "<h1>Xin chào " + user.getFullname() + "</h1>"
+                           + "<p>Cảm ơn bạn đã đặt hàng tại cửa hàng của chúng tôi.</p>"
+                           + "<p>Thông tin đơn hàng:</p>"
+                           + "<ul>"
+                           + "<li>Mã đơn hàng: P2TS" + orderID + "</li>"
+                           + "<li>Tổng tiền: " + formatCurrency(order.getTotalAmount()) + "</li>"
+                           + "</ul>"
+                           + "<p>Chúng tôi sẽ sớm xử lý đơn hàng của bạn.</p>";
+
+            try {
+                Email.sendEmail(recipient, subject, content);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         
         session.removeAttribute("order");
         session.removeAttribute("orderDetails");

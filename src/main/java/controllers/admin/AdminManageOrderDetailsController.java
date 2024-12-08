@@ -18,6 +18,7 @@ import models.OrderDetailModel;
 import models.OrderModel;
 import models.UserAddressModel;
 import models.UserModel;
+import utils.Email;
 
 @WebServlet(urlPatterns= {"/admin/manageOrderDetails"})
 public class AdminManageOrderDetailsController extends HttpServlet {
@@ -118,7 +119,39 @@ public class AdminManageOrderDetailsController extends HttpServlet {
 	        boolean updateSuccess = orderDao.updateOrderStatus(orderID, status);
 	        
 	        if (updateSuccess) {
-	  
+	            OrderModel order = orderDao.getOrderById(orderID);
+	            UserModel user = order.getUser();
+	            if (user == null) {
+	                req.setAttribute("errorMessage", "Không tìm thấy thông tin người dùng.");
+	                req.getRequestDispatcher("/views/admin/adminManageOrderDetails.jsp").forward(req, resp);
+	                return;
+	            }
+
+	            String recipient = user.getEmail();
+	            String subject = "Cập nhật trạng thái đơn hàng #" + orderID;
+	            String content;
+
+	            if ("Xác nhận".equals(status)) {
+	                content = "<h1>Xin chào " + user.getFullname() + "</h1>"
+	                        + "<p>Đơn hàng #" + orderID + " của bạn đã được xác nhận.</p>"
+	                        + "<p>Chúng tôi sẽ tiến hành xử lý đơn hàng của bạn trong thời gian sớm nhất.</p>"
+	                        + "<p>Cảm ơn bạn đã mua sắm tại cửa hàng của chúng tôi!</p>";
+	            } else if ("Huỷ".equals(status)) {
+	                content = "<h1>Xin chào " + user.getFullname() + "</h1>"
+	                        + "<p>Đơn hàng #" + orderID + " của bạn đã bị hủy.</p>"
+	                        + "<p>Nếu bạn có bất kỳ thắc mắc nào, vui lòng liên hệ với chúng tôi.</p>"
+	                        + "<p>Rất tiếc về sự bất tiện này.</p>";
+	            } else {
+	                content = "<h1>Xin chào " + user.getFullname() + "</h1>"
+	                        + "<p>Đơn hàng #" + orderID + " đã được cập nhật trạng thái thành: " + status + ".</p>";
+	            }
+
+	            try {
+	                Email.sendEmail(recipient, subject, content);
+	            } catch (Exception e) {
+	                e.printStackTrace();
+	            }
+
 	            req.setAttribute("successMessage", "Cập nhật trạng thái đơn hàng thành công!");
 	            resp.sendRedirect(req.getContextPath() + "/admin/manageOrders");
 	        } else {

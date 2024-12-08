@@ -12,6 +12,7 @@ import java.util.List;
 import configs.DBConnectSQL;
 import models.OrderModel;
 import models.ProductModel;
+import models.UserModel;
 
 public class OrderDao {
 	
@@ -100,7 +101,10 @@ public class OrderDao {
 	}
 	public OrderModel getOrderById(int orderID) {
 	    OrderModel order = null;
-	    String sql = "SELECT OrderID, OrderDate, Status, UserID FROM Orders WHERE OrderID = ?";
+	    String sql = "SELECT o.OrderID, o.OrderDate, o.Status, o.UserID, u.FullName AS Fullname, u.Email " +
+	             "FROM Orders o " +
+	             "JOIN Users u ON o.UserID = u.UserID " +
+	             "WHERE o.OrderID = ?";
 
 	    try (Connection conn = new DBConnectSQL().getConnection();
 	         PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -113,7 +117,14 @@ public class OrderDao {
 	            order.setOrderID(rs.getInt("OrderID"));
 	            order.setOrderDate(rs.getDate("OrderDate"));
 	            order.setStatus(rs.getString("Status"));
-	            order.setUserID(rs.getInt("UserID"));  // Thêm dòng này để lấy UserID
+	            order.setUserID(rs.getInt("UserID"));
+	            
+	            UserModel user = new UserModel();
+	            user.setUserID(rs.getInt("UserID"));
+	            user.setFullname(rs.getString("Fullname"));
+	            user.setEmail(rs.getString("Email"));
+	            
+	            order.setUser(user);
 	        }
 
 	    } catch (Exception e) {

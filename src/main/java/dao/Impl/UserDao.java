@@ -111,6 +111,7 @@ public class UserDao implements IUserDao {
 				user.setPhone(rs.getString("phone"));
 				user.setAddress(rs.getString("address"));
 				user.setRoleID(rs.getString("roleID"));
+				user.setEmailCode(rs.getString("emailCode"));
 				user.setCreateDate(rs.getDate("createDate"));
 				user.setUpdateDate(rs.getDate("updateDate"));
 				return user;
@@ -139,6 +140,7 @@ public class UserDao implements IUserDao {
 				user.setPhone(rs.getString("phone"));
 				user.setAddress(rs.getString("address"));
 				user.setRoleID(rs.getString("roleID"));
+				user.setEmailCode(rs.getString("emailCode"));
 				user.setCreateDate(rs.getDate("createDate"));
 				user.setUpdateDate(rs.getDate("updateDate"));
 				return user;

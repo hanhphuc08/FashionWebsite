@@ -91,30 +91,31 @@
 						</div>
 						<div class="block-body">
 							<!-- Bước 1: Nhập địa chỉ email -->
-							<div id="step1">
-								<form id="emailForm">
+							<div id="step1" <% if(request.getAttribute("step") != null && (int)request.getAttribute("step") != 1) { %> style="display:none;" <% } %> >
+                                <form action="/user/sendResetCode" method="post">
 									<div class="mb-4">
 										<label class="form-label" for="email">Nhập địa chỉ email của bạn:</label> 
 											<input class="form-control" id="email" name="email" type="email" required>
 											<div id="error-message" class="text-danger" style="display: none;">
-                								<span class="icon-warning" style="color: orange;">⚠️</span> Vui lòng nhập địa chỉ email hợp lệ.
+                								<%= request.getAttribute("error") != null ? request.getAttribute("error") : "" %>
             								</div>
 									</div>
-									<button type="button" class="btn btn-outline-dark" onclick="sendEmail()">Gửi mã xác nhận</button>
+									<button type="submit" class="btn btn-outline-dark" >Gửi mã xác nhận</button>
 								</form>
 							</div>
 							<!-- Bước 2: Nhập mã xác nhận -->
-							<div id="step2" style="display: none;">
-								<form id="codeForm">
+							<div id="step2" <% if(request.getAttribute("step") != null && (int)request.getAttribute("step") != 2) { %> style="display:none;" <% } %> >
+                                <form action="/user/verifyCode" method="post">
 									<div class="mb-4">
-										<label class="form-label" for="code">Nhập mã xác nhận đã gửi đến email:</label> <input class="form-control" id="code" name="code" type="text">
+										<label class="form-label" for="code">Nhập mã xác nhận đã gửi đến email:</label>
+										 <input class="form-control" id="code" name="code" type="text">
 									</div>
-									<button type="button" class="btn btn-outline-dark" onclick="verifyCode()">Xác nhận mã</button>
+									<button type="submit" class="btn btn-outline-dark" >Xác nhận mã</button>
 								</form>
 							</div>
 							<!-- Bước 3: Đặt lại mật khẩu -->
-							<div id="step3" style="display: none;">
-								<form id="resetPasswordForm">
+							<div id="step3" <% if(request.getAttribute("step") != null && (int)request.getAttribute("step") != 3) { %> style="display:none;" <% } %> >
+                                <form action="/user/resetPassword" method="post">
 									<div class="mb-4">
 										<label class="form-label" for="newPassword">Mật khẩu mới:</label> 
 										<input class="form-control" id="newPassword" name="newPassword" type="password" required>
@@ -135,53 +136,83 @@
 		</div>
 	</section>
 	<!-- JavaScript -->
-	<script>
-    function sendEmail() {
-        const emailInput = document.getElementById('email');
-        const errorMessage = document.getElementById('error-message');
-
-        // Kiểm tra xem ô nhập liệu có trống không hoặc không hợp lệ
-        if (emailInput.value.trim() === '' || !validateEmail(emailInput.value)) {
-            errorMessage.style.display = 'block'; // Hiển thị thông báo lỗi
-        } else {
-            errorMessage.style.display = 'none'; // Ẩn thông báo lỗi
-            // Tiến hành gửi mã xác nhận
-            console.log('Gửi mã xác nhận tới:', emailInput.value);
-            // Thay đổi bước từ nhập email sang nhập mã xác nhận
-            document.getElementById('step1').style.display = 'none';
-            document.getElementById('step2').style.display = 'block';
-        }
-    }
-
-    function validateEmail(email) {
-        // Kiểm tra định dạng email
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(String(email).toLowerCase());
-    }
-
-    function verifyCode() {
-        // Xác minh mã xác nhận
-        const code = document.getElementById('code').value;
-        // Thực hiện yêu cầu xác minh mã tới server (sử dụng AJAX hoặc fetch)
-        // Giả sử yêu cầu thành công
-        console.log('Xác minh mã:', code);
-        document.getElementById('step2').style.display = 'none';
-        document.getElementById('step3').style.display = 'block';
-    }
-
-    document.getElementById('resetPasswordForm').onsubmit = function(event) {
-        event.preventDefault();
-        // Xử lý đặt lại mật khẩu
-        const newPassword = document.getElementById('newPassword').value;
-        const confirmPassword = document.getElementById('confirmPassword').value;
-        if (newPassword === confirmPassword) {
-            // Gửi yêu cầu đặt lại mật khẩu tới server (sử dụng AJAX hoặc fetch)
-            alert('Mật khẩu đã được đặt lại thành công!');
-        } else {
-            alert('Mật khẩu xác nhận không khớp!');
-        }
-    };
-</script>
+	<!-- <script>
+		function sendResetCode() {
+		    const email = document.getElementById('email').value.trim();
+		    if (!validateEmail(email)) {
+		        document.getElementById('error-message').style.display = 'block';
+		        return;
+		    }
+		    document.getElementById('error-message').style.display = 'none';
+	
+		    // Gửi email xác nhận
+		    fetch('/user/send-reset-code', {
+		        method: 'POST',
+		        headers: { 'Content-Type': 'application/json' },
+		        body: JSON.stringify({ email: email })
+		    })
+		    .then(response => response.json())
+		    .then(data => {
+		        if (data.success) {
+		            alert('Mã xác nhận đã được gửi về email!');
+		            document.getElementById('step1').style.display = 'none';
+		            document.getElementById('step2').style.display = 'block';
+		        } else {
+		            alert('Email không tồn tại!');
+		        }
+		    });
+		}
+	
+		function verifyCode() {
+		    const code = document.getElementById('code').value.trim();
+		    fetch('/user/verify-code', {
+		        method: 'POST',
+		        headers: { 'Content-Type': 'application/json' },
+		        body: JSON.stringify({ code: code })
+		    })
+		    .then(response => response.json())
+		    .then(data => {
+		        if (data.success) {
+		            alert('Mã xác nhận đúng!');
+		            document.getElementById('step2').style.display = 'none';
+		            document.getElementById('step3').style.display = 'block';
+		        } else {
+		            alert('Mã xác nhận không đúng!');
+		        }
+		    });
+		}
+	
+		document.getElementById('resetPasswordForm').onsubmit = function(event) {
+		    event.preventDefault();
+		    const newPassword = document.getElementById('newPassword').value.trim();
+		    const confirmPassword = document.getElementById('confirmPassword').value.trim();
+	
+		    if (newPassword !== confirmPassword) {
+		        alert('Mật khẩu xác nhận không khớp!');
+		        return;
+		    }
+	
+		    fetch('/user/reset-password', {
+		        method: 'POST',
+		        headers: { 'Content-Type': 'application/json' },
+		        body: JSON.stringify({ newPassword: newPassword })
+		    })
+		    .then(response => response.json())
+		    .then(data => {
+		        if (data.success) {
+		            alert('Đặt lại mật khẩu thành công!');
+		            window.location.href = '/user/login';
+		        } else {
+		            alert('Đặt lại mật khẩu thất bại!');
+		        }
+		    });
+		};
+	
+		function validateEmail(email) {
+		    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		    return re.test(email);
+		}
+</script> -->
 	<!--  Begin Footer -->
 	<%@ include file="/commons/web/footer.jsp"%>
 	<!-- End Footer -->

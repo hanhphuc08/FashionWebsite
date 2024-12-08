@@ -158,7 +158,10 @@
 													<div class="text-center w-100">
 														<label class="form-label d-block" for="qr-code">QR
 															Code</label> <img
-															src="https://qr.sepay.vn/img?bank=Vietcombank&acc=1031454525&template=compact&amount=${finalTotal}&des=P2TS${userID}"
+															<%-- src="https://qr.sepay.vn/img?bank=Vietcombank&acc=1031454525&template=compact&amount=${finalTotal}&des=P2TS${userID}"
+															alt="QR Code" id="qr-code" class="img-fluid" --%>
+															
+															src="https://img.vietqr.io/image/Vietcombank-1031454525-compact.jpg?amount=${finalTotal}&addInfo=P2TS${userID}"
 															alt="QR Code" id="qr-code" class="img-fluid"
 															style="max-width: 200px; height: auto; border: 1px solid #ddd;">
 													</div>
@@ -305,6 +308,43 @@
 			const submitButton = this.querySelector("button[type='submit']");
 			submitButton.disabled = true;
 		});
+	</script>
+	<script>
+	document.querySelector("form").addEventListener("submit", async function(e) {
+	    e.preventDefault();
+
+	    const form = e.target;
+	    const submitButton = form.querySelector("button[type='submit']");
+	    submitButton.disabled = true;
+
+	    const data = {
+	        userID: "${userID}", 
+	        finalTotal: "${finalTotal}",
+	        paymentMethod: form.paymentMethod.value 
+	    };
+
+	    try {
+	        const response = await fetch("https://script.google.com/macros/s/AKfycbxltEfsF7HwxPJ_Ucly0wIzaDQ4EB6jClCcze_Z8asTwSZAAhVakaoLU81LHAMe13QseQ/exec", {
+	            method: "POST",
+	            headers: { "Content-Type": "application/json" },
+	            body: JSON.stringify(data)
+	        });
+
+	        const result = await response.json();
+	        
+	        if (result.status === "success") {
+	            alert("Chuyển khoản thành công!");
+	        } else {
+	            alert("Giao dịch không khớp hoặc chưa thành công. Vui lòng kiểm tra lại.");
+	        }
+	    } catch (error) {
+	        console.error("Lỗi khi gửi yêu cầu:", error);
+	        alert("Đã xảy ra lỗi khi kiểm tra giao dịch. Vui lòng thử lại sau.");
+	    } finally {
+	        submitButton.disabled = false;
+	    }
+	});
+
 	</script>
 	<!-- jQuery-->
 	<script
