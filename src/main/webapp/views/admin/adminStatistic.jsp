@@ -681,6 +681,43 @@ document.getElementById("deleteUsersBtn").addEventListener("click", function () 
             });
     }
 });
+
+//Lấy phần tử canvas
+const ctx = document.getElementById('salesReportChart').getContext('2d');
+
+// Tạo biểu đồ
+const salesReportChart = new Chart(ctx, {
+    type: 'bar', // Loại biểu đồ (bar, line, pie, etc.)
+    data: {
+        labels: ['January', 'February', 'March', 'April', 'May'], // Trục X
+        datasets: [{
+            label: 'Sales (in USD)', // Nhãn của dữ liệu
+            data: [1200, 1900, 3000, 5000, 2500], // Dữ liệu trục Y
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)'
+            ],
+            borderWidth: 1 // Độ dày viền
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true // Trục Y bắt đầu từ 0
+            }
+        }
+    }
+});
 </script>
 <script
 	src="${pageContext.request.contextPath}/Template/assets/js/theme.bundle.js"></script>

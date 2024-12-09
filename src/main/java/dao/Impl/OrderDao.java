@@ -311,12 +311,12 @@ public class OrderDao {
 	
 	public List<OrderModel> getAllOrders() {
 	    List<OrderModel> orders = new ArrayList<>();
-	    String sql = "SELECT o.OrderID, u.FullName, o.OrderDate, o.Status, SUM(od.Quantity * p.Price) AS TotalAmount " +
+	    String sql = "SELECT o.OrderID, u.FullName, o.OrderDate, o.Status, o.PaymentMethod, SUM(od.Quantity * p.Price) AS TotalAmount " +
 	                 "FROM Orders o " +
 	                 "INNER JOIN Users u ON o.UserID = u.UserID " +
 	                 "INNER JOIN OrderDetails od ON o.OrderID = od.OrderID " +
 	                 "INNER JOIN Products p ON od.ProductCode = p.ProductCode " +
-	                 "GROUP BY o.OrderID, u.FullName, o.OrderDate, o.Status " +
+	                 "GROUP BY o.OrderID, u.FullName, o.OrderDate, o.Status, o.PaymentMethod " +
 	                 "ORDER BY o.OrderDate DESC ";
 
 	    try (Connection conn = new DBConnectSQL().getConnection();
@@ -329,6 +329,7 @@ public class OrderDao {
 	            order.setFullName(rs.getString("FullName"));
 	            order.setOrderDate(rs.getDate("OrderDate"));
 	            order.setStatus(rs.getString("Status"));
+	            order.setPaymentMethod(rs.getString("PaymentMethod"));
 	            order.setTotalAmount(rs.getDouble("TotalAmount"));
 	            orders.add(order);
 	        }

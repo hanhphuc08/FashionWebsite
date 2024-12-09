@@ -119,6 +119,7 @@
                                     <div class="col-2">Khách hàng</div>
                                     <div class="col-2">Ngày đặt hàng</div>
                                     <div class="col-2">Tình trạng</div>
+                                    <div class="col-2">Phương thức</div>
                                     <div class="col-2">Tổng tiền</div>
                                     <div class="col-2">Xem</div>
                                 </div>
@@ -136,6 +137,8 @@
                                             <div class="col-2">${order.orderDate}</div>
                                             <!-- Trạng thái -->
                                             <div class="col-2">${order.status}</div>
+                                            <!-- Phương thức -->
+                                            <div class="col-2">${order.paymentMethod}</div>
                                             <!-- Tổng tiền -->
                                             <div class="col-2">${order.totalAmountFormatted}</div>
                                             <div class="col-2">

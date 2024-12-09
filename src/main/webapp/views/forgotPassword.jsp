@@ -80,7 +80,6 @@
 %>
 	<div>
     <% if ("email".equals(step)) { %>
-    <!-- Bước 1: Nhập email -->
     <form action="<%= request.getContextPath() %>/forgotPassword" method="post">
         <input type="hidden" name="action" value="sendEmail">
         <div class="card text-center">
@@ -98,7 +97,6 @@
         </div>
     </form>
     <% } else if ("verify".equals(step)) { %>
-    <!-- Bước 2: Nhập mã xác nhận -->
     <form action="<%= request.getContextPath() %>/forgotPassword" method="post">
         <input type="hidden" name="action" value="verifyCode">
         <div class="card text-center">
@@ -116,7 +114,6 @@
         </div>
     </form>
     <% } else if ("reset".equals(step)) { %>
-    <!-- Bước 3: Đặt lại mật khẩu -->
     <form action="<%= request.getContextPath() %>/forgotPassword" method="post">
         <input type="hidden" name="action" value="resetPassword">
         <div class="card text-center">
