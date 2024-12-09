@@ -218,74 +218,66 @@ public class UserDao implements IUserDao {
 
 	}
 
-	    public void updatePassword(String email, String newPassword) {
-	        String query = "UPDATE Users SET password = ? WHERE email = ?";
-	        try (Connection conn = new DBConnectSQL().getConnection();
-	             PreparedStatement ps = conn.prepareStatement(query)) {
-	            ps.setString(1, newPassword); 
-	            ps.setString(2, email);
-	            ps.executeUpdate();
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
+	public boolean updatePassword(String email, String hashedPassword) {
+	    String sql = "UPDATE users SET password = ? WHERE email = ?";
+	    try (PreparedStatement stmt = new DBConnectSQL().getConnection().prepareStatement(sql)) {
+	        stmt.setString(1, hashedPassword);
+	        stmt.setString(2, email);
+	        return stmt.executeUpdate() > 0;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return false;
 	    }
+	}
 
 
 	@Override
 	public UserModel login(String emailOrPhone, String password) {
-		String query = "SELECT * FROM Users WHERE (email = ? OR phone = ?) AND password = ?";
-		try {
-			conn = new DBConnectSQL().getConnection();
-			ps = conn.prepareStatement(query);
+	    String query = "SELECT * FROM Users WHERE email = ? OR phone = ?";
+	    try {
+	        conn = new DBConnectSQL().getConnection();
+	        ps = conn.prepareStatement(query);
 
-			ps.setString(1, emailOrPhone);
-			ps.setString(2, emailOrPhone);
-			ps.setString(3, password);
-			 System.out.println("Executing query: " + ps.toString());
-			rs = ps.executeQuery();
+	        ps.setString(1, emailOrPhone);
+	        ps.setString(2, emailOrPhone);
 
-			if (rs.next()) {
-				UserModel user = new UserModel();
-				user.setUserID(rs.getInt("userID"));
-				user.setFullname(rs.getString("fullname"));
-				user.setEmail(rs.getString("email"));
-				user.setPhone(rs.getString("phone"));
-				user.setAddress(rs.getString("address"));
-				user.setPassword(rs.getString("password"));
-				user.setRoleID(rs.getString("roleID"));
-				user.setCreateDate(rs.getDate("createDate"));
-				user.setUpdateDate(rs.getDate("updateDate"));
-				return user;
-				/*
-				 * if ("Admin".equals(user.getRoleID())) { if
-				 * (user.getPassword().equals(password)) { return user; } else { return null; }
-				 * } else {
-				 * 
-				 * if (BCrypt.checkpw(password, user.getPassword())) { return user; } else {
-				 * return null; } }
-				 */
-			}
-			else
-			{
-				System.out.println("No matching user found.");
-			}
+	        rs = ps.executeQuery();
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (rs != null)
-					rs.close();
-				if (ps != null)
-					ps.close();
-				if (conn != null)
-					conn.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
+	        if (rs.next()) {
+	            UserModel user = new UserModel();
+	            user.setUserID(rs.getInt("userID"));
+	            user.setFullname(rs.getString("fullname"));
+	            user.setEmail(rs.getString("email"));
+	            user.setPhone(rs.getString("phone"));
+	            user.setAddress(rs.getString("address"));
+	            user.setPassword(rs.getString("password")); // Mật khẩu mã hóa trong DB
+	            user.setRoleID(rs.getString("roleID"));
+	            user.setCreateDate(rs.getDate("createDate"));
+	            user.setUpdateDate(rs.getDate("updateDate"));
 
-		return null;
+	            if (BCrypt.checkpw(password, user.getPassword())) {
+	                return user;
+	            } else {
+	                System.out.println("Invalid password.");
+	            }
+	        } else {
+	            System.out.println("No matching user found.");
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (rs != null)
+	                rs.close();
+	            if (ps != null)
+	                ps.close();
+	            if (conn != null)
+	                conn.close();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
+	    return null;
 	}
 
 	@Override

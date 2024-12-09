@@ -31,7 +31,7 @@ public class AdminHomeController extends HttpServlet {
 	        
 	        List<ProductModel> get8products = productDao.getLatestProductsWithCategory(8);
 	        for (ProductModel product : get8products) {
-	            product.setPriceFormatted(formatCurrency(product.getPrice())); // Định dạng giá
+	            product.setPriceFormatted(formatCurrency(product.getPrice()));
 	        }
 	        req.setAttribute("get8", get8products);
 		req.getRequestDispatcher("/views/admin/adminHome.jsp").forward(req, resp);

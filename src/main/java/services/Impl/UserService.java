@@ -46,13 +46,13 @@ public class UserService implements IUserService {
 			return false;
 		}
 		
-//		 String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+		String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
 		UserModel newUser = new UserModel();
 		newUser.setFullname(fullname);
 		newUser.setEmail(email);
 		newUser.setPhone(phone);
 		newUser.setAddress(address);
-		newUser.setPassword(password);
+		newUser.setPassword(hashedPassword);
 		userDao.insert(newUser);
 		return true;
 	}

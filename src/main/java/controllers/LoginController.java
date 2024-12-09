@@ -3,6 +3,7 @@ package controllers;
 import java.io.IOException;
 
 import dao.Impl.CartDao;
+import dao.Impl.OrderDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.Cookie;
@@ -72,7 +73,9 @@ public class LoginController extends HttpServlet {
 
 
 			if ("Admin".equals(user.getRoleID())) {
-
+				OrderDao orderDao = new OrderDao();
+	            int pendingOrder = orderDao.getPendingOrderCountToday();
+	            session.setAttribute("pendingOrder", pendingOrder);
 				resp.sendRedirect(req.getContextPath() + "/admin/home");
 			} else {
 				String productCode = (String) session.getAttribute("productCode");

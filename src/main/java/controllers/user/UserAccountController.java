@@ -2,6 +2,8 @@ package controllers.user;
 
 import java.io.IOException;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import dao.Impl.UserAccountDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -65,14 +67,14 @@ public class UserAccountController extends HttpServlet {
 	            String newPassword = req.getParameter("newPassword");
 	            String confirmPassword = req.getParameter("confirmPassword");
 
-	            if (!oldPassword.equals(user.getPassword())) {
+	            if (!BCrypt.checkpw(oldPassword, user.getPassword())) {
 	                req.setAttribute("errorMessage", "Mật khẩu cũ không chính xác.");
 	            } else if (!newPassword.equals(confirmPassword)) {
 	                req.setAttribute("errorMessage", "Mật khẩu mới không khớp.");
 	            } else {
 	                if (userAccountDao.updatePassword(user.getUserID(), newPassword)) {
 	                    req.setAttribute("successMessage", "Mật khẩu đã được thay đổi.");
-	                    user.setPassword(newPassword);
+	                    user.setPassword(BCrypt.hashpw(newPassword, BCrypt.gensalt()));
 	                } else {
 	                    req.setAttribute("errorMessage", "Không thể thay đổi mật khẩu. Vui lòng thử lại.");
 	                }
