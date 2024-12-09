@@ -218,6 +218,19 @@ public class UserDao implements IUserDao {
 
 	}
 
+	    public void updatePassword(String email, String newPassword) {
+	        String query = "UPDATE Users SET password = ? WHERE email = ?";
+	        try (Connection conn = new DBConnectSQL().getConnection();
+	             PreparedStatement ps = conn.prepareStatement(query)) {
+	            ps.setString(1, newPassword); 
+	            ps.setString(2, email);
+	            ps.executeUpdate();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+
 	@Override
 	public UserModel login(String emailOrPhone, String password) {
 		String query = "SELECT * FROM Users WHERE (email = ? OR phone = ?) AND password = ?";

@@ -79,13 +79,18 @@ public class UserService implements IUserService {
 
 	@Override
 	public boolean sendCode(String email, String code) {
-		boolean emailSent = EmailService.sendResetCode(email, code);
-        return emailSent;
+		 boolean emailSent = sendEmailWithResetCode(email, code);
+	        return emailSent;
 	}
 	@Override
     public boolean updateUser(UserModel user) {
-        // Cập nhật thông tin người dùng vào cơ sở dữ liệu
-        return userDAO.updateUser(user);
+		 try {
+		        userDao.update(user); 
+		        return true;
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		        return false; 
+		    }
     }
 
     @Override
@@ -120,12 +125,16 @@ public class UserService implements IUserService {
 		return String.valueOf(code);
 	}
 	
-	private void sendEmail(String to, String subject, String body) {
-		 try {
-		        Email.sendEmail(to, subject, body);
-		    } catch (MessagingException e) {
-		        System.err.println("Không thể gửi email: " + e.getMessage());
-		    }
+	private boolean sendEmailWithResetCode(String to, String code) {
+        String subject = "Mã xác nhận đặt lại mật khẩu";
+        String body = "Mã xác nhận của bạn là: " + code;
+        try {
+            Email.sendEmail(to, subject, body);
+            return true;
+        } catch (MessagingException e) {
+            System.err.println("Không thể gửi email: " + e.getMessage());
+            return false; 
+        }
     }
 
 	@Override

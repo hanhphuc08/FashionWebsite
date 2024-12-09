@@ -91,40 +91,41 @@
 						</div>
 						<div class="block-body">
 							<!-- Bước 1: Nhập địa chỉ email -->
-							<div id="step1" <% if(request.getAttribute("step") != null && (int)request.getAttribute("step") != 1) { %> style="display:none;" <% } %> >
-                                <form action="/user/sendResetCode" method="post">
-									<div class="mb-4">
-										<label class="form-label" for="email">Nhập địa chỉ email của bạn:</label> 
-											<input class="form-control" id="email" name="email" type="email" required>
-											<div id="error-message" class="text-danger" style="display: none;">
-                								<%= request.getAttribute("error") != null ? request.getAttribute("error") : "" %>
-            								</div>
-									</div>
-									<button type="submit" class="btn btn-outline-dark" >Gửi mã xác nhận</button>
-								</form>
+							<div id="step1" <% if(request.getAttribute("step") != null && (int)request.getAttribute("step") == 1) { %> style="display:block;" <% } else { %> style="display:none;" <% } %> >
+							    <form action="/user/sendResetCode" method="post">
+							        <div class="mb-4">
+							            <label class="form-label" for="email">Nhập địa chỉ email của bạn:</label>
+							            <input class="form-control" id="email" name="email" type="email" required>
+							            <div id="error-message" class="text-danger" style="display: none;">
+							                <%= request.getAttribute("error") != null ? request.getAttribute("error") : "" %>
+							            </div>
+							        </div>
+							        <button type="submit" class="btn btn-outline-dark">Gửi mã xác nhận</button>
+							    </form>
 							</div>
 							<!-- Bước 2: Nhập mã xác nhận -->
-							<div id="step2" <% if(request.getAttribute("step") != null && (int)request.getAttribute("step") != 2) { %> style="display:none;" <% } %> >
-                                <form action="/user/verifyCode" method="post">
-									<div class="mb-4">
-										<label class="form-label" for="code">Nhập mã xác nhận đã gửi đến email:</label>
-										 <input class="form-control" id="code" name="code" type="text">
-									</div>
-									<button type="submit" class="btn btn-outline-dark" >Xác nhận mã</button>
-								</form>
+							<div id="step2" <% if(request.getAttribute("step") != null && (int)request.getAttribute("step") == 2) { %> style="display:block;" <% } else { %> style="display:none;" <% } %> >
+							    <form action="/user/verifyCode" method="post">
+							        <div class="mb-4">
+							            <label class="form-label" for="code">Nhập mã xác nhận đã gửi đến email:</label>
+							            <input class="form-control" id="code" name="code" type="text">
+							        </div>
+							        <button type="submit" class="btn btn-outline-dark">Xác nhận mã</button>
+							    </form>
 							</div>
 							<!-- Bước 3: Đặt lại mật khẩu -->
-							<div id="step3" <% if(request.getAttribute("step") != null && (int)request.getAttribute("step") != 3) { %> style="display:none;" <% } %> >
-                                <form action="/user/resetPassword" method="post">
-									<div class="mb-4">
-										<label class="form-label" for="newPassword">Mật khẩu mới:</label> 
-										<input class="form-control" id="newPassword" name="newPassword" type="password" required>
-									</div>
-									<div class="mb-4">
-										<label class="form-label" for="confirmPassword">Xác nhận mật khẩu mới:</label> <input class="form-control" id="confirmPassword" name="confirmPassword" type="password" required>
-									</div>
-									<button type="submit" class="btn btn-outline-dark">Đặt lại mật khẩu</button>
-								</form>
+							<div id="step3" <% if(request.getAttribute("step") != null && (int)request.getAttribute("step") == 3) { %> style="display:block;" <% } else { %> style="display:none;" <% } %> >
+							    <form action="/user/resetPassword" method="post">
+							        <div class="mb-4">
+							            <label class="form-label" for="newPassword">Mật khẩu mới:</label>
+							            <input class="form-control" id="newPassword" name="newPassword" type="password" required>
+							        </div>
+							        <div class="mb-4">
+							            <label class="form-label" for="confirmPassword">Xác nhận mật khẩu mới:</label>
+							            <input class="form-control" id="confirmPassword" name="confirmPassword" type="password" required>
+							        </div>
+							        <button type="submit" class="btn btn-outline-dark">Đặt lại mật khẩu</button>
+							    </form>
 							</div>
 						</div>
 					</div>

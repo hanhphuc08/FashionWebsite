@@ -28,7 +28,7 @@ public class LoginController extends HttpServlet {
 	        String successMessage = (String) session.getAttribute("successMessage");
 	        if (successMessage != null) {
 	            req.setAttribute("successMessage", successMessage);
-	            session.removeAttribute("successMessage"); // Xóa thông báo sau khi hiển thị
+	            session.removeAttribute("successMessage");
 	        }
 	    }
 	    req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
@@ -36,6 +36,7 @@ public class LoginController extends HttpServlet {
 		
 	}
 
+	@SuppressWarnings("unused")
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
