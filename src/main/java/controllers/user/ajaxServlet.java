@@ -13,22 +13,55 @@ import java.util.List;
 import java.util.Map;
 import java.util.TimeZone;
 
+import dao.Impl.CartDao;
+import dao.Impl.OrderDao;
+import dao.Impl.OrderDetailDao;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import models.CartModel;
+import models.UserModel;
 
 @WebServlet(urlPatterns = {"/user/create_payment"})
 public class ajaxServlet extends HttpServlet  {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5250037286427571445L;
+	private CartDao cartDao = new CartDao();
+	 private OrderDao orderDao = new OrderDao();
+	 private OrderDetailDao orderDetailDao = new OrderDetailDao();
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session = req.getSession();
+		UserModel user = (session != null) ? (UserModel) session.getAttribute("account") : null;
+
+		if (user == null) {
+            String currentUrl = req.getRequestURL() +
+                    (req.getQueryString() != null ? "?" + req.getQueryString() : "");
+            session = req.getSession(true);
+            session.setAttribute("redirectUrl", currentUrl);
+            resp.sendRedirect(req.getContextPath() + "/login");
+            return;
+        }
 		 	String vnp_Version = "2.1.0";
 	        String vnp_Command = "pay";
 	        String orderType = "other";
-	        long amount = 10000*100;
+	        
+	        List<CartModel> cartItems = cartDao.getAllCartWithDetail(user.getUserID());
+		    
+		    long totalAmount = 0;
+	        for(CartModel item : cartItems) {
+	        	totalAmount += item.getPrice() * item.getQuantity();
+	        }
+	        
+//	        double amount = totalAmount;
 //	        String bankCode = req.getParameter("bankCode");
 	        
 	        String vnp_TxnRef = Config.getRandomNumber(8);
@@ -40,13 +73,13 @@ public class ajaxServlet extends HttpServlet  {
 	        vnp_Params.put("vnp_Version", vnp_Version);
 	        vnp_Params.put("vnp_Command", vnp_Command);
 	        vnp_Params.put("vnp_TmnCode", vnp_TmnCode);
-	        vnp_Params.put("vnp_Amount", String.valueOf(amount));
+	        vnp_Params.put("vnp_Amount", String.valueOf(totalAmount * 100));
 	        vnp_Params.put("vnp_CurrCode", "VND");
 	        vnp_Params.put("vnp_BankCode", "NCB");
 	        
 	      
 	        vnp_Params.put("vnp_TxnRef", vnp_TxnRef);
-	        vnp_Params.put("vnp_OrderInfo", "Thanh toan don hang:" + vnp_TxnRef);
+	        vnp_Params.put("vnp_OrderInfo", "Thanh toan don hang: " + vnp_TxnRef);
 	        vnp_Params.put("vnp_OrderType", orderType);
 	        vnp_Params.put("vnp_Locale", "vn");
 	      

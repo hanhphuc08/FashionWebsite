@@ -60,8 +60,7 @@ public class LoginController extends HttpServlet {
 		System.out.println(username);
 		System.out.println(password);
 		UserModel user = service.login(username, password);
-		
-		System.out.println(user.toString());
+
 		if (user != null) {
 
 			HttpSession session = req.getSession(true);
@@ -86,7 +85,6 @@ public class LoginController extends HttpServlet {
                 }
 			}
 		} else {
-
 			alertMsg = "Tài khoản hoặc mật khẩu không đúng.";
 			req.setAttribute("alert", alertMsg);
 			req.getRequestDispatcher("/views/login.jsp").forward(req, resp);

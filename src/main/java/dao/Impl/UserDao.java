@@ -241,7 +241,7 @@ public class UserDao implements IUserDao {
 			ps.setString(1, emailOrPhone);
 			ps.setString(2, emailOrPhone);
 			ps.setString(3, password);
-
+			 System.out.println("Executing query: " + ps.toString());
 			rs = ps.executeQuery();
 
 			if (rs.next()) {
@@ -264,6 +264,10 @@ public class UserDao implements IUserDao {
 				 * if (BCrypt.checkpw(password, user.getPassword())) { return user; } else {
 				 * return null; } }
 				 */
+			}
+			else
+			{
+				System.out.println("No matching user found.");
 			}
 
 		} catch (Exception e) {

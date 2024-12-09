@@ -59,12 +59,13 @@ public class UserService implements IUserService {
 
 	@Override
 	public UserModel login(String emailOrPhone, String password) {
-		UserModel user = userDao.login(emailOrPhone, password);
-		if(user != null)
-		{
-			return user;
-		}
-		return null;
+		 UserModel user = userDao.login(emailOrPhone, password);
+		    if (user == null) {
+		        System.out.println("Login failed: User not found.");
+		    } else {
+		        System.out.println("Login successful: " + user.toString());
+		    }
+		    return user;
 	}
 
 	@Override

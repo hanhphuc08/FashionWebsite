@@ -193,7 +193,7 @@
 													</div>
 												</div>
 											</div>
-											
+											 <input type="hidden" name="userId" value="${user.id}" />
 
 											<!-- Nút xác nhận -->
 											<div
