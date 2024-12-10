@@ -2,6 +2,12 @@ package controllers;
 
 import java.io.IOException;
 
+import org.apache.hc.client5.http.ClientProtocolException;
+
+import com.google.gson.Gson;
+
+import configs.Iconstant;
+import controllers.user.GoogleLogin;
 import dao.Impl.CartDao;
 import dao.Impl.OrderDao;
 import jakarta.servlet.ServletException;
@@ -94,5 +100,15 @@ public class LoginController extends HttpServlet {
 		}
 
 	}
+	@SuppressWarnings("unused")
+	private void processResquest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String code = req.getParameter("code");
+		GoogleLogin gg = new GoogleLogin();
+		String accessToken = gg.getToken(code);
+		System.out.println(accessToken);
+		UserModel acc = gg.getUserInfo(accessToken);
+		System.out.println(acc);
 
+	}
+	
 }

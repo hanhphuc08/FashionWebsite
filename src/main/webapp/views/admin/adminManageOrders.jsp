@@ -115,13 +115,13 @@
                         <div class="orders-wrapper">
                             <div class="cart-header text-center">
                                 <div class="row">
-                                    <div class="col-2">Mã đơn hàng</div>
+                                    <div class="col-1">Mã đơn hàng</div>
                                     <div class="col-2">Khách hàng</div>
                                     <div class="col-2">Ngày đặt hàng</div>
                                     <div class="col-2">Tình trạng</div>
                                     <div class="col-2">Phương thức</div>
                                     <div class="col-2">Tổng tiền</div>
-                                    <div class="col-2">Xem</div>
+                                    <div class="col-1">Xem</div>
                                 </div>
                             </div>
                             <!-- Begin cart-body -->
@@ -130,7 +130,7 @@
                                     <div class="cart-item">
                                         <div class="row d-flex align-items-center text-center">
                                             <!-- Mã đơn hàng -->
-                                            <div class="col-2"><strong>#${order.orderID}</strong></div>
+                                            <div class="col-1"><strong>#${order.orderID}</strong></div>
                                             <!-- Khách hàng -->
                                             <div class="col-2">${order.fullName}</div>
                                             <!-- Ngày đặt hàng -->
@@ -141,7 +141,7 @@
                                             <div class="col-2">${order.paymentMethod}</div>
                                             <!-- Tổng tiền -->
                                             <div class="col-2">${order.totalAmountFormatted}</div>
-                                            <div class="col-2">
+                                            <div class="col-1">
                                                 <a href="${pageContext.request.contextPath}/admin/manageOrderDetails?orderID=${order.orderID}" class="btn btn-info">Chi tiết</a>
                                             </div>
                                         </div>

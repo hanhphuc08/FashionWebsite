@@ -17,8 +17,7 @@
 <!-- Google fonts - Playfair Display-->
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/fonts/hkgrotesk/stylesheet.2e9c9834.css">
+<link rel="stylesheet" href="fonts/hkgrotesk/stylesheet.2e9c9834.css">
 <!-- owl carousel-->
 <link rel="stylesheet"
 	href="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/owl.carousel/assets/owl.carousel.css">
@@ -720,7 +719,40 @@ const salesReportChart = new Chart(ctx, {
 });
 </script>
 <script
-	src="${pageContext.request.contextPath}/Template/assets/js/theme.bundle.js"></script>
+		src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/jquery/jquery.min.js"></script>
+	<!-- Bootstrap JavaScript Bundle (Popper.js included)-->
+	<script
+		src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Owl Carousel-->
+	<script
+		src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/owl.carousel/owl.carousel.js"></script>
+	<script
+		src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.min.js"></script>
+	<!-- NoUI Slider (price slider)-->
+	<script
+		src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/nouislider/nouislider.min.js"></script>
+	<!-- Smooth scrolling-->
+	<script
+		src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
+	<!-- Lightbox gallery-->
+	<script
+		src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/glightbox/js/glightbox.min.js">
+		
+	</script>
+	<!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
+	<script
+		src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/object-fit-images/ofi.min.js"></script>
+	<script>
+		var basePath = '${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/'
+	</script>
+	<script
+		src="${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/js/theme.30e7c8f9.js"></script>
+	<script
+		src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/jquery.cookie/jquery.cookie.js">
+		
+	</script>
+	<script
+		src="${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/js/demo.9833433a.js"></script>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/Template/assets/css/theme.bundle.css"
 	id="stylesheetLTR">
