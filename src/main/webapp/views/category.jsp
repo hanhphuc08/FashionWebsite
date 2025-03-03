@@ -86,8 +86,7 @@
           <!-- Grid -->
           <div class="products-grid col-xl-9 col-lg-8 order-lg-2">
             <header class="product-grid-header">
-              <div class="me-3 mb-3">
-                 Hiển thị <strong>1-12 </strong>trong <strong>158 </strong>sản phẩm</div>
+             
 
 						<div class="mb-3 d-flex align-items-center">
               	<span class="d-inline-block me-2">Sắp xếp theo </span>
@@ -110,7 +109,6 @@
               <div class="col-xl-3 col-lg-4 col-sm-6">
                 <div class="product">
                   <div class="product-image">
-                    <div class="ribbon ribbon-info">${o.status}</div>
                     <img class="img-fluid" src="${o.image }" alt="${o.productName }"/>
                     <div class="product-hover-overlay">
                     	<a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/categoryDetail?productCode=${o.productCode}"></a>
@@ -119,7 +117,7 @@
                       		<i class="fa fa-shopping-cart"></i>
                       	</a>
                       	<a class="btn btn-dark btn-buy" href="${pageContext.request.contextPath}/categoryDetail?productCode=${o.productCode}">
-                      		<i class="fa-search fa"></i></a><a class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-expand-arrows-alt"></i></a>
+                      		<i class="fa-search fa"></i></a>
                       </div>
                     </div>
                   </div>
@@ -130,7 +128,7 @@
                     	 href="${pageContext.request.contextPath}/categoryDetail?productCode=${o.productCode}">
                     	 ${o.productName }</a>
                     </h3>
-                    <span class="text-muted">${o.price }</span>
+                    <span class="text-muted">${o.priceFormatted }</span>
                   </div>
                 </div>
               </div>
@@ -180,8 +178,7 @@
 								<!-- Lặp qua danh sách TypeCategory -->
 								<c:forEach items="${listType}" var="type">
 									<a class="nav-link d-flex justify-content-between mb-2" href="?typeCategoryCode=${type.typeCategoryCode}&page=1&orderby=${orderby}">
-										<span>${type.typeCategoryName}</span> <span
-										class="sidebar-badge">120</span>
+										<span>${type.typeCategoryName}</span>
 									</a>
 				
 									<div class="nav nav-pills flex-column ms-3">
@@ -199,273 +196,19 @@
 						</div>
 					</div>
 					<div class="sidebar-block px-3 px-lg-0"><a class="d-lg-none block-toggler" data-bs-toggle="collapse" href="#priceFilterMenu" aria-expanded="false" aria-controls="priceFilterMenu">Filter by price</a>
-              <div class="expand-lg collapse" id="priceFilterMenu">
-                <h6 class="sidebar-heading d-none d-lg-block">Giá </h6>
-                <div class="mt-4 mt-lg-0" id="slider-snap"> </div>
-						<div class="expand-lg collapse" id="priceFilterMenu">
-							<h6 class="sidebar-heading d-none d-lg-block">Giá</h6>
-							<div class="mt-4 mt-lg-0" id="slider-snap"></div>
-							<div class="nouislider-values">
-								<div class="min">
-									Từ <span id="slider-snap-value-lower"></span>
-								</div>
-								<div class="max">
-									Đến <span id="slider-snap-value-upper"></span>
-								</div>
-								<input class="slider-snap-input" type="hidden" name="pricefrom"
-									id="slider-snap-input-lower" value="40"> <input
-									class="slider-snap-input" type="hidden" name="priceto"
-									id="slider-snap-input-upper" value="110">
-							</div>
-						</div>
-					</div>
-					<div class="sidebar-block px-3 px-lg-0">
-						<a class="d-lg-none block-toggler" data-bs-toggle="collapse"
-							href="#brandFilterMenu" aria-expanded="true"
-							aria-controls="brandFilterMenu">Filter by brand</a>
-						<!-- Brand filter menu - this menu has .show class, so is expanded by default-->
-						<div class="expand-lg collapse show" id="brandFilterMenu">
-							<h6 class="sidebar-heading d-none d-lg-block">Thương hiệu</h6>
-							<form class="mt-4 mt-lg-0" action="#">
-								<div class="mb-1">
-									<div class="form-check">
-										<input class="form-check-input" id="brand0" type="checkbox"
-											name="clothes-brand" checked> <label
-											class="form-check-label" for="brand0">Calvin Klein <small>(18)</small></label>
-									</div>
-								</div>
-								<div class="mb-1">
-									<div class="form-check">
-										<input class="form-check-input" id="brand1" type="checkbox"
-											name="clothes-brand" checked> <label
-											class="form-check-label" for="brand1">Levi Strauss <small>(30)</small></label>
-									</div>
-								</div>
-								<div class="mb-1">
-									<div class="form-check">
-										<input class="form-check-input" id="brand2" type="checkbox" name="clothes-brand"> <label class="form-check-label"
-											for="brand2">Hugo Boss <small>(120)</small></label>
-									</div>
-								</div>
-								<div class="mb-1">
-									<div class="form-check">
-										<input class="form-check-input" id="brand3" type="checkbox"
-											name="clothes-brand"> <label class="form-check-label"
-											for="brand3">Tomi Hilfiger <small>(70)</small></label>
-									</div>
-								</div>
-								<div class="mb-1">
-									<div class="form-check">
-										<input class="form-check-input" id="brand4" type="checkbox"
-											name="clothes-brand"> <label class="form-check-label"
-											for="brand4">Tom Ford <small>(110)</small></label>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-					<div class="sidebar-block px-3 px-lg-0">
-						<a class="d-lg-none block-toggler" data-bs-toggle="collapse"
-							href="#sizeFilterMenu" aria-expanded="false"
-							aria-controls="sizeFilterMenu">Filter by size</a>
-						<!-- Size filter menu-->
-						<div class="expand-lg collapse" id="sizeFilterMenu">
-							<h6 class="sidebar-heading d-none d-lg-block">Size</h6>
-							<form class="mt-4 mt-lg-0" action="#">
-								<div class="mb-1">
-									<div class="form-check">
-										<input class="form-check-input" id="size0" type="radio"
-											name="size" checked> <label class="form-check-label"
-											for="size0">S</label>
-									</div>
-								</div>
-								<div class="mb-1">
-									<div class="form-check">
-										<input class="form-check-input" id="size1" type="radio"
-											name="size"> <label class="form-check-label"
-											for="size1">M</label>
-									</div>
-								</div>
-								<div class="mb-1">
-									<div class="form-check">
-										<input class="form-check-input" id="size2" type="radio"
-											name="size"> <label class="form-check-label"
-											for="size2">L</label>
-									</div>
-								</div>
-								<div class="mb-1">
-									<div class="form-check">
-										<input class="form-check-input" id="size3" type="radio"
-											name="size"> <label class="form-check-label"
-											for="size3">XL</label>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-					<div class="sidebar-block px-3 px-lg-0">
-						<a class="d-lg-none block-toggler" data-bs-toggle="collapse"
-							href="#colourFilterMenu" aria-expanded="false"
-							aria-controls="colourFilterMenu">Filter by colour</a>
-						<!-- Size filter menu-->
-						<div class="expand-lg collapse" id="colourFilterMenu">
-							<h6 class="sidebar-heading d-none d-lg-block">Màu sắc</h6>
-							<div class="mt-4 mt-lg-0">
-								<ul class="list-inline mb-0 colours-wrapper">
-									<li class="list-inline-item"><label class="btn-colour"
-										for="colour_sidebar_Blue" style="background-color: #668cb9"
-										data-allow-multiple> </label> <input class="input-invisible"
-										type="checkbox" name="colour" value="value_sidebar_Blue" id="colour_sidebar_Blue"></li>
-									<li class="list-inline-item"><label class="btn-colour"
-										for="colour_sidebar_White" style="background-color: #fff"
-										data-allow-multiple> </label> <input class="input-invisible"
-										type="checkbox" name="colour" value="value_sidebar_White"
-										id="colour_sidebar_White"></li>
-									<li class="list-inline-item"><label class="btn-colour"
-										for="colour_sidebar_Violet" style="background-color: #8b6ea4"
-										data-allow-multiple> </label> <input class="input-invisible"
-										type="checkbox" name="colour" value="value_sidebar_Violet"
-										id="colour_sidebar_Violet"></li>
-									<li class="list-inline-item"><label class="btn-colour"
-										for="colour_sidebar_Red" style="background-color: #dd6265"
-										data-allow-multiple> </label> <input class="input-invisible"
-										type="checkbox" name="colour" value="value_sidebar_Red"
-										id="colour_sidebar_Red"></li>
-								</ul>
-							</div>
-						</div>
-					</div>
+              
+					
+					
+					
 				</div>
 				<!-- /Sidebar end-->
 			</div>
 		</div>
 	</div>
 	<!-- Quickview Modal    -->
-	<div class="modal fade quickview" id="exampleModal" tabindex="-1"
-		role="dialog" aria-hidden="true">
-		<div class="modal-dialog modal-lg" role="document">
-			<div class="modal-content">
-				<button class="close modal-close" type="button"
-					data-bs-dismiss="modal" aria-label="Close">
-					<svg class="svg-icon w-100 h-100 svg-icon-light align-middle">
-
-              <use xlink:href="#close-1"> </use>
-            </svg>
-				</button>
-				<div class="modal-body">
-					<div class="ribbon ribbon-primary">Giảm giá</div>
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="owl-carousel owl-theme owl-dots-modern detail-full"
-								data-slider-id="1">
-								<div class="detail-full-item-modal"
-									style="background: center center url('https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-596319-detail-1.jpg') no-repeat; background-size: cover;">
-								</div>
-								<div class="detail-full-item-modal"
-									style="background: center center url('https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-596319-detail-2.jpg') no-repeat; background-size: cover;">
-								</div>
-								<div class="detail-full-item-modal"
-									style="background: center center url('https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-596319-detail-3.jpg') no-repeat; background-size: cover;">
-								</div>
-								<div class="detail-full-item-modal"
-									style="background: center center url('https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-594535-unsplash-detail-3.jpg') no-repeat; background-size: cover;">
-								</div>
-								<div class="detail-full-item-modal"
-									style="background: center center url('https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-594535-unsplash-detail-4.jpg') no-repeat; background-size: cover;">
-									</div>
-							</div>
-						</div>
-						<div class="col-lg-6 d-flex align-items-center">
-							<div>
-								<h2 class="mb-4 mt-4 mt-lg-1">Áo thun nam trơn</h2>
-								<div
-									class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-sm-between mb-4">
-									<ul class="list-inline mb-2 mb-sm-0">
-										<li class="list-inline-item h4 fw-light mb-0">165.000</li>
-										<li class="list-inline-item text-muted fw-light"><del>290.000</del>
-										</li>
-									</ul>
-								</div>
-								<p class="mb-4 text-muted">Áo thun trơn đơn giản với chất vải thấm hút mồ hôi tối đa.</p>
-								<form action="#">
-									<div class="row">
-										<div class="col-sm-6 col-lg-12 detail-option mb-3">
-											<h6 class="detail-option-heading">
-												Size <span>(*)</span>
-											</h6>
-											<label
-												class="btn btn-sm btn-outline-secondary detail-option-btn-label"
-												for="size_0"> S <input class="input-invisible"
-												type="radio" name="size" value="value_0" id="size_0"
-												required>
-											</label> <label
-												class="btn btn-sm btn-outline-secondary detail-option-btn-label"
-												for="size_1"> M <input class="input-invisible"
-												type="radio" name="size" value="value_1" id="size_1"
-												required>
-											</label> <label
-												class="btn btn-sm btn-outline-secondary detail-option-btn-label"
-												for="size_2"> L <input class="input-invisible"
-												type="radio" name="size" value="value_2" id="size_2"
-												required>
-											</label> <label
-												class="btn btn-sm btn-outline-secondary detail-option-btn-label"
-												for="size_2"> XL <input class="input-invisible"
-												type="radio" name="size" value="value_3" id="size_3"
-												required>
-											</label>
-										</div>
-										<div class="col-12 col-lg-6 detail-option mb-5">
-											<label class="detail-option-heading fw-bold">Sản phẩm
-												<span>(*)</span>
-											</label> <input class="form-control detail-quantity" name="items"
-												type="number" value="1">
-												
-											<!-- Số lượng hàng có sẵn -->
-                                        <span class="available-stock">Số lượng còn lại: <strong>20</strong></span> 
-										</div>
-									</div>
-									<ul class="list-inline">
-										<li class="list-inline-item">
-											<button class="btn btn-dark btn-lg mb-1" type="submit">
-												<i class="fa fa-shopping-cart me-2"></i>Thêm vào giỏ hàng
-											</button>
-										</li>
-									</ul>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	
 	<div id="scrollTop">
 		<i class="fa fa-long-arrow-alt-up"></i>
-	</div>
-	<button class="btn btn-primary btn-sm d-none d-lg-block" type="button"
-		data-bs-toggle="collapse" data-bs-target="#style-switch"
-		id="style-switch-button">
-		<i class="fa fa-cog fa-2x"></i>
-	</button>
-	<div class="collapse" id="style-switch">
-		<div class="p-3">
-			<h6 class="text-uppercase mb-4">Select theme colour</h6>
-			<form class="mb-3">
-				<select class="form-select style-switch-select" name="colour"
-					id="colour">
-					<option value="">select colour variant</option>
-					<option value="css/style.default.7acfaf01.css">blue</option>
-					<option value="css/style.pink.bcb9f645.css">pink</option>
-					<option value="css/style.green.eba38840.css">green</option>
-					<option value="css/style.red.e64fe507.css">red</option>
-					<option value="css/style.violet.00703a6d.css">violet</option>
-				</select>
-			</form>
-			<p class="text-muted text-sm">Stylesheet switching is done with
-				JavaScript and can cause a blink while page loads. This will not
-				happen in your production code.</p>
-		</div>
 	</div>
 
 

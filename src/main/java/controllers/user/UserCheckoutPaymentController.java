@@ -1,6 +1,7 @@
 package controllers.user;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import dao.Impl.CartDao;
@@ -17,6 +18,7 @@ import models.CartModel;
 import models.OrderModel;
 import models.UserAddressModel;
 import models.UserModel;
+import utils.Email;
 
 @WebServlet(urlPatterns={"/user/checkoutPayment"})
 public class UserCheckoutPaymentController extends HttpServlet {
@@ -25,6 +27,10 @@ public class UserCheckoutPaymentController extends HttpServlet {
 	private CartDao cartDao = new CartDao();
 	 private OrderDao orderDao = new OrderDao();
 	 private OrderDetailDao orderDetailDao = new OrderDetailDao();
+	 private String formatCurrency(double amount) {
+	        DecimalFormat formatter = new DecimalFormat("###,###,###");
+	        return formatter.format(amount) + " VND";
+	    }
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
@@ -49,10 +55,11 @@ public class UserCheckoutPaymentController extends HttpServlet {
         double serviceTax = 0;
         double finalToTal = totalAmount + shipping + serviceTax;
         
-        req.setAttribute("totalAmount", totalAmount);
-        req.setAttribute("shipping", shipping);
-        req.setAttribute("serviceTax", serviceTax);
         req.setAttribute("finalTotal", finalToTal);
+        req.setAttribute("totalAmountFormatted", formatCurrency(totalAmount));
+        req.setAttribute("shippingFormatted", formatCurrency(shipping));
+        req.setAttribute("serviceTaxFormatted", formatCurrency(serviceTax));
+        req.setAttribute("finalTotalFormatted", formatCurrency(finalToTal));
 	    
 	    req.setAttribute("cartItems", cartItems);
 		
@@ -97,6 +104,26 @@ public class UserCheckoutPaymentController extends HttpServlet {
         }
         
         orderDetailDao.addOrderDetails(orderDetails, orderID);
+        
+        UserModel user = (UserModel) session.getAttribute("account");
+        if (user != null && user.getEmail() != null) {
+            String recipient = user.getEmail();
+            String subject = "Đơn hàng #" + orderID + " đã được đặt thành công!";
+            String content = "<h1>Xin chào " + user.getFullname() + "</h1>"
+                           + "<p>Cảm ơn bạn đã đặt hàng tại cửa hàng của chúng tôi.</p>"
+                           + "<p>Thông tin đơn hàng:</p>"
+                           + "<ul>"
+                           + "<li>Mã đơn hàng: P2TS" + orderID + "</li>"
+                           + "<li>Tổng tiền: " + formatCurrency(order.getTotalAmount()) + "</li>"
+                           + "</ul>"
+                           + "<p>Chúng tôi sẽ sớm xử lý đơn hàng của bạn.</p>";
+
+            try {
+                Email.sendEmail(recipient, subject, content);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         
         session.removeAttribute("order");
         session.removeAttribute("orderDetails");

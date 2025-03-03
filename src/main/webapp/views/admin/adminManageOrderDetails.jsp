@@ -66,7 +66,7 @@
 
 			<!-- Hero Content-->
 			<div class="hero-content pb-5 text-center">
-				<h1 class="hero-heading">Đơn hàng #1735</h1>
+				<h1 class="hero-heading">Đơn hàng #${order.orderID }</h1>
 			</div>
 		</div>
 	</section>
@@ -93,7 +93,7 @@
 
 											<div class="d-flex align-items-center">
 												<a
-													href="${pageContext.request.contextPath}/user/categoryDetail">
+													href="${pageContext.request.contextPath}/admin/categoryDetail">
 													<img class="cart-item-img" src="${orderDetail.image }"
 													alt="${orderDetail.productName}">
 												</a>
@@ -107,9 +107,9 @@
 												</div>
 											</div>
 										</div>
-										<div class="col-2">${orderDetail.price }</div>
+										<div class="col-2">${orderDetail.priceFormatted }</div>
 										<div class="col-2">${orderDetail.quantity }</div>
-										<div class="col-2 text-center">${orderDetail.price * orderDetail.quantity }</div>
+										<div class="col-2 text-center">${orderDetail.totalPriceFormatted }</div>
 									</div>
 								</c:forEach>
 							</div>
@@ -125,11 +125,11 @@
 							<div class="block-body bg-light pt-1">
 								<ul class="order-summary mb-0 list-unstyled">
 									<li class="order-summary-item"><span>Tổng tiền ước
-											tính</span><span>${totalAmount }</span></li>
-									<li class="order-summary-item"><span>Phí vận chuyện</span><span>${shipping }</span></li>
-									<li class="order-summary-item"><span>Thuế dịch vụ</span><span>${serviceTax }</span></li>
+											tính</span><span>${totalAmountFormatted }</span></li>
+									<li class="order-summary-item"><span>Phí vận chuyện</span><span>${shippingFormatted }</span></li>
+									<li class="order-summary-item"><span>Thuế dịch vụ</span><span>${serviceTaxFormatted }</span></li>
 									<li class="order-summary-item border-0"><span>Tổng
-											tiền</span><strong class="order-summary-total">${finalTotal }</strong></li>
+											tiền</span><strong class="order-summary-total">${finalTotalFormatted }</strong></li>
 								</ul>
 							</div>
 						</div>
@@ -142,30 +142,36 @@
 							<p>${userAddress.fullNameUA }<br>${userAddress.phoneUA }<br>${userAddress.provinceName }<br>${userAddress.districtName }<br>${userAddress.specificAddress }<br>
 							</p>
 						</div>
-						<!-- <div class="block-header">
-                  <h6 class="text-uppercase mb-0">Shipping address</h6>
-                </div>
-                <div class="block-body bg-light pt-1">
-                  <p>John Brown<br>13/25 New Avenue<br>New Heaven<br>45Y 73J<br>England<br><strong>Great Britain</strong></p>
-                </div> -->
 					</div>
 				</div>
 			</div>
 			<!-- Customer Sidebar-->
-
 			<!-- /Customer Sidebar-->
-			<div class="row my-5">
-				<div class="col-md-6">
-					<button type="button" class="btn btn-dark"
-						id="confirmOrderButton">Xác nhận đơn hàng</button>
-					<!-- Confirm button (green) -->
-				</div>
-				<div class="col-md-6">
-					<button type="button" class="btn btn-dark"
-						id="cancelOrderButton">Hủy đơn hàng</button>
-					<!-- Cancel button (red) -->
-				</div>
-			</div>
+			<form method="POST" action="${pageContext.request.contextPath}/admin/manageOrderDetails">
+			    <input type="hidden" name="orderID" value="${order.orderID}" />
+			    <c:if test="${not empty errorMessage}">
+				    <div class="alert alert-danger">${errorMessage}</div>
+				</c:if>
+				
+				<c:if test="${not empty successMessage}">
+				    <div class="alert alert-success">${successMessage}</div>
+				</c:if>
+			    
+			    <div class="row my-5 mx-1">
+			        <!-- Confirm button (green) -->
+			        <div class="col-md-6 d-flex justify-content-center">
+			            <button type="submit" name="status" value="Xác nhận" class="btn btn-lg btn-dark" id="confirmOrderButton">
+			                Xác nhận đơn hàng
+			            </button>
+			        </div>
+			        <!-- Cancel button (red) -->
+			        <div class="col-md-6 d-flex justify-content-center">
+			            <button type="submit" name="status" value="Hủy" class="btn btn-lg btn-dark" id="cancelOrderButton">
+			                Hủy đơn hàng
+			            </button>
+			        </div>
+			    </div>
+			</form>
 		</div>
 	</section>
 

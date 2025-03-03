@@ -20,7 +20,8 @@
                       <use xlink:href="#paper-bag-1"> </use>
                     </svg>Đơn hàng
 			</span>
-				<div class="badge rounded-pill bg-dark fw-normal px-3">${orderCount }</div></a>
+				
+				</a>
 				<a class="list-group-item d-flex justify-content-between align-items-center text-decoration-none" href="${pageContext.request.contextPath}/user/UserAccount">
 				<span>
 					<svg class="svg-icon svg-icon-heavy me-2">

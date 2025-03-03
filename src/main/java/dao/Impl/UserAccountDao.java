@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import configs.DBConnectSQL;
 import models.UserModel;
 
@@ -58,11 +60,12 @@ public class UserAccountDao {
     }
 
     public boolean updatePassword(int userID, String newPassword) {
+    	String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
         String sql = "UPDATE Users SET Password = ?, UpdateDate = GETDATE() WHERE UserID = ?";
         try (Connection conn = new DBConnectSQL().getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
-            ps.setString(1, newPassword);
+            ps.setString(1, hashedPassword);
             ps.setInt(2, userID);
             return ps.executeUpdate() > 0;
         } catch (Exception e) {

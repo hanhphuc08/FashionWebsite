@@ -62,7 +62,31 @@
     		<artifactId>javax.mail</artifactId>
     		<version>1.6.2</version>
 		</dependency>
-
+		
+		<dependency>
+		    <groupId>javax.mail</groupId>
+		    <artifactId>javax.mail-api</artifactId>
+		    <version>1.6.2</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.mindrot</groupId>
+		    <artifactId>jbcrypt</artifactId>
+		    <version>0.4</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.httpcomponents.client5</groupId>
+		    <artifactId>httpclient5</artifactId>
+		    <version>5.2</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>com.google.code.gson</groupId>
+		    <artifactId>gson</artifactId>
+		    <version>2.10.1</version>
+		</dependency>
+		
+		
 	</dependencies>
 	<build>
 		<pluginManagement>
@@ -89,4 +113,5 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+	
 </project>

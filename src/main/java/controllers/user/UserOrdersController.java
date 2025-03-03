@@ -1,6 +1,7 @@
 package controllers.user;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import dao.Impl.OrderDao;
@@ -18,6 +19,10 @@ public class UserOrdersController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	OrderDao orderDao = new OrderDao();
+	 private String formatCurrency(double amount) {
+	        DecimalFormat formatter = new DecimalFormat("###,###,###");
+	        return formatter.format(amount) + " VND";
+	    }
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
@@ -31,8 +36,11 @@ public class UserOrdersController extends HttpServlet {
 	    req.setAttribute("userName", userName);
 	    
 
-		List<OrderModel> order = orderDao.getOrdersByUserId(user.getUserID());
-		req.setAttribute("orderList", order);
+		List<OrderModel> orders = orderDao.getOrdersByUserId(user.getUserID());
+		for (OrderModel order : orders) {
+            order.setTotalAmountFormatted(formatCurrency(order.getTotalAmount()));
+        }
+		req.setAttribute("orderList", orders);
 		
 		
 		int orderCount = orderDao.getTotalOrders();

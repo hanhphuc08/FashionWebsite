@@ -1,13 +1,20 @@
 package services.Impl;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
+import java.util.Base64;
 import java.util.List;
 import java.util.Random;
 
+import javax.mail.MessagingException;
+
 import org.hibernate.generator.internal.GeneratedAlwaysGeneration;
+import org.mindrot.jbcrypt.BCrypt;
 
 import models.UserModel;
 import services.IUserService;
+import utils.Email;
 import dao.IUserDao;
 import dao.Impl.UserDao;
 
@@ -38,24 +45,27 @@ public class UserService implements IUserService {
 		{
 			return false;
 		}
+		
+		String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
 		UserModel newUser = new UserModel();
 		newUser.setFullname(fullname);
 		newUser.setEmail(email);
 		newUser.setPhone(phone);
 		newUser.setAddress(address);
-		newUser.setPassword(password);
+		newUser.setPassword(hashedPassword);
 		userDao.insert(newUser);
 		return true;
 	}
 
 	@Override
 	public UserModel login(String emailOrPhone, String password) {
-		UserModel user = userDao.login(emailOrPhone, password);
-		if(user != null)
-		{
-			return user;
-		}
-		return null;
+		 UserModel user = userDao.login(emailOrPhone, password);
+		    if (user == null) {
+		        System.out.println("Login failed: User not found.");
+		    } else {
+		        System.out.println("Login successful: " + user.toString());
+		    }
+		    return user;
 	}
 
 	@Override
@@ -69,21 +79,32 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public boolean sendCode(String email) {
-		UserModel user = userDao.findByEmail(email);
-		if(user == null)
-		{
-			return false;
-		}
-		String resetCode = genarateResetCode();
-		
-		user.setEmailCode(resetCode);
-		userDao.update(user);
-		
-		sendEmail(user.getEmail(), "Password reset : ", "Your code : " + resetCode);
-		
-		return true;
+	public boolean sendCode(String email, String code) {
+		 boolean emailSent = sendEmailWithResetCode(email, code);
+	        return emailSent;
 	}
+	@Override
+    public boolean updateUser(UserModel user) {
+		 try {
+		        userDao.update(user); 
+		        return true;
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		        return false; 
+		    }
+    }
+
+    @Override
+    public String hashPassword(String password) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(password.getBytes());
+            return Base64.getEncoder().encodeToString(hash);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 	@Override
 	public boolean resetPassword(String email, String resetCode, String newPassword) {
@@ -105,11 +126,16 @@ public class UserService implements IUserService {
 		return String.valueOf(code);
 	}
 	
-	private void sendEmail(String to, String subject, String body) {
-		
-        System.out.println("Gửi email tới: " + to);
-        System.out.println("Subject: " + subject);
-        System.out.println("Body: " + body);
+	private boolean sendEmailWithResetCode(String to, String code) {
+        String subject = "Mã xác nhận đặt lại mật khẩu";
+        String body = "Mã xác nhận của bạn là: " + code;
+        try {
+            Email.sendEmail(to, subject, body);
+            return true;
+        } catch (MessagingException e) {
+            System.err.println("Không thể gửi email: " + e.getMessage());
+            return false; 
+        }
     }
 
 	@Override

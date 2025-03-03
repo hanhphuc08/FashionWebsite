@@ -2,7 +2,14 @@ package controllers;
 
 import java.io.IOException;
 
+import org.apache.hc.client5.http.ClientProtocolException;
+
+import com.google.gson.Gson;
+
+import configs.Iconstant;
+import controllers.user.GoogleLogin;
 import dao.Impl.CartDao;
+import dao.Impl.OrderDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.Cookie;
@@ -23,11 +30,20 @@ public class LoginController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		 req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
+		HttpSession session = req.getSession(false);
+	    if (session != null) {
+	        String successMessage = (String) session.getAttribute("successMessage");
+	        if (successMessage != null) {
+	            req.setAttribute("successMessage", successMessage);
+	            session.removeAttribute("successMessage");
+	        }
+	    }
+	    req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
 		
 		
 	}
 
+	@SuppressWarnings("unused")
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -36,11 +52,11 @@ public class LoginController extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html");
 
-		// lấy tham số từ view
+
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
+		
 
-		// Xử lý bài toán
 		String alertMsg = "";
 		if (username.isEmpty() || password.isEmpty()) {
 			alertMsg = "Tài khoản hoặc mật khẩu không được rỗng";
@@ -48,7 +64,10 @@ public class LoginController extends HttpServlet {
 			req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
 			return;
 		}
+		System.out.println(username);
+		System.out.println(password);
 		UserModel user = service.login(username, password);
+
 		if (user != null) {
 
 			HttpSession session = req.getSession(true);
@@ -60,11 +79,13 @@ public class LoginController extends HttpServlet {
 
 
 			if ("Admin".equals(user.getRoleID())) {
-
+				OrderDao orderDao = new OrderDao();
+	            int pendingOrder = orderDao.getPendingOrderCountToday();
+	            session.setAttribute("pendingOrder", pendingOrder);
 				resp.sendRedirect(req.getContextPath() + "/admin/home");
 			} else {
 				String productCode = (String) session.getAttribute("productCode");
-                session.removeAttribute("productCode"); // Xóa productCode sau khi sử dụng
+                session.removeAttribute("productCode");
 
                 if (productCode != null) {
                     resp.sendRedirect(req.getContextPath() + "/user/categoryDetail?productCode=" + productCode);
@@ -73,12 +94,21 @@ public class LoginController extends HttpServlet {
                 }
 			}
 		} else {
-
 			alertMsg = "Tài khoản hoặc mật khẩu không đúng.";
 			req.setAttribute("alert", alertMsg);
 			req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
 		}
 
 	}
+	@SuppressWarnings("unused")
+	private void processResquest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String code = req.getParameter("code");
+		GoogleLogin gg = new GoogleLogin();
+		String accessToken = gg.getToken(code);
+		System.out.println(accessToken);
+		UserModel acc = gg.getUserInfo(accessToken);
+		System.out.println(acc);
 
+	}
+	
 }

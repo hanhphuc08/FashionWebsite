@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import configs.DBConnectSQL;
 import dao.IUserDao;
 import models.UserModel;
@@ -61,7 +63,7 @@ public class UserDao implements IUserDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return list; // Return the list (empty if no data found)
+		return list; 
 	}
 
 	@Override
@@ -109,6 +111,7 @@ public class UserDao implements IUserDao {
 				user.setPhone(rs.getString("phone"));
 				user.setAddress(rs.getString("address"));
 				user.setRoleID(rs.getString("roleID"));
+				user.setEmailCode(rs.getString("emailCode"));
 				user.setCreateDate(rs.getDate("createDate"));
 				user.setUpdateDate(rs.getDate("updateDate"));
 				return user;
@@ -137,6 +140,7 @@ public class UserDao implements IUserDao {
 				user.setPhone(rs.getString("phone"));
 				user.setAddress(rs.getString("address"));
 				user.setRoleID(rs.getString("roleID"));
+				user.setEmailCode(rs.getString("emailCode"));
 				user.setCreateDate(rs.getDate("createDate"));
 				user.setUpdateDate(rs.getDate("updateDate"));
 				return user;
@@ -214,49 +218,66 @@ public class UserDao implements IUserDao {
 
 	}
 
+	public boolean updatePassword(String email, String hashedPassword) {
+	    String sql = "UPDATE users SET password = ? WHERE email = ?";
+	    try (PreparedStatement stmt = new DBConnectSQL().getConnection().prepareStatement(sql)) {
+	        stmt.setString(1, hashedPassword);
+	        stmt.setString(2, email);
+	        return stmt.executeUpdate() > 0;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return false;
+	    }
+	}
+
+
 	@Override
 	public UserModel login(String emailOrPhone, String password) {
-		String query = "SELECT * FROM Users WHERE (email = ? OR phone = ?) AND password = ?";
-		try {
-			conn = new DBConnectSQL().getConnection();
-			ps = conn.prepareStatement(query);
+	    String query = "SELECT * FROM Users WHERE email = ? OR phone = ?";
+	    try {
+	        conn = new DBConnectSQL().getConnection();
+	        ps = conn.prepareStatement(query);
 
-			ps.setString(1, emailOrPhone);
-			ps.setString(2, emailOrPhone);
-			ps.setString(3, password);
+	        ps.setString(1, emailOrPhone);
+	        ps.setString(2, emailOrPhone);
 
-			rs = ps.executeQuery();
+	        rs = ps.executeQuery();
 
-			if (rs.next()) {
-				UserModel user = new UserModel();
-				user.setUserID(rs.getInt("userID"));
-				user.setFullname(rs.getString("fullname"));
-				user.setEmail(rs.getString("email"));
-				user.setPhone(rs.getString("phone"));
-				user.setAddress(rs.getString("address"));
-				user.setPassword(rs.getString("password"));
-				user.setRoleID(rs.getString("roleID"));
-				user.setCreateDate(rs.getDate("createDate"));
-				user.setUpdateDate(rs.getDate("updateDate"));
-				return user;
-			}
+	        if (rs.next()) {
+	            UserModel user = new UserModel();
+	            user.setUserID(rs.getInt("userID"));
+	            user.setFullname(rs.getString("fullname"));
+	            user.setEmail(rs.getString("email"));
+	            user.setPhone(rs.getString("phone"));
+	            user.setAddress(rs.getString("address"));
+	            user.setPassword(rs.getString("password")); // Mật khẩu mã hóa trong DB
+	            user.setRoleID(rs.getString("roleID"));
+	            user.setCreateDate(rs.getDate("createDate"));
+	            user.setUpdateDate(rs.getDate("updateDate"));
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (rs != null)
-					rs.close();
-				if (ps != null)
-					ps.close();
-				if (conn != null)
-					conn.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-
-		return null;
+	            if (BCrypt.checkpw(password, user.getPassword())) {
+	                return user;
+	            } else {
+	                System.out.println("Invalid password.");
+	            }
+	        } else {
+	            System.out.println("No matching user found.");
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (rs != null)
+	                rs.close();
+	            if (ps != null)
+	                ps.close();
+	            if (conn != null)
+	                conn.close();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
+	    return null;
 	}
 
 	@Override
@@ -324,40 +345,6 @@ public class UserDao implements IUserDao {
 	public static void main(String[] args) {
 		UserDao userDao = new UserDao();
 
-		/*
-		 * UserModel newUser = new UserModel(); newUser.setFullname("Nguyen Van A");
-		 * newUser.setEmail("nguyenvana@example.com"); newUser.setPhone("0123456789");
-		 * newUser.setAddress("123 Đường ABC"); newUser.setPassword("password123");
-		 * newUser.setEmailCode("abc123");
-		 * 
-		 * userDao.insert(newUser);
-		 * System.out.println("Người dùng đã được thêm thành công.");
-		 */
-
-		boolean emailExists = userDao.checkExistEmail("nguyenvana@example.com");
-		System.out.println("Email tồn tại: " + emailExists);
-
-		boolean phoneExists = userDao.checkExistPhone("0123456789");
-		System.out.println("Điện thoại tồn tại: " + phoneExists);
-
-		UserModel user = userDao.findByID(1);
-		if (user != null) {
-			System.out.println("Thông tin người dùng:");
-			System.out.println("Họ tên: " + user.getFullname());
-			System.out.println("Email: " + user.getEmail());
-			System.out.println("Điện thoại: " + user.getPhone());
-		} else {
-			System.out.println("Không tìm thấy người dùng.");
-		}
-
-		/*
-		 * if (user != null) { user.setFullname("Nguyen Van C"); userDao.update(user);
-		 * System.out.println("Thông tin người dùng đã được cập nhật."); }
-		 */
-		/*
-		 * List<UserModel> users = userDao.findAll(); for (UserModel user1 : users) {
-		 * System.out.println(user1.getFullname() + " - " + user1.getEmail()); }
-		 */
 		UserModel user1 = userDao.login("nguyenvana@example.com", "password123");
 		if (user1 != null) {
 			System.out.println("Login thanh cong");

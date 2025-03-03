@@ -49,11 +49,18 @@
             <div class="row">
                 <div class="col-lg-6 py-3 order-2 order-lg-1">
                     <div class="owl-carousel owl-theme owl-dots-modern detail-full" data-slider-id="1">
-                        <div class="detail-full-item" style="background: center center url(https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-596319-detail-1.jpg) no-repeat; background-size: cover;"></div>
-                        <div class="detail-full-item" style="background: center center url(https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-596319-detail-2.jpg) no-repeat; background-size: cover;"></div>
-                        <div class="detail-full-item" style="background: center center url(https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-596319-detail-3.jpg) no-repeat; background-size: cover;"></div>
-                        <div class="detail-full-item" style="background: center center url(https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-594535-unsplash-detail-3.jpg) no-repeat; background-size: cover;"></div>
-                        <div class="detail-full-item" style="background: center center url(https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-594535-unsplash-detail-4.jpg) no-repeat; background-size: cover;"></div>
+                         <c:choose>
+							<c:when test="${not empty product.image}">
+								<c:forEach items="${product.image}" var="image">
+									<div class="detail-full-item"
+										style="background: center center url(${image}) no-repeat; background-size: cover;"></div>
+								</c:forEach>
+							</c:when>
+							<c:otherwise>
+								<div class="detail-full-item"
+									style="background: center center url('/path/to/placeholder.jpg') no-repeat; background-size: cover;"></div>
+							</c:otherwise>
+						</c:choose>
                     </div>
                 </div>
                 <div class="align-items-start col-lg-6 col-xl-5 ps-lg-5 mb-5 order-1 order-lg-2">
@@ -66,7 +73,7 @@
                          <h3 class="mb-4">${product.productName}</h3>
                         <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-sm-between mb-4">
                             <ul class="list-inline mb-2 mb-sm-0">
-                                <li class="list-inline-item h4 fw-light mb-0">${product.price }</li>
+                                <li class="list-inline-item h4 fw-light mb-0">${product.priceFormatted }</li>
                             </ul>
                         </div>
                         <p class="text-muted">${product.categoryName }</p>
@@ -157,7 +164,7 @@
                                     ${similarProduct.productName}
                                 </a>
                             </h3>
-                  <span class="text-muted">${similarProduct.price}</span>
+                  <span class="text-muted">${similarProduct.priceFormatted}</span>
                 </div>
               </div>
             </div>

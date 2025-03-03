@@ -20,7 +20,24 @@ public class CartModel implements Serializable {
 	private String color;
 	private int stockQuantity;
 	
+	private String priceFormatted;
+	private String totalPriceFormatted;
 
+	public String getPriceFormatted() {
+	    return priceFormatted;
+	}
+
+	public void setPriceFormatted(String priceFormatted) {
+	    this.priceFormatted = priceFormatted;
+	}
+
+	public String getTotalPriceFormatted() {
+	    return totalPriceFormatted;
+	}
+
+	public void setTotalPriceFormatted(String totalPriceFormatted) {
+	    this.totalPriceFormatted = totalPriceFormatted;
+	}
 	public int getStockQuantity() {
 		return stockQuantity;
 	}

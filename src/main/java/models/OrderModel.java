@@ -7,12 +7,31 @@ public class OrderModel {
 	    private int userID;
 	    private Date orderDate;
 	    private double totalAmount;
-	    private String status; // Đang xác nhận, Xác nhận, Huỷ
-	    private String paymentMethod; // Tiền mặt, Chuyển khoản
+	    private String status;
+	    private String paymentMethod; 
 	    private Date updateDate;
 	    
 	    private String fullName;
 	    
+	    private String totalAmountFormatted;
+	    
+	    private UserModel user;
+
+	    public UserModel getUser() {
+			return user;
+		}
+
+		public void setUser(UserModel user) {
+			this.user = user;
+		}
+
+		public String getTotalAmountFormatted() {
+	        return totalAmountFormatted;
+	    }
+
+	    public void setTotalAmountFormatted(String totalAmountFormatted) {
+	        this.totalAmountFormatted = totalAmountFormatted;
+	    }
 	    private String formattedTotalAmount;
 	    
 	    

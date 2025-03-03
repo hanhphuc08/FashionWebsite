@@ -1,6 +1,7 @@
 package controllers.user;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import dao.Impl.CartDao;
@@ -18,36 +19,39 @@ public class UserCartController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private CartDao cartDao = new CartDao();
+	 private String formatCurrency(double amount) {
+	        DecimalFormat formatter = new DecimalFormat("###,###,###");
+	        return formatter.format(amount) + " VND";
+	    }
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		  	HttpSession session = req.getSession(false);
 		    UserModel user = (session != null) ? (UserModel) session.getAttribute("account") : null;
 		    if (user == null) {
-	            // Lưu URL hiện tại để chuyển hướng sau đăng nhập
 	            String currentUrl = req.getRequestURL() + 
 	                                (req.getQueryString() != null ? "?" + req.getQueryString() : "");
 	            session = req.getSession(true);
 	            session.setAttribute("redirectUrl", currentUrl);
 
-	            // Chuyển hướng đến trang login
 	            resp.sendRedirect(req.getContextPath() + "/login");
 	            return;
 	        }
-		    // Lấy danh sách sản phẩm trong giỏ hàng
 		    List<CartModel> cartItems = cartDao.getAllCartWithDetail(user.getUserID());
 		    
 		    double totalAmount = 0;
 	        for(CartModel item : cartItems) {
 	        	totalAmount += item.getPrice() * item.getQuantity();
+	        	item.setPriceFormatted(formatCurrency(item.getPrice())); 
+	            item.setTotalPriceFormatted(formatCurrency(item.getPrice() * item.getQuantity()));
 	        }
 	        double shipping = 0;
 	        double serviceTax = 0;
 	        double finalToTal = totalAmount + shipping + serviceTax;
 	        
-	        req.setAttribute("totalAmount", totalAmount);
-	        req.setAttribute("shipping", shipping);
-	        req.setAttribute("serviceTax", serviceTax);
-	        req.setAttribute("finalTotal", finalToTal);
+	        req.setAttribute("totalAmountFormatted", formatCurrency(totalAmount));
+	        req.setAttribute("shippingFormatted", formatCurrency(shipping));
+	        req.setAttribute("serviceTaxFormatted", formatCurrency(serviceTax));
+	        req.setAttribute("finalTotalFormatted", formatCurrency(finalToTal));
 		    
 		    req.setAttribute("cartItems", cartItems);
 		    
@@ -85,7 +89,6 @@ public class UserCartController extends HttpServlet {
 	    System.out.println("ProductCode: " + productCode);
 	    System.out.println("Size: " + size);
 
-	    // Xử lý action "delete"
 	    if ("delete".equals(action)) {
 	        boolean result = cartDao.removeFromCart(user.getUserID(), productCode, size);
 	        System.out.println("Remove result: " + result);
@@ -98,15 +101,13 @@ public class UserCartController extends HttpServlet {
 	            session.setAttribute("cartError", "Không thể xóa sản phẩm khỏi giỏ hàng. Vui lòng thử lại.");
 	        }
 	    } else {
-	        // Xử lý các hành động khác (add, update)
 	        String quantityStr = req.getParameter("quantity");
 	        if (quantityStr == null || quantityStr.isEmpty()) {
-	            quantityStr = "0"; // Giá trị mặc định nếu thiếu
+	            quantityStr = "0";
 	        }
 
 	        int quantity = Integer.parseInt(quantityStr);
 
-	        // Tiếp tục xử lý logic thêm hoặc cập nhật giỏ hàng
 	        CartModel cartItem = new CartModel();
 	        cartItem.setUserID(user.getUserID());
 	        cartItem.setProductCode(productCode);
@@ -126,12 +127,10 @@ public class UserCartController extends HttpServlet {
 	        session.setAttribute("itemCount", itemCount);
 	    }
 
-	    // Cập nhật danh sách giỏ hàng
 	    List<CartModel> updatedCartItems = cartDao.getAllCartWithDetail(user.getUserID());
 	    System.out.println("Updated cart size: " + updatedCartItems.size());
 	    req.setAttribute("cartItems", updatedCartItems);
 
-	    // Chuyển hướng về trang chi tiết sản phẩm hoặc giỏ hàng
 	    String referer = req.getHeader("Referer");
 	    resp.sendRedirect((referer != null) ? referer : req.getContextPath() + "/user/cart");
 	}

@@ -57,7 +57,6 @@
     .search-bar .input-group .form-control {
         padding-right: 40px; 
     }
-
     .search-bar .input-group .btn {
         position: absolute;
         right: 10px; 
@@ -66,7 +65,6 @@
         background: transparent; 
         border: none; 
     }
-
     .search-bar .input-group {
         position: relative;
     }
@@ -77,82 +75,105 @@
 	<%@ include file="/commons/admin/headerAdmin.jsp"%>;
 	<!-- End Header -->
 
-	<!-- Hero Section-->
 	<section class="hero">
-		<div class="container">
-
-
-			<!-- Hero Content-->
-			<div class="hero-content pb-5 text-center">
-				<h1 class="hero-heading">Danh sách đơn hàng</h1>
-			</div>
-		</div>
-	</section>
-	<section>
-		<div class="container">
-			<!-- Search Bar -->
-			<div class="search-bar mb-4">
-    <form action="" method="GET">
-        <div class="input-group">
-            <input type="text" class="form-control rounded-pill pl-4 pr-5" 
-                   placeholder="Tìm kiếm đơn hàng..." name="searchQuery" value="${param.searchQuery}">
-            <div class="input-group-append">
-                <button class="btn btn-transparent" type="submit">
-                    <i class="fa fa-search"></i>
-                </button>
+        <div class="container">
+            <!-- Hero Content-->
+            <div class="hero-content pb-5 text-center">
+                <h1 class="hero-heading">Danh sách đơn hàng</h1>
             </div>
         </div>
-    </form>
-</div>
-
-
-			<div class="row">
-				<div class="col-lg-12 col-xl-12">
-			 <div class="orders">
-			    <div class="orders-wrapper">
-			        <div class="cart-header text-center">
-			            <div class="row">
-			                <div class="col-2">Mã đơn hàng</div>
-			                <div class="col-2">Khách hàng</div>
-			                <div class="col-2">Ngày đặt hàng</div>
-			                <div class="col-2">Tình trạng</div>
-			                <div class="col-2">Tổng tiền</div>
-			                <div class="col-2">Xem</div>
-			            </div>
-			        </div>
-			        <div class="cart-body">
-			
-			            <c:forEach items="${orderList}" var="order">
-			                <div class="cart-item">
-			                    <div class="row d-flex align-items-center text-center">
-			                        <!-- Mã đơn hàng -->
-			                        <div class="col-2"><strong>#${order.orderID}</strong></div>
-			                        <!-- Khách hàng -->
-			                        <div class="col-2">${order.fullName}</div>
-			                        <!-- Ngày đặt hàng -->
-			                        <div class="col-2">${order.orderDate}</div>
-			                        <!-- Trạng thái -->
-			                        <div class="col-2">${order.status}</div>
-			                        <!-- Tổng tiền -->
-			                        <div class="col-2">${order.totalAmount}</div>
-			                        <div class="col-2">
-                                    <a href="${pageContext.request.contextPath}/admin/manageOrderDetails" class="btn btn-info">Chi tiết</a>
+    </section>
+    
+    <section>
+        <div class="container">
+            <!-- Begin Nav-Bar -->
+            
+            <!-- End Nav-Bar -->
+    
+            <!-- Begin Search Bar -->
+            <div class="container">
+            <div class="nav-bar search-bar mb-4">
+                <form action="${pageContext.request.contextPath}/admin/manageOrders" method="GET">
+                    <div class="input-group">
+                        <input type="text" class="form-control rounded-pill pl-4 pr-5" 
+                               placeholder="Tìm kiếm đơn hàng..." name="searchQuery" value="${param.searchQuery}">
+                        <input type="hidden" name="searchType" value="orderID">
+                        <div class="input-group-append">
+                            <button class="btn btn-transparent" type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- End Search Bar -->
+    
+            <!-- Content Area -->
+            <div id="contentArea" class="row">
+                <div class="col-lg-12 col-xl-12">
+                    <div class="orders">
+                        <div class="orders-wrapper">
+                            <div class="cart-header text-center">
+                                <div class="row">
+                                    <div class="col-1">Mã đơn hàng</div>
+                                    <div class="col-2">Khách hàng</div>
+                                    <div class="col-2">Ngày đặt hàng</div>
+                                    <div class="col-2">Tình trạng</div>
+                                    <div class="col-2">Phương thức</div>
+                                    <div class="col-2">Tổng tiền</div>
+                                    <div class="col-1">Xem</div>
                                 </div>
-			                    </div>
-			                </div>
-			            </c:forEach>
-			
-			        </div>
-			    </div>
-			</div>
-
-
-				</div>
-
-			</div>
-		</div>
-	</section>
-
+                            </div>
+                            <!-- Begin cart-body -->
+                            <div class="cart-body" id="orderList">
+                                <c:forEach items="${orderList}" var="order">
+                                    <div class="cart-item">
+                                        <div class="row d-flex align-items-center text-center">
+                                            <!-- Mã đơn hàng -->
+                                            <div class="col-1"><strong>#${order.orderID}</strong></div>
+                                            <!-- Khách hàng -->
+                                            <div class="col-2">${order.fullName}</div>
+                                            <!-- Ngày đặt hàng -->
+                                            <div class="col-2">${order.orderDate}</div>
+                                            <!-- Trạng thái -->
+                                            <div class="col-2">${order.status}</div>
+                                            <!-- Phương thức -->
+                                            <div class="col-2">${order.paymentMethod}</div>
+                                            <!-- Tổng tiền -->
+                                            <div class="col-2">${order.totalAmountFormatted}</div>
+                                            <div class="col-1">
+                                                <a href="${pageContext.request.contextPath}/admin/manageOrderDetails?orderID=${order.orderID}" class="btn btn-info">Chi tiết</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:forEach>
+                            </div>
+                            <!-- End cart-body -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        function loadContent(type) {
+            // Xử lý logic để tải nội dung tương ứng
+            const orderList = document.getElementById('orderList');
+    
+            if (type === 'all') {
+                orderList.innerHTML = 'Tất cả đơn hàng';
+            } else if (type === 'pending') {
+                orderList.innerHTML = 'Chưa thanh toán';
+            } else if (type === 'paid') {
+                orderList.innerHTML = 'Đã thanh toán';
+            }  else if (type === 'transfer') {
+                orderList.innerHTML = 'Thanh toán chuyển khoản';
+            } else if (type === 'cash') {
+                orderList.innerHTML = 'Thanh toán tiền mặt';
+            }
+        }
+    </script>
 	<!--  Begin Footer -->
 	<%@ include file="/commons/web/footer.jsp"%>
 	<!-- End Footer -->

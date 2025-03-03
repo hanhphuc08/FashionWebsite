@@ -59,7 +59,6 @@
 	<%@ include file="/commons/user/headerUser.jsp"%>;
 	<!-- End Header -->
 
-<<<<<<< HEAD
     <!-- Hero Section-->
     <section class="hero">
       <div class="container">
@@ -74,261 +73,93 @@
         
           <h1 class="hero-heading">Đơn hàng #${order.orderID }</h1>
           <div class="row">   
-            <div class="col-xl-8 offset-xl-2"><p class="lead text-muted">Đơn hàng #${order.orderID} đã được đặt vào ngày <strong>${order.orderDate }</strong> và đang <strong>${order.status }</strong>.</p><p class="text-muted">Nếu bạn có bất kỳ thắc mắc nào, vui lòng <a href="contact.html">liên hệ với chúng tôi</a>, trung tâm dịch vụ chăm sóc khách hàng của chúng tôi luôn trực 24/7</p></div>
+            <div class="col-xl-8 offset-xl-2"><p class="lead text-muted">Đơn hàng #${order.orderID} đã được đặt vào ngày <strong>${order.orderDate }</strong> và <strong>${order.status }</strong>.</p><p class="text-muted">Nếu bạn có bất kỳ thắc mắc nào, vui lòng <a href="contact.html">liên hệ với chúng tôi</a>, trung tâm dịch vụ chăm sóc khách hàng của chúng tôi luôn trực 24/7</p></div>
           </div>
         </div>
 
       </div>
     </section>
     <section>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-xl-9">
-            <div class="cart">
-              <div class="cart-wrapper">
-                <div class="cart-header text-center">
-                  <div class="row">
-                    <div class="col-6">Sản phẩm</div>
-                    <div class="col-2">Giá</div>
-                    <div class="col-2">Số lượng</div>
-                    <div class="col-2">Tổng</div>
-                  </div>
-                </div>
-                <div class="cart-body">
-                
-                  <!-- Product-->
-                  <div class="cart-item">
-                  	<c:forEach items="${orderDetails}" var="orderDetail">
-                    <div class="row d-flex align-items-center text-center">
-                      <div class="col-6">
-                      
-                        <div class="d-flex align-items-center">
-                        	<a href="${pageContext.request.contextPath}/user/categoryDetail">
-                        		<img class="cart-item-img" src="${orderDetail.image }" alt="${orderDetail.productName}">
-                        	</a>
-                          <div class="cart-title text-start">
-                          	<a class="text-uppercase text-dark">
-                          		<strong>${orderDetail.productName }</strong>
-                          	</a>
-                          	<br><span class="text-muted text-sm">Size : ${orderDetail.size }</span>
-                          	<br><span class="text-muted text-sm">Colour: ${orderDetail.color }</span>
-                          </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-xl-9">
+        <div class="cart">
+          <div class="cart-wrapper">
+            <div class="cart-header text-center">
+              <div class="row">
+                <div class="col-6">Sản phẩm</div>
+                <div class="col-2">Giá</div>
+                <div class="col-2">Số lượng</div>
+                <div class="col-2">Tổng</div>
+              </div>
+              
+            </div>
+            <div class="cart-body">
+              <!-- Product-->
+              <div class="cart-item">
+                <c:forEach items="${orderDetails}" var="orderDetail">
+                  <div class="row d-flex align-items-center text-center">
+                    <div class="col-6">
+                      <div class="d-flex align-items-center">
+                        <a href="${pageContext.request.contextPath}/user/categoryDetail">
+                          <img class="cart-item-img" src="${orderDetail.image}" alt="${orderDetail.productName}">
+                        </a>
+                        <div class="cart-title text-start">
+                          <a class="text-uppercase text-dark">
+                            <strong>${orderDetail.productName}</strong>
+                          </a>
+                          <br><span class="text-muted text-sm">Size: ${orderDetail.size}</span>
+                          <br><span class="text-muted text-sm">Màu: ${orderDetail.color}</span>
                         </div>
                       </div>
-                      <div class="col-2">${orderDetail.price }</div>
-                      <div class="col-2">${orderDetail.quantity }</div>
-                      <div class="col-2 text-center">${orderDetail.price * orderDetail.quantity }</div>
                     </div>
-                    </c:forEach>
+                    <div class="col-2">${orderDetail.priceFormatted}</div>
+                    <div class="col-2">${orderDetail.quantity}</div>
+                    <div class="col-2 text-center">${orderDetail.totalPriceFormatted}</div>
                   </div>
-                  <!-- Product-->
-                  
-    
-                </div>
+                </c:forEach>
               </div>
-            </div>
-            <div class="row my-5">
-              <div class="col-md-6">
-                <div class="block mb-5">
-                  <div class="block-header">
-                    <h6 class="text-uppercase mb-0">Tổng tiền đơn hàng dự kiến</h6>
-                  </div>
-                  <div class="block-body bg-light pt-1">
-                    <p class="text-sm">Chi phí vận chuyển và chi phí bổ sung sẽ được tính dựa trên các sản phẩm bạn đã chọn.</p>
-                    <ul class="order-summary mb-0 list-unstyled">
-                      <li class="order-summary-item"><span>Tổng tiền ước tính</span><span>${totalAmount }</span></li>
-                      <li class="order-summary-item"><span>Phí vận chuyện</span><span>${shipping }</span></li>
-                      <li class="order-summary-item"><span>Thuế dịch vụ</span><span>${serviceTax }</span></li>
-                      <li class="order-summary-item border-0"><span>Tổng tiền</span><strong class="order-summary-total">${finalTotal }</strong></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="block-header">
-                  <h6 class="text-uppercase mb-0">Địa chỉ giao hàng</h6>
-                </div>
-                <div class="block-body bg-light pt-1">
-                  <p>${userAddress.fullNameUA }<br>${userAddress.phoneUA }<br>${userAddress.provinceName }<br>${userAddress.districtName }<br>${userAddress.specificAddress }<br></p>
-                </div>
-                <!-- <div class="block-header">
-=======
-	<!-- Hero Section-->
-	<section class="hero">
-		<div class="container">
-			<!-- Breadcrumbs -->
-			<ol class="breadcrumb justify-content-center">
-				<li class="breadcrumb-item"><a
-					href="${pageContext.request.contextPath}/user/home">Trang chủ</a></li>
-				<li class="breadcrumb-item"><a
-					href="${pageContext.request.contextPath}/user/orders">Đơn hàng</a></li>
-				<li class="breadcrumb-item active">Đơn hàng #1735</li>
-			</ol>
-			<!-- Hero Content-->
-			<div class="hero-content pb-5 text-center">
-				<h1 class="hero-heading">Đơn hàng #1735</h1>
-				<div class="row">
-					<div class="col-xl-8 offset-xl-2">
-						<p class="lead text-muted">
-							Đơn hàng #1735 đã được đặt vào ngày <strong>11/11/2024</strong>
-							và đang <strong>being prepared</strong>.
-						</p>
-						<p class="text-muted">
-							Nếu bạn có bất kỳ thắc mắc nào, vui lòng <a href="contact.html">liên
-								hệ với chúng tôi</a>, trung tâm dịch vụ chăm sóc khách hàng của
-							chúng tôi luôn trực 24/7
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<section>
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-xl-9">
-					<div class="cart">
-						<div class="cart-wrapper">
-							<div class="cart-header text-center">
-								<div class="row">
-									<div class="col-6">Sản phẩm</div>
-									<div class="col-2">Giá</div>
-									<div class="col-2">Số lượng</div>
-									<div class="col-2">Tổng</div>
-								</div>
-							</div>
-							<div class="cart-body">
-
-								<!-- Product-->
-								<div class="cart-item">
-									<c:forEach items="${orderDetails}" var="orderDetail">
-										<div class="row d-flex align-items-center text-center">
-											<div class="col-6">
-
-												<div class="d-flex align-items-center">
-													<a
-														href="${pageContext.request.contextPath}/user/categoryDetail">
-														<img class="cart-item-img" src="${orderDetail.image }"
-														alt="${orderDetail.productName}">
-													</a>
-													<div class="cart-title text-start">
-														<a class="text-uppercase text-dark"> <strong>${orderDetail.productName }</strong>
-														</a> <br>
-														<span class="text-muted text-sm">Size :
-															${orderDetail.size }</span> <br>
-														<span class="text-muted text-sm">Colour:
-															${orderDetail.color }</span>
-													</div>
-												</div>
-											</div>
-											<div class="col-2">${orderDetail.price }</div>
-											<div class="col-2">${orderDetail.quantity }</div>
-											<div class="col-2 text-center">${orderDetail.price * orderDetail.quantity }</div>
-										</div>
-									</c:forEach>
-								</div>
-								<!-- Product-->
-
-
-							</div>
-						</div>
-					</div>
-					<div class="row my-5">
-						<div class="col-md-6">
-							<div class="block mb-5">
-								<div class="block-header">
-									<h6 class="text-uppercase mb-0">Tổng tiền đơn hàng dự kiến</h6>
-								</div>
-								<div class="block-body bg-light pt-1">
-									<p class="text-sm">Chi phí vận chuyển và chi phí bổ sung sẽ
-										được tính dựa trên các sản phẩm bạn đã chọn.</p>
-									<ul class="order-summary mb-0 list-unstyled">
-										<li class="order-summary-item"><span>Tổng tiền ước
-												tính</span><span>${totalAmount }</span></li>
-										<li class="order-summary-item"><span>Phí vận
-												chuyện</span><span>${shipping }</span></li>
-										<li class="order-summary-item"><span>Thuế dịch vụ</span><span>${serviceTax }</span></li>
-										<li class="order-summary-item border-0"><span>Tổng
-												tiền</span><strong class="order-summary-total">${finalTotal }</strong></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="block-header">
-								<h6 class="text-uppercase mb-0">Địa chỉ giao hàng</h6>
-							</div>
-							<div class="block-body bg-light pt-1">
-								<p>${userAddress.fullNameUA }<br>${userAddress.phoneUA }<br>${userAddress.provinceName }<br>${userAddress.districtName }<br>${userAddress.specificAddress }<br>
-								</p>
-							</div>
-							<!-- <div class="block-header">
->>>>>>> faae390c72d7534598afc7921fba09346b180991
-                  <h6 class="text-uppercase mb-0">Shipping address</h6>
-                </div>
-                <div class="block-body bg-light pt-1">
-                  <p>John Brown<br>13/25 New Avenue<br>New Heaven<br>45Y 73J<br>England<br><strong>Great Britain</strong></p>
-                </div> -->
-<<<<<<< HEAD
-              </div>
+              <!-- Product-->
             </div>
           </div>
-           <!-- Customer Sidebar-->
-           <%@ include file="/commons/user/customerSidebar.jsp" %>;
-          <!-- /Customer Sidebar-->
         </div>
       </div>
-    </section>
-=======
-						</div>
-					</div>
-				</div>
-				<!-- Customer Sidebar-->
-				<div class="col-xl-3 col-lg-4 mb-5">
-					<div class="customer-sidebar card border-0">
-						<div class="customer-profile">
-							<a class="d-inline-block" href="#"><img
-								class="img-fluid rounded-circle customer-image shadow"
-								src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/img/photo/kyle-loftus-589739-unsplash-avatar.jpg"
-								alt=""></a>
-							<h5>Anhthu</h5>
-							<p class="text-muted text-sm mb-0">ở nhà</p>
-						</div>
-						<nav class="list-group customer-nav">
-							<a
-								class="list-group-item d-flex justify-content-between align-items-center text-decoration-none"
-								href="${pageContext.request.contextPath}/user/orders"><span>
-									<svg class="svg-icon svg-icon-heavy me-2">
-                      <use xlink:href="#paper-bag-1"> </use>
-                    </svg>Đơn hàng của tôi
-							</span>
-								<div class="badge rounded-pill bg-dark fw-normal px-3">5</div></a><a
-								class="active list-group-item d-flex justify-content-between align-items-center text-decoration-none"
-								href="customer-account.html"><span> <svg
-										class="svg-icon svg-icon-heavy me-2">
-                      <use xlink:href="#male-user-1"> </use>
-                    </svg>Hồ sơ của tôi
-							</span></a><a
-								class="list-group-item d-flex justify-content-between align-items-center text-decoration-none"
-								href="${pageContext.request.contextPath}/user/UserAccount"><span>
-									<svg class="svg-icon svg-icon-heavy me-2">
-                      <use xlink:href="#navigation-map-1"> </use>
-                    </svg>Địa chỉ
-							</span></a><a
-								class="list-group-item d-flex justify-content-between align-items-center text-decoration-none"
-								href="${pageContext.request.contextPath}/user/UserAddress"><span>
-									<svg class="svg-icon svg-icon-heavy me-2">
-                      <use xlink:href="#exit-1"> </use>
-                    </svg>Đăng xuẩt
-							</span></a>
-						</nav>
-					</div>
-				</div>
-				<!-- /Customer Sidebar-->
-			</div>
-		</div>
-	</section>
->>>>>>> faae390c72d7534598afc7921fba09346b180991
+       <!-- Begin Customer Sidebar-->
+          <%@ include file="/commons/user/customerSidebar.jsp" %>
+          <!-- End Customer Sidebar-->
+      
+      <!-- Tổng tiền đơn hàng và địa chỉ giao hàng -->
+      <div class="col-md-6">
+        <div class="block mb-5">
+          <div class="block-header">
+            <h6 class="text-uppercase mb-0">Tổng tiền đơn hàng dự kiến</h6>
+          </div>
+          <div class="block-body bg-light pt-1">
+            <p class="text-sm">Chi phí vận chuyển và chi phí bổ sung sẽ được tính dựa trên các sản phẩm bạn đã chọn.</p>
+            <ul class="order-summary mb-0 list-unstyled">
+              <li class="order-summary-item"><span>Tổng tiền ước tính</span><span>${totalAmountFormatted}</span></li>
+              <li class="order-summary-item"><span>Phí vận chuyển</span><span>${shippingFormatted}</span></li>
+              <li class="order-summary-item"><span>Thuế dịch vụ</span><span>${serviceTaxFormatted}</span></li>
+              <li class="order-summary-item border-0"><span>Tổng tiền</span><strong class="order-summary-total">${finalTotalFormatted}</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="block-header">
+          <h6 class="text-uppercase mb-0">Địa chỉ giao hàng</h6>
+        </div>
+        <div class="block-body bg-light pt-1">
+          <p>${userAddress.fullNameUA}<br>${userAddress.phoneUA}<br>${userAddress.provinceName}<br>${userAddress.districtName}<br>${userAddress.specificAddress}<br></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+	
+	
 
 	<!--  Begin Footer -->
 	<%@ include file="/commons/web/footer.jsp"%>

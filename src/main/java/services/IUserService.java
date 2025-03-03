@@ -16,8 +16,10 @@ public interface IUserService {
 	boolean checkExistEmail(String email);
 	boolean checkExistPhone(String phone);
 	
-	boolean sendCode(String email);
+	boolean sendCode(String email, String code);
 	boolean resetPassword(String email, String resetCode, String newPassword);
+	boolean updateUser(UserModel user);
+	 String hashPassword(String password);
 	
 	UserModel findByEmail(String email);
 	UserModel findByPhone(String phone);

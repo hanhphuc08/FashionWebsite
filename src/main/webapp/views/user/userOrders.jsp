@@ -77,7 +77,7 @@
                 <tr>
                   <th class="py-4 align-middle"># ${order.orderID}</th>
                   <td class="py-4 align-middle">${order.orderDate }</td>
-                  <td class="py-4 align-middle">${order.totalAmount }</td>
+                  <td class="py-4 align-middle">${order.totalAmountFormatted }</td>
                   <td class="py-4 align-middle"><span class="badge p-2 text-uppercase badge-info-light">${order.status }</span></td>
                   <td class="py-4 align-middle"><a class="btn btn-outline-dark btn-sm" href="${pageContext.request.contextPath}/user/orderDetail?orderID=${order.orderID}">xem</a></td>
                 </tr>
@@ -98,24 +98,9 @@
 	<!-- End Footer -->
 
     <div id="scrollTop"><i class="fa fa-long-arrow-alt-up"></i></div>
-    <button class="btn btn-primary btn-sm d-none d-lg-block" type="button" data-bs-toggle="collapse" data-bs-target="#style-switch" id="style-switch-button"><i class="fa fa-cog fa-2x"></i></button>
-    <div class="collapse" id="style-switch">
-      <div class="p-3">
-        <h6 class="text-uppercase mb-4">Select theme colour</h6>
-        <form class="mb-3">
-          <select class="form-select style-switch-select" name="colour" id="colour">
-            <option value="">select colour variant</option>
-            <option value="css/style.default.7acfaf01.css">blue</option>
-            <option value="css/style.pink.bcb9f645.css">pink</option>
-            <option value="css/style.green.eba38840.css">green</option>
-            <option value="css/style.red.e64fe507.css">red</option>
-            <option value="css/style.violet.00703a6d.css">violet</option>
-          </select>
-        </form>
-        <p class="text-muted text-sm">Stylesheet switching is done with JavaScript and can cause a blink while page loads. This will not happen in your production code.</p>
-      </div>
-    </div>
+    
     <!-- JavaScript files-->
+    
      <!-- JavaScript files-->
     <script>
       // ------------------------------------------------------- //

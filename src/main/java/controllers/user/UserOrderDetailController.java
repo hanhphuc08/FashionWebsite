@@ -1,6 +1,7 @@
 package controllers.user;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import dao.Impl.CartDao;
@@ -28,6 +29,10 @@ public class UserOrderDetailController extends HttpServlet {
 	OrderDao orderDao = new OrderDao();
 	private UserAddressDao userAddressDao = new UserAddressDao();
 	private OrderDetailDao orderDetailDao = new OrderDetailDao();
+	 private String formatCurrency(double amount) {
+	        DecimalFormat formatter = new DecimalFormat("###,###,###");
+	        return formatter.format(amount) + " VND";
+	    }
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -63,6 +68,8 @@ public class UserOrderDetailController extends HttpServlet {
 	    double totalAmount = 0;
 	    for (OrderDetailModel orderDetail : orderDetails) {
 	        totalAmount += orderDetail.getPrice() * orderDetail.getQuantity();
+	        orderDetail.setPriceFormatted(formatCurrency(orderDetail.getPrice()));
+	        orderDetail.setTotalPriceFormatted(formatCurrency(orderDetail.getPrice() * orderDetail.getQuantity()));
 	    }
 
 	    // Bạn có thể thêm logic cho phí vận chuyển và thuế nếu cần
@@ -70,10 +77,10 @@ public class UserOrderDetailController extends HttpServlet {
 	    double serviceTax = 0; // Có thể tính thuế dịch vụ nếu cần
 	    double finalTotal = totalAmount + shipping + serviceTax;
 
-	    req.setAttribute("totalAmount", totalAmount);
-	    req.setAttribute("shipping", shipping);
-	    req.setAttribute("serviceTax", serviceTax);
-	    req.setAttribute("finalTotal", finalTotal);
+	    req.setAttribute("totalAmountFormatted", formatCurrency(totalAmount));
+        req.setAttribute("shippingFormatted", formatCurrency(shipping));
+        req.setAttribute("serviceTaxFormatted", formatCurrency(serviceTax));
+        req.setAttribute("finalTotalFormatted", formatCurrency(finalTotal));
 
 	    // Lấy địa chỉ giao hàng của người dùng
 	    UserAddressModel userAddress = userAddressDao.getAddressByUserId(user.getUserID());

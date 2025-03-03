@@ -13,6 +13,34 @@ public class OrderDetailModel {
     private int quantity;
     private String image;
     
+    private String paymentMethod;
+    
+    public String getPaymentMethod() {
+		return paymentMethod;
+	}
+
+	public void setPaymentMethod(String paymentMethod) {
+		this.paymentMethod = paymentMethod;
+	}
+
+	private String priceFormatted;
+    private String totalPriceFormatted;
+
+    public String getPriceFormatted() {
+        return priceFormatted;
+    }
+
+    public void setPriceFormatted(String priceFormatted) {
+        this.priceFormatted = priceFormatted;
+    }
+
+    public String getTotalPriceFormatted() {
+        return totalPriceFormatted;
+    }
+
+    public void setTotalPriceFormatted(String totalPriceFormatted) {
+        this.totalPriceFormatted = totalPriceFormatted;
+    }
 
 	public String getImage() {
 		return image;

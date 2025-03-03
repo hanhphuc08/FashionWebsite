@@ -41,9 +41,6 @@
     <!--  Begin Slider -->
 	<%@ include file="/commons/admin/slidersAdmin.jsp" %>;
 	<!-- End Slider -->
-    <!--  Begin Brands -->
-	<%@ include file="/commons/admin/brands.jsp" %>;
-	<!-- End Brands -->
      <!--  Begin Footer -->
 	<%@ include file="/commons/admin/footer.jsp" %>
 	<!-- End Footer -->

@@ -17,8 +17,7 @@
 <!-- Google fonts - Playfair Display-->
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/fonts/hkgrotesk/stylesheet.2e9c9834.css">
+<link rel="stylesheet" href="fonts/hkgrotesk/stylesheet.2e9c9834.css">
 <!-- owl carousel-->
 <link rel="stylesheet"
 	href="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/owl.carousel/assets/owl.carousel.css">
@@ -120,7 +119,7 @@
 	<script
 		src="${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/js/demo.9833433a.js"></script>
 
-	<%@include file="/commons/admin/headerAdmin.jsp"%>;
+	<%@include file="/commons/admin/headerAdmin.jsp"%>
 
 	<div class="container-fluid">
 
@@ -258,14 +257,14 @@
 								<p class="fs-5 fw-bold mb-0">${orderTotalMonth }</p>
 							</div>
 							
-							<div class="col text-end text-truncate">
+							<%-- <div class="col text-end text-truncate">
 
 								<!-- Label -->
 								<p class="fs-6 text-muted text-uppercase mb-0">Huỷ</p>
 
 								<!-- Comment -->
 								<p class="fs-5 fw-bold mb-0">${orderCancelled }</p>
-							</div>
+							</div> --%>
 						</div>
 						<!-- / .row -->
 					</div>
@@ -372,8 +371,7 @@
 					<div class="card-header border-0 card-header-space-between">
 
 						<!-- Title -->
-						<h2 class="card-header-title h4 text-uppercase">Top selling
-							products</h2>
+						<h2 class="card-header-title h4 text-uppercase">Sản phẩm bán chạy</h2>
 
 						<!-- Dropdown -->
 						<div class="dropdown">
@@ -443,7 +441,7 @@
 						class="card-header border-0 border-0 card-header-space-between">
 
 						<!-- Title -->
-						<h2 class="card-header-title h4 text-uppercase">Recent orders
+						<h2 class="card-header-title h4 text-uppercase">Các đơn hàng gần đây
 						</h2>
 					</div>
 
@@ -491,121 +489,7 @@
 		<!-- / .row -->
 
 		<div class="row">
-			<!-- <div class="col-xxl-6 d-flex">
-
-				Card
-				<div class="card border-0 flex-fill w-100">
-					<div class="card-header border-0 card-header-space-between">
-
-						Title
-						<h2 class="card-header-title h4 text-uppercase">Order status
-						</h2>
-
-						Dropdown
-						<div class="dropdown">
-							<a href="javascript: void(0);"
-								class="dropdown-toggle no-arrow text-secondary" role="button"
-								data-bs-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false"> <svg
-									xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-									height="14" width="14">
-									<g>
-									<circle cx="12" cy="3.25" r="3.25" style="fill: currentColor" />
-									<circle cx="12" cy="12" r="3.25" style="fill: currentColor" />
-									<circle cx="12" cy="20.75" r="3.25" style="fill: currentColor" /></g></svg>
-							</a>
-							<div class="dropdown-menu">
-								<a href="javascript: void(0);" class="dropdown-item"> Action
-								</a> <a href="javascript: void(0);" class="dropdown-item">
-									Another action </a> <a href="javascript: void(0);"
-									class="dropdown-item"> Something else here </a>
-							</div>
-						</div>
-					</div>
-
-					<div class="card-body">
-						<div class="row justify-content-around">
-							<div class="col-lg-6 col-xl-4 mb-7 mb-lg-0">
-
-								Chart
-
-								<div class="col-lg-6 col-xl-5">
-									<div class="row h-100 align-items-center">
-										<div class="col">
-											<div class="row justify-content-between">
-												<div class="col-auto col-lg">
-
-													Label
-													<p class="fs-4 d-flex align-items-center fw-semibold mb-0">
-														<span class="legend-circle bg-primary"></span> Delivered
-													</p>
-												</div>
-												<div class="col-auto col-lg">
-
-													Comment
-													<p class="fs-4 text-muted">29%</p>
-												</div>
-											</div>
-											/ .row
-											<div class="row justify-content-between">
-												<div class="col-auto col-lg">
-
-													Label
-													<p class="fs-4 d-flex align-items-center fw-semibold mb-0">
-														<span class="legend-circle bg-dark"></span> In progress
-													</p>
-												</div>
-												<div class="col-auto col-lg">
-
-													Comment
-													<p class="fs-4 text-muted">45%</p>
-												</div>
-											</div>
-											/ .row
-											<div class="row justify-content-between">
-												<div class="col-auto col-lg">
-
-													Label
-													<p class="fs-4 d-flex align-items-center fw-semibold mb-0">
-														<span class="legend-circle bg-gray-400"></span> To-do
-													</p>
-												</div>
-												<div class="col-auto col-lg">
-
-													Comment
-													<p class="fs-4 text-muted">26%</p>
-												</div>
-											</div>
-											/ .row
-										</div>
-									</div>
-									/ .row
-								</div>
-							</div>
-							/ .row
-						</div>
-					</div>
-				</div>
-				<div class="col-xxl-6 d-flex">
-
-					Card
-					<div class="card border-0 flex-fill w-100">
-						<div class="card-header border-0">
-
-							Title
-							<h2 class="card-header-title h4 text-uppercase">Revenue by
-								locations</h2>
-						</div>
-
-						<div class="card-body">
-
-							Map
-							<div class="map h-280px" id="worldMap"></div>
-						</div>
-					</div>
-				</div>
-			</div> -->
-			<!-- / .row -->
+			
 
 			<div class="row">
 				<div class="col d-flex">
@@ -615,7 +499,7 @@
 						<div class="card-header border-0 card-header-space-between">
 
 							<!-- Title -->
-							<h2 class="card-header-title h4 text-uppercase">Sales report
+							<h2 class="card-header-title h4 text-uppercase">Báo cáo doanh số
 							</h2>
 
 							<ul class="nav">
@@ -654,33 +538,13 @@
 						<div class="card-header border-0 card-header-space-between">
 
 							<!-- Title -->
-							<h2 class="card-header-title h4 text-uppercase">Users</h2>
+							<h2 class="card-header-title h4 text-uppercase">Người dùng</h2>
 							<button type="button" class="btn btn-danger btn-sm"
 								id="deleteUsersBtn">
-								<i class="fas fa-trash-alt"></i> Delete
+								<i class="fas fa-trash-alt"></i> Xoá
 							</button>
 
-							<!-- Dropdown -->
-							<!-- <div class="dropdown ms-4">
-								<a href="javascript: void(0);"
-									class="dropdown-toggle no-arrow text-secondary" role="button"
-									data-bs-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false"> <svg
-										xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-										height="14" width="14">
-										<g>
-										<circle cx="12" cy="3.25" r="3.25" style="fill: currentColor" />
-										<circle cx="12" cy="12" r="3.25" style="fill: currentColor" />
-										<circle cx="12" cy="20.75" r="3.25" style="fill: currentColor" /></g></svg>
-								</a>
-								<div class="dropdown-menu">
-									<a href="javascript: void(0);" class="dropdown-item">
-										Export report </a> <a href="javascript: void(0);"
-										class="dropdown-item"> Share </a> <a
-										href="javascript: void(0);" class="dropdown-item"> Action
-									</a>
-								</div>
-							</div> -->
+							
 						</div>
 						
 
@@ -698,18 +562,18 @@
 										</th>
 
 										<th><a href="javascript: void(0);"
-											class="text-muted list-sort" data-sort="name"> Full name
+											class="text-muted list-sort" data-sort="name">Họ và tên
 										</a></th>
 										<th><a href="javascript: void(0);"
 											class="text-muted list-sort" data-sort="email"> Email </a></th>
 										<th><a href="javascript: void(0);"
 											class="text-muted list-sort" data-sort="id"> User ID </a></th>
 										<th><a href="javascript: void(0);"
-											class="text-muted list-sort" data-sort="date"> Signed up
+											class="text-muted list-sort" data-sort="date">Ngày đăng ký
 										</a></th>
 										<th class="w-150px min-w-150px"><a
 											href="javascript: void(0);" class="text-muted list-sort"
-											data-sort="status"> Status </a></th>
+											data-sort="status"> Trạng thái</a></th>
 									</tr>
 								</thead>
 
@@ -733,342 +597,7 @@
 										<td class="date" data-signed="1648252800">${u.createDate}</td>
 										<td class="status"><span class="legend-circle bg-success"></span>Active</td>
 									</tr>
-									<!-- <tr>
-										<td>
-											<div class="form-check mb-0">
-												<input class="form-check-input" type="checkbox" value="">
-											</div>
-										</td>
-										<td>
-											<div class="avatar avatar-circle avatar-xs me-2">
-												<img
-													src="https://d33wubrfki0l68.cloudfront.net/44bfbd93721837b9534e9dc6fc058dbaef92d03a/f9236/assets/images/profiles/profile-23.jpeg"
-													alt="..." class="avatar-img" width="30" height="30">
-											</div> <span class="name fw-bold">Orli J. Goodman</span>
-										</td>
-										<td class="email">pede@at.com</td>
-										<td class="id">#8545</td>
-										<td class="date" data-signed="1627858800">08.02.2021</td>
-										<td class="status"><span class="legend-circle bg-success"></span>Successful</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="form-check mb-0">
-												<input class="form-check-input" type="checkbox" value="">
-											</div>
-										</td>
-										<td>
-											<div class="avatar avatar-circle avatar-xs me-2">
-												<img
-													src="https://d33wubrfki0l68.cloudfront.net/236af360580cfc7622e3a7d309d709a5018937c5/e3ee4/assets/images/profiles/profile-16.jpeg"
-													alt="..." class="avatar-img" width="30" height="30">
-											</div> <span class="name fw-bold">Halee P. Lane</span>
-										</td>
-										<td class="email">diam@nislNullaeu.net</td>
-										<td class="id">#4445</td>
-										<td class="date" data-signed="1615680000">03.14.2021</td>
-										<td class="status"><span class="legend-circle bg-warning"></span>Pending</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="form-check mb-0">
-												<input class="form-check-input" type="checkbox" value="">
-											</div>
-										</td>
-										<td>
-											<div class="avatar avatar-circle avatar-xs me-2">
-												<span class="avatar-title text-bg-primary-soft">KS</span>
-											</div> <span class="name fw-bold">Kimberly Salinas</span>
-										</td>
-										<td class="email">in.lobortis.tellus@faucibusorci.co.uk</td>
-										<td class="id">#2391</td>
-										<td class="date" data-signed="1615939200">03.17.2021</td>
-										<td class="status"><span class="legend-circle bg-success"></span>Successful</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="form-check mb-0">
-												<input class="form-check-input" type="checkbox" value="">
-											</div>
-										</td>
-										<td>
-											<div class="avatar avatar-circle avatar-xs me-2">
-												<img
-													src="https://d33wubrfki0l68.cloudfront.net/963edcf9fc0c25098f00370b3b3d021e2ddac277/e69d6/assets/images/profiles/profile-17.jpeg"
-													alt="..." class="avatar-img" width="30" height="30">
-											</div> <span class="name fw-bold">Galena Oliver</span>
-										</td>
-										<td class="email">eleifend.nec@ligulaconsectetuerrhoncus.ca</td>
-										<td class="id">#8987</td>
-										<td class="date" data-signed="1607990400">12.15.2021</td>
-										<td class="status"><span class="legend-circle bg-warning"></span>Pending</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="form-check mb-0">
-												<input class="form-check-input" type="checkbox" value="">
-											</div>
-										</td>
-										<td>
-											<div class="avatar avatar-circle avatar-xs me-2">
-												<img
-													src="https://d33wubrfki0l68.cloudfront.net/768c1ecfdff6a59ab55d514b80bd59e8dfa28996/35a64/assets/images/profiles/profile-19.jpeg"
-													alt="..." class="avatar-img" width="30" height="30">
-											</div> <span class="name fw-bold">Kelly Doyle</span>
-										</td>
-										<td class="email">urna.et@volutpatNulladignissim.org</td>
-										<td class="id">#5898</td>
-										<td class="date" data-signed="1650495600">04.21.2022</td>
-										<td class="status"><span class="legend-circle bg-danger"></span>Overdue</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="form-check mb-0">
-												<input class="form-check-input" type="checkbox" value="">
-											</div>
-										</td>
-										<td>
-											<div class="avatar avatar-circle avatar-xs me-2">
-												<img
-													src="https://d33wubrfki0l68.cloudfront.net/0b34af989cce5e54297f16547b3eff1ace44dad5/eb8ea/assets/images/profiles/profile-20.jpeg"
-													alt="..." class="avatar-img" width="30" height="30">
-											</div> <span class="name fw-bold">Keane Wyatt</span>
-										</td>
-										<td class="email">quam@Ut.org</td>
-										<td class="id">#3431</td>
-										<td class="date" data-signed="1655506800">06.18.2022</td>
-										<td class="status"><span class="legend-circle bg-success"></span>Successful</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="form-check mb-0">
-												<input class="form-check-input" type="checkbox" value="">
-											</div>
-										</td>
-										<td>
-											<div class="avatar avatar-circle avatar-xs me-2">
-												<span class="avatar-title text-bg-success-soft">NA</span>
-											</div> <span class="name fw-bold">Nasim Aguirre</span>
-										</td>
-										<td class="email">nisl@mollis.net</td>
-										<td class="id">#6701</td>
-										<td class="date" data-signed="1602975600">10.18.2021</td>
-										<td class="status"><span class="legend-circle bg-danger"></span>Overdue</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="form-check mb-0">
-												<input class="form-check-input" type="checkbox" value="">
-											</div>
-										</td>
-										<td>
-											<div class="avatar avatar-circle avatar-xs me-2">
-												<img
-													src="https://d33wubrfki0l68.cloudfront.net/23af178af51cd04f5a1b181720a77e2839e7a4be/5d54f/assets/images/profiles/profile-25.jpeg"
-													alt="..." class="avatar-img" width="30" height="30">
-											</div> <span class="name fw-bold">Leo Johnston</span>
-										</td>
-										<td class="email">Cum.sociis@Etiambibendumfermentum.co.uk</td>
-										<td class="id">#9258</td>
-										<td class="date" data-signed="1624748400">06.27.2021</td>
-										<td class="status"><span class="legend-circle bg-success"></span>Successful</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="form-check mb-0">
-												<input class="form-check-input" type="checkbox" value="">
-											</div>
-										</td>
-										<td>
-											<div class="avatar avatar-circle avatar-xs me-2">
-												<img
-													src="https://d33wubrfki0l68.cloudfront.net/f3d8c9fbcd994759c966476a8349d5d053e38964/e7323/assets/images/profiles/profile-26.jpeg"
-													alt="..." class="avatar-img" width="30" height="30">
-											</div> <span class="name fw-bold">Macon Dean</span>
-										</td>
-										<td class="email">aliquam@nec.edu</td>
-										<td class="id">#4885</td>
-										<td class="date" data-signed="1614470400">02.28.2021</td>
-										<td class="status"><span class="legend-circle bg-success"></span>Successful</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="form-check mb-0">
-												<input class="form-check-input" type="checkbox" value="">
-											</div>
-										</td>
-										<td>
-											<div class="avatar avatar-circle avatar-xs me-2">
-												<img
-													src="https://d33wubrfki0l68.cloudfront.net/ea01948f5a48922378b407c27d2b4e5809ed4949/35ecd/assets/images/profiles/profile-11.jpeg"
-													alt="..." class="avatar-img" width="30" height="30">
-											</div> <span class="name fw-bold">Yoko Grimes</span>
-										</td>
-										<td class="email">ut.eros@Donecporttitor.co.uk</td>
-										<td class="id">#1960</td>
-										<td class="date" data-signed="1635289200">10.27.2021</td>
-										<td class="status"><span class="legend-circle bg-warning"></span>Pending</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="form-check mb-0">
-												<input class="form-check-input" type="checkbox" value="">
-											</div>
-										</td>
-										<td>
-											<div class="avatar avatar-circle avatar-xs me-2">
-												<img
-													src="https://d33wubrfki0l68.cloudfront.net/395009794393b7ec5f8c3faaf9823b0a3692032b/71f55/assets/images/profiles/profile-27.jpeg"
-													alt="..." class="avatar-img" width="30" height="30">
-											</div> <span class="name fw-bold">Jordan Douglas</span>
-										</td>
-										<td class="email">fermentum.convallis.ligula@euenimEtiam.edu</td>
-										<td class="id">#8385</td>
-										<td class="date" data-signed="1646265600">03.03.2022</td>
-										<td class="status"><span class="legend-circle bg-warning"></span>Pending</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="form-check mb-0">
-												<input class="form-check-input" type="checkbox" value="">
-											</div>
-										</td>
-										<td>
-											<div class="avatar avatar-circle avatar-xs me-2">
-												<img
-													src="https://d33wubrfki0l68.cloudfront.net/408c347002e5d3c7a119c65184b1959dac40f3d7/46d8d/assets/images/profiles/profile-30.jpeg"
-													alt="..." class="avatar-img" width="30" height="30">
-											</div> <span class="name fw-bold">Carly Beard</span>
-										</td>
-										<td class="email">dolor.dolor@lacusMaurisnon.org</td>
-										<td class="id">#9380</td>
-										<td class="date" data-signed="1654902000">06.11.2022</td>
-										<td class="status"><span class="legend-circle bg-warning"></span>Pending</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="form-check mb-0">
-												<input class="form-check-input" type="checkbox" value="">
-											</div>
-										</td>
-										<td>
-											<div class="avatar avatar-circle avatar-xs me-2">
-												<img
-													src="https://d33wubrfki0l68.cloudfront.net/5c7ec5413a460dc895a7798c37ce609f43ad36b0/c94b0/assets/images/profiles/profile-29.jpeg"
-													alt="..." class="avatar-img" width="30" height="30">
-											</div> <span class="name fw-bold">Kareem Q. Weeks</span>
-										</td>
-										<td class="email">eget@aliquetProinvelit.co.uk</td>
-										<td class="id">#9761</td>
-										<td class="date" data-signed="1622329200">05.30.2021</td>
-										<td class="status"><span class="legend-circle bg-danger"></span>Overdue</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="form-check mb-0">
-												<input class="form-check-input" type="checkbox" value="">
-											</div>
-										</td>
-										<td>
-											<div class="avatar avatar-circle avatar-xs me-2">
-												<span class="avatar-title text-bg-danger-soft">DH</span>
-											</div> <span class="name fw-bold">Drew R. Hatfield</span>
-										</td>
-										<td class="email">Integer.vulputate@facilisi.edu</td>
-										<td class="id">#4798</td>
-										<td class="date" data-signed="1626562800">07.18.2021</td>
-										<td class="status"><span class="legend-circle bg-success"></span>Successful</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="form-check mb-0">
-												<input class="form-check-input" type="checkbox" value="">
-											</div>
-										</td>
-										<td>
-											<div class="avatar avatar-circle avatar-xs me-2">
-												<img
-													src="https://d33wubrfki0l68.cloudfront.net/693e2209e9a62e54c60745dd18751d70c3dec10a/9d43e/assets/images/profiles/profile-22.jpeg"
-													alt="..." class="avatar-img" width="30" height="30">
-											</div> <span class="name fw-bold">Kitra F. Strickland</span>
-										</td>
-										<td class="email">Donec.consectetuer@dolorNulla.net</td>
-										<td class="id">#1246</td>
-										<td class="date" data-signed="1651791600">05.06.2022</td>
-										<td class="status"><span class="legend-circle bg-warning"></span>Pending</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="form-check mb-0">
-												<input class="form-check-input" type="checkbox" value="">
-											</div>
-										</td>
-										<td>
-											<div class="avatar avatar-circle avatar-xs me-2">
-												<img
-													src="https://d33wubrfki0l68.cloudfront.net/5dfa4398a7f2beddbcfa617402e193f2f13aaa94/2ecb0/assets/images/profiles/profile-28.jpeg"
-													alt="..." class="avatar-img" width="30" height="30">
-											</div> <span class="name fw-bold">Jack Dennis</span>
-										</td>
-										<td class="email">Quisque.libero.lacus@torquentper.com</td>
-										<td class="id">#1099</td>
-										<td class="date" data-signed="1658703600">07.25.2022</td>
-										<td class="status"><span class="legend-circle bg-success"></span>Successful</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="form-check mb-0">
-												<input class="form-check-input" type="checkbox" value="">
-											</div>
-										</td>
-										<td>
-											<div class="avatar avatar-circle avatar-xs me-2">
-												<img
-													src="https://d33wubrfki0l68.cloudfront.net/d48629dc873bf03c72cd58826b5de65bc800aaac/5bb69/assets/images/profiles/profile-10.jpeg"
-													alt="..." class="avatar-img" width="30" height="30">
-											</div> <span class="name fw-bold">Tyler Hartman</span>
-										</td>
-										<td class="email">arcu.imperdiet@Pellentesqueultriciesdignissim.com</td>
-										<td class="id">#9151</td>
-										<td class="date" data-signed="1651359600">05.01.2022</td>
-										<td class="status"><span class="legend-circle bg-warning"></span>Pending</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="form-check mb-0">
-												<input class="form-check-input" type="checkbox" value="">
-											</div>
-										</td>
-										<td>
-											<div class="avatar avatar-circle avatar-xs me-2">
-												<img
-													src="https://d33wubrfki0l68.cloudfront.net/14bd6c6c1ba1296a1542d31d7dd9490e8bc9e472/d1f70/assets/images/profiles/profile-18.jpeg"
-													alt="..." class="avatar-img" width="30" height="30">
-											</div> <span class="name fw-bold">Hally Gilmore</span>
-										</td>
-										<td class="email">lacus.Etiam@Pellentesquehabitantmorbi.net</td>
-										<td class="id">#9846</td>
-										<td class="date" data-signed="1633302000">10.04.2021</td>
-										<td class="status"><span class="legend-circle bg-warning"></span>Pending</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="form-check mb-0">
-												<input class="form-check-input" type="checkbox" value="">
-											</div>
-										</td>
-										<td>
-											<div class="avatar avatar-circle avatar-xs me-2">
-												<img
-													src="https://d33wubrfki0l68.cloudfront.net/b12e43e592a36b25ced24c52bc8ae78595f1f2c6/2ceab/assets/images/profiles/profile-24.jpeg"
-													alt="..." class="avatar-img" width="30" height="30">
-											</div> <span class="name fw-bold">Rosalyn Cherry</span>
-										</td>
-										<td class="email">at.egestas.a@eunullaat.co.uk</td>
-										<td class="id">#9564</td>
-										<td class="date" data-signed="1593558000">07.01.2021</td>
-										<td class="status"><span class="legend-circle bg-warning"></span>Pending</td>
-									</tr> -->
+									
 								</c:forEach>
 								<c:if test="${empty listu}">
 									<tr>
@@ -1151,9 +680,79 @@ document.getElementById("deleteUsersBtn").addEventListener("click", function () 
             });
     }
 });
+
+//Lấy phần tử canvas
+const ctx = document.getElementById('salesReportChart').getContext('2d');
+
+// Tạo biểu đồ
+const salesReportChart = new Chart(ctx, {
+    type: 'bar', // Loại biểu đồ (bar, line, pie, etc.)
+    data: {
+        labels: ['January', 'February', 'March', 'April', 'May'], // Trục X
+        datasets: [{
+            label: 'Sales (in USD)', // Nhãn của dữ liệu
+            data: [1200, 1900, 3000, 5000, 2500], // Dữ liệu trục Y
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)'
+            ],
+            borderWidth: 1 // Độ dày viền
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true // Trục Y bắt đầu từ 0
+            }
+        }
+    }
+});
 </script>
 <script
-	src="${pageContext.request.contextPath}/Template/assets/js/theme.bundle.js"></script>
+		src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/jquery/jquery.min.js"></script>
+	<!-- Bootstrap JavaScript Bundle (Popper.js included)-->
+	<script
+		src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Owl Carousel-->
+	<script
+		src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/owl.carousel/owl.carousel.js"></script>
+	<script
+		src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.min.js"></script>
+	<!-- NoUI Slider (price slider)-->
+	<script
+		src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/nouislider/nouislider.min.js"></script>
+	<!-- Smooth scrolling-->
+	<script
+		src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
+	<!-- Lightbox gallery-->
+	<script
+		src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/glightbox/js/glightbox.min.js">
+		
+	</script>
+	<!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
+	<script
+		src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/object-fit-images/ofi.min.js"></script>
+	<script>
+		var basePath = '${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/'
+	</script>
+	<script
+		src="${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/js/theme.30e7c8f9.js"></script>
+	<script
+		src="https://d19m59y37dris4.cloudfront.net/sell/2-0-1/vendor/jquery.cookie/jquery.cookie.js">
+		
+	</script>
+	<script
+		src="${pageContext.request.contextPath}/Template/demo.bootstrapious.com/sell/2-0-1/js/demo.9833433a.js"></script>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/Template/assets/css/theme.bundle.css"
 	id="stylesheetLTR">

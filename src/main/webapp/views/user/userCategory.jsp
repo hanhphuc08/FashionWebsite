@@ -86,8 +86,7 @@
           <!-- Grid -->
           <div class="products-grid col-xl-9 col-lg-8 order-lg-2">
             <header class="product-grid-header">
-              <div class="me-3 mb-3">
-                 Hiển thị <strong>1-12 </strong>trong <strong>158 </strong>sản phẩm</div>
+              
 
 						<div class="mb-3 d-flex align-items-center">
               	<span class="d-inline-block me-2">Sắp xếp theo </span>
@@ -110,7 +109,7 @@
               <div class="col-xl-3 col-lg-4 col-sm-6">
                 <div class="product">
                   <div class="product-image">
-                    <div class="ribbon ribbon-info">${o.status}</div>
+                    
                     <img class="img-fluid" src="${o.image }" alt="${o.productName }"/>
                     <div class="product-hover-overlay">
                     	<a class="product-hover-overlay-link" href="${pageContext.request.contextPath}/user/categoryDetail?productCode=${o.productCode}"></a>
@@ -128,7 +127,7 @@
                     	 href="${pageContext.request.contextPath}/user/categoryDetail?productCode=${o.productCode}">
                     	 ${o.productName }</a>
                     </h3>
-                    <span class="text-muted">${o.price }</span>
+                    <span class="text-muted">${o.priceFormatted }</span>
                   </div>
                 </div>
               </div>
@@ -179,8 +178,7 @@
 								<c:forEach items="${listType}" var="type">
 									<a class="nav-link d-flex justify-content-between mb-2"
 										href="?typeCategoryCode=${type.typeCategoryCode}&page=1&orderby=${orderby}">
-										<span>${type.typeCategoryName}</span> <span
-										class="sidebar-badge">120</span> <!-- Bạn có thể cập nhật số lượng -->
+										<span>${type.typeCategoryName}</span>
 									</a>
 									<!-- Lặp qua danh sách Category liên quan đến TypeCategory -->
 									<div class="nav nav-pills flex-column ms-3">
